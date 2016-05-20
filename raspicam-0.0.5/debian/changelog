@@ -1,0 +1,5 @@
+raspicam (0.0.5-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- matzeton <pi@raspberrypi>  Fri, 20 May 2016 03:24:54 +0000
