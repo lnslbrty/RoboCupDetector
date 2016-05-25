@@ -14,7 +14,7 @@ class Camera : public raspicam::RaspiCam_Cv {
 
   public:
     Camera(void) : raspicam::RaspiCam_Cv() {
-      this->set(CV_CAP_PROP_FORMAT, CV_8UC1);
+      this->set(CV_CAP_PROP_FORMAT, CV_8UC3);
     }
 
     bool getImage(cv::Mat& image) {

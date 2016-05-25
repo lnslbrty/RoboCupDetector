@@ -1,3 +1,5 @@
+#include <unistd.h>
+
 #include <ctime>
 #include <iostream>
 #include <raspicam/raspicam_cv.h>
@@ -15,33 +17,59 @@ int main ( int argc,char **argv ) {
   time_t timer_begin,timer_end;
   cv::Mat image;
   int nCount=100;
+  bool saveImages = false;
 
-  //Open camera
+  // Parse command line arguments
+  char c;
+  if (argc > 1)
+  while ((c = getopt(argc, argv, "sn:")) != -1) {
+    if (c == 0xFF) break;
+    switch (c) {
+      case 's':
+        saveImages = true;
+        break;
+      case 'n':
+        nCount = strtoul(optarg, NULL, 10);
+        break;
+      default:
+        cerr << "Usage: "<<argv[0]<<" -s | -n"<<endl;
+        return 1;
+    }
+  }
+  cout << "saveImages: "<<saveImages<<endl
+       << "nCount....: "<<nCount<<endl;
+
+  // Open camera
   cout << "Opening Camera..."<<endl;
   if (!cam.open()) {
     cerr << "Error opening the camera"<<endl;
     return -1;
   }
 
-  //Start capture
+  // Start capture
   cout << "Capturing "<<nCount<<" frames ...."<<endl;
   time ( &timer_begin );
 
   for ( int i=0; i<nCount; i++ ) {
-    cam.getImage(image);
-    if ( i%5==0 ) cout << "\r captured "<<i<<" images"<<std::flush;
+    if (!cam.getImage(image))
+      cerr << "capture failed"<<endl;
+    if (i%13 == 1) {
+      cout << "\r captured "<<i<<" images, circular buffer at pos "<<cbuf.getNextIndex()<<std::flush;
+    }
     std::stringstream ss;
     ss << "raspicam_cv_image_"<<i<<".jpg";
-    cv::imwrite(ss.str(), image);
+    // save images on disk?
+    if (saveImages)
+      cv::imwrite(ss.str(), image);
+    // save images in our circular buffer
+    cbuf.addElement(image);
   }
 
   cout<<"Stop camera..."<<endl;
   cam.release();
-  //show time statistics
+
+  // show time statistics
   time( &timer_end ); /* get current time; same as: timer = time(NULL)  */
   double secondsElapsed = difftime( timer_end,timer_begin );
   cout << secondsElapsed<<" seconds for "<< nCount<<"  frames : FPS = "<<  ( float ) ( ( float ) ( nCount ) /secondsElapsed ) <<endl;
-  //save image 
-  cv::imwrite("raspicam_cv_image.jpg",image);
-  cout<<"Image saved at raspicam_cv_image.jpg"<<endl;
 }
