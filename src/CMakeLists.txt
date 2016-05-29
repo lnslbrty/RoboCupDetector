@@ -16,13 +16,9 @@ IF (USE_XWINDOW)
 ENDIF()
 
 add_executable (robocup RC_Main.cpp RC_CircularBuffer.cpp RC_Camera.cpp RC_BlobObject.cpp RC_BlobDetector.cpp ${XWINDOW_SOURCES})
-add_executable (raspicam_test raspicam_test.cpp)
-add_executable (raspicam_still raspicam_still.cpp)
-
 target_link_libraries (robocup ${raspicam_CV_LIBS})
-target_link_libraries (raspicam_test ${raspicam_CV_LIBS})
-target_link_libraries (raspicam_still ${raspicam_LIBS})
 
+MESSAGE(STATUS "USE_XWINDOW=${USE_XWINDOW}")
 MESSAGE(STATUS "OpenCV found")
 ELSE()
 MESSAGE(FATAL_ERROR "OpenCV NOT FOUND")

@@ -13,7 +13,9 @@ namespace rc {
 
   inline void setupWindow(void) {
     cv::namedWindow("cam-original", CV_WINDOW_AUTOSIZE);
+    wait();
     cv::namedWindow("cam-filtered", CV_WINDOW_AUTOSIZE);
+    wait();
   }
 
   inline void previewImage(cv::Mat& image) {
