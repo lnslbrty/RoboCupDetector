@@ -75,6 +75,7 @@ int main ( int argc,char **argv ) {
     cbuf.addElement(image);
 
     detector.process(image);
+    detector.detectLines();
 #ifdef USE_XWINDOW
     rc::previewImage(image);
     rc::previewFilteredImage(detector.getFilteredImage());

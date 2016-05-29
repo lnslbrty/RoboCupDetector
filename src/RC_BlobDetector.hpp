@@ -33,6 +33,20 @@ class BlobDetector {
       this->FilteredImage = mask1 & ~mask2 & ~mask3;
     }
 
+    void detectLines(void) {
+      std::vector<cv::Vec4i> lines;
+      cv::HoughLinesP(this->FilteredImage, lines, 1, CV_PI/180, 50, 50, 10);
+      for (size_t i = 0; i < lines.size(); i++) {
+        cv::Vec4i l = lines[i];
+        cv::Point p1, p2;
+        p1 = cv::Point(l[0], l[1]);
+        p2 = cv::Point(l[2], l[3]);
+        //calculate angle in radian,  if you need it in degrees just do angle * 180 / PI
+        float angle = atan2(p1.y - p2.y, p1.x - p2.x);
+        std::cout << "Angle: "<<angle<<std::endl;
+      }
+    }
+
     cv::Mat& getMat(void) { return mat; }
     cv::Mat& getFilteredImage(void) { return FilteredImage; }
 
