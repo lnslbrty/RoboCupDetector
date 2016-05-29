@@ -6,6 +6,10 @@
 
 #include "RC_Camera.hpp"
 #include "RC_CircularBuffer.hpp"
+#include "RC_BlobDetector.hpp"
+#ifdef USE_XWINDOW
+#include "RC_Window.hpp"
+#endif
 
 using namespace std;
 
@@ -13,6 +17,7 @@ using namespace std;
 int main ( int argc,char **argv ) {
   rc::CircularBuffer<cv::Mat> cbuf(10);
   rc::Camera cam;
+  rc::BlobDetector detector;
 
   time_t timer_begin,timer_end;
   cv::Mat image;
@@ -50,6 +55,11 @@ int main ( int argc,char **argv ) {
   cout << "Capturing "<<nCount<<" frames ...."<<endl;
   time ( &timer_begin );
 
+#ifdef USE_XWINDOW
+  cout << "Open X11 preview window ...."<<endl;
+  rc::setupWindow();
+#endif
+
   for ( int i=0; i<nCount; i++ ) {
     if (!cam.getImage(image))
       cerr << "capture failed"<<endl;
@@ -63,9 +73,16 @@ int main ( int argc,char **argv ) {
       cv::imwrite(ss.str(), image);
     // save images in our circular buffer
     cbuf.addElement(image);
+
+    detector.process(image);
+#ifdef USE_XWINDOW
+    rc::previewImage(image);
+    rc::previewFilteredImage(detector.getFilteredImage());
+    rc::wait();
+#endif
   }
 
-  cout<<"Stop camera..."<<endl;
+  cout << endl<<"Stop camera..."<<endl;
   cam.release();
 
   // show time statistics
