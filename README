@@ -11,7 +11,7 @@ Vorbereitung
 
 3. Ein einmaligen ausführen von cmake/ccmake zum konfigurieren der Software unter `src`. Damit können zusätzliche Features eingestellt werden wie z.B. `USE_XWINDOW` (Kamera-/Bearbeitete- Bilder in Echtzeit anzeigen).
    cmake .
-3.1. Um recht einfach Konfigurationsvariablen zu verändern bietet sich auch ccmake an.
+3.1. Um recht einfach Konfigurationsvariablen zu verändern bietet sich auch ccmake an. [OPTIONAL]
    ccmake .
 3.2. Zum Schluß beginnt der eigentlich Compilier- und Link- Vorgang.
    make
