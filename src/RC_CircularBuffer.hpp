@@ -34,7 +34,9 @@ class CircularBuffer {
       cBuffer[nextIndex] = elem;
       /* nextIndex inkrementieren und dabei auf die Grenze "maxElements" beachten */
       /* % = Modulo */
-      nextIndex = ++nextIndex % maxElements;
+      auto tmp = nextIndex;
+      tmp = ++nextIndex % maxElements;
+      nextIndex = tmp;
     }
 
     unsigned int getNextIndex(void) {
