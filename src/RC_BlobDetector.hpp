@@ -27,7 +27,8 @@ class BlobDetector {
 
     void process(cv::Mat& mat) {
       this->mat = mat;
-      cv::Mat mask1 = this->filterByColorRange(cv::Scalar(0, 0, 0), cv::Scalar(80, 80, 255));
+      /* Filter für rote Objekte */
+      cv::Mat mask1 = this->filterByColorRange(cv::Scalar(0, 0, 0), cv::Scalar(70, 70, 255));
       cv::Mat mask2 = this->filterByColorRange(cv::Scalar(0, 0, 0), cv::Scalar(90, 90, 90));
       cv::Mat mask3 = this->filterByColorRange(cv::Scalar(220, 220, 220), cv::Scalar(255, 255, 255));
       this->FilteredImage = mask1 & ~mask2 & ~mask3;
