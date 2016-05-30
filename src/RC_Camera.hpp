@@ -18,7 +18,7 @@ class Camera : public raspicam::RaspiCam_Cv {
   public:
     Camera(void) : raspicam::RaspiCam_Cv() {
       this->set(CV_CAP_PROP_FORMAT, CV_8UC3);
-      rcam.setExposure(raspicam::RASPICAM_EXPOSURE_OFF);
+      camInfo.setExposure(raspicam::RASPICAM_EXPOSURE_OFF);
     }
     ~Camera(void) { }
 
@@ -29,13 +29,13 @@ class Camera : public raspicam::RaspiCam_Cv {
       } else return false;
     }
 
-    unsigned int getWidth(void) { return rcam.getWidth(); }
-    unsigned int getHeight(void) { return rcam.getHeight(); }
-    raspicam::RASPICAM_FORMAT getFormat(void) { return rcam.getFormat(); }
-    raspicam::RASPICAM_AWB getAWB(void) const { return rcam.getAWB(); }
+    unsigned int getWidth(void) { return camInfo.getWidth(); }
+    unsigned int getHeight(void) { return camInfo.getHeight(); }
+    raspicam::RASPICAM_FORMAT getFormat(void) { return camInfo.getFormat(); }
+    raspicam::RASPICAM_AWB getAWB(void) const { return camInfo.getAWB(); }
 
   private:
-    raspicam::RaspiCam rcam;
+    raspicam::RaspiCam camInfo;
 
 };
 }
