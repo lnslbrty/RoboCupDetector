@@ -1,15 +1,13 @@
 Source: raspicam
-Section: unknown
+Section: libdevel
 Priority: optional
 Maintainer: matzeton <pi@raspberrypi>
-Build-Depends: debhelper (>= 9), cmake
+Build-Depends: debhelper (>= 9), cmake, libopencv-dev (>= 2.4.9.1)
 Standards-Version: 3.9.5
-Homepage: <insert the upstream URL, if relevant>
-#Vcs-Git: git://anonscm.debian.org/collab-maint/raspicam.git
-#Vcs-Browser: http://anonscm.debian.org/?p=collab-maint/raspicam.git;a=summary
+Homepage: https://github.com/cedricve/raspicam
 
 Package: raspicam
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: C++ API for using Raspberry camera (with OpenCV)
+ A C++ API for using Raspberry camera (with OpenCV).
