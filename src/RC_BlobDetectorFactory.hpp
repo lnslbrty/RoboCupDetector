@@ -6,6 +6,8 @@
 #ifndef RC_BLOBDETECTORFACTORY_H
 #define RC_BLOBDETECTORFACTORY_H 1
 
+#include <iostream>
+#include <ostream>
 #include <raspicam/raspicam_cv.h>
 #include <condition_variable>
 #include <thread>
@@ -20,22 +22,29 @@ class BlobDetectorFactory : public rc::BlobDetector {
 
   public:
     BlobDetectorFactory(unsigned int numThreads) {
-      doSmth = true;
       this->numThreads = numThreads;
       thrds = new std::thread[numThreads];
 
       cam = new rc::Camera();
-      cbuf = new rc::CircularBuffer<cv::Mat>(numThreads);
+      cBuf = new rc::CircularBuffer<cv::Mat>(numThreads);
     }
     ~BlobDetectorFactory() {
       delete[] thrds;
-      delete cbuf;
+      delete cBuf;
       delete cam;
     }
 
     bool openCamera(void) { return cam->open(); }
     void closeCamera(void) { return cam->release(); }
-    rc::Camera * getCamera(void) { return cam; }
+
+    rc::Camera * getCamera(void) const { return cam; }
+
+    cv::Mat getImage(void) const {
+      cBuf_mtx.lock();
+      cv::Mat image = cBuf->getCurrentElement();
+      cBuf_mtx.unlock();
+      return image;
+    }
 
     void startThread(void) {
       for (unsigned int i = 0; i < numThreads; ++i) {
@@ -45,36 +54,47 @@ class BlobDetectorFactory : public rc::BlobDetector {
           while (doSmth) {
             std::cout << "standby("<<num<<")"<<std::endl;
 
-            if (cbuf_mtx.try_lock() == true) {
+            if (cBuf_mtx.try_lock() == true) {
+              cv::Mat image;
               /* TODO: do critical stuff */
-              cbuf_mtx.unlock();
+              if (!cBuf->getElement(image))
+                continue;
+              cBuf_mtx.unlock();
               /* TODO: do non-critical stuff */
+              process(image);
             } else std::this_thread::sleep_for(std::chrono::microseconds(100));
           }
         }, i);
       }
     }
 
-    bool processCurrentCameraImage(void) {
+    bool grabCameraImage(void) {
+      bool ret = false;
       cv::Mat image;
-      if (cam->getImage(image)) {
-        cbuf_mtx.lock();
-        cbuf->addElement(image);
-        cbuf_mtx.unlock();
-        process(image);
-      } else return false;
-      return true;
+      cBuf_mtx.lock();
+      bool gotImage = cam->getImage(image);
+      if (gotImage) {
+        cBuf->addElement(image);
+        ret = true;
+      }
+      cBuf_mtx.unlock();
+      return ret;
+    }
+
+    std::ostream& outBufferInfo(std::ostream& out) {
+      out << "";
+      return out;
     }
 
   private:
-    std::mutex cbuf_mtx;
+    static std::mutex cBuf_mtx;
 
     static bool doSmth;
     static unsigned int numThreads;
     static std::thread * thrds;
 
     static rc::Camera * cam;
-    static rc::CircularBuffer<cv::Mat> * cbuf;
+    static rc::CircularBuffer<cv::Mat> * cBuf;
 };
 }
 
