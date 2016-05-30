@@ -4,9 +4,7 @@
 #include <iostream>
 #include <raspicam/raspicam_cv.h>
 
-#include "RC_Camera.hpp"
-#include "RC_CircularBuffer.hpp"
-#include "RC_BlobDetector.hpp"
+#include "RC_BlobDetectorFactory.hpp"
 #ifdef USE_XWINDOW
 #include "RC_Window.hpp"
 #endif
@@ -14,14 +12,9 @@
 using namespace std;
 
  
-int main ( int argc,char **argv ) {
-  rc::CircularBuffer<cv::Mat> cbuf(10);
-  rc::Camera cam;
-  rc::BlobDetector detector;
-
+int main (int argc,char **argv) {
   time_t timer_begin,timer_end;
-  cv::Mat image;
-  int nCount=100;
+  int nCount = 100;
   bool saveImages = false;
 
   // Parse command line arguments
@@ -44,15 +37,17 @@ int main ( int argc,char **argv ) {
   cout << "saveImages: "<<saveImages<<endl
        << "nCount....: "<<nCount<<endl;
 
+  rc::BlobDetectorFactory detector(4);
   // Open camera
-  if (!cam.open()) {
+  if (!detector.openCamera()) {
     cerr << "Error opening the camera"<<endl;
     return -1;
   }
 
-  cout << "Resolution: "<<cam.getWidth()<<"x"<<cam.getHeight()<<std::endl
-       << "Format....: "<<cam.getFormat()<<std::endl
-       << "AWB-Mode..: "<<cam.getAWB()<<std::endl;
+  auto cam = detector.getCamera();
+  cout << "Resolution: "<<cam->getWidth()<<"x"<<cam->getHeight()<<std::endl
+       << "Format....: "<<cam->getFormat()<<std::endl
+       << "AWB-Mode..: "<<cam->getAWB()<<std::endl;
 
   // Start capture
   cout << std::endl<<"Capturing "<<nCount<<" frames ...."<<endl;
@@ -63,33 +58,32 @@ int main ( int argc,char **argv ) {
   rc::setupWindow();
 #endif
 
-  for ( int i=0; i<nCount; i++ ) {
-    if (!cam.getImage(image))
-      cerr << "capture failed"<<endl;
-    if (i%13 == 1) {
-      cout << "\r captured "<<i<<" images, circular buffer at pos "<<cbuf.getNextIndex()<<std::flush;
+  for (int i=0; i<nCount; i++) {
+    if (!detector.grabCameraImage()) {
+      cout << "capture failed"<<endl<<std::flush;
+      continue;
     }
+    if (i%13 == 1) {
+      cout << "\r captured "<<i<<" images "<<std::flush;
+    }
+    cv::Mat img = detector.getImage();
+
     std::stringstream ss;
     ss << "raspicam_cv_image_"<<i<<".jpg";
     // save images on disk?
     if (saveImages)
-      cv::imwrite(ss.str(), image);
-    // save images in our circular buffer
-    cbuf.addElement(image);
+      cv::imwrite(ss.str(), img);
 
-    if (cbuf.getElement(image)) {
-      detector.process(image);
-      //detector.detectLines();
 #ifdef USE_XWINDOW
-      rc::previewImage(image);
+    rc::previewImage(img);
+    if (detector.hasFilteredImage())
       rc::previewFilteredImage(detector.getFilteredImage());
-      rc::wait();
+    rc::wait();
 #endif
-    } else cout << "Buffer error"<<endl;
   }
 
   // stop camera
-  cam.release();
+  cam->release();
 
   // show time statistics
   time( &timer_end ); /* get current time; same as: timer = time(NULL)  */
