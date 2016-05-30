@@ -10,7 +10,7 @@ Vorbereitung
    ./build.sh
 
 3. Ein einmaligen ausführen von cmake/ccmake zum konfigurieren der Software unter `src`. Damit können zusätzliche Features eingestellt werden wie z.B. `USE_XWINDOW` (Kamera-/Bearbeitete- Bilder in Echtzeit anzeigen).
-   cmake . ODER ccmake .
+   cmake . ;ODER; ccmake .
    make
 
 Fertig!
