@@ -1,0 +1,22 @@
+Vorbereitung
+=======
+
+1. Repository auf den Raspi `clonen`.
+   cd /home/pi
+   git clone git@bitbucket.org:matzeton/bsz7_robocup.git
+   cd bsz7_robocup
+
+2. Alle notwendigen Pakete installieren und die Raspicam C++ Bibliothek bauen/installieren.
+   ./build.sh
+
+3. Ein einmaligen ausführen von cmake/ccmake zum konfigurieren der Software unter `src`. Damit können zusätzliche Features eingestellt werden wie z.B. `USE_XWINDOW` (Kamera-/Bearbeitete- Bilder in Echtzeit anzeigen).
+   cmake . ODER ccmake .
+   make
+
+Fertig!
+
+
+Hacken
+======
+
+Alle relevanten Quelltexte befinden sich im Unterverzeichnis `src`.

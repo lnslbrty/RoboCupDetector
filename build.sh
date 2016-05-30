@@ -13,3 +13,5 @@ dpkg-buildpackage -b -us -uc
 cd ${OLDPWD}
 
 cmake . && make
+
+sudo dpkg -i *.deb
