@@ -17,6 +17,7 @@ class BlobDetector {
 
   public:
     BlobDetector() {
+      filteredImageAvailable = false;
     }
 
     cv::Mat filterByColorRange(cv::Scalar start, cv::Scalar end) {
@@ -32,6 +33,7 @@ class BlobDetector {
       cv::Mat mask2 = this->filterByColorRange(cv::Scalar(0, 0, 0), cv::Scalar(90, 90, 90));
       cv::Mat mask3 = this->filterByColorRange(cv::Scalar(220, 220, 220), cv::Scalar(255, 255, 255));
       this->FilteredImage = mask1 & ~mask2 & ~mask3;
+      this->filteredImageAvailable = true;
     }
 
     void detectLines(void) {
@@ -50,10 +52,12 @@ class BlobDetector {
 
     cv::Mat& getMat(void) { return mat; }
     cv::Mat& getFilteredImage(void) { return FilteredImage; }
+    bool hasFilteredImage(void) { return filteredImageAvailable; }
 
   private:
     cv::Mat mat;
     cv::Mat FilteredImage;
+    bool filteredImageAvailable;
 
 };
 }
