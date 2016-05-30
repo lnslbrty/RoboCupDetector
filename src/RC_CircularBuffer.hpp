@@ -38,7 +38,7 @@ class CircularBuffer {
       delete[] alreadyProcessedElements;
     }
 
-    void addElement(T elem) {
+    void addElement(T& elem) {
       /* überschreibe das Element an Position "nextIndex" */
       cBuffer[nextIndex] = elem;
       /* den entsprechende Index in `alreadyProcessedElements` auf `false` setzen */
@@ -48,6 +48,11 @@ class CircularBuffer {
       auto tmp = nextIndex;
       tmp = ++nextIndex % maxElements;
       nextIndex = tmp;
+    }
+
+    T getCurrentElement(void) {
+      long long int index = (nextIndex-1) % maxElements;
+      return cBuffer[index];
     }
 
     unsigned int getNextIndex(void) {
