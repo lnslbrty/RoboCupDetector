@@ -45,14 +45,17 @@ int main ( int argc,char **argv ) {
        << "nCount....: "<<nCount<<endl;
 
   // Open camera
-  cout << "Opening Camera..."<<endl;
   if (!cam.open()) {
     cerr << "Error opening the camera"<<endl;
     return -1;
   }
 
+  cout << "Resolution: "<<cam.getWidth()<<"x"<<cam.getHeight()<<std::endl
+       << "Format....: "<<cam.getFormat()<<std::endl
+       << "AWB-Mode..: "<<cam.getAWB()<<std::endl;
+
   // Start capture
-  cout << "Capturing "<<nCount<<" frames ...."<<endl;
+  cout << std::endl<<"Capturing "<<nCount<<" frames ...."<<endl;
   time ( &timer_begin );
 
 #ifdef USE_XWINDOW
@@ -74,20 +77,22 @@ int main ( int argc,char **argv ) {
     // save images in our circular buffer
     cbuf.addElement(image);
 
-    detector.process(image);
-    detector.detectLines();
+    if (cbuf.getElement(image)) {
+      detector.process(image);
+      //detector.detectLines();
 #ifdef USE_XWINDOW
-    rc::previewImage(image);
-    rc::previewFilteredImage(detector.getFilteredImage());
-    rc::wait();
+      rc::previewImage(image);
+      rc::previewFilteredImage(detector.getFilteredImage());
+      rc::wait();
 #endif
+    } else cout << "Buffer error"<<endl;
   }
 
-  cout << endl<<"Stop camera..."<<endl;
+  // stop camera
   cam.release();
 
   // show time statistics
   time( &timer_end ); /* get current time; same as: timer = time(NULL)  */
   double secondsElapsed = difftime( timer_end,timer_begin );
-  cout << secondsElapsed<<" seconds for "<< nCount<<"  frames : FPS = "<<  ( float ) ( ( float ) ( nCount ) /secondsElapsed ) <<endl;
+  cout << std::endl<<secondsElapsed<<" seconds for "<< nCount<<"  frames : FPS = "<<  ( float ) ( ( float ) ( nCount ) /secondsElapsed ) <<endl;
 }
