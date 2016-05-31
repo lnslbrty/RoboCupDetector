@@ -15,6 +15,9 @@
 #include "RC_Camera.hpp"
 #include "RC_CircularBuffer.hpp"
 #include "RC_BlobDetector.hpp"
+#ifdef USE_XWINDOW
+#include "RC_Window.hpp"
+#endif
 
 
 namespace rc {
@@ -24,47 +27,84 @@ class BlobDetectorFactory : public rc::BlobDetector {
     BlobDetectorFactory(unsigned int numThreads) {
       this->numThreads = numThreads;
       thrds = new std::thread[numThreads];
+      filteredImages = new cv::Mat[numThreads];
 
       cam = new rc::Camera();
       cBuf = new rc::CircularBuffer<cv::Mat>(numThreads);
     }
     ~BlobDetectorFactory() {
       delete[] thrds;
+      delete[] filteredImages;
       delete cBuf;
       delete cam;
     }
 
     bool openCamera(void) { return cam->open(); }
     void closeCamera(void) { return cam->release(); }
-
     rc::Camera * getCamera(void) const { return cam; }
+    cv::Mat getFilteredImage(unsigned int i) { return filteredImages[i]; }
+    bool hasFilteredImage(unsigned int i) { return !filteredImages[i].empty(); }
 
-    cv::Mat getImage(void) const {
+    cv::Mat getImage(void) {
       cBuf_mtx.lock();
       cv::Mat image = cBuf->getCurrentElement();
       cBuf_mtx.unlock();
       return image;
     }
 
-    void startThread(void) {
+    void startThreads(void) {
+#ifdef USE_XWINDOW
+      std::cout << "Open X11 preview window ...."<<std::endl;
+      rc::setupWindow();
+#endif
       for (unsigned int i = 0; i < numThreads; ++i) {
         thrds[i] = std::thread([this](int num) {
-          std::cout << "Thread "<<num<<" started .. ";
+          std::cout << "Thread "<<num<<" started .. "<<std::endl;
 
-          while (doSmth) {
-            std::cout << "standby("<<num<<")"<<std::endl;
-
+          while (1) {
             if (cBuf_mtx.try_lock() == true) {
+              if (!doSmth) {
+                cBuf_mtx.unlock();
+                break;
+              }
               cv::Mat image;
+              bool ret = false;
               /* TODO: do critical stuff */
-              if (!cBuf->getElement(image))
-                continue;
+              ret = cBuf->getElement(image);
               cBuf_mtx.unlock();
               /* TODO: do non-critical stuff */
-              process(image);
+              if (!ret)
+                continue;
+              if (!image.empty()) {
+                process(image);
+#ifdef USE_XWINDOW
+                win_mtx.lock();
+                rc::previewImage(image);
+                if (hasFilteredImage(num))
+                  rc::previewFilteredImage(getFilteredImage(num));
+                rc::wait();
+                win_mtx.unlock();
+#endif
+              }
             } else std::this_thread::sleep_for(std::chrono::microseconds(100));
           }
+          std::cout << "Thread "<<num<<" stopped"<<std::endl;
         }, i);
+      }
+    }
+
+    void stopThreads(void) {
+      cBuf_mtx.lock();
+      doSmth = false;
+      cBuf_mtx.unlock();
+#ifdef USE_XWINDOW
+      win_mtx.lock();
+      rc::closeWindows();
+      win_mtx.unlock();
+#endif
+      for (unsigned int i = 0; i < numThreads; ++i) {
+        thrds[i].join();
+        cBuf_mtx.unlock();
       }
     }
 
@@ -87,14 +127,18 @@ class BlobDetectorFactory : public rc::BlobDetector {
     }
 
   private:
-    static std::mutex cBuf_mtx;
+    std::mutex cBuf_mtx;
+#ifdef USE_XWINDOW
+    std::mutex win_mtx;
+#endif
 
-    static bool doSmth;
-    static unsigned int numThreads;
-    static std::thread * thrds;
+    bool doSmth;
+    unsigned int numThreads;
+    std::thread * thrds;
 
     static rc::Camera * cam;
-    static rc::CircularBuffer<cv::Mat> * cBuf;
+    rc::CircularBuffer<cv::Mat> * cBuf;
+    cv::Mat * filteredImages;
 };
 }
 

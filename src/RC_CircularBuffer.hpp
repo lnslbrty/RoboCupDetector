@@ -59,7 +59,7 @@ class CircularBuffer {
       return nextIndex;
     }
 
-    bool getElement(T arg) {
+    bool getElement(T& arg) {
       for (auto i = nextIndex; i < nextIndex+maxElements; ++i) {
         auto index = i % maxElements;
         if (alreadyProcessedElements[index] == false) {

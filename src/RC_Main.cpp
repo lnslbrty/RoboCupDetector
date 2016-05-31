@@ -5,9 +5,7 @@
 #include <raspicam/raspicam_cv.h>
 
 #include "RC_BlobDetectorFactory.hpp"
-#ifdef USE_XWINDOW
-#include "RC_Window.hpp"
-#endif
+
 
 using namespace std;
 
@@ -53,11 +51,7 @@ int main (int argc,char **argv) {
   cout << std::endl<<"Capturing "<<nCount<<" frames ...."<<endl;
   time ( &timer_begin );
 
-#ifdef USE_XWINDOW
-  cout << "Open X11 preview window ...."<<endl;
-  rc::setupWindow();
-#endif
-
+  detector.startThreads();
   for (int i=0; i<nCount; i++) {
     if (!detector.grabCameraImage()) {
       cout << "capture failed"<<endl<<std::flush;
@@ -73,14 +67,9 @@ int main (int argc,char **argv) {
     // save images on disk?
     if (saveImages)
       cv::imwrite(ss.str(), img);
-
-#ifdef USE_XWINDOW
-    rc::previewImage(img);
-    if (detector.hasFilteredImage())
-      rc::previewFilteredImage(detector.getFilteredImage());
-    rc::wait();
-#endif
   }
+  cout << endl;
+  detector.stopThreads();
 
   // stop camera
   cam->release();
@@ -88,5 +77,5 @@ int main (int argc,char **argv) {
   // show time statistics
   time( &timer_end ); /* get current time; same as: timer = time(NULL)  */
   double secondsElapsed = difftime( timer_end,timer_begin );
-  cout << std::endl<<secondsElapsed<<" seconds for "<< nCount<<"  frames : FPS = "<<  ( float ) ( ( float ) ( nCount ) /secondsElapsed ) <<endl;
+  cout << endl<<secondsElapsed<<" seconds for "<< nCount<<"  frames : FPS = "<<  ( float ) ( ( float ) ( nCount ) /secondsElapsed ) <<endl;
 }

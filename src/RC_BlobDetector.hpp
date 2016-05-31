@@ -17,28 +17,25 @@ class BlobDetector {
 
   public:
     BlobDetector() {
-      filteredImageAvailable = false;
     }
 
-    cv::Mat filterByColorRange(cv::Scalar start, cv::Scalar end) {
+    cv::Mat filterByColorRange(cv::Mat& image, cv::Scalar start, cv::Scalar end) {
       cv::Mat mask;
-      cv::inRange(this->mat, start, end, mask);
+      cv::inRange(image, start, end, mask);
       return mask;
     }
 
-    void process(cv::Mat& mat) {
-      this->mat = mat;
+    cv::Mat process(cv::Mat& image) {
       /* Filter für rote Objekte */
-      cv::Mat mask1 = this->filterByColorRange(cv::Scalar(0, 0, 0), cv::Scalar(70, 70, 255));
-      cv::Mat mask2 = this->filterByColorRange(cv::Scalar(0, 0, 0), cv::Scalar(90, 90, 90));
-      cv::Mat mask3 = this->filterByColorRange(cv::Scalar(220, 220, 220), cv::Scalar(255, 255, 255));
-      this->FilteredImage = mask1 & ~mask2 & ~mask3;
-      this->filteredImageAvailable = true;
+      cv::Mat mask1 = this->filterByColorRange(image, cv::Scalar(0, 0, 0), cv::Scalar(70, 70, 255));
+      cv::Mat mask2 = this->filterByColorRange(image, cv::Scalar(0, 0, 0), cv::Scalar(90, 90, 90));
+      cv::Mat mask3 = this->filterByColorRange(image, cv::Scalar(220, 220, 220), cv::Scalar(255, 255, 255));
+      return mask1 & ~mask2 & ~mask3;
     }
 
-    void detectLines(void) {
+    void detectLines(cv::Mat& filteredImage) {
       std::vector<cv::Vec4i> lines;
-      cv::HoughLinesP(this->FilteredImage, lines, 1, CV_PI/180, 50, 50, 10);
+      cv::HoughLinesP(filteredImage, lines, 1, CV_PI/180, 50, 50, 10);
       for (size_t i = 0; i < lines.size(); i++) {
         cv::Vec4i l = lines[i];
         cv::Point p1, p2;
@@ -49,15 +46,6 @@ class BlobDetector {
         std::cout << "Angle: "<<angle<<std::endl;
       }
     }
-
-    cv::Mat& getMat(void) { return mat; }
-    cv::Mat& getFilteredImage(void) { return FilteredImage; }
-    bool hasFilteredImage(void) { return filteredImageAvailable; }
-
-  private:
-    cv::Mat mat;
-    cv::Mat FilteredImage;
-    bool filteredImageAvailable;
 
 };
 }

@@ -18,11 +18,15 @@ namespace rc {
     wait();
   }
 
-  inline void previewImage(cv::Mat& image) {
+  inline void closeWindows(void) {
+    cv::destroyAllWindows();
+  }
+
+  inline void previewImage(cv::Mat image) {
     cv::imshow("cam-original", image);
   }
 
-  inline void previewFilteredImage(cv::Mat& image) {
+  inline void previewFilteredImage(cv::Mat image) {
     cv::imshow("cam-filtered", image);
   }
 
