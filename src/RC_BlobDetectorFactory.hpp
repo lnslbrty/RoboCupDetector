@@ -75,8 +75,12 @@ class BlobDetectorFactory : public rc::BlobDetector {
               if (!image.empty()) {
                 cv::Mat filteredImage = process(image);
 #ifdef USE_XWINDOW
-                win->addImage(rc::IMG_ORIGINAL, image);
-                win->addImage(rc::IMG_FILTERED, filteredImage);
+                cv::Size size(640, 480);
+                cv::Mat resImage, resFilteredImage;
+                cv::resize(image, resImage, size);
+                cv::resize(filteredImage, resFilteredImage, size);
+                win->addImage(rc::IMG_ORIGINAL, resImage);
+                win->addImage(rc::IMG_FILTERED, resFilteredImage);
 #endif
               }
             } else std::this_thread::sleep_for(std::chrono::microseconds(100));
