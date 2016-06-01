@@ -6,34 +6,98 @@
 #ifndef RC_WINDOW_H
 #define RC_WINDOW_H 1
 
+#include <iostream>
 #include <raspicam/raspicam_cv.h>
+#include <condition_variable>
+#include <thread>
+#include <queue>
 
 
 namespace rc {
+enum imageType {
+  IMG_ORIGINAL, IMG_FILTERED
+};
 
-  inline void setupWindow(void) {
-    cv::namedWindow("cam-original", CV_WINDOW_AUTOSIZE);
-    wait();
-    cv::namedWindow("cam-filtered", CV_WINDOW_AUTOSIZE);
-    wait();
-  }
+struct imageObj {
+  cv::Mat image;
+  enum imageType type;
+};
 
-  inline void closeWindows(void) {
-    cv::destroyAllWindows();
-  }
+class Window {
 
-  inline void previewImage(cv::Mat image) {
-    cv::imshow("cam-original", image);
-  }
+  public:
+    Window(void) {
+      doSmth = true;
+      cv::namedWindow("cam-original", CV_WINDOW_AUTOSIZE);
+      wait();
+      cv::namedWindow("cam-filtered", CV_WINDOW_AUTOSIZE);
+      wait();
+    }
+    ~Window(void) {
+      images_mtx.lock();
+      doSmth = false;
+      cv::destroyAllWindows();
+      images_mtx.unlock();
+      thrd.join();
+    }
 
-  inline void previewFilteredImage(cv::Mat image) {
-    cv::imshow("cam-filtered", image);
-  }
+    void addImage(enum imageType type, cv::Mat image) {
+      struct imageObj obj;
+      obj.image = image;
+      obj.type = type;
+      images_mtx.lock();
+      images.push(obj);
+      images_mtx.unlock();
+    }
 
-  inline void wait(void) {
-    cv::waitKey(1);
-  }
+    void run(void) {
+      thrd = std::thread([this](void) {
+        while (1) {
+          if (images_mtx.try_lock()) {
+            if (!doSmth) {
+              images_mtx.unlock();
+              break;
+            }
+            if (images.empty()) {
+              images_mtx.unlock();
+              std::this_thread::sleep_for(std::chrono::microseconds(500));
+              continue;
+            }
+            struct imageObj obj = images.front();
+            previewImage(obj.type, obj.image);
+            wait();
+            images.pop();
+            images_mtx.unlock();
+          } else std::this_thread::sleep_for(std::chrono::microseconds(100));
+        }
+      });
+    }
 
+    bool imagesAvailable(void) { return !images.empty(); }
+    size_t imagesStackSize() { return images.size(); }
+
+  private:
+    void previewImage(enum imageType itype, cv::Mat image) {
+      switch (itype) {
+        case IMG_ORIGINAL:
+          cv::imshow("cam-original", image);
+          break;
+        case IMG_FILTERED:
+          cv::imshow("cam-filtered", image);
+          break;
+      }
+    }
+
+    void wait(void) {
+      cv::waitKey(1);
+    }
+
+    bool doSmth;
+    std::queue<struct imageObj> images;
+    std::mutex images_mtx;
+    std::thread thrd;
+
+};
 }
 
 #endif

@@ -58,7 +58,7 @@ int main (int argc,char **argv) {
       continue;
     }
     if (i%13 == 1) {
-      cout << "\r captured "<<i<<" images "<<std::flush;
+      cout << "\r captured "<<i<<" images "<<detector.outInfo()<<"  "<<std::flush;
     }
     cv::Mat img = detector.getImage();
 
