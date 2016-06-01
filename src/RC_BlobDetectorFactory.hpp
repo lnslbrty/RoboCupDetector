@@ -27,14 +27,12 @@ class BlobDetectorFactory : public rc::BlobDetector {
     BlobDetectorFactory(unsigned int numThreads) {
       this->numThreads = numThreads;
       thrds = new std::thread[numThreads];
-      filteredImages = new cv::Mat[numThreads];
 
       cam = new rc::Camera();
       cBuf = new rc::CircularBuffer<cv::Mat>(numThreads);
     }
     ~BlobDetectorFactory() {
       delete[] thrds;
-      delete[] filteredImages;
       delete cBuf;
       delete cam;
     }
@@ -42,8 +40,6 @@ class BlobDetectorFactory : public rc::BlobDetector {
     bool openCamera(void) { return cam->open(); }
     void closeCamera(void) { return cam->release(); }
     rc::Camera * getCamera(void) const { return cam; }
-    cv::Mat getFilteredImage(unsigned int i) { return filteredImages[i]; }
-    bool hasFilteredImage(unsigned int i) { return !filteredImages[i].empty(); }
 
     cv::Mat getImage(void) {
       cBuf_mtx.lock();
@@ -55,7 +51,8 @@ class BlobDetectorFactory : public rc::BlobDetector {
     void startThreads(void) {
 #ifdef USE_XWINDOW
       std::cout << "Open X11 preview window ...."<<std::endl;
-      rc::setupWindow();
+      win = new rc::Window();
+      win->run();
 #endif
       for (unsigned int i = 0; i < numThreads; ++i) {
         thrds[i] = std::thread([this](int num) {
@@ -76,14 +73,10 @@ class BlobDetectorFactory : public rc::BlobDetector {
               if (!ret)
                 continue;
               if (!image.empty()) {
-                process(image);
+                cv::Mat filteredImage = process(image);
 #ifdef USE_XWINDOW
-                win_mtx.lock();
-                rc::previewImage(image);
-                if (hasFilteredImage(num))
-                  rc::previewFilteredImage(getFilteredImage(num));
-                rc::wait();
-                win_mtx.unlock();
+                win->addImage(rc::IMG_ORIGINAL, image);
+                win->addImage(rc::IMG_FILTERED, filteredImage);
 #endif
               }
             } else std::this_thread::sleep_for(std::chrono::microseconds(100));
@@ -94,13 +87,19 @@ class BlobDetectorFactory : public rc::BlobDetector {
     }
 
     void stopThreads(void) {
+#ifdef USE_XWINDOW
+      while (win->imagesAvailable()) {
+        std::cout << "\r"<<outInfo()<<"  "<<std::flush;
+        std::this_thread::sleep_for(std::chrono::microseconds(250));
+      }
+      std::cout << std::endl;
+#endif
       cBuf_mtx.lock();
       doSmth = false;
       cBuf_mtx.unlock();
 #ifdef USE_XWINDOW
-      win_mtx.lock();
-      rc::closeWindows();
-      win_mtx.unlock();
+      delete win;
+      win = nullptr;
 #endif
       for (unsigned int i = 0; i < numThreads; ++i) {
         thrds[i].join();
@@ -121,24 +120,29 @@ class BlobDetectorFactory : public rc::BlobDetector {
       return ret;
     }
 
-    std::ostream& outBufferInfo(std::ostream& out) {
-      out << "";
-      return out;
+    std::string outInfo(void) {
+      std::stringstream out;
+      out << "[CirularBufferPos: "<<cBuf->getNextIndex();
+#ifdef USE_XWINDOW
+      if (win != nullptr)
+        out << " ImageQueueSize: "<<win->imagesStackSize();
+#endif
+      out << "]";
+      return out.str();
     }
 
   private:
     std::mutex cBuf_mtx;
-#ifdef USE_XWINDOW
-    std::mutex win_mtx;
-#endif
 
     bool doSmth;
     unsigned int numThreads;
     std::thread * thrds;
 
     static rc::Camera * cam;
+#ifdef USE_XWINDOW
+    static rc::Window * win;
+#endif
     rc::CircularBuffer<cv::Mat> * cBuf;
-    cv::Mat * filteredImages;
 };
 }
 

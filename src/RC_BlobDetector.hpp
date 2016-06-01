@@ -1,6 +1,8 @@
 /**
- * Date: 25.05.2016
- * Author: Toni Uhlig <matzeton@googlemail.com>
+ * @file
+ * @author Toni Uhlig <matzeton@googlemail.com>
+ * @date 25.05.2016
+ * @version 1.0
  */
 
 #ifndef RC_BLOBDETECTOR_H
@@ -19,20 +21,40 @@ class BlobDetector {
     BlobDetector() {
     }
 
+    /**
+     * Filtert einen bestimmten Farbbereich eines Bildes.
+     *
+     * @param Das zu filternde Bild.
+     * @param Startfarbe
+     * @param Endfarbe
+     * @return Das gefilterte Bild.
+     */
     cv::Mat filterByColorRange(cv::Mat& image, cv::Scalar start, cv::Scalar end) {
       cv::Mat mask;
       cv::inRange(image, start, end, mask);
       return mask;
     }
 
+    /**
+     * Filtert bestimmte Farbbereiche eines Bildes zur weiterverarbeitung.
+     *
+     * @param Das zu filternde Bild.
+     * @return Das Bild mit angewendeten Farbfiltern.
+     */
     cv::Mat process(cv::Mat& image) {
       /* Filter für rote Objekte */
       cv::Mat mask1 = this->filterByColorRange(image, cv::Scalar(0, 0, 0), cv::Scalar(70, 70, 255));
       cv::Mat mask2 = this->filterByColorRange(image, cv::Scalar(0, 0, 0), cv::Scalar(90, 90, 90));
       cv::Mat mask3 = this->filterByColorRange(image, cv::Scalar(220, 220, 220), cv::Scalar(255, 255, 255));
+      /* TODO: Filter für gelbe/blaue Objekte */
       return mask1 & ~mask2 & ~mask3;
     }
 
+    /**
+     * Sucht nach Linien in einem Bild.
+     *
+     * @param Ein Bild (möglichst mit einem Farbfilter versehen).
+     */
     void detectLines(cv::Mat& filteredImage) {
       std::vector<cv::Vec4i> lines;
       cv::HoughLinesP(filteredImage, lines, 1, CV_PI/180, 50, 50, 10);
