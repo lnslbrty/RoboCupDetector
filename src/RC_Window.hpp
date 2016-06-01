@@ -28,9 +28,9 @@ class Window {
   public:
     Window(void) {
       doSmth = true;
-      cv::namedWindow("cam-original", CV_WINDOW_AUTOSIZE);
+      cv::namedWindow("cam-original", CV_WINDOW_NORMAL);
       wait();
-      cv::namedWindow("cam-filtered", CV_WINDOW_AUTOSIZE);
+      cv::namedWindow("cam-filtered", CV_WINDOW_NORMAL);
       wait();
     }
     ~Window(void) {
@@ -74,7 +74,7 @@ class Window {
     }
 
     bool imagesAvailable(void) { return !images.empty(); }
-    size_t imagesStackSize() { return images.size(); }
+    size_t imagesQueueSize() { return images.size(); }
 
   private:
     void previewImage(enum imageType itype, cv::Mat image) {

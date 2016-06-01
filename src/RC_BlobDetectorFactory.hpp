@@ -29,7 +29,7 @@ class BlobDetectorFactory : public rc::BlobDetector {
       thrds = new std::thread[numThreads];
 
       cam = new rc::Camera();
-      cBuf = new rc::CircularBuffer<cv::Mat>(numThreads);
+      cBuf = new rc::CircularBuffer<cv::Mat>(numThreads*2);
     }
     ~BlobDetectorFactory() {
       delete[] thrds;
@@ -41,19 +41,19 @@ class BlobDetectorFactory : public rc::BlobDetector {
     void closeCamera(void) { return cam->release(); }
     rc::Camera * getCamera(void) const { return cam; }
 
-    cv::Mat getImage(void) {
-      cBuf_mtx.lock();
-      cv::Mat image = cBuf->getCurrentElement();
-      cBuf_mtx.unlock();
-      return image;
-    }
-
     void startThreads(void) {
 #ifdef USE_XWINDOW
       std::cout << "Open X11 preview window ...."<<std::endl;
       win = new rc::Window();
       win->run();
 #endif
+#ifdef ENABLE_VIDEO
+      videoOut = new cv::VideoWriter("./vout.avi", CV_FOURCC('M','J','P','G'), 10, cv::Size(640,480), true);
+      if (!videoOut->isOpened()) {
+        std::cout << "Could not open video file"<<std::endl;
+      }
+#endif
+      doSmth = true;
       for (unsigned int i = 0; i < numThreads; ++i) {
         thrds[i] = std::thread([this](int num) {
           std::cout << "Thread "<<num<<" started .. "<<std::endl;
@@ -70,17 +70,22 @@ class BlobDetectorFactory : public rc::BlobDetector {
               ret = cBuf->getElement(image);
               cBuf_mtx.unlock();
               /* TODO: do non-critical stuff */
-              if (!ret)
-                continue;
-              if (!image.empty()) {
+              if (ret && !image.empty()) {
                 cv::Mat filteredImage = process(image);
-#ifdef USE_XWINDOW
+#if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
                 cv::Size size(640, 480);
                 cv::Mat resImage, resFilteredImage;
                 cv::resize(image, resImage, size);
                 cv::resize(filteredImage, resFilteredImage, size);
+#endif
+#ifdef USE_XWINDOW
                 win->addImage(rc::IMG_ORIGINAL, resImage);
                 win->addImage(rc::IMG_FILTERED, resFilteredImage);
+#endif
+#ifdef ENABLE_VIDEO
+                cBuf_mtx.lock();
+                videoOut->write(resImage);
+                cBuf_mtx.unlock();
 #endif
               }
             } else std::this_thread::sleep_for(std::chrono::microseconds(100));
@@ -93,7 +98,7 @@ class BlobDetectorFactory : public rc::BlobDetector {
     void stopThreads(void) {
 #ifdef USE_XWINDOW
       while (win->imagesAvailable()) {
-        std::cout << "\r"<<outInfo()<<"  "<<std::flush;
+        std::cout << "\r"<<outInfo()<<std::flush;
         std::this_thread::sleep_for(std::chrono::microseconds(250));
       }
       std::cout << std::endl;
@@ -103,22 +108,30 @@ class BlobDetectorFactory : public rc::BlobDetector {
       cBuf_mtx.unlock();
 #ifdef USE_XWINDOW
       delete win;
-      win = nullptr;
 #endif
       for (unsigned int i = 0; i < numThreads; ++i) {
         thrds[i].join();
         cBuf_mtx.unlock();
       }
+#ifdef ENABLE_VIDEO
+      videoOut->release();
+      delete videoOut;
+#endif
     }
 
     bool grabCameraImage(void) {
       bool ret = false;
       cv::Mat image;
       cBuf_mtx.lock();
-      bool gotImage = cam->getImage(image);
-      if (gotImage) {
-        cBuf->addElement(image);
-        ret = true;
+      if (cBuf->getElementCount() < cBuf->getMaxElementCount())
+#ifdef USE_XWINDOW
+         if (win->imagesQueueSize() < cBuf->getMaxElementCount())
+#endif
+      {
+        if (cam->getImage(image)) {
+          cBuf->addElement(image);
+          ret = true;
+        }
       }
       cBuf_mtx.unlock();
       return ret;
@@ -126,10 +139,11 @@ class BlobDetectorFactory : public rc::BlobDetector {
 
     std::string outInfo(void) {
       std::stringstream out;
-      out << "[CirularBufferPos: "<<cBuf->getNextIndex();
+      out << "[CirularBufferPos: "<<cBuf->getNextIndex()
+          << " availableElements: "<<cBuf->getElementCount();
 #ifdef USE_XWINDOW
       if (win != nullptr)
-        out << " ImageQueueSize: "<<win->imagesStackSize();
+        out << " ImageQueueSize: "<<win->imagesQueueSize();
 #endif
       out << "]";
       return out.str();
@@ -147,6 +161,9 @@ class BlobDetectorFactory : public rc::BlobDetector {
     static rc::Window * win;
 #endif
     rc::CircularBuffer<cv::Mat> * cBuf;
+#ifdef ENABLE_VIDEO
+    cv::VideoWriter * videoOut;
+#endif
 };
 }
 

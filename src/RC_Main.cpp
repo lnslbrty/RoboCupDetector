@@ -49,24 +49,16 @@ int main (int argc,char **argv) {
 
   // Start capture
   cout << std::endl<<"Capturing "<<nCount<<" frames ...."<<endl;
-  time ( &timer_begin );
+  time(&timer_begin);
 
   detector.startThreads();
   for (int i=0; i<nCount; i++) {
-    if (!detector.grabCameraImage()) {
-      cout << "capture failed"<<endl<<std::flush;
-      continue;
+    while (!detector.grabCameraImage()) {
+      std::this_thread::sleep_for(std::chrono::microseconds(500));
     }
-    if (i%13 == 1) {
-      cout << "\r captured "<<i<<" images "<<detector.outInfo()<<"  "<<std::flush;
+    if (i%11 == 1) {
+      cout << "\r captured "<<i<<" images "<<detector.outInfo()<<std::flush;
     }
-    cv::Mat img = detector.getImage();
-
-    std::stringstream ss;
-    ss << "raspicam_cv_image_"<<i<<".jpg";
-    // save images on disk?
-    if (saveImages)
-      cv::imwrite(ss.str(), img);
   }
   cout << endl;
   detector.stopThreads();
@@ -76,6 +68,6 @@ int main (int argc,char **argv) {
 
   // show time statistics
   time( &timer_end ); /* get current time; same as: timer = time(NULL)  */
-  double secondsElapsed = difftime( timer_end,timer_begin );
+  double secondsElapsed = difftime(timer_end,timer_begin);
   cout << endl<<secondsElapsed<<" seconds for "<< nCount<<"  frames : FPS = "<<  ( float ) ( ( float ) ( nCount ) /secondsElapsed ) <<endl;
 }
