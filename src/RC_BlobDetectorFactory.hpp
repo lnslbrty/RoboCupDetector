@@ -9,8 +9,8 @@
 #include <iostream>
 #include <ostream>
 #include <raspicam/raspicam_cv.h>
-#include <condition_variable>
 #include <thread>
+#include <condition_variable>
 
 #include "RC_Camera.hpp"
 #include "RC_CircularBuffer.hpp"

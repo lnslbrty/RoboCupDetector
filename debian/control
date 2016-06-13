@@ -1,0 +1,13 @@
+Source: bsz7robocup
+Section: utils
+Priority: optional
+Maintainer: matzeton <matzeton@googlemail.com>
+Build-Depends: debhelper (>= 9), cmake, raspicam
+Standards-Version: 3.9.5
+Homepage: https://github.com/cedricve/raspicam
+
+Package: bsz7robocup
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: BSZ7 robpcup
+ Diese debian (*.deb) Paket enthält alle relevanten Dateien für den Robocup.
