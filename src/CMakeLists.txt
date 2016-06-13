@@ -30,5 +30,5 @@ MESSAGE(FATAL_ERROR "OpenCV NOT FOUND")
 ENDIF()
 MESSAGE(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
 
-INSTALL(FILES robocup DESTINATION bin/)
+INSTALL_PROGRAMS(/bin FILES robocup)
 #####################################
