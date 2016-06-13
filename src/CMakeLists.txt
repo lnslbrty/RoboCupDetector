@@ -19,7 +19,7 @@ IF (ENABLE_VIDEO)
 	add_definitions(-DENABLE_VIDEO=1)
 ENDIF()
 
-add_executable (robocup RC_Main.cpp RC_CircularBuffer.cpp RC_Camera.cpp RC_BlobObject.cpp RC_BlobDetector.cpp RC_BlobDetectorFactory.cpp ${XWINDOW_SOURCES})
+add_executable (robocup RC_Main.cpp RC_Semaphore.cpp RC_CircularBuffer.cpp RC_Camera.cpp RC_BlobObject.cpp RC_BlobDetector.cpp RC_BlobDetectorFactory.cpp ${XWINDOW_SOURCES})
 target_link_libraries (robocup ${raspicam_CV_LIBS} pthread)
 
 MESSAGE(STATUS "USE_XWINDOW=${USE_XWINDOW}")
@@ -29,4 +29,6 @@ ELSE()
 MESSAGE(FATAL_ERROR "OpenCV NOT FOUND")
 ENDIF()
 MESSAGE(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
+
+INSTALL(FILES robocup DESTINATION bin/)
 #####################################
