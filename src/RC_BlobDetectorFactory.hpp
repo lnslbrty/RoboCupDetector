@@ -63,37 +63,32 @@ class BlobDetectorFactory : public rc::BlobDetector {
           std::cout << "Thread "<<num<<" started .. "<<std::endl;
 
           while (1) {
-            if (cBuf_mtx.try_lock() == true) {
-              if (!doSmth) {
-                cBuf_mtx.unlock();
-                break;
-              }
-              cv::Mat image;
-              bool ret = false;
-              /* TODO: do critical stuff */
-              ret = cBuf->getElement(image);
-              cBuf_mtx.unlock();
-              /* TODO: do non-critical stuff */
-              if (ret && !image.empty()) {
-                cv::Mat filteredImage = process(image);
+            if (!doSmth)
+              break;
+            cv::Mat image;
+            bool ret = false;
+            /* TODO: do critical stuff */
+            ret = cBuf->getElement(image);
+            /* TODO: do non-critical stuff */
+            if (ret && !image.empty()) {
+              cv::Mat filteredImage = process(image);
 #if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
-                cv::Size size(640, 480);
-                cv::Mat resImage, resFilteredImage;
-                cv::resize(image, resImage, size);
-                cv::resize(filteredImage, resFilteredImage, size);
+              cv::Size size(640, 480);
+              cv::Mat resImage, resFilteredImage;
+              cv::resize(image, resImage, size);
+              cv::resize(filteredImage, resFilteredImage, size);
 #endif
 #ifdef USE_XWINDOW
-                win->addImage(rc::IMG_ORIGINAL, resImage);
-                win->addImage(rc::IMG_FILTERED, resFilteredImage);
+              win->addImage(rc::IMG_ORIGINAL, resImage);
+              win->addImage(rc::IMG_FILTERED, resFilteredImage);
 #endif
 #ifdef ENABLE_VIDEO
-                videoMtx.lock();
-                videoOut->write(resImage);
-                videoMtx.unlock();
+              videoMtx.lock();
+              videoOut->write(resImage);
+              videoMtx.unlock();
 #endif
-              }
-              sema->produce();
             }
+            sema->produce();
           }
           std::cout << "Thread "<<num<<" stopped"<<std::endl;
         }, i);
@@ -108,15 +103,12 @@ class BlobDetectorFactory : public rc::BlobDetector {
       }
       std::cout << std::endl;
 #endif
-      cBuf_mtx.lock();
       doSmth = false;
-      cBuf_mtx.unlock();
 #ifdef USE_XWINDOW
       delete win;
 #endif
       for (unsigned int i = 0; i < numThreads; ++i) {
         thrds[i].join();
-        cBuf_mtx.unlock();
       }
       overwatch.join();
 #ifdef ENABLE_VIDEO
@@ -128,7 +120,6 @@ class BlobDetectorFactory : public rc::BlobDetector {
     bool grabCameraImage(void) {
       bool ret = false;
       cv::Mat image;
-      cBuf_mtx.lock();
       if (cBuf->getElementCount() < cBuf->getMaxElementCount())
 #ifdef USE_XWINDOW
          if (win->imagesQueueSize() < cBuf->getMaxElementCount())
@@ -139,7 +130,6 @@ class BlobDetectorFactory : public rc::BlobDetector {
           ret = true;
         }
       }
-      cBuf_mtx.unlock();
       return ret;
     }
 
@@ -157,7 +147,6 @@ class BlobDetectorFactory : public rc::BlobDetector {
 
   private:
     Semaphore * sema;
-    std::mutex cBuf_mtx;
 
     bool doSmth;
     unsigned int numThreads;
