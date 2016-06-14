@@ -13,6 +13,7 @@
 #include <condition_variable>
 
 #include "RC_Camera.hpp"
+#include "RC_Semaphore.hpp"
 #include "RC_CircularBuffer.hpp"
 #include "RC_BlobDetector.hpp"
 #ifdef USE_XWINDOW
@@ -30,11 +31,13 @@ class BlobDetectorFactory : public rc::BlobDetector {
 
       cam = new rc::Camera();
       cBuf = new rc::CircularBuffer<cv::Mat>(numThreads*2);
+      sema = new Semaphore(numThreads);
     }
     ~BlobDetectorFactory() {
       delete[] thrds;
       delete cBuf;
       delete cam;
+      delete sema;
     }
 
     bool openCamera(void) { return cam->open(); }
@@ -54,6 +57,7 @@ class BlobDetectorFactory : public rc::BlobDetector {
       }
 #endif
       doSmth = true;
+      overwatch = std::thread([this](){ while (doSmth) { sema->consumeAll(); } });
       for (unsigned int i = 0; i < numThreads; ++i) {
         thrds[i] = std::thread([this](int num) {
           std::cout << "Thread "<<num<<" started .. "<<std::endl;
@@ -83,12 +87,13 @@ class BlobDetectorFactory : public rc::BlobDetector {
                 win->addImage(rc::IMG_FILTERED, resFilteredImage);
 #endif
 #ifdef ENABLE_VIDEO
-                cBuf_mtx.lock();
+                videoMtx.lock();
                 videoOut->write(resImage);
-                cBuf_mtx.unlock();
+                videoMtx.unlock();
 #endif
               }
-            } else std::this_thread::sleep_for(std::chrono::microseconds(100));
+              sema->produce();
+            }
           }
           std::cout << "Thread "<<num<<" stopped"<<std::endl;
         }, i);
@@ -113,6 +118,7 @@ class BlobDetectorFactory : public rc::BlobDetector {
         thrds[i].join();
         cBuf_mtx.unlock();
       }
+      overwatch.join();
 #ifdef ENABLE_VIDEO
       videoOut->release();
       delete videoOut;
@@ -150,11 +156,13 @@ class BlobDetectorFactory : public rc::BlobDetector {
     }
 
   private:
+    Semaphore * sema;
     std::mutex cBuf_mtx;
 
     bool doSmth;
     unsigned int numThreads;
     std::thread * thrds;
+    std::thread overwatch;
 
     static rc::Camera * cam;
 #ifdef USE_XWINDOW
@@ -163,6 +171,7 @@ class BlobDetectorFactory : public rc::BlobDetector {
     rc::CircularBuffer<cv::Mat> * cBuf;
 #ifdef ENABLE_VIDEO
     cv::VideoWriter * videoOut;
+    std::mutex videoMtx;
 #endif
 };
 }

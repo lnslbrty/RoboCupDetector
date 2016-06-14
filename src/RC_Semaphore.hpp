@@ -1,6 +1,7 @@
 #ifndef RC_SEMAPHORE_H
 #define RC_SEMAPHORE_H 1
 
+#include <iostream>
 #include <thread>
 #include <mutex>
 #include <condition_variable>
@@ -12,21 +13,28 @@ class Semaphore {
   private:
     std::mutex mtx;
     std::condition_variable cond;
-    unsigned int count;
+    unsigned int maxCount, count;
 
   public:
-    Semaphore(void) : count() { }
-    ~Semaphore(void);
-
-    void consume(void) {
-      std::unique_lock<std::mutex> lck(mtx);
-      while (count <= 0)
-        cond.wait(lck);
+    explicit Semaphore(unsigned int _maxCount) : maxCount(_maxCount), count(0) {
+    }
+    ~Semaphore(void) {
     }
 
     void produce(void) {
       std::unique_lock<std::mutex> lck(mtx);
       count++;
+      cond.wait(lck);
+    }
+
+    void consumeAll(void) {
+      while (count < maxCount)
+        std::this_thread::sleep_for(std::chrono::microseconds(250));
+      {
+        std::unique_lock<std::mutex> lck(mtx);
+        count = 0;
+      }
+      cond.notify_all();
     }
 
 };

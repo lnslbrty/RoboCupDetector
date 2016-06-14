@@ -60,6 +60,7 @@ int main (int argc,char **argv) {
       cout << "\r captured "<<i<<" images "<<detector.outInfo()<<std::flush;
     }
   }
+  cout << "\r captured "<<nCount<<" images "<<detector.outInfo()<<std::flush;
   cout << endl;
   detector.stopThreads();
 
