@@ -29,13 +29,15 @@ class Semaphore {
 
     void consumeAll(void) {
       while (count < maxCount)
-        std::this_thread::sleep_for(std::chrono::microseconds(250));
+        std::this_thread::sleep_for(std::chrono::microseconds(25));
       {
         std::unique_lock<std::mutex> lck(mtx);
         count = 0;
       }
       cond.notify_all();
     }
+
+    void abortConsumer(void) { count = maxCount; }
 
 };
 }
