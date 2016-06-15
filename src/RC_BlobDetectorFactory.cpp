@@ -33,8 +33,9 @@ void rc::BlobDetectorFactory::startThreads(void) {
         ret = cBuf->getElement(image);
         /* TODO: do non-critical stuff */
         if (ret && !image.empty()) {
-          cv::Mat filteredImage = process(image);
-          filteredImage = detectLines(filteredImage);
+          cv::Mat filteredImage = image.clone();
+          process(filteredImage);
+          detectLines(filteredImage);
 #if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
           cv::Size size(640, 480);
           cv::Mat resImage, resFilteredImage;
@@ -47,7 +48,7 @@ void rc::BlobDetectorFactory::startThreads(void) {
 #endif
 #ifdef ENABLE_VIDEO
           videoMtx.lock();
-          videoOut->write(resImage);
+          videoOut->write(resFilteredImage);
           videoMtx.unlock();
 #endif
         }
@@ -71,9 +72,8 @@ void rc::BlobDetectorFactory::stopThreads(void) {
   delete win;
 #endif
   for (unsigned int i = 0; i < numThreads; ++i) {
-    thrds[i].detach();
+    thrds[i].join();
   }
-  sema->abortConsumer();
   overwatch.join();
 #ifdef ENABLE_VIDEO
   videoOut->release();

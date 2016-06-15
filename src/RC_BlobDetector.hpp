@@ -22,33 +22,18 @@ class BlobDetector {
     }
 
     /**
-     * Filtert einen bestimmten Farbbereich eines Bildes.
-     *
-     * @param Das zu filternde Bild.
-     * @param Startfarbe (nicht RGB, sondern im BGR Format)
-     * @param Endfarbe (nicht RGB, sondern im BGR Format)
-     * @return Das gefilterte Bild.
-     */
-    cv::Mat filterByColorRange(cv::Mat& image, cv::Scalar start, cv::Scalar end) {
-      cv::Mat mask;
-      cv::inRange(image, start, end, mask);
-      return mask;
-    }
-
-    /**
      * Filtert bestimmte Farbbereiche eines Bildes zur weiterverarbeitung.
      *
      * @param Das zu filternde Bild.
-     * @return Das Bild mit angewendeten Farbfiltern.
      */
-    cv::Mat process(cv::Mat& image);
+    void process(cv::Mat& image);
 
     /**
      * Sucht nach Linien in einem Bild.
      *
      * @param Ein Bild (möglichst mit einem Farbfilter versehen).
      */
-    cv::Mat detectLines(cv::Mat& filteredImage);
+    void detectLines(cv::Mat& filteredImage);
 
 };
 }
