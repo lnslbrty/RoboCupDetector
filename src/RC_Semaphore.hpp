@@ -16,28 +16,30 @@ class Semaphore {
     unsigned int maxCount, count;
 
   public:
-    explicit Semaphore(unsigned int _maxCount) : maxCount(_maxCount), count(0) {
+    explicit Semaphore(unsigned int _maxCount) : maxCount(_maxCount), count(_maxCount) {
     }
     ~Semaphore(void) {
     }
 
-    void produce(void) {
+    void consume(void) {
       std::unique_lock<std::mutex> lck(mtx);
-      count++;
-      cond.wait(lck);
+      count--;
+      cond.wait(lck, [this] { return count > 0; });
     }
 
-    void consumeAll(void) {
-      while (count < maxCount)
+    void produce(void) {
+      while (1) {
+        {
+          std::lock_guard<std::mutex> lck(mtx);
+          if (count <= 0) {
+            count = maxCount;
+            cond.notify_all();
+            break;
+          }
+        }
         std::this_thread::sleep_for(std::chrono::microseconds(25));
-      {
-        std::unique_lock<std::mutex> lck(mtx);
-        count = 0;
       }
-      cond.notify_all();
     }
-
-    void abortConsumer(void) { count = maxCount; }
 
 };
 }

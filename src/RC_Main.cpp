@@ -71,4 +71,7 @@ int main (int argc,char **argv) {
   time( &timer_end ); /* get current time; same as: timer = time(NULL)  */
   double secondsElapsed = difftime(timer_end,timer_begin);
   cout << endl<<secondsElapsed<<" seconds for "<< nCount<<"  frames : FPS = "<<  ( float ) ( ( float ) ( nCount ) /secondsElapsed ) <<endl;
+
+  std::terminate();
+  return 0;
 }

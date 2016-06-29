@@ -17,42 +17,47 @@ void rc::BlobDetectorFactory::startThreads(void) {
   if (!videoOut->isOpened()) {
     std::cout << "Could not open video file"<<std::endl;
   }
+  doVideoWrite = true;
 #endif
-  doSmth = true;
-  overwatch = std::thread([this](){ while (doSmth) { sema->consumeAll(); } });
+  overwatch = std::thread([this](){
+    while (1) { sema->produce(); }
+    std::cout << "Overwatch thread stopped"<<std::endl;
+  });
   for (unsigned int i = 0; i < numThreads; ++i) {
     thrds[i] = std::thread([this](int num) {
       std::cout << "Thread "<<num<<" started .. "<<std::endl;
 
       while (1) {
-        if (!doSmth)
-          break;
         cv::Mat image;
         bool ret = false;
         /* TODO: do critical stuff */
         ret = cBuf->getElement(image);
         /* TODO: do non-critical stuff */
         if (ret && !image.empty()) {
-          cv::Mat filteredImage = image.clone();
-          process(filteredImage);
-          detectLines(filteredImage);
+          cv::Mat filteredImage = process(image);
 #if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
           cv::Size size(640, 480);
-          cv::Mat resImage, resFilteredImage;
+          cv::Mat resImage;
           cv::resize(image, resImage, size);
+#ifdef SHOW_FILTERED_IMAGE
+          cv::Mat resFilteredImage;
           cv::resize(filteredImage, resFilteredImage, size);
+#endif
 #endif
 #ifdef USE_XWINDOW
           win->addImage(rc::IMG_ORIGINAL, resImage);
+#ifdef SHOW_FILTERED_IMAGE
           win->addImage(rc::IMG_FILTERED, resFilteredImage);
+#endif
 #endif
 #ifdef ENABLE_VIDEO
           videoMtx.lock();
-          videoOut->write(resFilteredImage);
+          if (doVideoWrite)
+            videoOut->write(resImage);
           videoMtx.unlock();
 #endif
         }
-        sema->produce();
+        sema->consume();
       }
     std::cout << "Thread "<<num<<" stopped"<<std::endl;
     }, i);
@@ -66,18 +71,15 @@ void rc::BlobDetectorFactory::stopThreads(void) {
     std::this_thread::sleep_for(std::chrono::microseconds(250));
   }
   std::cout << std::endl;
-#endif
-  doSmth = false;
-#ifdef USE_XWINDOW
+  win->stop();
   delete win;
 #endif
-  for (unsigned int i = 0; i < numThreads; ++i) {
-    thrds[i].join();
-  }
-  overwatch.join();
 #ifdef ENABLE_VIDEO
+  videoMtx.lock();
+  doVideoWrite = false;
   videoOut->release();
   delete videoOut;
+  videoMtx.unlock();
 #endif
 }
 

@@ -26,14 +26,7 @@ class BlobDetector {
      *
      * @param Das zu filternde Bild.
      */
-    void process(cv::Mat& image);
-
-    /**
-     * Sucht nach Linien in einem Bild.
-     *
-     * @param Ein Bild (möglichst mit einem Farbfilter versehen).
-     */
-    void detectLines(cv::Mat& filteredImage);
+     cv::Mat process(cv::Mat& image);
 
 };
 }

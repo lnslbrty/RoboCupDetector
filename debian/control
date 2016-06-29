@@ -2,12 +2,18 @@ Source: bsz7robocup
 Section: utils
 Priority: optional
 Maintainer: matzeton <matzeton@googlemail.com>
-Build-Depends: debhelper (>= 9), cmake, raspicam
+Build-Depends: debhelper (>= 9), cmake, libopencv-dev, raspicam
 Standards-Version: 3.9.5
-Homepage: https://github.com/cedricve/raspicam
+Homepage: https://bitbucket.org/matzeton/bsz7_robocup
 
 Package: bsz7robocup
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, libopencv, raspicam
 Description: BSZ7 robpcup
  Diese debian (*.deb) Paket enthält alle relevanten Dateien für den Robocup.
+
+Package: bsz7robocup-dbg
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, bsz7robocup
+Description: BSZ7 robpcup debugging symbols
+ Diese debian (*.deb) Paket enthält alle relevanten Dateien für den Robocup (debugging symbols).

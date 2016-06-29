@@ -30,15 +30,22 @@ class Window {
       doSmth = true;
       cv::namedWindow("cam-original", CV_WINDOW_NORMAL);
       wait();
+#ifdef SHOW_FILTERED_IMAGE
       cv::namedWindow("cam-filtered", CV_WINDOW_NORMAL);
+#endif
       wait();
     }
     ~Window(void) {
+      if (doSmth)
+        stop();
+    }
+
+    void stop(void) {
       images_mtx.lock();
       doSmth = false;
-      cv::destroyAllWindows();
       images_mtx.unlock();
       thrd.join();
+      cv::destroyAllWindows();
     }
 
     void addImage(enum imageType type, cv::Mat image) {
@@ -82,8 +89,11 @@ class Window {
         case IMG_ORIGINAL:
           cv::imshow("cam-original", image);
           break;
+
         case IMG_FILTERED:
+#ifdef SHOW_FILTERED_IMAGE
           cv::imshow("cam-filtered", image);
+#endif
           break;
       }
     }

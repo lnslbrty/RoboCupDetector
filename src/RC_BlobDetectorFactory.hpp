@@ -78,7 +78,6 @@ class BlobDetectorFactory : public rc::BlobDetector {
   private:
     Semaphore * sema;
 
-    bool doSmth;
     unsigned int numThreads;
     std::thread * thrds;
     std::thread overwatch;
@@ -89,6 +88,7 @@ class BlobDetectorFactory : public rc::BlobDetector {
 #endif
     rc::CircularBuffer<cv::Mat> * cBuf;
 #ifdef ENABLE_VIDEO
+    bool doVideoWrite;
     cv::VideoWriter * videoOut;
     std::mutex videoMtx;
 #endif
