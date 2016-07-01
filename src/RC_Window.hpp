@@ -10,6 +10,7 @@
 #include <raspicam/raspicam_cv.h>
 #include <condition_variable>
 #include <thread>
+#include <atomic>
 #include <queue>
 
 
@@ -26,83 +27,42 @@ struct imageObj {
 class Window {
 
   public:
-    Window(void) {
-      doSmth = true;
-      cv::namedWindow("cam-original", CV_WINDOW_NORMAL);
-      wait();
-#ifdef SHOW_FILTERED_IMAGE
-      cv::namedWindow("cam-filtered", CV_WINDOW_NORMAL);
-#endif
-      wait();
-    }
-    ~Window(void) {
-      if (doSmth)
-        stop();
-    }
+    Window(void);
+    ~Window(void);
 
-    void stop(void) {
-      images_mtx.lock();
-      doSmth = false;
-      images_mtx.unlock();
-      thrd.join();
-      cv::destroyAllWindows();
-    }
+    void stop(void);
 
-    void addImage(enum imageType type, cv::Mat image) {
-      struct imageObj obj;
-      obj.image = image;
-      obj.type = type;
-      images_mtx.lock();
-      images.push(obj);
-      images_mtx.unlock();
-    }
+    void addImage(enum imageType type, cv::Mat image);
 
-    void run(void) {
-      thrd = std::thread([this](void) {
-        while (1) {
-          if (images_mtx.try_lock()) {
-            if (!doSmth) {
-              images_mtx.unlock();
-              break;
-            }
-            if (images.empty()) {
-              images_mtx.unlock();
-              std::this_thread::sleep_for(std::chrono::microseconds(500));
-              continue;
-            }
-            struct imageObj obj = images.front();
-            previewImage(obj.type, obj.image);
-            wait();
-            images.pop();
-            images_mtx.unlock();
-          } else std::this_thread::sleep_for(std::chrono::microseconds(100));
-        }
-      });
-    }
+    void run(void);
 
     bool imagesAvailable(void) { return !images.empty(); }
     size_t imagesQueueSize() { return images.size(); }
 
-  private:
-    void previewImage(enum imageType itype, cv::Mat image) {
-      switch (itype) {
-        case IMG_ORIGINAL:
-          cv::imshow("cam-original", image);
-          break;
-
-        case IMG_FILTERED:
-#ifdef SHOW_FILTERED_IMAGE
-          cv::imshow("cam-filtered", image);
+    void setXWindow(bool enableWin, bool enableFltrd) {
+      this->doXWin = enableWin;
+#ifdef USE_XWINDOW_FLTRD
+      this->doXWinFltrd = enableFltrd;
 #endif
-          break;
-      }
     }
 
-    void wait(void) {
-      cv::waitKey(1);
-    }
+    bool isXWindow(void) { return this->doXWin; }
+#ifdef USE_XWINDOW_FLTRD
+    bool isXWindowFltrd(void) { return this->doXWinFltrd; }
+#else
+    bool isXWindowFltrd(void) { return false; }
+#endif
 
-    bool doSmth;
+  private:
+    void previewImage(enum imageType itype, cv::Mat image);
+
+    void wait(void) { cv::waitKey(1); }
+
+    std::atomic<bool> doSmth;
+    std::atomic<bool> doXWin;
+#ifdef USE_XWINDOW_FLTRD
+    std::atomic<bool> doXWinFltrd;
+#endif
     std::queue<struct imageObj> images;
     std::mutex images_mtx;
     std::thread thrd;

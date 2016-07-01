@@ -16,18 +16,10 @@ namespace rc {
 class Camera : public raspicam::RaspiCam_Cv {
 
   public:
-    Camera(void) : raspicam::RaspiCam_Cv() {
-      this->set(CV_CAP_PROP_FORMAT, CV_8UC3);
-      camInfo.setExposure(raspicam::RASPICAM_EXPOSURE_OFF);
-    }
+    Camera(void);
     ~Camera(void) { }
 
-    bool getImage(cv::Mat& image) {
-      if (this->grab()) {
-        this->retrieve(image);
-        return true;
-      } else return false;
-    }
+    bool getImage(cv::Mat& image);
 
     unsigned int getWidth(void) { return camInfo.getWidth(); }
     unsigned int getHeight(void) { return camInfo.getHeight(); }

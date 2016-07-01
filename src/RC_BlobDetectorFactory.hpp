@@ -25,20 +25,8 @@ namespace rc {
 class BlobDetectorFactory : public rc::BlobDetector {
 
   public:
-    BlobDetectorFactory(unsigned int numThreads) {
-      this->numThreads = numThreads;
-      thrds = new std::thread[numThreads];
-
-      cam = new rc::Camera();
-      cBuf = new rc::CircularBuffer<cv::Mat>(numThreads*2);
-      sema = new Semaphore(numThreads);
-    }
-    ~BlobDetectorFactory() {
-      delete[] thrds;
-      delete cBuf;
-      delete cam;
-      delete sema;
-    }
+    BlobDetectorFactory(unsigned int numThreads);
+    ~BlobDetectorFactory();
 
     bool openCamera(void) { return cam->open(); }
     void closeCamera(void) { return cam->release(); }
@@ -46,40 +34,29 @@ class BlobDetectorFactory : public rc::BlobDetector {
 
     void startThreads(void);
     void stopThreads(void);
+    bool grabCameraImage(void);
+    std::string outInfo(void);
 
-    bool grabCameraImage(void) {
-      bool ret = false;
-      cv::Mat image;
-      if (cBuf->getElementCount() < cBuf->getMaxElementCount())
-#ifdef USE_XWINDOW
-         if (win->imagesQueueSize() < cBuf->getMaxElementCount())
+#if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
+    void setDimensions(unsigned int width, unsigned int height) { this->width = width; this->height = height; }
 #endif
-      {
-        if (cam->getImage(image)) {
-          cBuf->addElement(image);
-          ret = true;
-        }
-      }
-      return ret;
-    }
 
-    std::string outInfo(void) {
-      std::stringstream out;
-      out << "[CirularBufferPos: "<<cBuf->getNextIndex()
-          << " availableElements: "<<cBuf->getElementCount();
-#ifdef USE_XWINDOW
-      if (win != nullptr)
-        out << " ImageQueueSize: "<<win->imagesQueueSize();
+#ifdef ENABLE_VIDEO
+    void setVideoOut(char* filename) { this->filename = filename; }
 #endif
-      out << "]";
-      return out.str();
-    }
+
+#ifdef USE_XWINDOW
+    static rc::Window * getXWindow(void) { return win; }
+#endif
 
   private:
-    Semaphore * sema;
+#if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
+    unsigned int width, height;
+#endif
 
+    Semaphore * sema = nullptr;
     unsigned int numThreads;
-    std::thread * thrds;
+    std::thread * thrds = nullptr;
     std::thread overwatch;
 
     static rc::Camera * cam;
@@ -88,8 +65,8 @@ class BlobDetectorFactory : public rc::BlobDetector {
 #endif
     rc::CircularBuffer<cv::Mat> * cBuf;
 #ifdef ENABLE_VIDEO
-    bool doVideoWrite;
-    cv::VideoWriter * videoOut;
+    char* filename = nullptr;
+    cv::VideoWriter * videoOut = nullptr;
     std::mutex videoMtx;
 #endif
 };
