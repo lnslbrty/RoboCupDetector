@@ -19,14 +19,14 @@ export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
 # main packaging script based on dh7 syntax
 %:
-	dh $@ 
+	dh $@ --buildsystem=cmake
 
-#override_dh_install:
-#	mv debian/bsz7robocup debian/tmp
-#	dh_install --fail-missing
+override_dh_auto_configure:
+	dh_auto_configure -- -DCMAKE_INSTALL_PREFIX:PATH=/usr
 
 override_dh_auto_install:
 	dh_auto_install --destdir=debian/tmp
+	dh_install debian/tmp/usr/bin/robocup usr/bin
 
 .PHONY: override_dh_strip
 override_dh_strip:

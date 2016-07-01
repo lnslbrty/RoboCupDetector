@@ -8,7 +8,7 @@ Homepage: https://bitbucket.org/matzeton/bsz7_robocup
 
 Package: bsz7robocup
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libopencv, raspicam
+Depends: ${shlibs:Depends}, ${misc:Depends}, libopencv-core2.4, libopencv-legacy2.4, libopencv-imgproc2.4, libopencv-highgui2.4, raspicam
 Description: BSZ7 robpcup
  Diese debian (*.deb) Paket enthält alle relevanten Dateien für den Robocup.
 
