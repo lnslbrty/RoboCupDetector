@@ -44,6 +44,7 @@ static void usage(char* arg0) {
                   "\t-w [width]     output image width in pixels\n"
                   "\t-h [heiight]   output image height in pixels\n"
 #endif
+                  "\t-p             this\n"
                 "\n", arg0);
 }
 
@@ -52,7 +53,7 @@ int main (int argc,char **argv) {
   struct cmd_opts opts = { 100,0,0,0,640,480 };
 
   char c;
-  while ((c = getopt(argc, argv, "n:v:xfw:h:")) != -1) {
+  while ((c = getopt(argc, argv, "n:v:xfw:h:p")) != -1) {
     if (c == 0xFF) break;
     switch (c) {
 
@@ -100,6 +101,7 @@ int main (int argc,char **argv) {
 #endif
         break;
       /**********************/
+      case 'p':
       default:
         usage(argv[0]);
         exit(1);
