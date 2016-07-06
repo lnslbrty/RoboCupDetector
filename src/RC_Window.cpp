@@ -4,7 +4,9 @@
 rc::Window::Window(void) {
   doSmth = true;
   doXWin = false;
+#ifdef USE_XWINDOW_FLTRD
   doXWinFltrd = false;
+#endif
 }
 
 

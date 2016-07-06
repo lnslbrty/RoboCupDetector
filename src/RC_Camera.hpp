@@ -21,13 +21,9 @@ class Camera : public raspicam::RaspiCam_Cv {
 
     bool getImage(cv::Mat& image);
 
-    unsigned int getWidth(void) { return camInfo.getWidth(); }
-    unsigned int getHeight(void) { return camInfo.getHeight(); }
-    raspicam::RASPICAM_FORMAT getFormat(void) { return camInfo.getFormat(); }
-    raspicam::RASPICAM_AWB getAWB(void) const { return camInfo.getAWB(); }
-
-  private:
-    raspicam::RaspiCam camInfo;
+    unsigned int getWidth(void) { return this->get(CV_CAP_PROP_FRAME_WIDTH); }
+    unsigned int getHeight(void) { return this->get(CV_CAP_PROP_FRAME_HEIGHT); }
+    raspicam::RASPICAM_FORMAT getFormat(void) { return static_cast<raspicam::RASPICAM_FORMAT>(this->get(CV_CAP_PROP_FORMAT)); }
 
 };
 }

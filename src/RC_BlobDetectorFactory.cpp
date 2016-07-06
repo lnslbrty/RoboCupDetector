@@ -61,13 +61,16 @@ void rc::BlobDetectorFactory::startThreads(void) {
           cv::Size size(this->width, this->height);
           cv::Mat resImage;
           cv::resize(image, resImage, size);
+#ifdef USE_XWINDOW
           if (win->isXWindow())
             win->addImage(rc::IMG_ORIGINAL, resImage);
+#endif
 #ifdef USE_XWINDOW_FLTRD
-          cv::Mat resFilteredImage;
-          cv::resize(filteredImage, resFilteredImage, size);
-          if (win->isXWindowFltrd())
+          if (win->isXWindowFltrd()) {
+            cv::Mat resFilteredImage;
+            cv::resize(filteredImage, resFilteredImage, size);
             win->addImage(rc::IMG_FILTERED, resFilteredImage);
+          }
 #endif
 #endif
 #ifdef ENABLE_VIDEO

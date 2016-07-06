@@ -123,8 +123,7 @@ int main (int argc,char **argv) {
 #endif
   auto cam = detector.getCamera();
   cout << "Resolution: "<<cam->getWidth()<<"x"<<cam->getHeight()<<std::endl
-       << "Format....: "<<cam->getFormat()<<std::endl
-       << "AWB-Mode..: "<<cam->getAWB()<<std::endl;
+       << "Format....: "<<cam->getFormat()<<std::endl;
 
   cout << std::endl<<"Capturing "<<opts.count<<" frames ...."<<endl;
   time(&timer_begin);
