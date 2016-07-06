@@ -28,3 +28,6 @@ override_dh_auto_configure:
 	cmake . \
 	-DCMAKE_INSTALL_PREFIX=/usr
 
+override_dh_shlibdeps:
+	@echo "* skipping dh_shlibdeps"
+

@@ -8,6 +8,6 @@ Homepage: https://github.com/cedricve/raspicam
 
 Package: raspicam
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, libraspberrypi0 (= 1.20160523-1), libraspberrypi-bin (= 1.20160523-1), libraspberrypi-dev (= 1.20160523-1), raspberrypi-bootloader (= 1.20160523-1), raspberrypi-kernel (= 1.20160523-1)
 Description: C++ API for using Raspberry camera (with OpenCV)
  A C++ API for using Raspberry camera (with OpenCV).
