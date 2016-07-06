@@ -22,7 +22,7 @@ export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 	dh $@ --buildsystem=cmake
 
 override_dh_auto_configure:
-	dh_auto_configure -- -DCMAKE_INSTALL_PREFIX:PATH=/usr
+	dh_auto_configure -- -DCMAKE_INSTALL_PREFIX:PATH=/usr -DUSE_XWINDOW=true -DENABLE_VIDEO=true -DUSE_XWINDOW_FLTRD=true
 
 override_dh_auto_install:
 	dh_auto_install --destdir=debian/tmp
@@ -32,3 +32,5 @@ override_dh_auto_install:
 override_dh_strip:
 	dh_strip --dbg-package=bsz7robocup-dbg
 
+override_dh_shlibdeps:
+	@echo "* skipping dh_shlibdeps"

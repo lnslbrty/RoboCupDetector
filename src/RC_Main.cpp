@@ -19,7 +19,7 @@ struct cmd_opts {
   unsigned int width;
   unsigned int height;
 };
-#define UNIMPLEMENTED(feature) { fprintf(stderr, "%s: eature not implemented (%s)\n", argv[0], feature); exit(1); }
+#define UNIMPLEMENTED(feature) { fprintf(stderr, "%s: feature not implemented (%s)\n", argv[0], feature); exit(1); }
 
 
 using namespace std;

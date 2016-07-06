@@ -1,6 +1,6 @@
 #####################################
 cmake_minimum_required (VERSION 2.8) 
-project (raspicam_test)
+project (bsz7_robocup)
 set(CMAKE_VERBOSE_MAKEFILE on)
 
 set(USE_XWINDOW false CACHE BOOL "use X11 for realtime analysis")
@@ -27,8 +27,9 @@ IF (ENABLE_VIDEO)
 	add_definitions(-DENABLE_VIDEO=1)
 ENDIF()
 
+set(raspicam_CV_LIBS ${raspicam_CV_LIBS} raspicam)
 add_executable (robocup RC_Main.cpp RC_Semaphore.cpp RC_CircularBuffer.cpp RC_Camera.cpp RC_BlobObject.cpp RC_BlobDetector.cpp RC_BlobDetectorFactory.cpp ${XWINDOW_SOURCES})
-target_link_libraries (robocup ${raspicam_CV_LIBS} pthread)
+target_link_libraries (robocup ${raspicam_CV_LIBS} raspicam pthread)
 
 MESSAGE(STATUS "USE_XWINDOW: ${USE_XWINDOW}")
 MESSAGE(STATUS "ENABLE_VIDEO: ${ENABLE_VIDEO}")
@@ -39,6 +40,7 @@ ELSE()
 MESSAGE(FATAL_ERROR "OpenCV or raspicam_cv NOT FOUND")
 ENDIF()
 
+MESSAGE(STATUS "RASPICAM_CV_LIBS: ${raspicam_CV_LIBS}")
 MESSAGE(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
 MESSAGE(STATUS "CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}")
 

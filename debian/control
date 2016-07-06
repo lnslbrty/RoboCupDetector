@@ -15,5 +15,5 @@ Description: BSZ7 robpcup
 Package: bsz7robocup-dbg
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, bsz7robocup
-Description: BSZ7 robpcup debugging symbols
+Description: BSZ7 robpcup debugging symbols (debugging symbols)
  Diese debian (*.deb) Paket enthält alle relevanten Dateien für den Robocup (debugging symbols).
