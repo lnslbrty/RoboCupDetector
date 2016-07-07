@@ -21,24 +21,15 @@ class Semaphore {
     ~Semaphore(void) {
     }
 
-    void consume(void) {
+    void Synchronize(void) {
       std::unique_lock<std::mutex> lck(mtx);
       count--;
-      cond.wait(lck, [this] { return count > 0; });
-    }
-
-    void produce(void) {
-      while (1) {
-        {
-          std::lock_guard<std::mutex> lck(mtx);
-          if (count <= 0) {
-            count = maxCount;
-            cond.notify_all();
-            break;
-          }
-        }
-        std::this_thread::yield();
+      if (count == 0) {
+        count = maxCount;
+        cond.notify_all();
+        return;
       }
+      cond.wait(lck);
     }
 
 };

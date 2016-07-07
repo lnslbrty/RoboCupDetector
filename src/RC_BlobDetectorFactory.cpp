@@ -43,15 +43,12 @@ void rc::BlobDetectorFactory::startThreads(void) {
   }
 #endif
 
-  overwatch = std::thread([this](){
-    while (1) { sema->produce(); std::this_thread::yield(); }
-    std::cout << "Overwatch thread stopped"<<std::endl;
-  });
+  doLoop = true;
   for (unsigned int i = 0; i < numThreads; ++i) {
     thrds[i] = std::thread([this](int num) {
       std::cout << "Thread "<<num<<" started .. "<<std::endl;
 
-      while (1) {
+      while (doLoop) {
         cv::Mat image;
         bool ret = false;
         ret = cBuf->getElement(image);
@@ -81,7 +78,7 @@ void rc::BlobDetectorFactory::startThreads(void) {
           }
 #endif
         }
-        sema->consume();
+        sema->Synchronize();
       }
     std::cout << "Thread "<<num<<" stopped"<<std::endl;
     }, i);
@@ -89,6 +86,10 @@ void rc::BlobDetectorFactory::startThreads(void) {
 }
 
 void rc::BlobDetectorFactory::stopThreads(void) {
+  doLoop = false;
+  for (unsigned int i = 0; i < numThreads; ++i) {
+    thrds[i].join();
+  }
 #ifdef USE_XWINDOW
   while (win->imagesAvailable()) {
     std::cout << "\r"<<outInfo()<<std::flush;

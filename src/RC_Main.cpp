@@ -147,7 +147,5 @@ int main (int argc,char **argv) {
   time(&timer_end);
   double secondsElapsed = difftime(timer_end,timer_begin);
   cout << endl<<secondsElapsed<<" seconds for "<<opts.count<<"  frames : FPS = "<<  ( float ) ( ( float ) (opts.count)/secondsElapsed ) <<endl;
-
-  std::terminate();
   return 0;
 }

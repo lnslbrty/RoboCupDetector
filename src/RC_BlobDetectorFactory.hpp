@@ -11,6 +11,7 @@
 #include <raspicam/raspicam_cv.h>
 #include <thread>
 #include <condition_variable>
+#include <atomic>
 
 #include "RC_Camera.hpp"
 #include "RC_Semaphore.hpp"
@@ -57,7 +58,7 @@ class BlobDetectorFactory : public rc::BlobDetector {
     Semaphore * sema = nullptr;
     unsigned int numThreads;
     std::thread * thrds = nullptr;
-    std::thread overwatch;
+    std::atomic<bool> doLoop;
 
     static rc::Camera * cam;
 #ifdef USE_XWINDOW
