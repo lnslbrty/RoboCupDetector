@@ -24,6 +24,13 @@ class Camera : public raspicam::RaspiCam_Cv {
     unsigned int getWidth(void) { return this->get(CV_CAP_PROP_FRAME_WIDTH); }
     unsigned int getHeight(void) { return this->get(CV_CAP_PROP_FRAME_HEIGHT); }
     raspicam::RASPICAM_FORMAT getFormat(void) { return static_cast<raspicam::RASPICAM_FORMAT>(this->get(CV_CAP_PROP_FORMAT)); }
+    unsigned int getSaturation(void) { return this->get(CV_CAP_PROP_SATURATION); }
+    unsigned int getGain(void) { return this->get(CV_CAP_PROP_GAIN); }
+    int getExposure(void) { return this->get(CV_CAP_PROP_EXPOSURE); }
+
+    void setSaturation(unsigned int value) { this->set(CV_CAP_PROP_SATURATION, value); }
+    void setGain(unsigned int value) { this->set(CV_CAP_PROP_GAIN, value); }
+    void setExposure(int value) { this->set(CV_CAP_PROP_EXPOSURE, value); }
 
 };
 }

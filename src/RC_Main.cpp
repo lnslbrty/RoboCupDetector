@@ -1,7 +1,9 @@
 #include <unistd.h>
+#include <stdint.h>
 
 #include <ctime>
 #include <iostream>
+#include <iomanip>
 #include <raspicam/raspicam_cv.h>
 
 #include "RC_BlobDetectorFactory.hpp"
@@ -18,23 +20,27 @@ struct cmd_opts {
   bool showFiltered;
   unsigned int width;
   unsigned int height;
+  uint8_t sat;
+  uint8_t gain;
+  int8_t exp;
 };
 #define UNIMPLEMENTED(feature) { fprintf(stderr, "%s: feature not implemented (%s)\n", argv[0], feature); exit(1); }
 
-
-using namespace std;
 
 
 static void usage(char* arg0) {
   fprintf(stderr, "\n%s: usage\n"
                   "\t-n [count]     number of frame to capture\n"
+                  "\t-s [sat]       set camera saturation [0..100]\n"
+                  "\t-g [gain]      set camera gain [0..100]\n"
+                  "\t-e [exp]       set exposure [1..100] default: auto\n"
 #ifdef ENABLE_VIDEO
                   "VIDEO options:\n"
-                  "\t-v [file]      save image to [file}\n"
+                  "\t-v [file]      save RIFF-avi stream to [file}\n"
 #endif
 #ifdef USE_XWINDOW
-                  "XWINDOW options:\n"
-                  "\t-x             render images (needs X11)\n"
+                  "XWINDOW options (X11 required):\n"
+                  "\t-x             render images\n"
 #ifdef USE_XWINDOW_FLTRD
                   "\t-f             render filtered image\n"
 #endif
@@ -50,15 +56,27 @@ static void usage(char* arg0) {
 
 int main (int argc,char **argv) {
   time_t timer_begin,timer_end;
-  struct cmd_opts opts = { 100,0,0,0,640,480 };
+  struct cmd_opts opts = { 100,0,0,0,640,480,50,90,-1 };
 
   char c;
-  while ((c = getopt(argc, argv, "n:v:xfw:h:p")) != -1) {
+  while ((c = getopt(argc, argv, "n:s:g:e:v:xfw:h:p")) != -1) {
     if (c == 0xFF) break;
     switch (c) {
 
       case 'n':
-        opts.count = strtoul(optarg, NULL, 10);
+        opts.count     = strtoul(optarg, NULL, 10);
+        break;
+      /************************/
+      case 's':
+        opts.sat       = strtoul(optarg, NULL, 10);
+        break;
+      /************************/
+      case 'g':
+        opts.gain      = strtoul(optarg, NULL, 10);
+        break;
+      /************************/
+      case 'e':
+        opts.exp       = strtoul(optarg, NULL, 10);
         break;
       /************************/
       case 'v':
@@ -109,6 +127,9 @@ int main (int argc,char **argv) {
   }
 
   rc::BlobDetectorFactory detector(4);
+  detector.getCamera()->setSaturation(opts.sat);
+  detector.getCamera()->setGain(opts.gain);
+  detector.getCamera()->setExposure(opts.exp);
 #ifdef USE_XWINDOW
   detector.getXWindow()->setXWindow( opts.useXWindow, opts.showFiltered );
 #endif
@@ -117,35 +138,52 @@ int main (int argc,char **argv) {
 #endif
 
   if (!detector.openCamera()) {
-    cerr << "Error opening the camera"<<endl;
+    std::cerr << "Error opening the camera"<<std::endl;
     return -1;
   }
 #if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
   detector.setDimensions(opts.width, opts.height);
 #endif
   auto cam = detector.getCamera();
-  cout << "Resolution: "<<cam->getWidth()<<"x"<<cam->getHeight()<<std::endl
-       << "Format....: "<<cam->getFormat()<<std::endl;
+  std::cout <<"Resolution: "<<cam->getWidth()<<"x"<<cam->getHeight()<<std::endl
+            <<"Format....: "<<cam->getFormat()<<std::endl
+            <<"Saturation: "<<cam->getSaturation()<<std::endl
+            <<"Gain......: "<<cam->getGain()<<std::endl
+            <<"Exposure..: "<<cam->getExposure()<<std::endl
+            <<"------------------------------"<<std::endl;
 
-  cout << std::endl<<"Capturing "<<opts.count<<" frames ...."<<endl;
+#ifdef ENABLE_VIDEO
+  if (opts.videoFile)
+    std::cout <<"Saving RIFF-avi stream to file: "<<opts.videoFile<<std::endl;
+#endif
+#ifdef USE_XWINDOW
+  if (opts.useXWindow)
+    std::cout <<"Open X11 preview window (after processing)"<<std::endl;
+  if (opts.showFiltered)
+    std::cout <<"Open X11 preview window (filtered image)"<<std::endl;
+#endif
   time(&timer_begin);
-
   detector.startThreads();
+  std::cout <<"------------------------------"<<std::endl
+            <<"[Elapsed] [Images] [FPS] [BufferInfo]"<<std::endl;
+
+  double secondsElapsed = 0.0f;
   for (unsigned int i = 0; i < opts.count; ++i) {
     while (!detector.grabCameraImage())
       std::this_thread::yield();
     if (i%11 == 1) {
-      cout << "\r captured "<<i<<" images "<<detector.outInfo()<<std::flush;
+      time(&timer_end);
+      secondsElapsed = difftime(timer_end,timer_begin);
+      std::cout <<"\r["<<std::fixed<<std::setprecision(0)<<std::setw(7)<<secondsElapsed<<"] "
+                  <<"["<<std::setw(6)<<i<<"] "
+                  <<"["<<std::setw(3)<<std::setprecision(0)<<(float)(secondsElapsed > 0 ? (float)(opts.count/secondsElapsed) : 0.0)<<"] "
+                  <<detector.outInfo()<<std::flush;
     }
   }
-  cout << "\r captured "<<opts.count<<" images "<<detector.outInfo()<<std::flush;
-  cout << endl;
+  std::cout <<std::endl;
   detector.stopThreads();
-
   cam->release();
 
-  time(&timer_end);
-  double secondsElapsed = difftime(timer_end,timer_begin);
-  cout << endl<<secondsElapsed<<" seconds for "<<opts.count<<"  frames : FPS = "<<  ( float ) ( ( float ) (opts.count)/secondsElapsed ) <<endl;
+  std::cout <<"FPS: "<<std::setprecision(10)<<(float)(opts.count/secondsElapsed)<<std::endl;
   return 0;
 }
