@@ -46,8 +46,6 @@ void rc::BlobDetectorFactory::startThreads(void) {
   doLoop = true;
   for (unsigned int i = 0; i < numThreads; ++i) {
     thrds[i] = std::thread([this](int num) {
-      std::cout << "Thread "<<num<<" started .. "<<std::endl;
-
       while (doLoop) {
         cv::Mat image;
         bool ret = false;
@@ -80,7 +78,6 @@ void rc::BlobDetectorFactory::startThreads(void) {
         }
         sema->Synchronize();
       }
-    std::cout << "Thread "<<num<<" stopped"<<std::endl;
     }, i);
   }
 }
@@ -97,7 +94,6 @@ void rc::BlobDetectorFactory::stopThreads(void) {
   }
   std::cout << "\r"<<outInfo()<<std::endl;
   win->stop();
-  delete win;
 #endif
 #ifdef ENABLE_VIDEO
   if (filename) {
