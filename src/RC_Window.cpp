@@ -11,16 +11,17 @@ rc::Window::Window(void) {
 
 
 rc::Window::~Window(void) {
-  if (doSmth)
+  if (doSmth) {
     stop();
+  }
 }
 
 void rc::Window::stop(void) {
-  images_mtx.lock();
   doSmth = false;
-  images_mtx.unlock();
-  thrd.join();
+  images_mtx.lock();
   cv::destroyAllWindows();
+  thrd.join();
+  images_mtx.unlock();
 }
 
 void rc::Window::addImage(enum imageType type, cv::Mat image) {
@@ -43,12 +44,8 @@ void rc::Window::run(void) {
 #endif
 
   thrd = std::thread([this](void) {
-    while (1) {
+    while (doSmth) {
       if (images_mtx.try_lock()) {
-        if (!doSmth) {
-          images_mtx.unlock();
-          break;
-        }
         if (images.empty()) {
           images_mtx.unlock();
           std::this_thread::yield();
