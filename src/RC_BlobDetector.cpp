@@ -12,9 +12,8 @@ cv::Mat rc::BlobDetector::process(cv::Mat& image) {
 
   std::vector<std::vector<cv::Point> > contours;
   cv::Mat imgContour = imgThresh.clone();
-  cv::findContours(imgContour, contours, CV_RETR_LIST, CV_CHAIN_APPROX_NONE);
+  cv::findContours(imgContour, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
 
-  //cv::Mat contourImage(image.size(), CV_8UC3, cv::Scalar(0,0,0));
   cv::Scalar colors[3];
   colors[0] = cv::Scalar(255, 0, 0);
   colors[1] = cv::Scalar(255, 0, 0);

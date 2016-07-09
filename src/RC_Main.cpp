@@ -6,14 +6,25 @@
 #include <iomanip>
 #include <raspicam/raspicam_cv.h>
 
+#include "RC_Daemon.hpp"
 #include "RC_BlobDetectorFactory.hpp"
 
 #if defined(USE_XWINDOW_FLTRD) && !defined(USE_XWINDOW)
 #error "USE_XWINDOW_FLTRD needs USE_XWINDOW"
 #endif
+#ifndef PIDFILE
+#define PIDFILE "/var/run/robocup.pid"
+#endif
+#ifndef LOCKFILE
+#define LOCKFILE "/var/lock/robocup.lock"
+#endif
+#ifndef CHUSER
+#define CHUSER "robocup"
+#endif
 
 
 struct cmd_opts {
+  bool daemonize;
   unsigned long long int count;
   char* videoFile;
   bool useXWindow;
@@ -27,13 +38,17 @@ struct cmd_opts {
 #define UNIMPLEMENTED(feature) { fprintf(stderr, "%s: feature not implemented (%s)\n", argv[0], feature); exit(1); }
 
 
+static struct cmd_opts opts = { 0,100,0,0,0,640,480,50,90,-1 };
+
 
 static void usage(char* arg0) {
   fprintf(stderr, "\n%s: usage\n"
-                  "\t-n [count]     number of frame to capture\n"
-                  "\t-s [sat]       set camera saturation [0..100]\n"
-                  "\t-g [gain]      set camera gain [0..100]\n"
-                  "\t-e [exp]       set exposure [1..100] default: auto\n"
+                  "\t-S             start as daemon (fails if already started)\n"
+                  "\t-K             kill the daemon\n"
+                  "\t-n [count]     number of frame to capture [1..n] default: %llu\n"
+                  "\t-s [sat]       set camera saturation [0..100] default: %u\n"
+                  "\t-g [gain]      set camera gain [0..100] default: %u\n"
+                  "\t-e [exp]       set exposure [-1..100] default: %d\n"
 #ifdef ENABLE_VIDEO
                   "VIDEO options:\n"
                   "\t-v [file]      save RIFF-avi stream to [file}\n"
@@ -51,18 +66,24 @@ static void usage(char* arg0) {
                   "\t-h [heiight]   output image height in pixels\n"
 #endif
                   "\t-p             this\n"
-                "\n", arg0);
+                "\n", arg0, opts.count, opts.sat, opts.gain, opts.exp);
 }
 
 int main (int argc,char **argv) {
   time_t timer_begin,timer_end;
-  struct cmd_opts opts = { 100,0,0,0,640,480,50,90,-1 };
 
   char c;
-  while ((c = getopt(argc, argv, "n:s:g:e:v:xfw:h:p")) != -1) {
+  while ((c = getopt(argc, argv, "SKn:s:g:e:v:xfw:h:p")) != -1) {
     if (c == 0xFF) break;
     switch (c) {
 
+      case 'S':
+        opts.daemonize = true;
+        break;
+      /************************/
+      case 'K':
+        return rc::Daemon::KillByPidfile(PIDFILE);
+      /************************/
       case 'n':
         opts.count     = strtoul(optarg, NULL, 10);
         break;
@@ -126,6 +147,9 @@ int main (int argc,char **argv) {
     }
   }
 
+  if (opts.daemonize == true && rc::Daemon::instance()->Daemonize(PIDFILE, LOCKFILE, CHUSER) == false)
+    return 1;
+  
   rc::BlobDetectorFactory detector(4);
   detector.getCamera()->setSaturation(opts.sat);
   detector.getCamera()->setGain(opts.gain);
@@ -168,17 +192,23 @@ int main (int argc,char **argv) {
             <<"[Elapsed] [Images] [FPS] [BufferInfo]"<<std::endl;
 
   double secondsElapsed = 0.0f;
-  for (unsigned int i = 0; i < opts.count; ++i) {
-    while (!detector.grabCameraImage())
+  unsigned int i = 0, n = 1;
+  while (i <= opts.count && !rc::isDaemonTerminate()) {
+    while (!detector.grabCameraImage()) {
       std::this_thread::yield();
-    if (i%11 == 1) {
+      continue;
+    }
+    if (n%11 == 1 || n == opts.count-1) {
       time(&timer_end);
       secondsElapsed = difftime(timer_end,timer_begin);
       std::cout <<"\r["<<std::fixed<<std::setprecision(0)<<std::setw(7)<<secondsElapsed<<"] "
-                  <<"["<<std::setw(6)<<i<<"] "
+                  <<"["<<std::setw(6)<<n<<"] "
                   <<"["<<std::setw(3)<<std::setprecision(0)<<(float)(secondsElapsed > 0 ? (float)(opts.count/secondsElapsed) : 0.0)<<"] "
                   <<detector.outInfo()<<std::flush;
     }
+    if (opts.count > 0)
+      i++;
+    n++;
   }
   std::cout <<std::endl;
   detector.stopThreads();
