@@ -6,6 +6,7 @@
 
 namespace rc {
 bool isDaemonTerminate(void);
+void setSignals(void);
 
 class Daemon {
 

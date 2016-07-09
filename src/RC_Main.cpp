@@ -147,8 +147,12 @@ int main (int argc,char **argv) {
     }
   }
 
-  if (opts.daemonize == true && rc::Daemon::instance()->Daemonize(PIDFILE, LOCKFILE, CHUSER) == false)
-    return 1;
+  if (opts.daemonize == true) {
+    if (rc::Daemon::instance()->Daemonize(PIDFILE, LOCKFILE, CHUSER) == false)
+      return 1;
+  } else {
+    rc::setSignals();
+  }
   
   rc::BlobDetectorFactory detector(4);
   detector.setSaturation(opts.sat);
@@ -197,7 +201,7 @@ int main (int argc,char **argv) {
       std::this_thread::yield();
       continue;
     }
-    if (n%5 == 1 || n == opts.count-1) {
+    if (!opts.daemonize && (n%5 == 1 || n == opts.count-1)) {
       time(&timer_end);
       secondsElapsed = difftime(timer_end,timer_begin);
       std::cout <<"\r["<<std::fixed<<std::setprecision(0)<<std::setw(7)<<secondsElapsed<<"] "

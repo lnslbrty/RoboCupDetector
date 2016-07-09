@@ -24,8 +24,8 @@ bool rc::isDaemonTerminate(void) {
 static void signal_handler(int sig) {
   switch(sig) {
     case SIGHUP:
-    case SIGINT:
       break;
+    case SIGINT:
     case SIGTERM:
       gotSigTerm = true;
       break;
@@ -34,9 +34,20 @@ static void signal_handler(int sig) {
   }
 }
 
+void rc::setSignals(void) {
+  struct sigaction newSigAction;
+
+  /* Eigene Signal- Bearbeitungs Routine initialisieren */
+  newSigAction.sa_handler = signal_handler;
+  sigemptyset(&newSigAction.sa_mask);
+  newSigAction.sa_flags = 0;
+  /* zu bearbeitende Signale */
+  sigaction(SIGHUP, &newSigAction, NULL);
+  sigaction(SIGTERM, &newSigAction, NULL);
+  sigaction(SIGINT, &newSigAction, NULL);
+}
 
 bool rc::Daemon::Daemonize(std::string pidfile, std::string lockfile, std::string user) {
-  struct sigaction newSigAction;
   sigset_t newSigSet;
   int i;
 
@@ -52,15 +63,6 @@ bool rc::Daemon::Daemonize(std::string pidfile, std::string lockfile, std::strin
   sigaddset(&newSigSet, SIGTTOU);
   sigaddset(&newSigSet, SIGTTIN);
   sigprocmask(SIG_BLOCK, &newSigSet, NULL);
-
-  /* Eigene Signal- Bearbeitungs Routine initialisieren */
-  newSigAction.sa_handler = signal_handler;
-  sigemptyset(&newSigAction.sa_mask);
-  newSigAction.sa_flags = 0;
-  /* zu bearbeitende Signale */
-  sigaction(SIGHUP, &newSigAction, NULL);
-  sigaction(SIGTERM, &newSigAction, NULL);
-  sigaction(SIGINT, &newSigAction, NULL);
 
   /* der eigentlich Daemon Erstellungsprozess */
   pid_t pid;
