@@ -8,18 +8,19 @@
 
 #include <raspicam/raspicam.h>
 #include <raspicam/raspicam_cv.h>
-
 #include <raspicam/raspicamtypes.h>
+
+#include "RC_CircularBuffer.hpp"
 
 
 namespace rc {
-class Camera : public raspicam::RaspiCam_Cv {
+class Camera : public raspicam::RaspiCam_Cv, public rc::CircularBuffer<cv::Mat> {
 
   public:
-    Camera(void);
+    Camera(unsigned int maxBufferElements);
     ~Camera(void) { }
 
-    bool getImage(cv::Mat& image);
+    bool grabCameraImage(void);
 
     unsigned int getWidth(void) { return this->get(CV_CAP_PROP_FRAME_WIDTH); }
     unsigned int getHeight(void) { return this->get(CV_CAP_PROP_FRAME_HEIGHT); }

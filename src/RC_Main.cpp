@@ -151,9 +151,9 @@ int main (int argc,char **argv) {
     return 1;
   
   rc::BlobDetectorFactory detector(4);
-  detector.getCamera()->setSaturation(opts.sat);
-  detector.getCamera()->setGain(opts.gain);
-  detector.getCamera()->setExposure(opts.exp);
+  detector.setSaturation(opts.sat);
+  detector.setGain(opts.gain);
+  detector.setExposure(opts.exp);
 #ifdef USE_XWINDOW
   detector.getXWindow()->setXWindow( opts.useXWindow, opts.showFiltered );
 #endif
@@ -168,12 +168,11 @@ int main (int argc,char **argv) {
 #if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
   detector.setDimensions(opts.width, opts.height);
 #endif
-  auto cam = detector.getCamera();
-  std::cout <<"Resolution: "<<cam->getWidth()<<"x"<<cam->getHeight()<<std::endl
-            <<"Format....: "<<cam->getFormat()<<std::endl
-            <<"Saturation: "<<cam->getSaturation()<<std::endl
-            <<"Gain......: "<<cam->getGain()<<std::endl
-            <<"Exposure..: "<<cam->getExposure()<<std::endl
+  std::cout <<"Resolution: "<<detector.getWidth()<<"x"<<detector.getHeight()<<std::endl
+            <<"Format....: "<<detector.getFormat()<<std::endl
+            <<"Saturation: "<<detector.getSaturation()<<std::endl
+            <<"Gain......: "<<detector.getGain()<<std::endl
+            <<"Exposure..: "<<detector.getExposure()<<std::endl
             <<"------------------------------"<<std::endl;
 
 #ifdef ENABLE_VIDEO
@@ -198,12 +197,12 @@ int main (int argc,char **argv) {
       std::this_thread::yield();
       continue;
     }
-    if (n%11 == 1 || n == opts.count-1) {
+    if (n%5 == 1 || n == opts.count-1) {
       time(&timer_end);
       secondsElapsed = difftime(timer_end,timer_begin);
       std::cout <<"\r["<<std::fixed<<std::setprecision(0)<<std::setw(7)<<secondsElapsed<<"] "
                   <<"["<<std::setw(6)<<n<<"] "
-                  <<"["<<std::setw(3)<<std::setprecision(0)<<(float)(secondsElapsed > 0 ? (float)(opts.count/secondsElapsed) : 0.0)<<"] "
+                  <<"["<<std::setw(3)<<std::setprecision(0)<<(float)(secondsElapsed > 0 ? (float)(n/secondsElapsed) : 0.0)<<"] "
                   <<detector.outInfo()<<std::flush;
     }
     if (opts.count > 0)
@@ -212,8 +211,8 @@ int main (int argc,char **argv) {
   }
   std::cout <<std::endl;
   detector.stopThreads();
-  cam->release();
+  detector.release();
 
-  std::cout <<"FPS: "<<std::setprecision(10)<<(float)(opts.count/secondsElapsed)<<std::endl;
+  std::cout <<"FPS: "<<std::setprecision(10)<<(float)(n/secondsElapsed)<<std::endl;
   return 0;
 }

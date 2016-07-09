@@ -23,19 +23,17 @@
 
 
 namespace rc {
-class BlobDetectorFactory : public rc::BlobDetector {
+class BlobDetectorFactory : private rc::BlobDetector, public rc::Camera {
 
   public:
     BlobDetectorFactory(unsigned int numThreads);
     ~BlobDetectorFactory();
 
-    bool openCamera(void) { return cam->open(); }
-    void closeCamera(void) { return cam->release(); }
-    rc::Camera * getCamera(void) const { return cam; }
+    bool openCamera(void) { return this->open(); }
+    void closeCamera(void) { return this->release(); }
 
     void startThreads(void);
     void stopThreads(void);
-    bool grabCameraImage(void);
     std::string outInfo(void);
 
 #if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
@@ -60,11 +58,9 @@ class BlobDetectorFactory : public rc::BlobDetector {
     std::thread * thrds = nullptr;
     std::atomic<bool> doLoop;
 
-    static rc::Camera * cam;
 #ifdef USE_XWINDOW
     static rc::Window * win;
 #endif
-    rc::CircularBuffer<cv::Mat> * cBuf;
 #ifdef ENABLE_VIDEO
     char* filename = nullptr;
     cv::VideoWriter * videoOut = nullptr;

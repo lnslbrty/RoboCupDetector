@@ -7,10 +7,10 @@ cv::Mat rc::BlobDetector::process(cv::Mat& image) {
   // konvertieren von RGB zu HSV
   cv::cvtColor(image, imgHSV, CV_BGR2HSV);
   // filtere HSV- Farbraum
-  cv::inRange(imgHSV, cv::Scalar(0, 100, 130), cv::Scalar(50, 255, 255), imgThresh);
+  cv::inRange(imgHSV, cv::Scalar(0, 150, 150), cv::Scalar(50, 255, 255), imgThresh);
   medianBlur(imgThresh, imgThresh, 9);
 
-  std::vector<std::vector<cv::Point> > contours;
+  std::vector<std::vector<cv::Point>> contours;
   cv::Mat imgContour = imgThresh.clone();
   cv::findContours(imgContour, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
 

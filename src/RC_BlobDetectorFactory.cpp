@@ -1,17 +1,14 @@
 #include "RC_BlobDetectorFactory.hpp"
 
-rc::Camera * rc::BlobDetectorFactory::cam = nullptr;
 #ifdef USE_XWINDOW
 rc::Window * rc::BlobDetectorFactory::win = nullptr;
 #endif
 
 
-rc::BlobDetectorFactory::BlobDetectorFactory(unsigned int numThreads) {
+rc::BlobDetectorFactory::BlobDetectorFactory(unsigned int numThreads) : rc::BlobDetector(), rc::Camera(numThreads*2) {
   this->numThreads = numThreads;
   thrds = new std::thread[numThreads];
 
-  cam = new rc::Camera();
-  cBuf = new rc::CircularBuffer<cv::Mat>(numThreads*2);
   sema = new Semaphore(numThreads);
 #ifdef USE_XWINDOW
   if (win == nullptr)
@@ -21,8 +18,6 @@ rc::BlobDetectorFactory::BlobDetectorFactory(unsigned int numThreads) {
 
 rc::BlobDetectorFactory::~BlobDetectorFactory() {
   delete[] thrds;
-  delete cBuf;
-  delete cam;
   delete sema;
 #ifdef USE_XWINDOW
   if (win != nullptr)
@@ -49,7 +44,7 @@ void rc::BlobDetectorFactory::startThreads(void) {
       while (doLoop) {
         cv::Mat image;
         bool ret = false;
-        ret = cBuf->getElement(image);
+        ret = this->getElement(image);
         if (ret && !image.empty()) {
           cv::Mat filteredImage = process(image);
 #if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
@@ -105,26 +100,10 @@ void rc::BlobDetectorFactory::stopThreads(void) {
 #endif
 }
 
-bool rc::BlobDetectorFactory::grabCameraImage(void) {
-  bool ret = false;
-  cv::Mat image;
-  if (cBuf->getElementCount() < cBuf->getMaxElementCount())
-#ifdef USE_XWINDOW
-  if (win->imagesQueueSize() < cBuf->getMaxElementCount())
-#endif
-  {
-    if (cam->getImage(image)) {
-      cBuf->addElement(image);
-      ret = true;
-    }
-  }
-  return ret;
-}
-
 std::string rc::BlobDetectorFactory::outInfo(void) {
   std::stringstream out;
-  out << "[CirularBufferPos: "<<cBuf->getNextIndex()
-      << " availableElements: "<<cBuf->getElementCount();
+  out << "[CirularBufferPos: "<<this->getNextIndex()
+      << " availableElements: "<<this->getElementCount();
 #ifdef USE_XWINDOW
   if (win != nullptr)
     out << " ImageQueueSize: "<<win->imagesQueueSize();
