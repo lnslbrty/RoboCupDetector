@@ -1,3 +1,10 @@
+/**
+ * @file   RC_Main.cpp
+ * @date   20.05.2016
+ * @author Toni Uhlig <matzeton@googlemail.com>
+ * @brief  Initialisierung, Parameter auswerten, Einstellungen setzen
+ */
+
 #include <unistd.h>
 #include <stdint.h>
 
@@ -12,29 +19,38 @@
 #if defined(USE_XWINDOW_FLTRD) && !defined(USE_XWINDOW)
 #error "USE_XWINDOW_FLTRD needs USE_XWINDOW"
 #endif
+
+/** Standartpfad für die ProzessID- Datei (daemon Modus) */
 #ifndef PIDFILE
 #define PIDFILE "/var/run/robocup.pid"
 #endif
+
+/** Standartpfad für Sperr- Datei (daemon Modus) */
 #ifndef LOCKFILE
 #define LOCKFILE "/var/lock/robocup.lock"
 #endif
+
+/** Standartuser, um nicht benötigte Privilegien zu "droppen" (daemon Modus) */
 #ifndef CHUSER
 #define CHUSER "robocup"
 #endif
 
 
+/** Datenstruktur für Kommandozeilen Parameter */
 struct cmd_opts {
-  bool daemonize;
-  unsigned long long int count;
-  char* videoFile;
-  bool useXWindow;
-  bool showFiltered;
-  unsigned int width;
-  unsigned int height;
-  uint8_t sat;
-  uint8_t gain;
-  int8_t exp;
+  bool daemonize;               /** Daemonmodus */
+  unsigned long long int count; /** Anzahl der auszuwertenden Bilder */
+  char* videoFile;              /** Pfad zur Videodatei (falls mit ENABLE_VIDEO kompiliert */
+  bool useXWindow;              /** Vorschaubild rendern? (benötigt USE_XWINDOW) */
+  bool showFiltered;            /** gefiltertes Vorschaubild rendern? (benötigt USE_XWINDOW_FLTRD) */
+  unsigned int width;           /** Bildbreite */
+  unsigned int height;          /** Bildhöhr */
+  uint8_t sat;                  /** Farbsättigung */
+  uint8_t gain;                 /** Bildverstärkung */
+  int8_t exp;                   /** Belichtungsdauer */
 };
+
+/** Dieses Feature ist zur Zeit nicht im "binary" enthalten. Um das Feature zu integrieren muss das Projekt mit `cmake` bzw. `ccmake` neu kofniguriert/kompiliert/gelinkt werden. */
 #define UNIMPLEMENTED(feature) { fprintf(stderr, "%s: feature not implemented (%s)\n", argv[0], feature); exit(1); }
 
 
@@ -69,6 +85,12 @@ static void usage(char* arg0) {
                 "\n", arg0, opts.count, opts.sat, opts.gain, opts.exp);
 }
 
+
+/**
+ * @name  `main` Funktion
+ * @brief  Diese wird vom Betriebssystem während des Programmstartes als Einsprungspunkt genutzt
+ * @retval ganzzahliger Rückgabewert der z.B. auf der Shell ausgewertet werden kann
+ */
 int main (int argc,char **argv) {
   time_t timer_begin,timer_end;
 
@@ -80,26 +102,26 @@ int main (int argc,char **argv) {
       case 'S':
         opts.daemonize = true;
         break;
-      /************************/
+      /*######################*/
       case 'K':
         return rc::Daemon::KillByPidfile(PIDFILE);
-      /************************/
+      /*######################*/
       case 'n':
         opts.count     = strtoul(optarg, NULL, 10);
         break;
-      /************************/
+      /*######################*/
       case 's':
         opts.sat       = strtoul(optarg, NULL, 10);
         break;
-      /************************/
+      /*######################*/
       case 'g':
         opts.gain      = strtoul(optarg, NULL, 10);
         break;
-      /************************/
+      /*######################*/
       case 'e':
         opts.exp       = strtoul(optarg, NULL, 10);
         break;
-      /************************/
+      /*######################*/
       case 'v':
 #ifdef ENABLE_VIDEO
         opts.videoFile = strdup(optarg);
@@ -107,7 +129,7 @@ int main (int argc,char **argv) {
         UNIMPLEMENTED("ENABLE_VIDEO");
 #endif
         break;
-      /************************/
+      /*######################*/
       case 'x':
 #ifdef USE_XWINDOW
         opts.useXWindow = true;
@@ -115,7 +137,7 @@ int main (int argc,char **argv) {
         UNIMPLEMENTED("USE_XWINDOW");
 #endif
         break;
-      /***********************/
+      /*#####################*/
       case 'f':
 #ifdef USE_XWINDOW_FLTRD
         opts.showFiltered = true;
@@ -123,7 +145,7 @@ int main (int argc,char **argv) {
         UNIMPLEMENTED("USE_XWINDOW_FLTRD");
 #endif
         break;
-      /***********************/
+      /*#####################*/
       case 'w':
 #if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
         opts.width = strtoul(optarg, NULL, 10);
@@ -131,7 +153,7 @@ int main (int argc,char **argv) {
         UNIMPLEMENTED("USE_XWINDOW || ENABLE_VIDEO");
 #endif
         break;
-      /**********************/
+      /*####################*/
       case 'h':
 #if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
         opts.height = strtoul(optarg, NULL, 10);
@@ -139,7 +161,7 @@ int main (int argc,char **argv) {
         UNIMPLEMENTED("USE_XWINDOW || ENABLE_VIDEO");
 #endif
         break;
-      /**********************/
+      /*####################*/
       case 'p':
       default:
         usage(argv[0]);
