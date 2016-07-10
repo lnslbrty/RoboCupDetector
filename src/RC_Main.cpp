@@ -178,6 +178,8 @@ int main (int argc,char **argv) {
             <<"Gain......: "<<detector.getGain()<<std::endl
             <<"Exposure..: "<<detector.getExposure()<<std::endl
             <<"------------------------------"<<std::endl;
+  std::cout <<"OpenCV settings"<<std::endl
+            <<"Threads...: "<<cv::getThreadNum()<<std::endl;
 
 #ifdef ENABLE_VIDEO
   if (opts.videoFile)
@@ -215,7 +217,7 @@ int main (int argc,char **argv) {
   }
   std::cout <<std::endl;
   detector.stopThreads();
-  detector.release();
+  detector.closeCamera();
 
   std::cout <<"FPS: "<<std::setprecision(10)<<(float)(n/secondsElapsed)<<std::endl;
   return 0;
