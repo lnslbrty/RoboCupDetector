@@ -2,8 +2,8 @@
 
 #include "RC_CircularBuffer.hpp"
 
-
 template class rc::CircularBuffer<cv::Mat>;
+template class rc::cbElement<cv::Mat>;
 
 
 template <class T>
@@ -11,26 +11,25 @@ rc::CircularBuffer<T>::CircularBuffer(unsigned int maxElements) {
   nextIndex = 0;
   availableElements = 0;
   this->maxElements = maxElements;
-  cBuffer = new T[maxElements]; // erzeuge Feld der Größe n (maxElements)
-  alreadyProcessedElements = new bool[maxElements];
+  cBuffer = new struct cbElement<T>[maxElements]; // erzeuge Feld der Größe n (maxElements)
+  
   for (auto i = maxElements; i > 0; --i) {
-    alreadyProcessedElements[i % maxElements] = false;
+    cBuffer[i % maxElements].processed = false;
   }
 }
 
 template <class T>
 rc::CircularBuffer<T>::~CircularBuffer(void) {
   delete[] cBuffer;
-  delete[] alreadyProcessedElements;
 }
 
 template <class T>
 void rc::CircularBuffer<T>::addElement(T& elem) {
   std::unique_lock<std::mutex> lck(mtx);
   /* überschreibe das Element an Position "nextIndex" */
-  cBuffer[nextIndex] = elem;
+  cBuffer[nextIndex].element   = elem;
   /* den entsprechende Index in `alreadyProcessedElements` auf `false` setzen */
-  alreadyProcessedElements[nextIndex] = false;
+  cBuffer[nextIndex].processed = false;
   /* nextIndex inkrementieren und dabei auf die Grenze "maxElements" beachten */
   /* % = Modulo */
   auto tmp = nextIndex;
@@ -46,9 +45,9 @@ bool rc::CircularBuffer<T>::getElement(T& arg) {
   if (availableElements == 0) return false; // noch keine Elemente im Puffer
   for (auto i = nextIndex; i < nextIndex+maxElements; ++i) {
     auto index = i % maxElements;
-    if (alreadyProcessedElements[index] == false) {
-      alreadyProcessedElements[index] = true;
-      arg = cBuffer[index];
+    if (cBuffer[index].processed == false) {
+      cBuffer[index].processed = true;
+      arg = cBuffer[index].element;
       availableElements--;
       return true;
     }

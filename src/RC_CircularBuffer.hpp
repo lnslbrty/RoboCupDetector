@@ -11,18 +11,26 @@
 #include <vector>
 #include <mutex>
 
+#include <time.h>
+
 
 namespace rc {
+template <class T>
+struct cbElement {
+  T element;
+  bool processed;
+  unsigned int id; // TODO: id nutzen, um die totale Ordnung der Bilder nach dem processing beizubehalten
+};
+
 template <class T>
 class CircularBuffer {
 
   private:
     std::mutex mtx;
-    T * cBuffer; // Array der Länge "maxElements"
+    struct cbElement<T> * cBuffer; // Array der Länge "maxElements"
     unsigned int nextIndex; // Feldindex, welcher beim nächsten addElement(...) überschrieben wird
     unsigned int maxElements; // maximale Größe des Puffers
     unsigned int availableElements; // Anzahl "frischer" Einträge
-    bool * alreadyProcessedElements; // Bool- Feld, welches bereits durch `getElement` zurückgegebe Elemente mit `true` markiert
 
   public:
     CircularBuffer(unsigned int maxElements);
