@@ -1,0 +1,390 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classrc_1_1Camera">
+<title>rc::Camera class Reference</title>
+        <simplesect>
+            <title>Kamera Konstruktor</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>maxBufferElements</entry>
+                                <entry>
+<para>größe des Pufferspeichers (<link linkend="classrc_1_1CircularBuffer">rc::CircularBuffer</link>) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Return values                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>Kamera</entry>
+                                <entry>
+<para>Objekt </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1Camera_1aefbf57e5308b3e72aeabe7b0308c1d93">Camera</link> (
+unsigned int maxBufferElements)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Standart Destruktor</title>
+      <description>
+<para>Dieser ist z.Z. ausreichend, da keine &quot;aufräum&quot;- Arbeiten nötig sind. </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1Camera_1ad219ec460144ffc914e10250fef89677">~Camera</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Kamerabild holen</title>
+      <description>
+<para>Ein Kamerabild &quot;grabschen&quot;.</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Return values                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>TRUE</entry>
+                                <entry>
+<para>Kamerabild konnte erfolgreich geholt werden </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>FALSE</entry>
+                                <entry>
+<para>entweder lieferte die Kamera kein bild oder der Pufferspeicher ist voll</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                Wichtig: Damit ein Bild von der Kamera geholt werden kann, muss vorher raspicam::RaspiCam_Cv::open() aufgerugen werden! </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="classrc_1_1Camera_1a5d8610c2bbebbc9cd7a56e00549b514c">grabCameraImage</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Breite eines Kamerabildes zurückgeben</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Return values                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>die</entry>
+                                <entry>
+<para>Breite in Pixel </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="classrc_1_1Camera_1a1260f90780be36eb52db9f90d73578e9">getWidth</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Höhe eines Kamerabildes zurückgeben</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Return values                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>die</entry>
+                                <entry>
+<para>Höhe in Pixel </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="classrc_1_1Camera_1a3a279a087aa5864793aa9c5628bea40a">getHeight</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Format der Kamerabilder zurückgeben</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Return values                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>CV_8UC1</entry>
+                                <entry>
+<para>Schwarz-Weiß (1 Byte Farbabstufung) </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>CV_8UC3</entry>
+                                <entry>
+<para>Farbe (3 Byte pro Kanal -&gt; RGB) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>raspicam::RASPICAM_FORMAT <link linkend="classrc_1_1Camera_1aa0cd8c29ec174d184ddcd78084258026">getFormat</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Farbsättigung zurückgeben</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Return values                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>ein</entry>
+                                <entry>
+<para>Wert zwischen 0 (keine Sättigung) und 100 (volle Sättigung) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="classrc_1_1Camera_1adf54b48540f83fdcecff277443fbc360">getSaturation</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Bildverstärkung zurückgeben (Treiber spezifisch)</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Return values                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>ein</entry>
+                                <entry>
+<para>Wert zwischen 0 (keine Verstärkung) und 100 (maximale Verstärkung) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="classrc_1_1Camera_1aa4f5ffc75180f60ba018f00669bddeee">getGain</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Belichtungsdauer zurückgeben</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Return values                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>ein</entry>
+                                <entry>
+<para>Wert zwischen 1 (kurze Belichtungsdauer) und 100 (lange BElichtungsdauer) oder -1 ffür eine automatische Belichtungsdauer </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="classrc_1_1Camera_1a6e906a0b175eb28fa1dd4dbab4aa697a">getExposure</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Sättigung festlegen</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>value</entry>
+                                <entry>
+<para>siehe rc::Camera::getSaturation() </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1Camera_1ace923daca0f3b491c966630b441a916e">setSaturation</link> (
+unsigned int value)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Bildverstärkung festlegen</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>value</entry>
+                                <entry>
+<para>siehe rc::Camera::getGain() </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1Camera_1a3d3a84119c61772d0d8ff06915f41d32">setGain</link> (
+unsigned int value)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Belichtungsdauer festlegen</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>value</entry>
+                                <entry>
+<para>siehe rc::Camera::getExposure() </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1Camera_1a35859a25c12b6ffe3b48f963f8b350ae">setExposure</link> (
+int value)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+</section>

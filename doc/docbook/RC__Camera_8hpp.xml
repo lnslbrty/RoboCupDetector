@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="RC__Camera_8hpp">
+    <title>RC_Camera.hpp File Reference</title>
+    <programlisting>#include &lt;raspicam/raspicam.h&gt;</programlisting>
+    <programlisting>#include &lt;raspicam/raspicam_cv.h&gt;</programlisting>
+    <programlisting>#include &lt;raspicam/raspicamtypes.h&gt;</programlisting>
+    <programlisting>#include &quot;RC_CircularBuffer.hpp&quot;</programlisting>
+        <simplesect>
+            <title> Classes </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classrc_1_1Camera">rc::Camera</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title> Namespaces </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="namespacerc">rc</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+
+<para>Eine Klasse zur Steuerung der Kamera und des Zwischenspeichers (Puffer) </para>
+
+<para><formalpara><title>Date: </title>
+
+<para>25.05.2016 </para>
+</formalpara>
+<formalpara><title>Author: </title>
+
+<para>Toni Uhlig <link xlink:href="mailto:matzeton@googlemail.com">matzeton@googlemail.com</link> Diese Klasse ermöglicht eine einfache Steuerung der Raspicam (mit OpenCV Unterstützung). Dabei erbt <link linkend="classrc_1_1Camera">rc::Camera</link> von beiden Klassen <computeroutput>protected</computeroutput>. Für mehr Informationen: <link xlink:href="https://de.wikibooks.org/wiki/C%2B%2B-Programmierung:_Vererbung">https://de.wikibooks.org/wiki/C%2B%2B-Programmierung:_Vererbung</link> </para>
+</formalpara>
+</para>
+    <para>Definition in file /home/pi/bsz7_robocup/src/RC_Camera.hpp</para>
+    </simplesect>
+</section>

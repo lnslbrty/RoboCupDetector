@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classrc_1_1CircularBuffer">
+<title>rc::CircularBuffer class Reference</title>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+        <simplesect>
+            <title>Private Attributes</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::mutex mtx</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct cbElement&lt; T &gt; * cBuffer</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int nextIndex</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int maxElements</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int availableElements</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1CircularBuffer_1af0abd0737caf863845860418e36cee61">CircularBuffer</link> (
+unsigned int maxElements)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1CircularBuffer_1a5d0be18eb4de56cacfcc716c55e55639">~CircularBuffer</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1CircularBuffer_1aa03a62fe9deae36e5b83200f9f7a2c24">addElement</link> (
+T &amp; elem)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="classrc_1_1CircularBuffer_1ae4194d665b35b6a86444f54c759878b7">getMaxElementCount</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="classrc_1_1CircularBuffer_1a07d170b88c762967442b90ef2a4848fa">getNextIndex</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="classrc_1_1CircularBuffer_1a1bb2a9a349df4e9b8e213434725c8b8f">getElementCount</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="classrc_1_1CircularBuffer_1a4ef798c56ada44df67cc4bb5ae1a08eb">getElement</link> (
+T &amp; arg)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+            <section xml:id="classrc_1_1CircularBuffer_1af0abd0737caf863845860418e36cee61">
+                <title>rc::CircularBuffer&lt; T &gt;::CircularBuffer (unsigned int maxElements)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1CircularBuffer_1a5d0be18eb4de56cacfcc716c55e55639">
+                <title>rc::CircularBuffer&lt; T &gt;::~CircularBuffer (void)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1CircularBuffer_1aa03a62fe9deae36e5b83200f9f7a2c24">
+                <title>void rc::CircularBuffer&lt; T &gt;::addElement (T &amp;elem)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1CircularBuffer_1ae4194d665b35b6a86444f54c759878b7">
+                <title>unsigned int rc::CircularBuffer&lt; T &gt;::getMaxElementCount (void)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1CircularBuffer_1a07d170b88c762967442b90ef2a4848fa">
+                <title>unsigned int rc::CircularBuffer&lt; T &gt;::getNextIndex (void)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1CircularBuffer_1a1bb2a9a349df4e9b8e213434725c8b8f">
+                <title>unsigned int rc::CircularBuffer&lt; T &gt;::getElementCount (void)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1CircularBuffer_1a4ef798c56ada44df67cc4bb5ae1a08eb">
+                <title>bool rc::CircularBuffer&lt; T &gt;::getElement (T &amp;arg)</title> <emphasis></emphasis>
+                
+            </section>
+</section>

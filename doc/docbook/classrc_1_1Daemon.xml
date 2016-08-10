@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classrc_1_1Daemon">
+<title>rc::Daemon class Reference</title>
+        <simplesect>
+            <title>Private Attributes</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int fLock</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static Daemon * _instance</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static <link linkend="classrc_1_1Daemon">Daemon</link> * <link linkend="classrc_1_1Daemon_1aa2428f2ddc48f857a3322da05d3c4b61">instance</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static int <link linkend="classrc_1_1Daemon_1af2fc0295df3f758b4522198e01df1f24">KillByPidfile</link> (
+std::string pidfile)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1Daemon_1a17b1d9a98318424c5b0893a5535b3f39">~Daemon</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="classrc_1_1Daemon_1a53ac269d47da15e64060e95c9d940326">Daemonize</link> (
+std::string pidfile, std::string lockfile, std::string user)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1Daemon_1a4ffb5b87e2784dad053b311966424d9a">Daemon</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+            <section xml:id="classrc_1_1Daemon_1aa2428f2ddc48f857a3322da05d3c4b61">
+                <title>static Daemon* rc::Daemon::instance (void)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1Daemon_1af2fc0295df3f758b4522198e01df1f24">
+                <title>int rc::Daemon::KillByPidfile (std::string pidfile)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1Daemon_1a17b1d9a98318424c5b0893a5535b3f39">
+                <title>rc::Daemon::~Daemon (void)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1Daemon_1a53ac269d47da15e64060e95c9d940326">
+                <title>bool rc::Daemon::Daemonize (std::string pidfile, std::string lockfile, std::string user)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1Daemon_1a4ffb5b87e2784dad053b311966424d9a">
+                <title>rc::Daemon::Daemon (void)</title> <emphasis></emphasis>
+                
+            </section>
+</section>

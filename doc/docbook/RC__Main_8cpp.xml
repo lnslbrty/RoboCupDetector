@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="RC__Main_8cpp">
+    <title>RC_Main.cpp File Reference</title>
+    <programlisting>#include &lt;unistd.h&gt;</programlisting>
+    <programlisting>#include &lt;stdint.h&gt;</programlisting>
+    <programlisting>#include &lt;ctime&gt;</programlisting>
+    <programlisting>#include &lt;iostream&gt;</programlisting>
+    <programlisting>#include &lt;iomanip&gt;</programlisting>
+    <programlisting>#include &lt;raspicam/raspicam_cv.h&gt;</programlisting>
+    <programlisting>#include &quot;RC_Daemon.hpp&quot;</programlisting>
+    <programlisting>#include &quot;RC_BlobDetectorFactory.hpp&quot;</programlisting>
+        <simplesect>
+            <title> Classes </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structcmd__opts">cmd_opts</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>`main` Funktion</title>
+      <description>
+<para>Diese wird vom Betriebssystem während des Programmstartes als Einsprungspunkt genutzt</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Return values                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>ganzzahliger</entry>
+                                <entry>
+<para>Rückgabewert der z.B. auf der Shell ausgewertet werden kann </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="RC__Main_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627">main</link> (
+int argc, char ** argv)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Defines</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="RC__Main_8cpp_1af5fe208f8640c8c789a4d5d5b8ad47f5">PIDFILE</link> &quot;/var/run/robocup.pid&quot;</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="RC__Main_8cpp_1a551ae9e7796a78ff54bc98eef4e74498">LOCKFILE</link> &quot;/var/lock/robocup.lock&quot;</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="RC__Main_8cpp_1acd9f5e44663c48631109f64baca83ea7">CHUSER</link> &quot;robocup&quot;</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="RC__Main_8cpp_1a1a2717f1b81aff0aeaa7461a104df0e4">UNIMPLEMENTED</link> { fprintf(stderr, &quot;%s: feature not implemented (%s)\n&quot;, argv[0], feature); exit(1); }</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static struct <link linkend="structcmd__opts">cmd_opts</link> <link linkend="RC__Main_8cpp_1a8a75f1b79dcb81a6e1003e0356e271b2">opts</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static void <link linkend="RC__Main_8cpp_1aaf80f9fb89d95c7f2ca34709bcb092bf">usage</link> (
+char * arg0)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+
+<para>Initialisierung, Parameter auswerten, Einstellungen setzen. </para>
+
+<para><formalpara><title>Date: </title>
+
+<para>20.05.2016 </para>
+</formalpara>
+<formalpara><title>Author: </title>
+
+<para>Toni Uhlig <link xlink:href="mailto:matzeton@googlemail.com">matzeton@googlemail.com</link> </para>
+</formalpara>
+</para>
+    <para>Definition in file /home/pi/bsz7_robocup/src/RC_Main.cpp</para>
+    </simplesect>
+</section>

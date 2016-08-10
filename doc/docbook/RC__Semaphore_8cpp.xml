@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="RC__Semaphore_8cpp">
+    <title>RC_Semaphore.cpp File Reference</title>
+    <programlisting>#include &quot;RC_Semaphore.hpp&quot;</programlisting>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/pi/bsz7_robocup/src/RC_Semaphore.cpp</para>
+    </simplesect>
+</section>

@@ -1,0 +1,76 @@
+\hypertarget{classrc_1_1BlobDetectorFactory}{\section{rc\+:\+:Blob\+Detector\+Factory Class Reference}
+\label{classrc_1_1BlobDetectorFactory}\index{rc\+::\+Blob\+Detector\+Factory@{rc\+::\+Blob\+Detector\+Factory}}
+}
+Inheritance diagram for rc\+:\+:Blob\+Detector\+Factory\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrc_1_1BlobDetectorFactory}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Konstruktor}\par
+{\em 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Anzahl} & der zu \char`\"{}\+Arbeiter\char`\"{}-\/ Threads \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1BlobDetectorFactory_ad23d95cfe5c4a4204b5e1fc38c62dc8a}{{\bfseries Blob\+Detector\+Factory} (unsigned int num\+Threads)}\label{classrc_1_1BlobDetectorFactory_ad23d95cfe5c4a4204b5e1fc38c62dc8a}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Standart Destruktor}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1BlobDetectorFactory_a5532ab9249a1c53c4b87a968be4d6235}{{\bfseries $\sim$\+Blob\+Detector\+Factory} ()}\label{classrc_1_1BlobDetectorFactory_a5532ab9249a1c53c4b87a968be4d6235}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Initialisierung der Kamera}\par
+{\em Hinweis\+: Diese Methode sollte {\itshape vor} start\+Threads() ausgeführt werden }\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1BlobDetectorFactory_a8816a3c768cde4d4491f2ab06f875df3}{bool {\bfseries open\+Camera} (void)}\label{classrc_1_1BlobDetectorFactory_a8816a3c768cde4d4491f2ab06f875df3}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Deaktiviert die Kamera}\par
+{\em Hinweis\+: Diese Methode sollte {\itshape nach} stop\+Threads() ausgeführt werden }\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1BlobDetectorFactory_a847250d92a85518c9701ab8152c542f5}{void {\bfseries close\+Camera} (void)}\label{classrc_1_1BlobDetectorFactory_a847250d92a85518c9701ab8152c542f5}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Startet die \char`\"{}\+Arbeiter\char`\"{}-\/ Threads}\par
+{\em Die Threads werden gestartet und befinden sich in einer Endlosschleife, solange das Programm nicht beendet wird oder stop\+Threads() aufgerufen wird. }\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1BlobDetectorFactory_afecac9963fc4e69e51422ce59cf540f3}{void {\bfseries start\+Threads} (void)}\label{classrc_1_1BlobDetectorFactory_afecac9963fc4e69e51422ce59cf540f3}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Stoppt alle \char`\"{}\+Arbeiter\char`\"{}-\/ Threads}\par
+{\em Alle Threads werden beendet. Erst nachdem alle Threads beendet wurden, kerht diese Methode zum aufrufenden zurück. }\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1BlobDetectorFactory_a9dc44508f5a3dd4beaee0813b7443194}{void {\bfseries stop\+Threads} (void)}\label{classrc_1_1BlobDetectorFactory_a9dc44508f5a3dd4beaee0813b7443194}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Gibt Informationen über diese Klasse als String zurück.}
+\label{_amgrp693de023182337ef13904b9f97f6b392}%
+Dabei werden Informationen über den \hyperlink{classrc_1_1CircularBuffer}{Circular\+Buffer} und der Window-\/ Klasse ausgegeben.
+
+\begin{DoxyReturn}{Returns}
+Die Informationen als Zeichenkette. 
+\end{DoxyReturn}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1BlobDetectorFactory_a08e56c167bd2f928d2f808d429d8327e}{std\+::string {\bfseries out\+Info} (void)}\label{classrc_1_1BlobDetectorFactory_a08e56c167bd2f928d2f808d429d8327e}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{RC__BlobDetectorFactory_8hpp}{R\+C\+\_\+\+Blob\+Detector\+Factory.\+hpp}\item 
+src/R\+C\+\_\+\+Blob\+Detector\+Factory.\+cpp\end{DoxyCompactItemize}

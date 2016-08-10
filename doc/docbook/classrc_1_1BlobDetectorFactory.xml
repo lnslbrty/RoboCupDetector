@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classrc_1_1BlobDetectorFactory">
+<title>rc::BlobDetectorFactory class Reference</title>
+        <simplesect>
+            <title>Konstruktor</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>Anzahl</entry>
+                                <entry>
+<para>der zu &quot;Arbeiter&quot;- Threads </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1BlobDetectorFactory_1ad23d95cfe5c4a4204b5e1fc38c62dc8a">BlobDetectorFactory</link> (
+unsigned int numThreads)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Standart Destruktor</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1BlobDetectorFactory_1a5532ab9249a1c53c4b87a968be4d6235">~BlobDetectorFactory</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Initialisierung der Kamera</title>
+      <description>
+<para>Hinweis: Diese Methode sollte <emphasis>vor</emphasis> startThreads() ausgeführt werden </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="classrc_1_1BlobDetectorFactory_1a8816a3c768cde4d4491f2ab06f875df3">openCamera</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Deaktiviert die Kamera</title>
+      <description>
+<para>Hinweis: Diese Methode sollte <emphasis>nach</emphasis> stopThreads() ausgeführt werden </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1BlobDetectorFactory_1a847250d92a85518c9701ab8152c542f5">closeCamera</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Startet die &quot;Arbeiter&quot;- Threads</title>
+      <description>
+<para>Die Threads werden gestartet und befinden sich in einer Endlosschleife, solange das Programm nicht beendet wird oder stopThreads() aufgerufen wird. </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1BlobDetectorFactory_1afecac9963fc4e69e51422ce59cf540f3">startThreads</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Stoppt alle &quot;Arbeiter&quot;- Threads</title>
+      <description>
+<para>Alle Threads werden beendet. Erst nachdem alle Threads beendet wurden, kerht diese Methode zum aufrufenden zurück. </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1BlobDetectorFactory_1a9dc44508f5a3dd4beaee0813b7443194">stopThreads</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Gibt Informationen über diese Klasse als String zurück.</title>
+      <description>
+<para>Dabei werden Informationen über den <link linkend="classrc_1_1CircularBuffer">CircularBuffer</link> und der Window- Klasse ausgegeben.</para>
+
+<para><formalpara><title>Returns: </title>
+
+<para>Die Informationen als Zeichenkette. </para>
+</formalpara>
+</para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Semaphore * sema</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int numThreads</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::thread * thrds</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::atomic&lt; bool &gt; doLoop</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string <link linkend="classrc_1_1BlobDetectorFactory_1a08e56c167bd2f928d2f808d429d8327e">outInfo</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+</section>

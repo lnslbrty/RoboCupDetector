@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<book xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info>
+    <title>bsz7_robocup</title>
+    </info>
+    <chapter>
+        <title>Namespace Documentation</title>
+        <xi:include href="namespacerc.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+    <chapter>
+        <title>Class Documentation</title>
+        <xi:include href="classrc_1_1BlobDetector.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classrc_1_1BlobDetectorFactory.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classrc_1_1Camera.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structrc_1_1cbElement.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classrc_1_1CircularBuffer.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structcmd__opts.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classrc_1_1Daemon.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structrc_1_1imageObj.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classraspicam_1_1RaspiCam__Cv.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classrc_1_1Semaphore.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classrc_1_1Window.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+    <chapter>
+        <title>File Documentation</title>
+        <xi:include href="RC__BlobDetector_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="RC__BlobDetector_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="RC__BlobDetectorFactory_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="RC__BlobDetectorFactory_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="RC__Camera_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="RC__Camera_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="RC__CircularBuffer_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="RC__CircularBuffer_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="RC__Daemon_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="RC__Daemon_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="RC__Main_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="RC__Semaphore_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="RC__Semaphore_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="RC__Window_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="RC__Window_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+</book>

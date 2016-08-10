@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="namespacerc">
+<title>rc</title>
+        <simplesect>
+            <title> Classes </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classrc_1_1BlobDetector">rc::BlobDetector</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classrc_1_1BlobDetectorFactory">rc::BlobDetectorFactory</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classrc_1_1Camera">rc::Camera</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structrc_1_1cbElement">rc::cbElement</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classrc_1_1CircularBuffer">rc::CircularBuffer</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classrc_1_1Daemon">rc::Daemon</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structrc_1_1imageObj">rc::imageObj</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classrc_1_1Semaphore">rc::Semaphore</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classrc_1_1Window">rc::Window</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Enumerations</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para><literallayout>enum <link linkend="namespacerc_1a7be67fa6e9ec3e19fcc2df0777ab42fe">imageType</link> {
+<link linkend="namespacerc_1a7be67fa6e9ec3e19fcc2df0777ab42fea160db3cf214c7d8d6b3996d1665b3eb0">IMG_ORIGINAL</link>,
+<link linkend="namespacerc_1a7be67fa6e9ec3e19fcc2df0777ab42fea6a7ce356103f2fe45a6425a76154d594">IMG_FILTERED</link>
+}</literallayout>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="namespacerc_1a793e3f430d5b5c99fe110a6a14ffcc6b">isDaemonTerminate</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="namespacerc_1a394315bf537365634692ccb2bc32b287">setSignals</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para>Date: 24.05.2016 Author: Toni Uhlig <link xlink:href="mailto:matzeton@googlemail.com">matzeton@googlemail.com</link></para>
+
+<para>Date: 28.05.2016 Author: Toni Uhlig (<link xlink:href="mailto:matzeton@googlemail.com">matzeton@googlemail.com</link>) </para>
+                <para>Definition at line 15 of file RC_BlobDetector.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_BlobDetector.hpp</para></listitem></itemizedlist></para>
+        </simplesect>
+</section>

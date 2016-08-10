@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classrc_1_1Semaphore">
+<title>rc::Semaphore class Reference</title>
+        <simplesect>
+            <title>Private Attributes</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::mutex mtx</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::condition_variable cond</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int maxCount</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int count</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1Semaphore_1a6260f609fc0499bf67a7e5c77198f746">Semaphore</link> (
+unsigned int _maxCount)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1Semaphore_1ad7bb5c31cb578f9fb68983a23bd6a3e7">~Semaphore</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1Semaphore_1a0fe2e6a5966af9b2e03dc5f8ffd64aff">Synchronize</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+            <section xml:id="classrc_1_1Semaphore_1a6260f609fc0499bf67a7e5c77198f746">
+                <title>rc::Semaphore::Semaphore (unsigned int _maxCount)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1Semaphore_1ad7bb5c31cb578f9fb68983a23bd6a3e7">
+                <title>rc::Semaphore::~Semaphore (void)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1Semaphore_1a0fe2e6a5966af9b2e03dc5f8ffd64aff">
+                <title>void rc::Semaphore::Synchronize (void)</title> <emphasis></emphasis>
+                
+            </section>
+</section>

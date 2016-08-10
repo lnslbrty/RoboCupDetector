@@ -1,0 +1,167 @@
+\hypertarget{classrc_1_1Camera}{\section{rc\+:\+:Camera Class Reference}
+\label{classrc_1_1Camera}\index{rc\+::\+Camera@{rc\+::\+Camera}}
+}
+Inheritance diagram for rc\+:\+:Camera\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrc_1_1Camera}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Kamera Konstruktor}\par
+{\em 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em max\+Buffer\+Elements} & größe des Pufferspeichers (\hyperlink{classrc_1_1CircularBuffer}{rc\+::\+Circular\+Buffer}) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Kamera} & Objekt \\
+\hline
+\end{DoxyRetVals}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Camera_aefbf57e5308b3e72aeabe7b0308c1d93}{{\bfseries Camera} (unsigned int max\+Buffer\+Elements)}\label{classrc_1_1Camera_aefbf57e5308b3e72aeabe7b0308c1d93}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Standart Destruktor}\par
+{\em Dieser ist z.\+Z. ausreichend, da keine \char`\"{}aufräum\char`\"{}-\/ Arbeiten nötig sind. }\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Camera_ad219ec460144ffc914e10250fef89677}{{\bfseries $\sim$\+Camera} (void)}\label{classrc_1_1Camera_ad219ec460144ffc914e10250fef89677}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Kamerabild holen}\par
+{\em Ein Kamerabild \char`\"{}grabschen\char`\"{}.
+
+
+\begin{DoxyRetVals}{Return values}
+{\em T\+R\+U\+E} & Kamerabild konnte erfolgreich geholt werden \\
+\hline
+{\em F\+A\+L\+S\+E} & entweder lieferte die Kamera kein bild oder der Pufferspeicher ist voll\\
+\hline
+\end{DoxyRetVals}
+Wichtig\+: Damit ein Bild von der Kamera geholt werden kann, muss vorher raspicam\+::\+Raspi\+Cam\+\_\+\+Cv\+::open() aufgerugen werden! }\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Camera_a5d8610c2bbebbc9cd7a56e00549b514c}{bool {\bfseries grab\+Camera\+Image} (void)}\label{classrc_1_1Camera_a5d8610c2bbebbc9cd7a56e00549b514c}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Breite eines Kamerabildes zurückgeben}\par
+{\em 
+\begin{DoxyRetVals}{Return values}
+{\em die} & Breite in Pixel \\
+\hline
+\end{DoxyRetVals}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Camera_a1260f90780be36eb52db9f90d73578e9}{unsigned int {\bfseries get\+Width} (void)}\label{classrc_1_1Camera_a1260f90780be36eb52db9f90d73578e9}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Höhe eines Kamerabildes zurückgeben}\par
+{\em 
+\begin{DoxyRetVals}{Return values}
+{\em die} & Höhe in Pixel \\
+\hline
+\end{DoxyRetVals}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Camera_a3a279a087aa5864793aa9c5628bea40a}{unsigned int {\bfseries get\+Height} (void)}\label{classrc_1_1Camera_a3a279a087aa5864793aa9c5628bea40a}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Format der Kamerabilder zurückgeben}\par
+{\em 
+\begin{DoxyRetVals}{Return values}
+{\em C\+V\+\_\+8\+U\+C1} & Schwarz-\/\+Weiß (1 Byte Farbabstufung) \\
+\hline
+{\em C\+V\+\_\+8\+U\+C3} & Farbe (3 Byte pro Kanal -\/$>$ R\+G\+B) \\
+\hline
+\end{DoxyRetVals}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Camera_aa0cd8c29ec174d184ddcd78084258026}{raspicam\+::\+R\+A\+S\+P\+I\+C\+A\+M\+\_\+\+F\+O\+R\+M\+A\+T {\bfseries get\+Format} (void)}\label{classrc_1_1Camera_aa0cd8c29ec174d184ddcd78084258026}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Farbsättigung zurückgeben}\par
+{\em 
+\begin{DoxyRetVals}{Return values}
+{\em ein} & Wert zwischen 0 (keine Sättigung) und 100 (volle Sättigung) \\
+\hline
+\end{DoxyRetVals}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Camera_adf54b48540f83fdcecff277443fbc360}{unsigned int {\bfseries get\+Saturation} (void)}\label{classrc_1_1Camera_adf54b48540f83fdcecff277443fbc360}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Bildverstärkung zurückgeben (Treiber spezifisch)}\par
+{\em 
+\begin{DoxyRetVals}{Return values}
+{\em ein} & Wert zwischen 0 (keine Verstärkung) und 100 (maximale Verstärkung) \\
+\hline
+\end{DoxyRetVals}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Camera_aa4f5ffc75180f60ba018f00669bddeee}{unsigned int {\bfseries get\+Gain} (void)}\label{classrc_1_1Camera_aa4f5ffc75180f60ba018f00669bddeee}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Belichtungsdauer zurückgeben}\par
+{\em 
+\begin{DoxyRetVals}{Return values}
+{\em ein} & Wert zwischen 1 (kurze Belichtungsdauer) und 100 (lange B\+Elichtungsdauer) oder -\/1 ffür eine automatische Belichtungsdauer \\
+\hline
+\end{DoxyRetVals}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Camera_a6e906a0b175eb28fa1dd4dbab4aa697a}{int {\bfseries get\+Exposure} (void)}\label{classrc_1_1Camera_a6e906a0b175eb28fa1dd4dbab4aa697a}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Sättigung festlegen}\par
+{\em 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & siehe rc\+::\+Camera\+::get\+Saturation() \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Camera_ace923daca0f3b491c966630b441a916e}{void {\bfseries set\+Saturation} (unsigned int value)}\label{classrc_1_1Camera_ace923daca0f3b491c966630b441a916e}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Bildverstärkung festlegen}\par
+{\em 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & siehe rc\+::\+Camera\+::get\+Gain() \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Camera_a3d3a84119c61772d0d8ff06915f41d32}{void {\bfseries set\+Gain} (unsigned int value)}\label{classrc_1_1Camera_a3d3a84119c61772d0d8ff06915f41d32}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Belichtungsdauer festlegen}\par
+{\em 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & siehe rc\+::\+Camera\+::get\+Exposure() \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Camera_a35859a25c12b6ffe3b48f963f8b350ae}{void {\bfseries set\+Exposure} (int value)}\label{classrc_1_1Camera_a35859a25c12b6ffe3b48f963f8b350ae}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{RC__Camera_8hpp}{R\+C\+\_\+\+Camera.\+hpp}\item 
+src/R\+C\+\_\+\+Camera.\+cpp\end{DoxyCompactItemize}

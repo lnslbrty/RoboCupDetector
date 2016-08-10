@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classrc_1_1BlobDetector">
+<title>rc::BlobDetector class Reference</title>
+        <simplesect>
+            <title>Standartkonstruktor</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1BlobDetector_1af7e4f2625974457c6949970d6bdd25dd">BlobDetector</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>cv::Mat <link linkend="classrc_1_1BlobDetector_1a07a996624a6ef0df47dacfd85f8be60b">process</link> (
+cv::Mat &amp; image)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+</section>

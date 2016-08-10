@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classrc_1_1Window">
+<title>rc::Window class Reference</title>
+        <simplesect>
+            <title>Private Attributes</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::atomic&lt; bool &gt; doSmth</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::atomic&lt; bool &gt; doXWin</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::queue&lt; struct imageObj &gt; images</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::mutex images_mtx</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::thread thrd</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1Window_1aa38aa6f619a07a3fc95760ddae436295">Window</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1Window_1a750d4237229ac732df0c6a4158611684">~Window</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1Window_1a115530da5a987d8c241b0febc3cddc8f">stop</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1Window_1aa34989ba0c08041b7e3bcc35125340ec">addImage</link> (
+enum imageType type, cv::Mat image)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1Window_1a15681842c7ce0ee6b9201cfa973d2ac1">run</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="classrc_1_1Window_1a7cb65cbb3741a7711631f66c46c7b039">imagesAvailable</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>size_t <link linkend="classrc_1_1Window_1a3c221423c38f30757d042b2621f22894">imagesQueueSize</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1Window_1aac13c76846e47e026d66eaf4a52fcd57">setXWindow</link> (
+bool enableWin, bool enableFltrd)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="classrc_1_1Window_1abd9877b14cf84b02e7c6ea54c23bc082">isXWindow</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="classrc_1_1Window_1a01dcc54995ffd8c973423566b6734d44">isXWindowFltrd</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1Window_1a1c691c62fed36b8d170c441b7a0d2fa4">previewImage</link> (
+enum imageType itype, cv::Mat image)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1Window_1a43290d2efed99c44495d5c1573bd583a">wait</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+            <section xml:id="classrc_1_1Window_1aa38aa6f619a07a3fc95760ddae436295">
+                <title>rc::Window::Window (void)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1Window_1a750d4237229ac732df0c6a4158611684">
+                <title>rc::Window::~Window (void)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1Window_1a115530da5a987d8c241b0febc3cddc8f">
+                <title>void rc::Window::stop (void)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1Window_1aa34989ba0c08041b7e3bcc35125340ec">
+                <title>void rc::Window::addImage (enum imageType type, cv::Mat image)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1Window_1a15681842c7ce0ee6b9201cfa973d2ac1">
+                <title>void rc::Window::run (void)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1Window_1a7cb65cbb3741a7711631f66c46c7b039">
+                <title>bool rc::Window::imagesAvailable (void)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1Window_1a3c221423c38f30757d042b2621f22894">
+                <title>size_t rc::Window::imagesQueueSize ()</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1Window_1aac13c76846e47e026d66eaf4a52fcd57">
+                <title>void rc::Window::setXWindow (bool enableWin, bool enableFltrd)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1Window_1abd9877b14cf84b02e7c6ea54c23bc082">
+                <title>bool rc::Window::isXWindow (void)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1Window_1a01dcc54995ffd8c973423566b6734d44">
+                <title>bool rc::Window::isXWindowFltrd (void)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1Window_1a1c691c62fed36b8d170c441b7a0d2fa4">
+                <title>void rc::Window::previewImage (enum imageType itype, cv::Mat image)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classrc_1_1Window_1a43290d2efed99c44495d5c1573bd583a">
+                <title>void rc::Window::wait (void)</title> <emphasis></emphasis>
+                
+            </section>
+</section>

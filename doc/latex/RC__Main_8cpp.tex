@@ -1,0 +1,78 @@
+\hypertarget{RC__Main_8cpp}{\section{src/\+R\+C\+\_\+\+Main.cpp File Reference}
+\label{RC__Main_8cpp}\index{src/\+R\+C\+\_\+\+Main.\+cpp@{src/\+R\+C\+\_\+\+Main.\+cpp}}
+}
+
+
+Initialisierung, Parameter auswerten, Einstellungen setzen.  
+
+
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$ctime$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$iomanip$>$}\\*
+{\ttfamily \#include $<$raspicam/raspicam\+\_\+cv.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}R\+C\+\_\+\+Daemon.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}R\+C\+\_\+\+Blob\+Detector\+Factory.\+hpp\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structcmd__opts}{cmd\+\_\+opts}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{RC__Main_8cpp_af5fe208f8640c8c789a4d5d5b8ad47f5}{P\+I\+D\+F\+I\+L\+E}~\char`\"{}/var/run/robocup.\+pid\char`\"{}
+\item 
+\#define \hyperlink{RC__Main_8cpp_a551ae9e7796a78ff54bc98eef4e74498}{L\+O\+C\+K\+F\+I\+L\+E}~\char`\"{}/var/lock/robocup.\+lock\char`\"{}
+\item 
+\#define \hyperlink{RC__Main_8cpp_acd9f5e44663c48631109f64baca83ea7}{C\+H\+U\+S\+E\+R}~\char`\"{}robocup\char`\"{}
+\item 
+\#define \hyperlink{RC__Main_8cpp_a1a2717f1b81aff0aeaa7461a104df0e4}{U\+N\+I\+M\+P\+L\+E\+M\+E\+N\+T\+E\+D}(feature)~\{ fprintf(stderr, \char`\"{}\%s\+: feature not implemented (\%s)\textbackslash{}n\char`\"{}, argv\mbox{[}0\mbox{]}, feature); exit(1); \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{Indent}{\bf `main` Funktion}\par
+{\em Diese wird vom Betriebssystem während des Programmstartes als Einsprungspunkt genutzt
+
+
+\begin{DoxyRetVals}{Return values}
+{\em ganzzahliger} & Rückgabewert der z.\+B. auf der Shell ausgewertet werden kann \\
+\hline
+\end{DoxyRetVals}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{RC__Main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{int {\bfseries main} (int argc, char $\ast$$\ast$argv)}\label{RC__Main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+Initialisierung, Parameter auswerten, Einstellungen setzen. 
+
+\begin{DoxyDate}{Date}
+20.\+05.\+2016 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Toni Uhlig \href{mailto:matzeton@googlemail.com}{\tt matzeton@googlemail.\+com} 
+\end{DoxyAuthor}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{RC__Main_8cpp_acd9f5e44663c48631109f64baca83ea7}{\index{R\+C\+\_\+\+Main.\+cpp@{R\+C\+\_\+\+Main.\+cpp}!C\+H\+U\+S\+E\+R@{C\+H\+U\+S\+E\+R}}
+\index{C\+H\+U\+S\+E\+R@{C\+H\+U\+S\+E\+R}!R\+C\+\_\+\+Main.\+cpp@{R\+C\+\_\+\+Main.\+cpp}}
+\subsubsection[{C\+H\+U\+S\+E\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+H\+U\+S\+E\+R~\char`\"{}robocup\char`\"{}}}\label{RC__Main_8cpp_acd9f5e44663c48631109f64baca83ea7}
+Standartuser, um nicht benötigte Privilegien zu \char`\"{}droppen\char`\"{} (daemon Modus) \hypertarget{RC__Main_8cpp_a551ae9e7796a78ff54bc98eef4e74498}{\index{R\+C\+\_\+\+Main.\+cpp@{R\+C\+\_\+\+Main.\+cpp}!L\+O\+C\+K\+F\+I\+L\+E@{L\+O\+C\+K\+F\+I\+L\+E}}
+\index{L\+O\+C\+K\+F\+I\+L\+E@{L\+O\+C\+K\+F\+I\+L\+E}!R\+C\+\_\+\+Main.\+cpp@{R\+C\+\_\+\+Main.\+cpp}}
+\subsubsection[{L\+O\+C\+K\+F\+I\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+O\+C\+K\+F\+I\+L\+E~\char`\"{}/var/lock/robocup.\+lock\char`\"{}}}\label{RC__Main_8cpp_a551ae9e7796a78ff54bc98eef4e74498}
+Standartpfad für Sperr-\/ Datei (daemon Modus) \hypertarget{RC__Main_8cpp_af5fe208f8640c8c789a4d5d5b8ad47f5}{\index{R\+C\+\_\+\+Main.\+cpp@{R\+C\+\_\+\+Main.\+cpp}!P\+I\+D\+F\+I\+L\+E@{P\+I\+D\+F\+I\+L\+E}}
+\index{P\+I\+D\+F\+I\+L\+E@{P\+I\+D\+F\+I\+L\+E}!R\+C\+\_\+\+Main.\+cpp@{R\+C\+\_\+\+Main.\+cpp}}
+\subsubsection[{P\+I\+D\+F\+I\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+I\+D\+F\+I\+L\+E~\char`\"{}/var/run/robocup.\+pid\char`\"{}}}\label{RC__Main_8cpp_af5fe208f8640c8c789a4d5d5b8ad47f5}
+Standartpfad für die Prozess\+I\+D-\/ Datei (daemon Modus) \hypertarget{RC__Main_8cpp_a1a2717f1b81aff0aeaa7461a104df0e4}{\index{R\+C\+\_\+\+Main.\+cpp@{R\+C\+\_\+\+Main.\+cpp}!U\+N\+I\+M\+P\+L\+E\+M\+E\+N\+T\+E\+D@{U\+N\+I\+M\+P\+L\+E\+M\+E\+N\+T\+E\+D}}
+\index{U\+N\+I\+M\+P\+L\+E\+M\+E\+N\+T\+E\+D@{U\+N\+I\+M\+P\+L\+E\+M\+E\+N\+T\+E\+D}!R\+C\+\_\+\+Main.\+cpp@{R\+C\+\_\+\+Main.\+cpp}}
+\subsubsection[{U\+N\+I\+M\+P\+L\+E\+M\+E\+N\+T\+E\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+N\+I\+M\+P\+L\+E\+M\+E\+N\+T\+E\+D(
+\begin{DoxyParamCaption}
+\item[{}]{feature}
+\end{DoxyParamCaption}
+)~\{ fprintf(stderr, \char`\"{}\%s\+: feature not implemented (\%s)\textbackslash{}n\char`\"{}, argv\mbox{[}0\mbox{]}, feature); exit(1); \}}}\label{RC__Main_8cpp_a1a2717f1b81aff0aeaa7461a104df0e4}
+Dieses Feature ist zur Zeit nicht im \char`\"{}binary\char`\"{} enthalten. Um das Feature zu integrieren muss das Projekt mit {\ttfamily cmake} bzw. {\ttfamily ccmake} neu kofniguriert/kompiliert/gelinkt werden. 
