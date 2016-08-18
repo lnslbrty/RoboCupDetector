@@ -150,6 +150,7 @@ namespace raspicam {
               *There is currently an upper limit of approximately 330000us (330ms, 0.33s) past which operation is undefined.
               */
             void setShutterSpeed ( unsigned int shutter ); //currently not  supported
+            void setFrameRate ( int fps );
 
             RASPICAM_FORMAT  getFormat() const {return State.captureFtm;}
             //Accessors
@@ -185,7 +186,7 @@ namespace raspicam {
             {
                 return State.saturation;
             }
-            int getShutterSpeed() const
+            unsigned int getShutterSpeed() const
             {
                 return State.shutterSpeed;
             }
@@ -201,6 +202,11 @@ namespace raspicam {
             float getAWBG_red(){return State.awbg_red;}
 
             float getAWBG_blue(){return State.awbg_blue;}
+
+            int getFrameRate() const
+            {
+                return State.framerate;
+            }
 
             RASPICAM_IMAGE_EFFECT getImageEffect() const
             {
@@ -230,6 +236,7 @@ namespace raspicam {
 
             private:
             static void video_buffer_callback ( MMAL_PORT_T *port, MMAL_BUFFER_HEADER_T *buffer );
+            static void camera_control_callback(MMAL_PORT_T *port, MMAL_BUFFER_HEADER_T *buffer);
             void setDefaultStateParams();
             MMAL_COMPONENT_T *create_camera_component ( RASPIVID_STATE *state );
             void destroy_camera_component ( RASPIVID_STATE *state );

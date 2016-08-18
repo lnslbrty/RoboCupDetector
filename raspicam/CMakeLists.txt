@@ -34,7 +34,7 @@ OPTION(BUILD_UTILS 	"Acitvates/Deactivates building utils  libraries" ON)
 #   Find Dependencies
 # ----------------------------------------------------------------------------
  #Add include to dependencies dir
-include_directories(/opt/vc/include/interface /opt/vc/include /opt/vc/include/interface/vcos/pthreads)
+include_directories(${PROJECT_SOURCE_DIR}/dependencies ${PROJECT_SOURCE_DIR}/dependencies/mmal  ${PROJECT_SOURCE_DIR}/dependencies/vcos)
 #find the mmal libraries(I use conditional because I normally comile in pc)
 
 if(${CMAKE_SYSTEM_PROCESSOR} MATCHES arm*) 
@@ -241,7 +241,6 @@ MESSAGE( STATUS "CMAKE_BUILD_TYPE = ${CMAKE_BUILD_TYPE}" )
 MESSAGE( STATUS "CMAKE_MODULE_PATH = ${CMAKE_MODULE_PATH}" )
 
 MESSAGE( STATUS )
-MESSAGE( STATUS "OPENCV DIR=${OpenCV_DIR}")
 MESSAGE( STATUS "CREATE OPENCV MODULE=${OpenCV_FOUND}")
 MESSAGE( STATUS "CMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}")
 MESSAGE( STATUS "REQUIRED_LIBRARIES=${REQUIRED_LIBRARIES}")

@@ -26,7 +26,9 @@ include /usr/share/dpkg/default.mk
 override_dh_auto_configure:
 	dh_auto_configure
 	cmake . \
-	-DCMAKE_INSTALL_PREFIX=/usr
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DWARNINGS_ARE_ERRORS=ON \
+	-DWHOLE_PROGRAM_OPTIMIZATION=ON
 
 override_dh_shlibdeps:
 	@echo "* skipping dh_shlibdeps"
