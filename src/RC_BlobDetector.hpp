@@ -13,6 +13,10 @@
 
 
 namespace rc {
+enum roboColor {
+  RB_YELLOW, RB_BLUE
+};
+
 class BlobDetector {
 
   public:
@@ -20,6 +24,31 @@ class BlobDetector {
      * @name Standartkonstruktor
      */
     BlobDetector() {
+    }
+
+    /**
+     * @name Destruktor
+     */
+    ~BlobDetector() {
+    }
+
+    /**
+     * @name Farbfilter
+     * @retval Die gefilterte OpenCV Matrix.
+     */
+    cv::Mat filterColor(cv::Mat src, enum roboColor rcol) {
+      cv::Mat tmp, result;
+      // konvertieren von RGB zu HSV
+      cv::cvtColor(src, tmp, CV_BGR2HSV);
+      // filtere HSV- Farbraum entsprechend der angegebenen roboColor
+      switch (rcol) {
+        case RB_YELLOW: /* GELB */
+          cv::inRange(tmp, cv::Scalar(0, 150, 150), cv::Scalar(50, 255, 255), result);
+          break;
+        case RB_BLUE:   /* BLAU */
+          break;
+      }
+      return result;
     }
 
     /**

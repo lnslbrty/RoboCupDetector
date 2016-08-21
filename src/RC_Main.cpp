@@ -15,6 +15,9 @@
 
 #include "RC_Daemon.hpp"
 #include "RC_BlobDetectorFactory.hpp"
+#ifdef ENABLE_HTTPD
+#include "RC_WebServer.hpp"
+#endif
 
 /** Vorschaufenster Abhängigkeit */
 #if defined(USE_XWINDOW_FLTRD) && !defined(USE_XWINDOW)
@@ -260,6 +263,13 @@ int main (int argc,char **argv) {
             <<"OpenCV-Thrds: "<<cv::getNumThreads()<<std::endl
             <<"Optimised...: "<<cv::useOptimized()<<std::endl
             <<"Threads.....: "<<static_cast<int>(opts.thrds)<<std::endl;
+#ifdef ENABLE_HTTPD
+  /* WebServer starten */
+  std::cout <<"Starting WebServer .."<<std::endl;
+  /* WebServer lauscht auf TCP-Port 8080 und zeigt maximal drei Bilder an */
+  rc::WebServer httpd(8080, 3);
+  httpd.start();
+#endif
 #ifdef ENABLE_VIDEO
   if (opts.videoFile)
     std::cout <<"Saving RIFF-avi stream to file: "<<opts.videoFile<<std::endl;
@@ -303,6 +313,10 @@ int main (int argc,char **argv) {
     n++;
   }
   std::cout <<std::endl;
+#ifdef ENABLE_HTTPD
+  /* WebServer stoppen */
+  httpd.stop();
+#endif
   /* Arbeiter- Threads stoppen */
   detector.stopThreads();
   /* Kamera deinitialisieren */
