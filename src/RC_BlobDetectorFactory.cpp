@@ -1,5 +1,6 @@
 #include "RC_BlobDetectorFactory.hpp"
 
+
 #ifdef USE_XWINDOW
 rc::Window * rc::BlobDetectorFactory::win = nullptr;
 #endif
@@ -26,8 +27,14 @@ rc::BlobDetectorFactory::~BlobDetectorFactory() {
 }
 
 void rc::BlobDetectorFactory::startThreads(void) {
+#ifdef ENABLE_HTTPD
+  /* WebServer starten */
+  std::cout <<"Starting WebServer (Port: 8080) .."<<std::endl;
+  /* WebServer lauscht auf TCP-Port 8080 und zeigt maximal drei Bilder an */
+  httpd = new rc::WebServer(8080, 3);
+  httpd->start();
+#endif
 #ifdef USE_XWINDOW
-  std::cout << "Open X11 preview window ...."<<std::endl;
   win->run();
 #endif
 #ifdef ENABLE_VIDEO
@@ -41,12 +48,22 @@ void rc::BlobDetectorFactory::startThreads(void) {
   doLoop = true;
   for (unsigned int i = 0; i < numThreads; ++i) {
     thrds[i] = std::thread([this](int num) {
+      auto handle = thrds[num].native_handle();
+      std::string pname("robocup worker");
+      pname += std::to_string(num);
+      pthread_setname_np(handle, pname.c_str());
       while (doLoop) {
         cv::Mat image;
         bool ret = false;
         ret = this->getElement(image);
         if (ret && !image.empty()) {
+#ifdef ENABLE_HTTPD
+          httpd->setImage(0, image);
+#endif
           cv::Mat filteredImage = process(image);
+#ifdef ENABLE_HTTPD
+          httpd->setImage(1, filteredImage);
+#endif
 #if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
           cv::Size size(this->width, this->height);
           cv::Mat resImage;
@@ -78,6 +95,10 @@ void rc::BlobDetectorFactory::startThreads(void) {
 }
 
 void rc::BlobDetectorFactory::stopThreads(void) {
+#ifdef ENABLE_HTTPD
+  /* WebServer stoppen */
+  httpd->stop();
+#endif
   doLoop = false;
   for (unsigned int i = 0; i < numThreads; ++i) {
     thrds[i].join();

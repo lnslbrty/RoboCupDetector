@@ -32,18 +32,46 @@ static int httpd_callback(void * cls,
       return MHD_NO;
     }
     if (i >= 0 && i < ws->getCount()) {
-      std::cout <<"BLA"<<i<<std::endl;
+      cv::Mat out = ws->getImage(i);
+      if (!out.empty()) {
+         std::vector<uchar> buf;
+         if (cv::imencode(".jpg", out, buf, ws->getFlags()) == true) {
+           response = MHD_create_response_from_buffer(
+                        buf.size(),
+                        (void*) &buf[0],
+                        MHD_RESPMEM_MUST_COPY);
+           ret = MHD_queue_response(connection,
+                   MHD_HTTP_OK,
+                   response);
+           MHD_destroy_response(response);
+           return ret;
+         }
+      }
     }
+    return MHD_NO;
   }
 
   std::stringstream tmp;
   tmp << "<html>\n"
-      << "<title>robocup opencv viewer</title>\n"
-      << "<b>RoboCup OpenCV Viewer</b><br>\n";
+      << "<head>\n"
+      << "<meta http-equiv=\"Cache-Control\" content=\"no-cache; must-revalidate\">\n"
+      << "<script language=\"JavaScript\" type=\"text/javascript\">\n"
+      << "refreshImage = function()\n{\n";
   for (size_t i = 0; i < ws->getCount(); ++i) {
-    tmp << "<img href=\"/cam" <<i<< ".jpg\"><br>\n";
+    if (!ws->getImage(i).empty())
+      tmp << "img = document.getElementById(\"img"<<i<<"\");\nimg.src=\"/cam"<<i<<".jpg?rand=\" + Math.random();\n";
   }
-  tmp << "</html>\n";
+  tmp << "}\n</script>\n"
+      << "<meta http-equiv=\"Cache-Control\" content=\"no-cache; must-revalidate\">\n"
+      << "<meta http-equiv=\"Content-Type\" content=\"text/html\">\n"
+      << "<title>robocup opencv viewer</title>\n"
+      << "</head>\n\n"
+      << "<body onload=\"window.setInterval(refreshImage, 1*1000);\"><b>RoboCup OpenCV Viewer</b> ... frame #"<<ws->getFrames()<<"<br>\n";
+  for (size_t i = 0; i < ws->getCount(); ++i) {
+    if (!ws->getImage(i).empty())
+      tmp << "<img src=\"/cam" <<i<< ".jpg\" id=\"img"<<i<<"\"><br><br>\n";
+  }
+  tmp << "</body></html>\n";
   std::string output = tmp.str();
   response = MHD_create_response_from_buffer(
                output.size(),
@@ -58,10 +86,7 @@ static int httpd_callback(void * cls,
 
 bool rc::WebServer::start() {
   images_out = new cv::Mat[image_cnt];
-  for (size_t i = 0; i < image_cnt; ++i) {
-    images_out[i] = cv::Mat::zeros(1, 1, CV_32F);
-  }
-  httpd = MHD_start_daemon(MHD_USE_THREAD_PER_CONNECTION,
+  httpd = MHD_start_daemon(MHD_USE_SELECT_INTERNALLY,
     port,
     NULL,
     NULL,
@@ -71,4 +96,9 @@ bool rc::WebServer::start() {
   if (httpd == NULL)
     return false;
   return true;
+}
+
+void rc::WebServer::stop(void) {
+  MHD_stop_daemon(httpd);
+  delete[] images_out;
 }

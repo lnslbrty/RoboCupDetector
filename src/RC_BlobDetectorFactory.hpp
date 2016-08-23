@@ -22,6 +22,9 @@
 #ifdef USE_XWINDOW
 #include "RC_Window.hpp"
 #endif
+#ifdef ENABLE_HTTPD
+#include "RC_WebServer.hpp"
+#endif
 
 
 namespace rc {
@@ -110,6 +113,9 @@ class BlobDetectorFactory : private rc::BlobDetector, public rc::Camera {
     char* filename = nullptr;      // Dateiname fuer Video- Ausgabe
     cv::VideoWriter * videoOut = nullptr; // OpenCV Video Konverter/Ausgabe
     std::mutex videoMtx;           // Mutex fuer schreiben eines Ausgabebildes in den Videodatemstrom
+#endif
+#ifdef ENABLE_HTTPD
+    rc::WebServer * httpd = nullptr;
 #endif
 };
 }
