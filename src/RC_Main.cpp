@@ -71,7 +71,8 @@ static void usage(char* arg0) {
   fprintf(stderr, "\n%s: usage\n"
                   "\t-S             start as daemon (fails if already started)\n"
                   "\t-K             kill the daemon\n"
-                  "\t-n [count]     number of frame to capture [1..n] default: %llu\n"
+                  "\t-n [count]     number of frame to capture [0..n] default: %llu\n"
+                  "\t                 (0 means indefinitly capturing)\n"
                   "\t-s [sat]       set camera saturation [0..100] default: %u\n"
                   "\t-g [gain]      set camera gain [0..100] default: %u\n"
                   "\t-e [exp]       set exposure [-1..100] default: %d\n"
@@ -136,7 +137,7 @@ int main (int argc,char **argv) {
         break;
       /*######################*/
       case 'K':
-        return rc::Daemon::KillByPidfile(PIDFILE);
+        return rc::Daemon::KillByPidfile(PIDFILE, LOCKFILE);
       /*######################*/
       case 'n':
         opts.count     = strtoul(optarg, NULL, 10);

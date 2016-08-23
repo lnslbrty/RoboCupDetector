@@ -7,10 +7,14 @@
 #include <chrono>
 #include <thread>
 
+#include <string.h>
+#include <errno.h>
 #include <unistd.h>
 #include <signal.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <sys/types.h>
+#include <pwd.h>
 
 
 rc::Daemon* rc::Daemon::_instance = nullptr;
@@ -48,8 +52,16 @@ void rc::setSignals(void) {
 }
 
 bool rc::Daemon::Daemonize(std::string pidfile, std::string lockfile, std::string user) {
+  /* wird z.Z. nicht benötigt -> siehe libmmal Problem weiter unten */
+  //struct passwd * pwd = getpwnam(user.c_str());
   sigset_t newSigSet;
   int i;
+
+  /* nur der Benutzer `root` darf einen Dienst starten (notwendig bzgl. Schreibrechte auf /var/run) */
+  if (getuid() != 0) {
+    std::cerr <<"Daemon::Daemonize: Only root can do this!"<<std::endl;
+    exit(2);
+  }
 
   /* Pruefe, ob bereits eine `parent pid` existiert, d.h. Daemonize wurde bereits erfolgreich aufgerufen */
   if (getppid() == 1) {
@@ -77,13 +89,19 @@ bool rc::Daemon::Daemonize(std::string pidfile, std::string lockfile, std::strin
 
   /* Oeffne/Erstelle eine Dateisperre */
   if ( (fLock = open(lockfile.c_str(),  O_CREAT | O_TRUNC | O_RDWR | O_SYNC)) < 0 ) {
-    perror("Daemon::Daemonize open");
+    std::string err("Daemon::Daemonize open(");
+    err.append(lockfile);
+    err.append(")");
+    perror(err.c_str());
     goto error;
   }
 
   /* der Prozess kann die Datei sperren, sofern sie noch nicht von einem anderen Prozess gesperrt wurde */
   if ( lockf(fLock, F_TLOCK, 0) != 0 ) {
-    perror("Daemon::Daemonize ftrylockfile");
+    std::string err("Daemon::Daemonize lockfile(");
+    err.append(lockfile);
+    err.append(")");
+    perror(err.c_str());
     goto error;
   }
 
@@ -103,6 +121,24 @@ bool rc::Daemon::Daemonize(std::string pidfile, std::string lockfile, std::strin
     write(pFd, pStr.c_str(), pStr.length());
   }
 
+  /* Benutzerkontext ändern (hofffentlich non-root) */
+  /* ACHTUNG: Die Raspberry IO Bibliothek `libmmal` verursacht Probleme bei nicht-root Benutzer */
+  /* TODO: mmal sollte auch als non-root funktionieren */
+/*
+  if (pwd == NULL) {
+    std::cerr <<"Daemon::Daemonize user: "<<user.c_str()<<" not found!"<<std::endl;
+    goto error;
+  } else std::cout <<"Daemon::Daemonize user: "<<user.c_str()<<"("<<pwd->pw_uid<<")"<<std::endl;
+  if (setregid(pwd->pw_gid, pwd->pw_gid)) {
+    perror("setuid");
+    goto error;
+  }
+  if (setreuid(pwd->pw_uid, pwd->pw_uid)) {
+    perror("setuid");
+    goto error;
+  }
+*/
+
   /* alle wohlbekannten Deskriptoren deaktivieren */
   close(0); // STDIN
   close(1); // STDOUT
@@ -116,6 +152,7 @@ bool rc::Daemon::Daemonize(std::string pidfile, std::string lockfile, std::strin
   /* STDERR */
   dup(i);
 
+  /* in das Wurzelverzeichnis wechseln */
   chdir("/");
 
   gotSigTerm = false;
@@ -123,13 +160,17 @@ bool rc::Daemon::Daemonize(std::string pidfile, std::string lockfile, std::strin
 error:
   std::cerr <<"Daemon::Daemonize FAILED!"<<std::endl;
   close(fLock);
-  return false;
+  exit(1);
 }
 
-int rc::Daemon::KillByPidfile(std::string pidfile) {
+int rc::Daemon::KillByPidfile(std::string pidfile, std::string lockfile) {
   int ret = 1;
   std::ifstream pStrm(pidfile);
 
+  if (getuid() != 0) {
+    std::cerr <<"Only root is allowed to do this!"<<std::endl;
+    return ret;
+  }
   if (pStrm.is_open()) {
     std::string sPid;
     if (getline(pStrm, sPid)) {
@@ -144,6 +185,9 @@ int rc::Daemon::KillByPidfile(std::string pidfile) {
       std::cout <<"Waiting for process .."<<std::endl;
       while (kill(pid, 0) == 0)
         std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+      if (unlink(pidfile.c_str()) != 0 || unlink(lockfile.c_str()))
+        std::cerr <<"Unlink ("<<pidfile.c_str()<<" | "<<lockfile.c_str()<<") returned: "<<strerror(errno)<<std::endl;
+      std::cout <<"Killed: "<<pid<<std::endl;
       return ret;
     }
     pStrm.close();

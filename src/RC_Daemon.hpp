@@ -21,7 +21,7 @@ class Daemon {
 
     bool Daemonize(std::string pidfile, std::string lockfile, std::string user);
 
-    static int KillByPidfile(std::string pidfile);
+    static int KillByPidfile(std::string pidfile, std::string lockfile);
 
   private:
     int fLock;
