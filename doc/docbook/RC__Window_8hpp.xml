@@ -12,13 +12,6 @@
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>struct <link linkend="structrc_1_1imageObj">rc::imageObj</link></para>
-                    </listitem>
-                </itemizedlist>
-            </para>
-            <para>
-                <itemizedlist>
-                    <listitem>
                         <para>struct <link linkend="classrc_1_1Window">rc::Window</link></para>
                     </listitem>
                 </itemizedlist>

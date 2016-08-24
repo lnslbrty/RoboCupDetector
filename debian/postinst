@@ -20,7 +20,7 @@ set -e
 
 case "$1" in
     configure)
-        useradd -r -M -g nogroup -G audio,video,plugdev,spi,i2c,gpio -s /bin/false robocup
+        useradd -r -M -g nogroup -G audio,video,plugdev,spi,i2c,gpio -s /bin/false robocup || true
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)

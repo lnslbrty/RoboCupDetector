@@ -22,7 +22,7 @@ export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 	dh $@
 
 override_dh_auto_configure:
-	dh_auto_configure -- -DCMAKE_INSTALL_PREFIX:PATH=/usr -DUSE_XWINDOW=true -DENABLE_VIDEO=true -DUSE_XWINDOW_FLTRD=true -DENABLE_DEBUG=false
+	dh_auto_configure -- -DCMAKE_INSTALL_PREFIX:PATH=/usr -DENABLE_DEBUG=false
 
 override_dh_auto_install:
 	dh_auto_install --destdir=debian/tmp

@@ -2,7 +2,7 @@
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classrc_1_1BlobDetector">
 <title>rc::BlobDetector class Reference</title>
         <simplesect>
-            <title>Standartkonstruktor</title>
+            <title>Konstruktor</title>
             <para>
                 <itemizedlist>
                     <listitem>
@@ -30,13 +30,36 @@
                 <formalpara>
                     <title/>
                     <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>Quellbild</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>zu</entry>
+                                <entry>
+<para>filternde Farbe </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                
+                <formalpara>
+                    <title/>
+                    <table frame="all">
                         <title>Return values                        </title>
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
                         <tbody>
                             <row>
-                                <entry>Die</entry>
+                                <entry>die</entry>
                                 <entry>
-<para>gefilterte OpenCV Matrix. </para>
+<para>gefilterte OpenCV Matrix </para>
 </entry>
                             </row>
                         </tbody>
@@ -55,7 +78,7 @@ cv::Mat src, enum roboColor rcol)</para>
             </para>
         </simplesect>
         <simplesect>
-            <title>Filtert bestimmte Farbbereiche eines Bildes zur weiterverarbeitung.</title>
+            <title>Sucht nach Konturen in einem Bild</title>
       <description>
 <para>
                 <formalpara>
@@ -70,6 +93,29 @@ cv::Mat src, enum roboColor rcol)</para>
 <para>zu filternde Bild. </para>
 </entry>
                             </row>
+                            <row>
+                                <entry>die</entry>
+                                <entry>
+<para>zu filternde Farbe </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Return values                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>Matrix</entry>
+                                <entry>
+<para>nach dem Farbfilter </para>
+</entry>
+                            </row>
                         </tbody>
                         </tgroup>
                     </table>
@@ -79,8 +125,8 @@ cv::Mat src, enum roboColor rcol)</para>
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>cv::Mat <link linkend="classrc_1_1BlobDetector_1a07a996624a6ef0df47dacfd85f8be60b">process</link> (
-cv::Mat &amp; image)</para>
+                        <para>cv::Mat <link linkend="classrc_1_1BlobDetector_1adaeea6379922318a115f930ce9c5c93f">process</link> (
+cv::Mat &amp; image, enum roboColor rc)</para>
                     </listitem>
                 </itemizedlist>
             </para>

@@ -48,13 +48,6 @@
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>struct <link linkend="structrc_1_1imageObj">rc::imageObj</link></para>
-                    </listitem>
-                </itemizedlist>
-            </para>
-            <para>
-                <itemizedlist>
-                    <listitem>
                         <para>struct <link linkend="classrc_1_1Semaphore">rc::Semaphore</link></para>
                     </listitem>
                 </itemizedlist>
@@ -124,17 +117,6 @@ void )</para>
                             <para><literallayout>enum <link linkend="namespacerc_1a79a656935f516f1a4339ad99f367934b">roboColor</link> {
 <link linkend="namespacerc_1a79a656935f516f1a4339ad99f367934bae053030761daf455278efb2517e3e1b9">RB_YELLOW</link>,
 <link linkend="namespacerc_1a79a656935f516f1a4339ad99f367934bad3af77d645b72510dcacc6631440cbd2">RB_BLUE</link>
-}</literallayout>
-</para>
-                    </listitem>
-                </itemizedlist>
-            </para>
-            <para>
-                <itemizedlist>
-                    <listitem>
-                            <para><literallayout>enum <link linkend="namespacerc_1a7be67fa6e9ec3e19fcc2df0777ab42fe">imageType</link> {
-<link linkend="namespacerc_1a7be67fa6e9ec3e19fcc2df0777ab42fea160db3cf214c7d8d6b3996d1665b3eb0">IMG_ORIGINAL</link>,
-<link linkend="namespacerc_1a7be67fa6e9ec3e19fcc2df0777ab42fea6a7ce356103f2fe45a6425a76154d594">IMG_FILTERED</link>
 }</literallayout>
 </para>
                     </listitem>

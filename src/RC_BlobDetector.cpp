@@ -1,23 +1,28 @@
 #include "RC_BlobDetector.hpp"
 
 
-cv::Mat rc::BlobDetector::process(cv::Mat& image) {
+cv::Mat rc::BlobDetector::process(cv::Mat& image, enum roboColor rc) {
   cv::Mat imgHSV, imgThresh;
 
-  imgThresh = this->filterColor(image, rc::RB_YELLOW);
-  medianBlur(imgThresh, imgThresh, 9);
+  /* Farbe filtern */
+  imgThresh = this->filterColor(image, rc);
+  /* Bild unscharf gestalten (Bildfehler/Farbrauschen korrigieren) */
+  cv::medianBlur(imgThresh, imgThresh, 13);
 
+  /* Konturen suchen und im Vector `contours` speichern */
   std::vector<std::vector<cv::Point>> contours;
   cv::Mat imgContour = imgThresh.clone();
-  cv::findContours(imgContour, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
+  cv::findContours(imgContour, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE);
 
+  /* Konturen im original Bild nachzeichnen, dabei ein Rechteck als Form der Kontur annehmen */
   cv::Scalar colors[3];
   colors[0] = cv::Scalar(255, 0, 0);
   colors[1] = cv::Scalar(255, 0, 0);
   colors[2] = cv::Scalar(255, 0, 0);
   for (size_t idx = 0; idx < contours.size(); idx++) {
+    /* Konturen nachzeichnen */
     cv::drawContours(image, contours, idx, colors[idx % 3]);
-
+    /* minimales Rechteck in die Kontur einpassen */
     cv::RotatedRect rotRect = cv::minAreaRect(contours[idx]);
     cv::Point2f rect_points[4]; 
     rotRect.points(rect_points);

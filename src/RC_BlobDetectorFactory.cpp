@@ -57,12 +57,12 @@ void rc::BlobDetectorFactory::startThreads(void) {
         bool ret = false;
         ret = this->getElement(image);
         if (ret && !image.empty()) {
+          cv::Mat filteredImageY = process(image, RB_YELLOW);
+          cv::Mat filteredImageB = process(image, RB_BLUE);
 #ifdef ENABLE_HTTPD
           httpd->setImage(0, image);
-#endif
-          cv::Mat filteredImage = process(image);
-#ifdef ENABLE_HTTPD
-          httpd->setImage(1, filteredImage);
+          httpd->setImage(1, filteredImageY);
+          httpd->setImage(2, filteredImageB);
 #endif
 #if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
           cv::Size size(this->width, this->height);
@@ -70,14 +70,7 @@ void rc::BlobDetectorFactory::startThreads(void) {
           cv::resize(image, resImage, size);
 #ifdef USE_XWINDOW
           if (win->isXWindow())
-            win->addImage(rc::IMG_ORIGINAL, resImage);
-#endif
-#ifdef USE_XWINDOW_FLTRD
-          if (win->isXWindowFltrd()) {
-            cv::Mat resFilteredImage;
-            cv::resize(filteredImage, resFilteredImage, size);
-            win->addImage(rc::IMG_FILTERED, resFilteredImage);
-          }
+            win->addImage(resImage);
 #endif
 #endif
 #ifdef ENABLE_VIDEO

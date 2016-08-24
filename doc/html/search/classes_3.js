@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['imageobj',['imageObj',['../structrc_1_1imageObj.html',1,'rc']]]
+  ['semaphore',['Semaphore',['../classrc_1_1Semaphore.html',1,'rc']]]
 ];

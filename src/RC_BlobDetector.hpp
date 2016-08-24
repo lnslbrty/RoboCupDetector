@@ -23,7 +23,7 @@ class BlobDetector {
 
   public:
     /**
-     * @name Standartkonstruktor
+     * @name Konstruktor
      */
     BlobDetector() {
     }
@@ -36,7 +36,9 @@ class BlobDetector {
 
     /**
      * @name Farbfilter
-     * @retval Die gefilterte OpenCV Matrix.
+     * @param Quellbild
+     * @param zu filternde Farbe
+     * @retval die gefilterte OpenCV Matrix
      */
     cv::Mat filterColor(cv::Mat src, enum roboColor rcol) {
       cv::Mat tmp, result;
@@ -45,19 +47,22 @@ class BlobDetector {
       // filtere HSV- Farbraum entsprechend der angegebenen roboColor
       switch (rcol) {
         case RB_YELLOW: /* GELB */
-          cv::inRange(tmp, cv::Scalar(0, 150, 150), cv::Scalar(50, 255, 255), result);
+          cv::inRange(tmp, cv::Scalar(0, 180, 145), cv::Scalar(50, 255, 255), result);
           break;
         case RB_BLUE:   /* BLAU */
+          cv::inRange(tmp, cv::Scalar(70, 30, 30), cv::Scalar(120, 255, 255), result);
           break;
       }
       return result;
     }
 
     /**
-     * @name Filtert bestimmte Farbbereiche eines Bildes zur weiterverarbeitung.
+     * @name Sucht nach Konturen in einem Bild
      * @param Das zu filternde Bild.
+     * @param die zu filternde Farbe
+     * @retval Matrix nach dem Farbfilter
      */
-    cv::Mat process(cv::Mat& image);
+    cv::Mat process(cv::Mat& image, enum roboColor rc);
 
 };
 }

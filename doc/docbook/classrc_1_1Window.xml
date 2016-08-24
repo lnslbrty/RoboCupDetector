@@ -20,7 +20,7 @@
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>std::queue&lt; struct imageObj &gt; images</para>
+                        <para>std::queue&lt; cv::Mat &gt; images</para>
                     </listitem>
                 </itemizedlist>
             </para>
@@ -68,8 +68,8 @@ void )</para>
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>void <link linkend="classrc_1_1Window_1aa34989ba0c08041b7e3bcc35125340ec">addImage</link> (
-enum imageType type, cv::Mat image)</para>
+                        <para>void <link linkend="classrc_1_1Window_1a922ff36f569afe178403740df2e24604">addImage</link> (
+cv::Mat image)</para>
                     </listitem>
                 </itemizedlist>
             </para>
@@ -100,8 +100,8 @@ void )</para>
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>void <link linkend="classrc_1_1Window_1aac13c76846e47e026d66eaf4a52fcd57">setXWindow</link> (
-bool enableWin, bool enableFltrd)</para>
+                        <para>void <link linkend="classrc_1_1Window_1a6acba37a50975d7315818d1a9722c7dc">setXWindow</link> (
+bool enableWin)</para>
                     </listitem>
                 </itemizedlist>
             </para>
@@ -113,22 +113,14 @@ void )</para>
                     </listitem>
                 </itemizedlist>
             </para>
-            <para>
-                <itemizedlist>
-                    <listitem>
-                        <para>bool <link linkend="classrc_1_1Window_1a01dcc54995ffd8c973423566b6734d44">isXWindowFltrd</link> (
-void )</para>
-                    </listitem>
-                </itemizedlist>
-            </para>
         </simplesect>
         <simplesect>
             <title></title>
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>void <link linkend="classrc_1_1Window_1a1c691c62fed36b8d170c441b7a0d2fa4">previewImage</link> (
-enum imageType itype, cv::Mat image)</para>
+                        <para>void <link linkend="classrc_1_1Window_1ad61f837b06e7cc8a2af1e2cb21e44ad7">previewImage</link> (
+cv::Mat image)</para>
                     </listitem>
                 </itemizedlist>
             </para>
@@ -153,8 +145,8 @@ void )</para>
                 <title>void rc::Window::stop (void)</title> <emphasis></emphasis>
                 
             </section>
-            <section xml:id="classrc_1_1Window_1aa34989ba0c08041b7e3bcc35125340ec">
-                <title>void rc::Window::addImage (enum imageType type, cv::Mat image)</title> <emphasis></emphasis>
+            <section xml:id="classrc_1_1Window_1a922ff36f569afe178403740df2e24604">
+                <title>void rc::Window::addImage (cv::Mat image)</title> <emphasis></emphasis>
                 
             </section>
             <section xml:id="classrc_1_1Window_1a15681842c7ce0ee6b9201cfa973d2ac1">
@@ -169,20 +161,16 @@ void )</para>
                 <title>size_t rc::Window::imagesQueueSize ()</title> <emphasis></emphasis>
                 
             </section>
-            <section xml:id="classrc_1_1Window_1aac13c76846e47e026d66eaf4a52fcd57">
-                <title>void rc::Window::setXWindow (bool enableWin, bool enableFltrd)</title> <emphasis></emphasis>
+            <section xml:id="classrc_1_1Window_1a6acba37a50975d7315818d1a9722c7dc">
+                <title>void rc::Window::setXWindow (bool enableWin)</title> <emphasis></emphasis>
                 
             </section>
             <section xml:id="classrc_1_1Window_1abd9877b14cf84b02e7c6ea54c23bc082">
                 <title>bool rc::Window::isXWindow (void)</title> <emphasis></emphasis>
                 
             </section>
-            <section xml:id="classrc_1_1Window_1a01dcc54995ffd8c973423566b6734d44">
-                <title>bool rc::Window::isXWindowFltrd (void)</title> <emphasis></emphasis>
-                
-            </section>
-            <section xml:id="classrc_1_1Window_1a1c691c62fed36b8d170c441b7a0d2fa4">
-                <title>void rc::Window::previewImage (enum imageType itype, cv::Mat image)</title> <emphasis></emphasis>
+            <section xml:id="classrc_1_1Window_1ad61f837b06e7cc8a2af1e2cb21e44ad7">
+                <title>void rc::Window::previewImage (cv::Mat image)</title> <emphasis></emphasis>
                 
             </section>
             <section xml:id="classrc_1_1Window_1a43290d2efed99c44495d5c1573bd583a">

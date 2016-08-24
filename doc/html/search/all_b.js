@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['thrds',['thrds',['../structcmd__opts.html#a7518cdbdbc6ed1b8cc404aa675f383a6',1,'cmd_opts']]]
+  ['unimplemented',['UNIMPLEMENTED',['../RC__Main_8cpp.html#a1a2717f1b81aff0aeaa7461a104df0e4',1,'RC_Main.cpp']]],
+  ['usexwindow',['useXWindow',['../structcmd__opts.html#aee44e8161de659e8fff50e09100f9ada',1,'cmd_opts']]]
 ];

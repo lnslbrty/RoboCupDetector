@@ -8,7 +8,7 @@ Inheritance diagram for rc\+:\+:Blob\+Detector\+:\begin{figure}[H]
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
-\begin{Indent}{\bf Standartkonstruktor}\par
+\begin{Indent}{\bf Konstruktor}\par
 \begin{DoxyCompactItemize}
 \item 
 \hypertarget{classrc_1_1BlobDetector_af7e4f2625974457c6949970d6bdd25dd}{{\bfseries Blob\+Detector} ()}\label{classrc_1_1BlobDetector_af7e4f2625974457c6949970d6bdd25dd}
@@ -24,8 +24,15 @@ Inheritance diagram for rc\+:\+:Blob\+Detector\+:\begin{figure}[H]
 \end{Indent}
 \begin{Indent}{\bf Farbfilter}\par
 {\em 
+\begin{DoxyParams}{Parameters}
+{\em Quellbild} & \\
+\hline
+{\em zu} & filternde Farbe \\
+\hline
+\end{DoxyParams}
+
 \begin{DoxyRetVals}{Return values}
-{\em Die} & gefilterte Open\+C\+V Matrix. \\
+{\em die} & gefilterte Open\+C\+V Matrix \\
 \hline
 \end{DoxyRetVals}
 }\begin{DoxyCompactItemize}
@@ -34,15 +41,22 @@ Inheritance diagram for rc\+:\+:Blob\+Detector\+:\begin{figure}[H]
 
 \end{DoxyCompactItemize}
 \end{Indent}
-\begin{Indent}{\bf Filtert bestimmte Farbbereiche eines Bildes zur weiterverarbeitung.}\par
+\begin{Indent}{\bf Sucht nach Konturen in einem Bild}\par
 {\em 
 \begin{DoxyParams}{Parameters}
 {\em Das} & zu filternde Bild. \\
 \hline
+{\em die} & zu filternde Farbe \\
+\hline
 \end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Matrix} & nach dem Farbfilter \\
+\hline
+\end{DoxyRetVals}
 }\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classrc_1_1BlobDetector_a07a996624a6ef0df47dacfd85f8be60b}{cv\+::\+Mat {\bfseries process} (cv\+::\+Mat \&image)}\label{classrc_1_1BlobDetector_a07a996624a6ef0df47dacfd85f8be60b}
+\hypertarget{classrc_1_1BlobDetector_adaeea6379922318a115f930ce9c5c93f}{cv\+::\+Mat {\bfseries process} (cv\+::\+Mat \&image, enum robo\+Color rc)}\label{classrc_1_1BlobDetector_adaeea6379922318a115f930ce9c5c93f}
 
 \end{DoxyCompactItemize}
 \end{Indent}

@@ -104,7 +104,7 @@ Inheritance diagram for rc::BlobDetector:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td colspan="2"><div class="groupHeader">Standartkonstruktor</div></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Konstruktor</div></td></tr>
 <tr class="memitem:af7e4f2625974457c6949970d6bdd25dd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7e4f2625974457c6949970d6bdd25dd"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>BlobDetector</b> ()</td></tr>
 <tr class="separator:af7e4f2625974457c6949970d6bdd25dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,9 +113,16 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~BlobDetector</b> ()</td></tr>
 <tr class="separator:a39ef0b4e8945d64e9348923a8cf57377"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Farbfilter</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><dl class="retval"><dt>Return values</dt><dd>
+<tr><td colspan="2"><div class="groupText"><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Quellbild</td><td></td></tr>
+    <tr><td class="paramname">zu</td><td>filternde Farbe </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
-    <tr><td class="paramname">Die</td><td>gefilterte OpenCV Matrix. </td></tr>
+    <tr><td class="paramname">die</td><td>gefilterte OpenCV Matrix </td></tr>
   </table>
   </dd>
 </dl>
@@ -123,17 +130,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1bec455c6bf7d4d8b2ae7c114320a8f1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bec455c6bf7d4d8b2ae7c114320a8f1"></a>
 cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>filterColor</b> (cv::Mat src, enum roboColor rcol)</td></tr>
 <tr class="separator:a1bec455c6bf7d4d8b2ae7c114320a8f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Filtert bestimmte Farbbereiche eines Bildes zur weiterverarbeitung.</div></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Sucht nach Konturen in einem Bild</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Das</td><td>zu filternde Bild. </td></tr>
+    <tr><td class="paramname">die</td><td>zu filternde Farbe </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Matrix</td><td>nach dem Farbfilter </td></tr>
   </table>
   </dd>
 </dl>
 </div></td></tr>
-<tr class="memitem:a07a996624a6ef0df47dacfd85f8be60b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a07a996624a6ef0df47dacfd85f8be60b"></a>
-cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>process</b> (cv::Mat &amp;image)</td></tr>
-<tr class="separator:a07a996624a6ef0df47dacfd85f8be60b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaeea6379922318a115f930ce9c5c93f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adaeea6379922318a115f930ce9c5c93f"></a>
+cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>process</b> (cv::Mat &amp;image, enum roboColor rc)</td></tr>
+<tr class="separator:adaeea6379922318a115f930ce9c5c93f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="RC__BlobDetector_8hpp_source.html">RC_BlobDetector.hpp</a></li>
@@ -142,7 +156,7 @@ cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>process</b> (cv::M
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 24 2016 01:24:48 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 24 2016 02:52:59 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

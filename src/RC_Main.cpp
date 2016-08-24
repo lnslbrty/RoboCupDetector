@@ -16,11 +16,6 @@
 #include "RC_Daemon.hpp"
 #include "RC_BlobDetectorFactory.hpp"
 
-/** Vorschaufenster Abhängigkeit */
-#if defined(USE_XWINDOW_FLTRD) && !defined(USE_XWINDOW)
-#error "USE_XWINDOW_FLTRD needs USE_XWINDOW"
-#endif
-
 /** Standartpfad für die ProzessID- Datei (daemon Modus) */
 #ifndef PIDFILE
 #define PIDFILE "/var/run/robocup.pid"
@@ -43,7 +38,6 @@ struct cmd_opts {
   unsigned long long int count; /** Anzahl der auszuwertenden Bilder */
   char* videoFile;              /** Pfad zur Videodatei (falls mit ENABLE_VIDEO kompiliert */
   bool useXWindow;              /** Vorschaubild rendern? (benötigt USE_XWINDOW) */
-  bool showFiltered;            /** gefiltertes Vorschaubild rendern? (benötigt USE_XWINDOW_FLTRD) */
   unsigned int width;           /** Bildbreite */
   unsigned int height;          /** Bildhöhr */
   uint8_t sat;                  /** Farbsättigung */
@@ -57,7 +51,7 @@ struct cmd_opts {
 #define UNIMPLEMENTED(feature) { fprintf(stderr, "%s: feature not implemented (%s)\n", argv[0], feature); exit(1); }
 
 /** Standartwerte für Konfigurationsvariablen der oben beschriebenen Datenstruktur */
-static struct cmd_opts opts = { 0,100,0,0,0,640,480,50,90,-1,4,2 };
+static struct cmd_opts opts = { 0,100,0,0,640,480,50,90,-1,4,2 };
 
 
 /**
@@ -82,9 +76,6 @@ static void usage(char* arg0) {
 #ifdef USE_XWINDOW
                   "XWINDOW options (X11 required):\n"
                   "\t-x             render images\n"
-#ifdef USE_XWINDOW_FLTRD
-                  "\t-f             render filtered image\n"
-#endif
 #endif
 #if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
                   "VIDEO/XWINDOW options:\n"
@@ -125,7 +116,7 @@ int main (int argc,char **argv) {
   time_t timer_begin,timer_end;
 
   char c;
-  while ((c = getopt(argc, argv, "SKn:s:g:e:t:c:v:xfw:h:pd")) != -1) {
+  while ((c = getopt(argc, argv, "SKn:s:g:e:t:c:v:xw:h:pd")) != -1) {
     if (c == 0xFF) break;
     switch (c) {
 
@@ -176,14 +167,6 @@ int main (int argc,char **argv) {
 #endif
         break;
       /*#####################*/
-      case 'f':
-#ifdef USE_XWINDOW_FLTRD
-        opts.showFiltered = true;
-#else
-        UNIMPLEMENTED("USE_XWINDOW_FLTRD");
-#endif
-        break;
-      /*#####################*/
       case 'w':
 #if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
         opts.width = strtoul(optarg, NULL, 10);
@@ -231,7 +214,7 @@ int main (int argc,char **argv) {
   detector.setExposure(opts.exp);
 #ifdef USE_XWINDOW
   /* Vorschaufenster Optionen setzen */
-  detector.getXWindow()->setXWindow( opts.useXWindow, opts.showFiltered );
+  detector.getXWindow()->setXWindow( opts.useXWindow );
 #endif
 #ifdef ENABLE_VIDEO
   /* Ausgabedatei des Videos festlegen */
@@ -268,8 +251,6 @@ int main (int argc,char **argv) {
 #ifdef USE_XWINDOW
   if (opts.useXWindow)
     std::cout <<"Open X11 preview window (after processing)"<<std::endl;
-  if (opts.showFiltered)
-    std::cout <<"Open X11 preview window (filtered image)"<<std::endl;
 #endif
 
   /* Startzeit feststellen (für FPS Berechnung) */
