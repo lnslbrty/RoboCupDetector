@@ -19,6 +19,7 @@
         <xi:include href="structrc_1_1imageObj.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
         <xi:include href="classraspicam_1_1RaspiCam__Cv.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
         <xi:include href="classrc_1_1Semaphore.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classrc_1_1WebServer.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
         <xi:include href="classrc_1_1Window.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     </chapter>
     <chapter>
@@ -36,6 +37,8 @@
         <xi:include href="RC__Main_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
         <xi:include href="RC__Semaphore_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
         <xi:include href="RC__Semaphore_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="RC__WebServer_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="RC__WebServer_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
         <xi:include href="RC__Window_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
         <xi:include href="RC__Window_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     </chapter>

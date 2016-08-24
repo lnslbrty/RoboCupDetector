@@ -38,7 +38,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -72,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -83,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacerc.html">rc</a></li><li class="navelem"><a class="el" href="classrc_1_1BlobDetector.html">BlobDetector</a></li>  </ul>
+<li class="navelem"><b>rc</b></li><li class="navelem"><a class="el" href="classrc_1_1BlobDetector.html">BlobDetector</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -109,33 +108,33 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af7e4f2625974457c6949970d6bdd25dd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7e4f2625974457c6949970d6bdd25dd"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>BlobDetector</b> ()</td></tr>
 <tr class="separator:af7e4f2625974457c6949970d6bdd25dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07a996624a6ef0df47dacfd85f8be60b"><td class="memItemLeft" align="right" valign="top">cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrc_1_1BlobDetector.html#a07a996624a6ef0df47dacfd85f8be60b">process</a> (cv::Mat &amp;image)</td></tr>
-<tr class="separator:a07a996624a6ef0df47dacfd85f8be60b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a07a996624a6ef0df47dacfd85f8be60b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">cv::Mat rc::BlobDetector::process </td>
-          <td>(</td>
-          <td class="paramtype">cv::Mat &amp;&#160;</td>
-          <td class="paramname"><em>image</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Filtert bestimmte Farbbereiche eines Bildes zur weiterverarbeitung.</p>
-<dl class="params"><dt>Parameters</dt><dd>
+<tr><td colspan="2"><div class="groupHeader">Destruktor</div></td></tr>
+<tr class="memitem:a39ef0b4e8945d64e9348923a8cf57377"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a39ef0b4e8945d64e9348923a8cf57377"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~BlobDetector</b> ()</td></tr>
+<tr class="separator:a39ef0b4e8945d64e9348923a8cf57377"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Farbfilter</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Die</td><td>gefilterte OpenCV Matrix. </td></tr>
+  </table>
+  </dd>
+</dl>
+</div></td></tr>
+<tr class="memitem:a1bec455c6bf7d4d8b2ae7c114320a8f1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bec455c6bf7d4d8b2ae7c114320a8f1"></a>
+cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>filterColor</b> (cv::Mat src, enum roboColor rcol)</td></tr>
+<tr class="separator:a1bec455c6bf7d4d8b2ae7c114320a8f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Filtert bestimmte Farbbereiche eines Bildes zur weiterverarbeitung.</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Das</td><td>zu filternde Bild. </td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
+</div></td></tr>
+<tr class="memitem:a07a996624a6ef0df47dacfd85f8be60b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a07a996624a6ef0df47dacfd85f8be60b"></a>
+cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>process</b> (cv::Mat &amp;image)</td></tr>
+<tr class="separator:a07a996624a6ef0df47dacfd85f8be60b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="RC__BlobDetector_8hpp_source.html">RC_BlobDetector.hpp</a></li>
 <li>src/RC_BlobDetector.cpp</li>
@@ -143,7 +142,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 10 2016 11:29:10 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 24 2016 01:24:48 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

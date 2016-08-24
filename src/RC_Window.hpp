@@ -1,6 +1,8 @@
 /**
- * Date: 28.05.2016
- * Author: Toni Uhlig (matzeton@googlemail.com)
+ * @file    RC_Window.hpp
+ * @author  Toni Uhlig <matzeton@googlemail.com>
+ * @date    25.05.2016
+ * @version 1.0
  */
 
 #ifndef RC_WINDOW_H

@@ -38,7 +38,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -72,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -83,12 +82,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacerc.html">rc</a></li><li class="navelem"><a class="el" href="classrc_1_1CircularBuffer.html">CircularBuffer</a></li>  </ul>
+<li class="navelem"><b>rc</b></li><li class="navelem"><a class="el" href="classrc_1_1CircularBuffer.html">CircularBuffer</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classrc_1_1CircularBuffer-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">rc::CircularBuffer&lt; T &gt; Class Template Reference</div>  </div>
@@ -97,21 +95,61 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Konstruktor für zirkulären Pufferspeicher</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Anzahl "frischer" Einträge</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">maximale</td><td>Größe des Pufferspeichers (Anzahl der Elemente) </td></tr>
+  </table>
+  </dd>
+</dl>
+</div></td></tr>
 <tr class="memitem:af0abd0737caf863845860418e36cee61"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af0abd0737caf863845860418e36cee61"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>CircularBuffer</b> (unsigned int maxElements)</td></tr>
 <tr class="separator:af0abd0737caf863845860418e36cee61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Destruktor</div></td></tr>
+<tr class="memitem:a5d0be18eb4de56cacfcc716c55e55639"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5d0be18eb4de56cacfcc716c55e55639"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~CircularBuffer</b> (void)</td></tr>
+<tr class="separator:a5d0be18eb4de56cacfcc716c55e55639"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">neues Element dem Pufferspeicher hinzufügen</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Element</td><td>vom Typ des Templates </td></tr>
+  </table>
+  </dd>
+</dl>
+</div></td></tr>
 <tr class="memitem:aa03a62fe9deae36e5b83200f9f7a2c24"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa03a62fe9deae36e5b83200f9f7a2c24"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>addElement</b> (T &amp;elem)</td></tr>
 <tr class="separator:aa03a62fe9deae36e5b83200f9f7a2c24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">maximale Anzahl der Elemente im Pufferspeicher zurückgeben</div></td></tr>
 <tr class="memitem:ae4194d665b35b6a86444f54c759878b7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae4194d665b35b6a86444f54c759878b7"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getMaxElementCount</b> (void)</td></tr>
 <tr class="separator:ae4194d665b35b6a86444f54c759878b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">nächsten "freien" Index zurückgeben</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Gibt die nächste "freie" (d.h. processed=false) Indexposition im Puffer zurück. </p>
+</div></td></tr>
 <tr class="memitem:a07d170b88c762967442b90ef2a4848fa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a07d170b88c762967442b90ef2a4848fa"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getNextIndex</b> (void)</td></tr>
 <tr class="separator:a07d170b88c762967442b90ef2a4848fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Anzahl "freier" (d.h. processed=false) Elemente zurückgeben</div></td></tr>
 <tr class="memitem:a1bb2a9a349df4e9b8e213434725c8b8f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bb2a9a349df4e9b8e213434725c8b8f"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getElementCount</b> (void)</td></tr>
 <tr class="separator:a1bb2a9a349df4e9b8e213434725c8b8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Sucht nach dem nächsten "freien" Element</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">eine</td><td>Referenz vom Typ des Templates </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true,wenn</td><td>ein freies Element vorhanden, andernfalls false </td></tr>
+  </table>
+  </dd>
+</dl>
+</div></td></tr>
 <tr class="memitem:a4ef798c56ada44df67cc4bb5ae1a08eb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ef798c56ada44df67cc4bb5ae1a08eb"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>getElement</b> (T &amp;arg)</td></tr>
 <tr class="separator:a4ef798c56ada44df67cc4bb5ae1a08eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,7 +161,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>getElement</b> (T &am
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 10 2016 11:29:10 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 24 2016 01:24:48 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

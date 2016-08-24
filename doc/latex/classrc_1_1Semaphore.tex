@@ -2,16 +2,36 @@
 \label{classrc_1_1Semaphore}\index{rc\+::\+Semaphore@{rc\+::\+Semaphore}}
 }
 \subsection*{Public Member Functions}
-\begin{DoxyCompactItemize}
+\begin{Indent}{\bf Semaphore Konstruktor}\par
+{\em aktuelle Anzahl der Konsumeinheiten
+
+
+\begin{DoxyParams}{Parameters}
+{\em maximale} & Anzahl der Konsumeinheiten \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
 \item 
 \hypertarget{classrc_1_1Semaphore_a6260f609fc0499bf67a7e5c77198f746}{{\bfseries Semaphore} (unsigned int \+\_\+max\+Count)}\label{classrc_1_1Semaphore_a6260f609fc0499bf67a7e5c77198f746}
 
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Destruktor}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Semaphore_ad7bb5c31cb578f9fb68983a23bd6a3e7}{{\bfseries $\sim$\+Semaphore} (void)}\label{classrc_1_1Semaphore_ad7bb5c31cb578f9fb68983a23bd6a3e7}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Alle aufrufenden Threads blockieren, bis `count` == 0 ist}\par
+{\em Jeder Thread, der diese Methode aufruft, wird blockiert bis {\ttfamily count} == 0 ist }\begin{DoxyCompactItemize}
 \item 
 \hypertarget{classrc_1_1Semaphore_a0fe2e6a5966af9b2e03dc5f8ffd64aff}{void {\bfseries Synchronize} (void)}\label{classrc_1_1Semaphore_a0fe2e6a5966af9b2e03dc5f8ffd64aff}
 
 \end{DoxyCompactItemize}
+\end{Indent}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/R\+C\+\_\+\+Semaphore.\+hpp\end{DoxyCompactItemize}
+src/\hyperlink{RC__Semaphore_8hpp}{R\+C\+\_\+\+Semaphore.\+hpp}\end{DoxyCompactItemize}

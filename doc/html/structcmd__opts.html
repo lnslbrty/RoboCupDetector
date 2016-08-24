@@ -38,7 +38,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -72,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -114,6 +113,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>daemonize</b></td></t
 <tr class="separator:a55323cae5dfbafe672e6581da99985b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6ef1ebf0fbaa8bd7016a8ef1a2c5ef4"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcmd__opts.html#aa6ef1ebf0fbaa8bd7016a8ef1a2c5ef4">exp</a></td></tr>
 <tr class="separator:aa6ef1ebf0fbaa8bd7016a8ef1a2c5ef4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7518cdbdbc6ed1b8cc404aa675f383a6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcmd__opts.html#a7518cdbdbc6ed1b8cc404aa675f383a6">thrds</a></td></tr>
+<tr class="separator:a7518cdbdbc6ed1b8cc404aa675f383a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d2fcb749257ff950fabdb000999d7f9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcmd__opts.html#a6d2fcb749257ff950fabdb000999d7f9">cvthrds</a></td></tr>
+<tr class="separator:a6d2fcb749257ff950fabdb000999d7f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Datenstruktur für Kommandozeilen Parameter </p>
@@ -128,6 +131,19 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>daemonize</b></td></t
       </table>
 </div><div class="memdoc">
 <p>Daemonmodus </p>
+
+</div>
+</div>
+<a class="anchor" id="a6d2fcb749257ff950fabdb000999d7f9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t cmd_opts::cvthrds</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>RoboCup Bilderkennungs- Threads </p>
 
 </div>
 </div>
@@ -196,6 +212,19 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>daemonize</b></td></t
 
 </div>
 </div>
+<a class="anchor" id="a7518cdbdbc6ed1b8cc404aa675f383a6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t cmd_opts::thrds</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Belichtungsdauer </p>
+
+</div>
+</div>
 <a class="anchor" id="aee44e8161de659e8fff50e09100f9ada"></a>
 <div class="memitem">
 <div class="memproto">
@@ -241,7 +270,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>daemonize</b></td></t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 10 2016 11:29:10 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 24 2016 01:24:48 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

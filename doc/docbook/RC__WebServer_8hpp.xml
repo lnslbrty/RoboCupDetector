@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="RC__WebServer_8hpp">
+    <title>RC_WebServer.hpp File Reference</title>
+    <programlisting>#include &lt;thread&gt;</programlisting>
+    <programlisting>#include &lt;mutex&gt;</programlisting>
+    <programlisting>#include &lt;raspicam/raspicam_cv.h&gt;</programlisting>
+    <programlisting>#include &lt;opencv2/opencv.hpp&gt;</programlisting>
+    <programlisting>#include &lt;microhttpd.h&gt;</programlisting>
+        <simplesect>
+            <title> Classes </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classrc_1_1WebServer">rc::WebServer</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title> Namespaces </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="namespacerc">rc</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+
+<para><formalpara><title>Author: </title>
+
+<para>Toni Uhlig <link xlink:href="mailto:matzeton@googlemail.com">matzeton@googlemail.com</link> </para>
+</formalpara>
+<formalpara><title>Date: </title>
+
+<para>20.08.2016 </para>
+</formalpara>
+<formalpara><title>Version: </title>
+
+<para>1.0 </para>
+</formalpara>
+</para>
+    <para>Definition in file /home/pi/bsz7_robocup/src/RC_WebServer.hpp</para>
+    </simplesect>
+</section>

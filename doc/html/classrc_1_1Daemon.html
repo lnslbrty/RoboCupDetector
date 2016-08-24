@@ -38,7 +38,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -72,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -83,13 +82,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacerc.html">rc</a></li><li class="navelem"><a class="el" href="classrc_1_1Daemon.html">Daemon</a></li>  </ul>
+<li class="navelem"><b>rc</b></li><li class="navelem"><a class="el" href="classrc_1_1Daemon.html">Daemon</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classrc_1_1Daemon-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">rc::Daemon Class Reference</div>  </div>
@@ -98,18 +95,63 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Destruktor</div></td></tr>
+<tr class="memitem:a17b1d9a98318424c5b0893a5535b3f39"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17b1d9a98318424c5b0893a5535b3f39"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~Daemon</b> (void)</td></tr>
+<tr class="separator:a17b1d9a98318424c5b0893a5535b3f39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">RoboCup als Systemdienst starten</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Dateipfad</td><td>zur pidfile </td></tr>
+    <tr><td class="paramname">Dateipfad</td><td>zur lockfile </td></tr>
+    <tr><td class="paramname">Name</td><td>des non-root users unter welchem der Dienst laufen soll (DEAKTIVIERT!) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true,wenn</td><td>der Dienst (fork(...)) erfolgreich war, sonst false </td></tr>
+  </table>
+  </dd>
+</dl>
+</div></td></tr>
 <tr class="memitem:a53ac269d47da15e64060e95c9d940326"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a53ac269d47da15e64060e95c9d940326"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>Daemonize</b> (std::string pidfile, std::string lockfile, std::string user)</td></tr>
 <tr class="separator:a53ac269d47da15e64060e95c9d940326"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Instanz der Singleton- Klasse holen</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Daemon-</td><td>Objekt </td></tr>
+  </table>
+  </dd>
+</dl>
+</div></td></tr>
 <tr class="memitem:aa2428f2ddc48f857a3322da05d3c4b61"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2428f2ddc48f857a3322da05d3c4b61"></a>
 static <a class="el" href="classrc_1_1Daemon.html">Daemon</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>instance</b> (void)</td></tr>
 <tr class="separator:aa2428f2ddc48f857a3322da05d3c4b61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2fc0295df3f758b4522198e01df1f24"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af2fc0295df3f758b4522198e01df1f24"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>KillByPidfile</b> (std::string pidfile)</td></tr>
-<tr class="separator:af2fc0295df3f758b4522198e01df1f24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
+RoboCup Systemdienst beenden</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrp53b79b5f913ccbd72023be0cd06fb61f"></a></p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Dateipfad</td><td>zur pidfile </td></tr>
+    <tr><td class="paramname">Dateipfad</td><td>zur lockfile </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true,wenn</td><td>der Dienst erfolgreich beendet werden konnte, sonst false </td></tr>
+  </table>
+  </dd>
+</dl>
+</td></tr>
+<tr class="memitem:ae302feb46ccb0fc79c585082036328ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae302feb46ccb0fc79c585082036328ba"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>KillByPidfile</b> (std::string pidfile, std::string lockfile)</td></tr>
+<tr class="separator:ae302feb46ccb0fc79c585082036328ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="RC__Daemon_8hpp_source.html">RC_Daemon.hpp</a></li>
@@ -118,7 +160,7 @@ static int&#160;</td><td class="memItemRight" valign="bottom"><b>KillByPidfile</
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 10 2016 11:29:10 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 24 2016 01:24:48 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

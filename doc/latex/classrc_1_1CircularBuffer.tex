@@ -2,29 +2,80 @@
 \label{classrc_1_1CircularBuffer}\index{rc\+::\+Circular\+Buffer$<$ T $>$@{rc\+::\+Circular\+Buffer$<$ T $>$}}
 }
 \subsection*{Public Member Functions}
-\begin{DoxyCompactItemize}
+\begin{Indent}{\bf Konstruktor für zirkulären Pufferspeicher}\par
+{\em Anzahl \char`\"{}frischer\char`\"{} Einträge
+
+
+\begin{DoxyParams}{Parameters}
+{\em maximale} & Größe des Pufferspeichers (Anzahl der Elemente) \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
 \item 
 \hypertarget{classrc_1_1CircularBuffer_af0abd0737caf863845860418e36cee61}{{\bfseries Circular\+Buffer} (unsigned int max\+Elements)}\label{classrc_1_1CircularBuffer_af0abd0737caf863845860418e36cee61}
 
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Destruktor}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1CircularBuffer_a5d0be18eb4de56cacfcc716c55e55639}{{\bfseries $\sim$\+Circular\+Buffer} (void)}\label{classrc_1_1CircularBuffer_a5d0be18eb4de56cacfcc716c55e55639}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf neues Element dem Pufferspeicher hinzufügen}\par
+{\em 
+\begin{DoxyParams}{Parameters}
+{\em Element} & vom Typ des Templates \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
 \item 
 \hypertarget{classrc_1_1CircularBuffer_aa03a62fe9deae36e5b83200f9f7a2c24}{void {\bfseries add\+Element} (T \&elem)}\label{classrc_1_1CircularBuffer_aa03a62fe9deae36e5b83200f9f7a2c24}
 
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf maximale Anzahl der Elemente im Pufferspeicher zurückgeben}\par
+\begin{DoxyCompactItemize}
 \item 
 \hypertarget{classrc_1_1CircularBuffer_ae4194d665b35b6a86444f54c759878b7}{unsigned int {\bfseries get\+Max\+Element\+Count} (void)}\label{classrc_1_1CircularBuffer_ae4194d665b35b6a86444f54c759878b7}
 
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf nächsten \char`\"{}freien\char`\"{} Index zurückgeben}\par
+{\em Gibt die nächste \char`\"{}freie\char`\"{} (d.\+h. processed=false) Indexposition im Puffer zurück. }\begin{DoxyCompactItemize}
 \item 
 \hypertarget{classrc_1_1CircularBuffer_a07d170b88c762967442b90ef2a4848fa}{unsigned int {\bfseries get\+Next\+Index} (void)}\label{classrc_1_1CircularBuffer_a07d170b88c762967442b90ef2a4848fa}
 
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Anzahl \char`\"{}freier\char`\"{} (d.\+h. processed=false) Elemente zurückgeben}\par
+\begin{DoxyCompactItemize}
 \item 
 \hypertarget{classrc_1_1CircularBuffer_a1bb2a9a349df4e9b8e213434725c8b8f}{unsigned int {\bfseries get\+Element\+Count} (void)}\label{classrc_1_1CircularBuffer_a1bb2a9a349df4e9b8e213434725c8b8f}
 
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Sucht nach dem nächsten \char`\"{}freien\char`\"{} Element}\par
+{\em 
+\begin{DoxyParams}{Parameters}
+{\em eine} & Referenz vom Typ des Templates \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em true,wenn} & ein freies Element vorhanden, andernfalls false \\
+\hline
+\end{DoxyRetVals}
+}\begin{DoxyCompactItemize}
 \item 
 \hypertarget{classrc_1_1CircularBuffer_a4ef798c56ada44df67cc4bb5ae1a08eb}{bool {\bfseries get\+Element} (T \&arg)}\label{classrc_1_1CircularBuffer_a4ef798c56ada44df67cc4bb5ae1a08eb}
 
 \end{DoxyCompactItemize}
+\end{Indent}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/R\+C\+\_\+\+Circular\+Buffer.\+hpp\item 
+src/\hyperlink{RC__CircularBuffer_8hpp}{R\+C\+\_\+\+Circular\+Buffer.\+hpp}\item 
 src/R\+C\+\_\+\+Circular\+Buffer.\+cpp\end{DoxyCompactItemize}

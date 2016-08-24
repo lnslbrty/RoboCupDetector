@@ -8,10 +8,14 @@
     <programlisting>#include &lt;atomic&gt;</programlisting>
     <programlisting>#include &lt;chrono&gt;</programlisting>
     <programlisting>#include &lt;thread&gt;</programlisting>
+    <programlisting>#include &lt;string.h&gt;</programlisting>
+    <programlisting>#include &lt;errno.h&gt;</programlisting>
     <programlisting>#include &lt;unistd.h&gt;</programlisting>
     <programlisting>#include &lt;signal.h&gt;</programlisting>
     <programlisting>#include &lt;sys/stat.h&gt;</programlisting>
     <programlisting>#include &lt;fcntl.h&gt;</programlisting>
+    <programlisting>#include &lt;sys/types.h&gt;</programlisting>
+    <programlisting>#include &lt;pwd.h&gt;</programlisting>
         <simplesect>
             <title>Functions</title>
             <para>

@@ -62,13 +62,73 @@
             <para>
                 <itemizedlist>
                     <listitem>
+                        <para>struct <link linkend="classrc_1_1WebServer">rc::WebServer</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
                         <para>struct <link linkend="classrc_1_1Window">rc::Window</link></para>
                     </listitem>
                 </itemizedlist>
             </para>
         </simplesect>
         <simplesect>
+            <title>Prüfung ob Dienst bereits terminiert wird/wurde</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Return values                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>true, wenn</entry>
+                                <entry>
+<para>Dienst bereits terminiert, sonst false </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="namespacerc_1a793e3f430d5b5c99fe110a6a14ffcc6b">isDaemonTerminate</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Reaktion auf Systemspez. Signale festlegen</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="namespacerc_1a394315bf537365634692ccb2bc32b287">setSignals</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
             <title>Enumerations</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para><literallayout>enum <link linkend="namespacerc_1a79a656935f516f1a4339ad99f367934b">roboColor</link> {
+<link linkend="namespacerc_1a79a656935f516f1a4339ad99f367934bae053030761daf455278efb2517e3e1b9">RB_YELLOW</link>,
+<link linkend="namespacerc_1a79a656935f516f1a4339ad99f367934bad3af77d645b72510dcacc6631440cbd2">RB_BLUE</link>
+}</literallayout>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
             <para>
                 <itemizedlist>
                     <listitem>
@@ -80,34 +140,5 @@
                     </listitem>
                 </itemizedlist>
             </para>
-        </simplesect>
-        <simplesect>
-            <title>Functions</title>
-            <para>
-                <itemizedlist>
-                    <listitem>
-                        <para>bool <link linkend="namespacerc_1a793e3f430d5b5c99fe110a6a14ffcc6b">isDaemonTerminate</link> (
-void )</para>
-                    </listitem>
-                </itemizedlist>
-            </para>
-            <para>
-                <itemizedlist>
-                    <listitem>
-                        <para>void <link linkend="namespacerc_1a394315bf537365634692ccb2bc32b287">setSignals</link> (
-void )</para>
-                    </listitem>
-                </itemizedlist>
-            </para>
-        </simplesect>
-        <simplesect>
-            <title>Detailed Description</title>
-
-<para>Date: 24.05.2016 Author: Toni Uhlig <link xlink:href="mailto:matzeton@googlemail.com">matzeton@googlemail.com</link></para>
-
-<para>Date: 28.05.2016 Author: Toni Uhlig (<link xlink:href="mailto:matzeton@googlemail.com">matzeton@googlemail.com</link>) </para>
-                <para>Definition at line 15 of file RC_BlobDetector.hpp</para>
-                <para>The Documentation for this struct was generated from the following file: </para>
-                <para><itemizedlist><listitem><para>RC_BlobDetector.hpp</para></listitem></itemizedlist></para>
         </simplesect>
 </section>

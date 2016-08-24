@@ -36,6 +36,20 @@
         </simplesect>
     <simplesect>
         <title>Detailed Description</title>
+
+<para><formalpara><title>Author: </title>
+
+<para>Toni Uhlig <link xlink:href="mailto:matzeton@googlemail.com">matzeton@googlemail.com</link> </para>
+</formalpara>
+<formalpara><title>Date: </title>
+
+<para>25.05.2016 </para>
+</formalpara>
+<formalpara><title>Version: </title>
+
+<para>1.0 </para>
+</formalpara>
+</para>
     <para>Definition in file /home/pi/bsz7_robocup/src/RC_Window.hpp</para>
     </simplesect>
 </section>

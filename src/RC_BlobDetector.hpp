@@ -13,6 +13,8 @@
 
 
 namespace rc {
+
+/** zu filternde Farbe */
 enum roboColor {
   RB_YELLOW, RB_BLUE
 };
@@ -52,8 +54,7 @@ class BlobDetector {
     }
 
     /**
-     * Filtert bestimmte Farbbereiche eines Bildes zur weiterverarbeitung.
-     *
+     * @name Filtert bestimmte Farbbereiche eines Bildes zur weiterverarbeitung.
      * @param Das zu filternde Bild.
      */
     cv::Mat process(cv::Mat& image);

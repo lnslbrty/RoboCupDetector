@@ -24,12 +24,16 @@
                     </listitem>
                 </itemizedlist>
             </para>
-            <para>
-                <itemizedlist>
-                    <listitem>
-                        <para>unsigned int id</para>
-                    </listitem>
-                </itemizedlist>
-            </para>
+        </simplesect>
+        <simplesect>
+            <title>Member Documentation</title>
+            <simplesect>
+                <title>bool rc::cbElement&lt; T &gt;::processed</title>                
+<para>aktuelles Element </para>
+
+                <para>Definition at line 22 of file RC_CircularBuffer.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_CircularBuffer.hpp</para></listitem></itemizedlist></para>
+            </simplesect>
         </simplesect>
 </section>

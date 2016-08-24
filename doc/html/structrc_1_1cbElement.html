@@ -38,7 +38,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -72,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -83,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacerc.html">rc</a></li><li class="navelem"><a class="el" href="structrc_1_1cbElement.html">cbElement</a></li>  </ul>
+<li class="navelem"><b>rc</b></li><li class="navelem"><a class="el" href="structrc_1_1cbElement.html">cbElement</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -100,20 +99,32 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a9e0ab0b1cc53698c5aedf11997ffd261"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e0ab0b1cc53698c5aedf11997ffd261"></a>
 T&#160;</td><td class="memItemRight" valign="bottom"><b>element</b></td></tr>
 <tr class="separator:a9e0ab0b1cc53698c5aedf11997ffd261"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a721d493bd93248172628c48c4526f105"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a721d493bd93248172628c48c4526f105"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>processed</b></td></tr>
+<tr class="memitem:a721d493bd93248172628c48c4526f105"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrc_1_1cbElement.html#a721d493bd93248172628c48c4526f105">processed</a></td></tr>
 <tr class="separator:a721d493bd93248172628c48c4526f105"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a101e7ac69a01db74bf72a1a2b768a6d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a101e7ac69a01db74bf72a1a2b768a6d6"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
-<tr class="separator:a101e7ac69a01db74bf72a1a2b768a6d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a721d493bd93248172628c48c4526f105"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="structrc_1_1cbElement.html">rc::cbElement</a>&lt; T &gt;::processed</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>aktuelles Element </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/<a class="el" href="RC__CircularBuffer_8hpp_source.html">RC_CircularBuffer.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 10 2016 11:29:10 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 24 2016 01:24:48 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

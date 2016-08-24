@@ -11,6 +11,71 @@
                     </listitem>
                 </itemizedlist>
             </para>
+        </simplesect>
+        <simplesect>
+            <title>Destruktor</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1BlobDetector_1a39ef0b4e8945d64e9348923a8cf57377">~BlobDetector</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Farbfilter</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Return values                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>Die</entry>
+                                <entry>
+<para>gefilterte OpenCV Matrix. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>cv::Mat <link linkend="classrc_1_1BlobDetector_1a1bec455c6bf7d4d8b2ae7c114320a8f1">filterColor</link> (
+cv::Mat src, enum roboColor rcol)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Filtert bestimmte Farbbereiche eines Bildes zur weiterverarbeitung.</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>Das</entry>
+                                <entry>
+<para>zu filternde Bild. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
             <para>
                 <itemizedlist>
                     <listitem>

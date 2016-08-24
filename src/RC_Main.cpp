@@ -134,7 +134,7 @@ int main (int argc,char **argv) {
         break;
       /*######################*/
       case 'K':
-        return rc::Daemon::KillByPidfile(PIDFILE, LOCKFILE);
+        return (rc::Daemon::KillByPidfile(PIDFILE, LOCKFILE) == true ? 0 : 1);
       /*######################*/
       case 'n':
         opts.count     = strtoul(optarg, NULL, 10);

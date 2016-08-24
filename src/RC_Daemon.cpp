@@ -163,28 +163,35 @@ error:
   exit(1);
 }
 
-int rc::Daemon::KillByPidfile(std::string pidfile, std::string lockfile) {
-  int ret = 1;
+bool rc::Daemon::KillByPidfile(std::string pidfile, std::string lockfile) {
+  bool ret = false;
   std::ifstream pStrm(pidfile);
 
   if (getuid() != 0) {
     std::cerr <<"Only root is allowed to do this!"<<std::endl;
     return ret;
   }
+  /* pidfile öffnen */
   if (pStrm.is_open()) {
     std::string sPid;
+    /* Inhalt lesen */
     if (getline(pStrm, sPid)) {
       signal(SIGQUIT, SIG_IGN);
+      /* pid: String zu Integer */
       pid_t pid = std::stoi(sPid, nullptr, 10);
+      /* Prozess auf vorhandensein prüfen */
       if (kill(pid, 0) != 0) {
         std::cerr <<"Process with pid "<<pid<<" not found"<<std::endl;
         return ret;
       }
       std::cout <<"Sending SIGTERM to "<<pid<<std::endl;
-      ret = kill(pid, SIGTERM);
+      /* Prozess versuchen mit einem `SIGTERM` zu beenden */
+      ret = (kill(pid, SIGTERM) == 0 ? true : false);
       std::cout <<"Waiting for process .."<<std::endl;
+      /* Warten bis Prozess beendet */
       while (kill(pid, 0) == 0)
         std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+      /* sowohl pidfile als auch lockfile löschen */
       if (unlink(pidfile.c_str()) != 0 || unlink(lockfile.c_str()))
         std::cerr <<"Unlink ("<<pidfile.c_str()<<" | "<<lockfile.c_str()<<") returned: "<<strerror(errno)<<std::endl;
       std::cout <<"Killed: "<<pid<<std::endl;

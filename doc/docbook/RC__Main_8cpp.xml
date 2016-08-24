@@ -20,6 +20,20 @@
             </para>
         </simplesect>
         <simplesect>
+            <title>Kommandozeilenhilfe</title>
+      <description>
+<para>Eine kurze Übersicht über alle verfügbaren Konfigurationsvariablen </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static void <link linkend="RC__Main_8cpp_1aaf80f9fb89d95c7f2ca34709bcb092bf">usage</link> (
+char * arg0)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
             <title>`main` Funktion</title>
       <description>
 <para>Diese wird vom Betriebssystem während des Programmstartes als Einsprungspunkt genutzt</para>
@@ -89,17 +103,6 @@ int argc, char ** argv)</para>
                 <itemizedlist>
                     <listitem>
                         <para>static struct <link linkend="structcmd__opts">cmd_opts</link> <link linkend="RC__Main_8cpp_1a8a75f1b79dcb81a6e1003e0356e271b2">opts</link></para>
-                    </listitem>
-                </itemizedlist>
-            </para>
-        </simplesect>
-        <simplesect>
-            <title>Functions</title>
-            <para>
-                <itemizedlist>
-                    <listitem>
-                        <para>static void <link linkend="RC__Main_8cpp_1aaf80f9fb89d95c7f2ca34709bcb092bf">usage</link> (
-char * arg0)</para>
                     </listitem>
                 </itemizedlist>
             </para>

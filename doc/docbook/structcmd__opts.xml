@@ -73,12 +73,26 @@
                     </listitem>
                 </itemizedlist>
             </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t thrds</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t cvthrds</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
         </simplesect>
         <simplesect>
             <title>Detailed Description</title>
 
 <para>Datenstruktur für Kommandozeilen Parameter </para>
-                <para>Definition at line 40 of file RC_Main.cpp</para>
+                <para>Definition at line 41 of file RC_Main.cpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
         </simplesect>
@@ -88,7 +102,7 @@
                 <title>unsigned long long int cmd_opts::count</title>                
 <para>Daemonmodus </para>
 
-                <para>Definition at line 42 of file RC_Main.cpp</para>
+                <para>Definition at line 43 of file RC_Main.cpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -96,7 +110,7 @@
                 <title>char* cmd_opts::videoFile</title>                
 <para>Anzahl der auszuwertenden Bilder </para>
 
-                <para>Definition at line 43 of file RC_Main.cpp</para>
+                <para>Definition at line 44 of file RC_Main.cpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -104,7 +118,7 @@
                 <title>bool cmd_opts::useXWindow</title>                
 <para>Pfad zur Videodatei (falls mit ENABLE_VIDEO kompiliert </para>
 
-                <para>Definition at line 44 of file RC_Main.cpp</para>
+                <para>Definition at line 45 of file RC_Main.cpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -112,7 +126,7 @@
                 <title>bool cmd_opts::showFiltered</title>                
 <para>Vorschaubild rendern? (benötigt USE_XWINDOW) </para>
 
-                <para>Definition at line 45 of file RC_Main.cpp</para>
+                <para>Definition at line 46 of file RC_Main.cpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -120,7 +134,7 @@
                 <title>unsigned int cmd_opts::width</title>                
 <para>gefiltertes Vorschaubild rendern? (benötigt USE_XWINDOW_FLTRD) </para>
 
-                <para>Definition at line 46 of file RC_Main.cpp</para>
+                <para>Definition at line 47 of file RC_Main.cpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -128,7 +142,7 @@
                 <title>unsigned int cmd_opts::height</title>                
 <para>Bildbreite </para>
 
-                <para>Definition at line 47 of file RC_Main.cpp</para>
+                <para>Definition at line 48 of file RC_Main.cpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -136,7 +150,7 @@
                 <title>uint8_t cmd_opts::sat</title>                
 <para>Bildhöhr </para>
 
-                <para>Definition at line 48 of file RC_Main.cpp</para>
+                <para>Definition at line 49 of file RC_Main.cpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -144,7 +158,7 @@
                 <title>uint8_t cmd_opts::gain</title>                
 <para>Farbsättigung </para>
 
-                <para>Definition at line 49 of file RC_Main.cpp</para>
+                <para>Definition at line 50 of file RC_Main.cpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -152,7 +166,23 @@
                 <title>int8_t cmd_opts::exp</title>                
 <para>Bildverstärkung </para>
 
-                <para>Definition at line 50 of file RC_Main.cpp</para>
+                <para>Definition at line 51 of file RC_Main.cpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>uint8_t cmd_opts::thrds</title>                
+<para>Belichtungsdauer </para>
+
+                <para>Definition at line 52 of file RC_Main.cpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>uint8_t cmd_opts::cvthrds</title>                
+<para>RoboCup Bilderkennungs- Threads </para>
+
+                <para>Definition at line 53 of file RC_Main.cpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
             </simplesect>

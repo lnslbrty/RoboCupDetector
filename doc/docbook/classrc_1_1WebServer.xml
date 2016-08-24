@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classrc_1_1WebServer">
+<title>rc::WebServer class Reference</title>
+        <simplesect>
+            <title>Standartkonstruktor</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1WebServer_1afe32b4a720bb672a01b7e290507ae33e">WebServer</link> (
+int port, int image_count)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Destruktor</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::mutex images_mtx</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>cv::Mat * images_out</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::vector&lt; int &gt; imencode_flags</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>size_t image_cnt</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>size_t port</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>size_t frames</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct MHD_Daemon * httpd</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1WebServer_1a6b3b77c3c9bcc9668d558cbe71b57c15">~WebServer</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="classrc_1_1WebServer_1a44df359fc4f9e5e3209bf5cfcbb22980">start</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1WebServer_1a06ae92d6dadbbfdc4289c31fbfab6624">stop</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1WebServer_1af66eaf683e6e29c3f5c0530025aef5f7">setImage</link> (
+int idx, cv::Mat &amp; src)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>cv::Mat <link linkend="classrc_1_1WebServer_1afa3effc52a15f4bef40da8209502ac72">getImage</link> (
+int idx)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>size_t <link linkend="classrc_1_1WebServer_1a1f8551f408b09eb67a49d050f253ed1f">getFrames</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>size_t <link linkend="classrc_1_1WebServer_1ab0807008779f05091bab37f158b65b34">getCount</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::vector&lt; int &gt; &amp; <link linkend="classrc_1_1WebServer_1a877ed11cc160de9b56851dafe396d25a">getFlags</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+</section>

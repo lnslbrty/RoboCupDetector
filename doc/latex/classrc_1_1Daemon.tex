@@ -2,23 +2,69 @@
 \label{classrc_1_1Daemon}\index{rc\+::\+Daemon@{rc\+::\+Daemon}}
 }
 \subsection*{Public Member Functions}
+\begin{Indent}{\bf Destruktor}\par
 \begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Daemon_a17b1d9a98318424c5b0893a5535b3f39}{{\bfseries $\sim$\+Daemon} (void)}\label{classrc_1_1Daemon_a17b1d9a98318424c5b0893a5535b3f39}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Robo\+Cup als Systemdienst starten}\par
+{\em 
+\begin{DoxyParams}{Parameters}
+{\em Dateipfad} & zur pidfile \\
+\hline
+{\em Dateipfad} & zur lockfile \\
+\hline
+{\em Name} & des non-\/root users unter welchem der Dienst laufen soll (D\+E\+A\+K\+T\+I\+V\+I\+E\+R\+T!) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em true,wenn} & der Dienst (fork(...)) erfolgreich war, sonst false \\
+\hline
+\end{DoxyRetVals}
+}\begin{DoxyCompactItemize}
 \item 
 \hypertarget{classrc_1_1Daemon_a53ac269d47da15e64060e95c9d940326}{bool {\bfseries Daemonize} (std\+::string pidfile, std\+::string lockfile, std\+::string user)}\label{classrc_1_1Daemon_a53ac269d47da15e64060e95c9d940326}
 
 \end{DoxyCompactItemize}
+\end{Indent}
 \subsection*{Static Public Member Functions}
-\begin{DoxyCompactItemize}
+\begin{Indent}{\bf Instanz der Singleton-\/ Klasse holen}\par
+{\em 
+\begin{DoxyRetVals}{Return values}
+{\em Daemon-\/} & Objekt \\
+\hline
+\end{DoxyRetVals}
+}\begin{DoxyCompactItemize}
 \item 
 \hypertarget{classrc_1_1Daemon_aa2428f2ddc48f857a3322da05d3c4b61}{static \hyperlink{classrc_1_1Daemon}{Daemon} $\ast$ {\bfseries instance} (void)}\label{classrc_1_1Daemon_aa2428f2ddc48f857a3322da05d3c4b61}
 
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Robo\+Cup Systemdienst beenden}
+\label{_amgrp53b79b5f913ccbd72023be0cd06fb61f}%
+
+\begin{DoxyParams}{Parameters}
+{\em Dateipfad} & zur pidfile \\
+\hline
+{\em Dateipfad} & zur lockfile \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em true,wenn} & der Dienst erfolgreich beendet werden konnte, sonst false \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classrc_1_1Daemon_af2fc0295df3f758b4522198e01df1f24}{static int {\bfseries Kill\+By\+Pidfile} (std\+::string pidfile)}\label{classrc_1_1Daemon_af2fc0295df3f758b4522198e01df1f24}
+\hypertarget{classrc_1_1Daemon_ae302feb46ccb0fc79c585082036328ba}{static bool {\bfseries Kill\+By\+Pidfile} (std\+::string pidfile, std\+::string lockfile)}\label{classrc_1_1Daemon_ae302feb46ccb0fc79c585082036328ba}
 
 \end{DoxyCompactItemize}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/R\+C\+\_\+\+Daemon.\+hpp\item 
+src/\hyperlink{RC__Daemon_8hpp}{R\+C\+\_\+\+Daemon.\+hpp}\item 
 src/R\+C\+\_\+\+Daemon.\+cpp\end{DoxyCompactItemize}
