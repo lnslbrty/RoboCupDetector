@@ -59,6 +59,18 @@ class Camera : protected raspicam::RaspiCam_Cv, protected rc::CircularBuffer<cv:
     unsigned int getHeight(void) { return this->get(CV_CAP_PROP_FRAME_HEIGHT); }
 
     /**
+     * @name   Breite eines Kamerabildes festlegen
+     * @param die Breite in Pixel
+     */
+    void setWidth(unsigned int width) { this->set(CV_CAP_PROP_FRAME_WIDTH, width); }
+
+    /**
+     * @name   Höhe eines Kamerabildes festlegen
+     * @param die Höhe in Pixel
+     */
+    void setHeight(unsigned int height) { this->set(CV_CAP_PROP_FRAME_HEIGHT, height); }
+
+    /**
      * @name   Format der Kamerabilder zurückgeben
      * @retval CV_8UC1 Schwarz-Weiß (1 Byte Farbabstufung)
      * @retval CV_8UC3 Farbe (3 Byte pro Kanal -> RGB)

@@ -69,6 +69,8 @@ static void usage(char* arg0) {
                   "\t-e [exp]       set exposure [-1..100] default: %d\n"
                   "\t-t [num]       set robocup thread count default: %u\n"
                   "\t-c [num]       set opencv thread count default: %u\n"
+                  "\t-w [width]     base image width in pixels [0..n] default: %u\n"
+                  "\t-h [height]    base image height in pixels [0..n] default: %u\n"
 #ifdef ENABLE_VIDEO
                   "VIDEO options:\n"
                   "\t-v [file]      save RIFF-avi stream to [file}\n"
@@ -77,16 +79,11 @@ static void usage(char* arg0) {
                   "XWINDOW options (X11 required):\n"
                   "\t-x             render images\n"
 #endif
-#if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
-                  "VIDEO/XWINDOW options:\n"
-                  "\t-w [width]     output image width in pixels\n"
-                  "\t-h [height]   output image height in pixels\n"
-#endif
                   "\t-p             this\n"
 #ifdef DEBUG
                   "\t-d             print OpenCV build/hardware information\n"
 #endif
-                "\n", arg0, opts.count, opts.sat, opts.gain, opts.exp, opts.thrds, opts.cvthrds);
+                "\n", arg0, opts.count, opts.sat, opts.gain, opts.exp, opts.thrds, opts.cvthrds, opts.width, opts.height);
 }
 
 /**
@@ -168,19 +165,11 @@ int main (int argc,char **argv) {
         break;
       /*#####################*/
       case 'w':
-#if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
         opts.width = strtoul(optarg, NULL, 10);
-#else
-        UNIMPLEMENTED("USE_XWINDOW || ENABLE_VIDEO");
-#endif
         break;
       /*####################*/
       case 'h':
-#if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
         opts.height = strtoul(optarg, NULL, 10);
-#else
-        UNIMPLEMENTED("USE_XWINDOW || ENABLE_VIDEO");
-#endif
         break;
       /*####################*/
       case 'd':
@@ -220,10 +209,8 @@ int main (int argc,char **argv) {
   /* Ausgabedatei des Videos festlegen */
   detector.setVideoOut(opts.videoFile);
 #endif
-#if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
-  /* Fenstergröße (Vorschau) festlegen */
+  /* Basis Bildgröße (in Pixel) festlegen */
   detector.setDimensions(opts.width, opts.height);
-#endif
 
   /* Kamera initialisieren */
   if (!detector.openCamera()) {

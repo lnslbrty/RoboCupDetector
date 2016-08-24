@@ -19,6 +19,15 @@ Vorbereitung
 Fertig!
 
 
+Konfigurationsvariablen
+======
+
+ENABLE_DEBUG - debug code aktivieren
+USE_XWINDOW - X11 als Vorschau nutzen (nicht empfohlen, da langsam)
+ENABLE_VIDEO - Video aus bearbeiteten Bildern erstellen und in Datei speichern
+ENABLE_WEBSERVER - minimalistischen Webserver zur Echtzeitvorschau nutzen (empfohlen!)
+
+
 Hacken
 ======
 

@@ -70,7 +70,6 @@ class BlobDetectorFactory : private rc::BlobDetector, public rc::Camera {
      */
     std::string outInfo(void);
 
-#if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
     /**
      * @name Setzt die Groese des Vorschau- Videos.
      * @param Breite in Pixel
@@ -78,8 +77,12 @@ class BlobDetectorFactory : private rc::BlobDetector, public rc::Camera {
      * @brief Dabei ist zu beachten, dass die moeglichst kleine Werte gewaehlt werden sollten,
               um den Raspberry nicht zu ueberlasten.
      */
-    void setDimensions(unsigned int width, unsigned int height) { this->width = width; this->height = height; }
-#endif
+    void setDimensions(unsigned int width, unsigned int height) {
+      this->width = width;
+      this->height = height;
+      this->setWidth(width);
+      this->setHeight(height);
+    }
 
 #ifdef ENABLE_VIDEO
     /**
@@ -97,22 +100,18 @@ class BlobDetectorFactory : private rc::BlobDetector, public rc::Camera {
 #endif
 
   private:
-#if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
-    unsigned int width, height;    // Groese des Vorschau- Videos
-#endif
-
-    Semaphore * sema = nullptr;    // Semaphor fuer die Arbeiter- Threads
-    unsigned int numThreads;       // Anzahl der Arbeiter- Threads
-    std::thread * thrds = nullptr; // Datenstruktur fuer Threads als Feld der Groese numThreads
-    std::atomic<bool> doLoop;      // Hauptschleife der Arbeiter- Threads aktiv
-
+    unsigned int width, height;    /** Groese der Basis Bilder */
+    Semaphore * sema = nullptr;    /** Semaphor fuer die Arbeiter- Threads */
+    unsigned int numThreads;       /** Anzahl der Arbeiter- Threads */
+    std::thread * thrds = nullptr; /** Datenstruktur fuer Threads als Feld der Groese numThreads */
+    std::atomic<bool> doLoop;      /** Hauptschleife der Arbeiter- Threads aktiv */
 #ifdef USE_XWINDOW
-    static rc::Window * win;       // Vorschau- Fenster
+    static rc::Window * win;       /** Vorschau- Fenster */
 #endif
 #ifdef ENABLE_VIDEO
-    char* filename = nullptr;      // Dateiname fuer Video- Ausgabe
-    cv::VideoWriter * videoOut = nullptr; // OpenCV Video Konverter/Ausgabe
-    std::mutex videoMtx;           // Mutex fuer schreiben eines Ausgabebildes in den Videodatemstrom
+    char* filename = nullptr;      /** Dateiname fuer Video- Ausgabe */
+    cv::VideoWriter * videoOut = nullptr; /** OpenCV Video Konverter/Ausgabe */
+    std::mutex videoMtx;           /** Mutex fuer schreiben eines Ausgabebildes in den Videodatemstrom */
 #endif
 #ifdef ENABLE_HTTPD
     rc::WebServer * httpd = nullptr;

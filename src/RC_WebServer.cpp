@@ -66,7 +66,7 @@ static int httpd_callback(void * cls,
       << "<meta http-equiv=\"Content-Type\" content=\"text/html\">\n"
       << "<title>robocup opencv viewer</title>\n"
       << "</head>\n\n"
-      << "<body onload=\"window.setInterval(refreshImage, 1*1000);\"><b>RoboCup OpenCV Viewer</b> ... frame #"<<ws->getFrames()<<"<br>\n";
+      << "<body onload=\"window.setInterval(refreshImage, 1*500);\"><b>RoboCup OpenCV Viewer</b> ... frame #"<<ws->getFrames()<<"<br>\n";
   for (size_t i = 0; i < ws->getCount(); ++i) {
     if (!ws->getImage(i).empty())
       tmp << "<img src=\"/cam" <<i<< ".jpg\" id=\"img"<<i<<"\"><br><br>\n";

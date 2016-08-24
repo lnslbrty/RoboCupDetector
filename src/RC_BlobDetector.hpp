@@ -10,6 +10,7 @@
 
 #include <raspicam/raspicam_cv.h>
 #include <opencv2/opencv.hpp>
+#include <opencv2/highgui/highgui.hpp>
 
 
 namespace rc {
@@ -17,6 +18,13 @@ namespace rc {
 /** zu filternde Farbe */
 enum roboColor {
   RB_YELLOW, RB_BLUE
+};
+
+/** wichtige Informationen eines bearbeiteten Bildes in dieser Struktur speichern */
+struct processed_image {
+  cv::Point2f coords[4]; /** Positionen der vier Ecken */
+  float angle;           /** Winkel des rotierenden Rechteckes */
+  float distance;        /** die (geschätzte!) Entfernung zur Kamera */
 };
 
 class BlobDetector {
@@ -50,7 +58,7 @@ class BlobDetector {
           cv::inRange(tmp, cv::Scalar(0, 180, 145), cv::Scalar(50, 255, 255), result);
           break;
         case RB_BLUE:   /* BLAU */
-          cv::inRange(tmp, cv::Scalar(70, 30, 30), cv::Scalar(120, 255, 255), result);
+          cv::inRange(tmp, cv::Scalar(80, 50, 60), cv::Scalar(120, 255, 255), result);
           break;
       }
       return result;
@@ -60,9 +68,10 @@ class BlobDetector {
      * @name Sucht nach Konturen in einem Bild
      * @param Das zu filternde Bild.
      * @param die zu filternde Farbe
+     * @param ausgewertete Informationen in dieser Struktur speichern
      * @retval Matrix nach dem Farbfilter
      */
-    cv::Mat process(cv::Mat& image, enum roboColor rc);
+    cv::Mat process(cv::Mat& image, enum roboColor rc, struct processed_image * pi);
 
 };
 }

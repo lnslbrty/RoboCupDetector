@@ -8,16 +8,19 @@ rc::Window * rc::BlobDetectorFactory::win = nullptr;
 
 rc::BlobDetectorFactory::BlobDetectorFactory(unsigned int numThreads) : rc::BlobDetector(), rc::Camera(numThreads*2) {
   this->numThreads = numThreads;
+  /* Thread-Objekte instanziieren */
   thrds = new std::thread[numThreads];
-
+  /* Semaphor-Objekt für Threads instanziieren */
   sema = new Semaphore(numThreads);
 #ifdef USE_XWINDOW
+  /* X11 Vorschaufenster instanziieren */
   if (win == nullptr)
     win = new rc::Window();
 #endif
 }
 
 rc::BlobDetectorFactory::~BlobDetectorFactory() {
+  /* Destruktoren aufrufen und Speicher freigeben */
   delete[] thrds;
   delete sema;
 #ifdef USE_XWINDOW
@@ -38,49 +41,58 @@ void rc::BlobDetectorFactory::startThreads(void) {
   win->run();
 #endif
 #ifdef ENABLE_VIDEO
+  /* Videodatenstrom initialisieren und zum schreiben in Ausgabedatei vorbereiten */
   if (filename != nullptr) {
-    videoOut = new cv::VideoWriter(filename, CV_FOURCC('M','J','P','G'), 10, cv::Size(640,480), true);
+    videoOut = new cv::VideoWriter(filename, CV_FOURCC('M','J','P','G'), 10, cv::Size(this->width, this->height), true);
     if (!videoOut->isOpened())
       std::cerr << "Could not open video file"<<std::endl;
   }
 #endif
 
   doLoop = true;
+  /* alle Threads erstellen + ausführem */
   for (unsigned int i = 0; i < numThreads; ++i) {
+    /* Thread Einsprungsfunktion über Lambda zuweisen */
     thrds[i] = std::thread([this](int num) {
+      /* benutzerdefinierten Threadnamen zuweisen */
       auto handle = thrds[num].native_handle();
       std::string pname("robocup worker");
       pname += std::to_string(num);
       pthread_setname_np(handle, pname.c_str());
+      /* Hauptschleife der Arbeiter- Threads */
       while (doLoop) {
         cv::Mat image;
         bool ret = false;
+        /* Bild aus dem Pufferspeicher holen */
         ret = this->getElement(image);
         if (ret && !image.empty()) {
-          cv::Mat filteredImageY = process(image, RB_YELLOW);
-          cv::Mat filteredImageB = process(image, RB_BLUE);
+          /* Bild verkleinern, um CPU zu entlasten */
+          cv::resize(image, image, cv::Size(this->width, this->height));
+          /* Bild analysieren (für GELBE und BLAUE Blobs) */
+          struct processed_image piY, piB;
+          cv::Mat filteredImageY = process(image, RB_YELLOW, &piY);
+          cv::Mat filteredImageB = process(image, RB_BLUE, &piB);
 #ifdef ENABLE_HTTPD
+          /* Bilder dem microhttpd bereitstellen */
           httpd->setImage(0, image);
           httpd->setImage(1, filteredImageY);
           httpd->setImage(2, filteredImageB);
 #endif
-#if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)
-          cv::Size size(this->width, this->height);
-          cv::Mat resImage;
-          cv::resize(image, resImage, size);
 #ifdef USE_XWINDOW
+          /* X11 Vorschaubild anzeigen */
           if (win->isXWindow())
-            win->addImage(resImage);
-#endif
+            win->addImage(image);
 #endif
 #ifdef ENABLE_VIDEO
+          /* Bild in den Videodatenstrom schreiben */
           if (filename != nullptr) {
             videoMtx.lock();
-            videoOut->write(resImage);
+            videoOut->write(image);
             videoMtx.unlock();
           }
 #endif
         }
+        /* warten, bis alle Arbeiter- Threads fertig sind, bevor es weiter geht */
         sema->Synchronize();
       }
     }, i);
@@ -88,11 +100,8 @@ void rc::BlobDetectorFactory::startThreads(void) {
 }
 
 void rc::BlobDetectorFactory::stopThreads(void) {
-#ifdef ENABLE_HTTPD
-  /* WebServer stoppen */
-  httpd->stop();
-#endif
   doLoop = false;
+  /* auf das Ende aller Arbeiter- Threads warten */
   for (unsigned int i = 0; i < numThreads; ++i) {
     thrds[i].join();
   }
@@ -105,12 +114,18 @@ void rc::BlobDetectorFactory::stopThreads(void) {
   win->stop();
 #endif
 #ifdef ENABLE_VIDEO
+  /* Videodatenstrom schließen und Speicher freigeben */
   if (filename) {
     videoMtx.lock();
     videoOut->release();
     delete videoOut;
     videoMtx.unlock();
   }
+#endif
+#ifdef ENABLE_HTTPD
+  /* WebServer stoppen */
+  httpd->stop();
+  delete httpd;
 #endif
 }
 
