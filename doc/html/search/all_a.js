@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['thrds',['thrds',['../structcmd__opts.html#a7518cdbdbc6ed1b8cc404aa675f383a6',1,'cmd_opts']]]
+  ['sat',['sat',['../structcmd__opts.html#aa83f2910f6a1803ee8c9f9e3581db314',1,'cmd_opts']]],
+  ['semaphore',['Semaphore',['../classrc_1_1Semaphore.html',1,'rc']]]
 ];

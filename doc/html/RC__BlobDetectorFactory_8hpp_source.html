@@ -124,47 +124,45 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> stopThreads(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    std::string outInfo(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> setDimensions(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> width, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> height) { this-&gt;width = width; this-&gt;height = height; }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#ifdef ENABLE_VIDEO</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> setVideoOut(<span class="keywordtype">char</span>* filename) { this-&gt;filename = filename; }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#ifdef USE_XWINDOW</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">static</span> <a class="code" href="classrc_1_1Window.html">rc::Window</a> * getXWindow(<span class="keywordtype">void</span>) { <span class="keywordflow">return</span> win; }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#if defined(USE_XWINDOW) || defined(ENABLE_VIDEO)</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> width, height;    <span class="comment">// Groese des Vorschau- Videos</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="classrc_1_1Semaphore.html">Semaphore</a> * sema = <span class="keyword">nullptr</span>;    <span class="comment">// Semaphor fuer die Arbeiter- Threads</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numThreads;       <span class="comment">// Anzahl der Arbeiter- Threads</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    std::thread * thrds = <span class="keyword">nullptr</span>; <span class="comment">// Datenstruktur fuer Threads als Feld der Groese numThreads</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    std::atomic&lt;bool&gt; doLoop;      <span class="comment">// Hauptschleife der Arbeiter- Threads aktiv</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#ifdef USE_XWINDOW</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keyword">static</span> <a class="code" href="classrc_1_1Window.html">rc::Window</a> * win;       <span class="comment">// Vorschau- Fenster</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#ifdef ENABLE_VIDEO</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">char</span>* filename = <span class="keyword">nullptr</span>;      <span class="comment">// Dateiname fuer Video- Ausgabe</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    cv::VideoWriter * videoOut = <span class="keyword">nullptr</span>; <span class="comment">// OpenCV Video Konverter/Ausgabe</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    std::mutex videoMtx;           <span class="comment">// Mutex fuer schreiben eines Ausgabebildes in den Videodatemstrom</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#ifdef ENABLE_HTTPD</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="classrc_1_1WebServer.html">rc::WebServer</a> * httpd = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;};</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="classrc_1_1BlobDetector_html"><div class="ttname"><a href="classrc_1_1BlobDetector.html">rc::BlobDetector</a></div><div class="ttdef"><b>Definition:</b> RC_BlobDetector.hpp:22</div></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> setDimensions(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> width, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> height) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      this-&gt;width = width;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      this-&gt;height = height;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      this-&gt;setWidth(width);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      this-&gt;setHeight(height);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#ifdef ENABLE_VIDEO</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">void</span> setVideoOut(<span class="keywordtype">char</span>* filename) { this-&gt;filename = filename; }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#ifdef USE_XWINDOW</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keyword">static</span> <a class="code" href="classrc_1_1Window.html">rc::Window</a> * getXWindow(<span class="keywordtype">void</span>) { <span class="keywordflow">return</span> win; }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> width, height;    </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="classrc_1_1Semaphore.html">Semaphore</a> * sema = <span class="keyword">nullptr</span>;    </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> numThreads;       </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    std::thread * thrds = <span class="keyword">nullptr</span>; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    std::atomic&lt;bool&gt; doLoop;      </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#ifdef USE_XWINDOW</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keyword">static</span> <a class="code" href="classrc_1_1Window.html">rc::Window</a> * win;       </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#ifdef ENABLE_VIDEO</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">char</span>* filename = <span class="keyword">nullptr</span>;      </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    cv::VideoWriter * videoOut = <span class="keyword">nullptr</span>; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    std::mutex videoMtx;           </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#ifdef ENABLE_HTTPD</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <a class="code" href="classrc_1_1WebServer.html">rc::WebServer</a> * httpd = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;};</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classrc_1_1BlobDetector_html"><div class="ttname"><a href="classrc_1_1BlobDetector.html">rc::BlobDetector</a></div><div class="ttdef"><b>Definition:</b> RC_BlobDetector.hpp:30</div></div>
 <div class="ttc" id="RC__Window_8hpp_html"><div class="ttname"><a href="RC__Window_8hpp.html">RC_Window.hpp</a></div></div>
 <div class="ttc" id="classrc_1_1Semaphore_html"><div class="ttname"><a href="classrc_1_1Semaphore.html">rc::Semaphore</a></div><div class="ttdef"><b>Definition:</b> RC_Semaphore.hpp:18</div></div>
 <div class="ttc" id="RC__Semaphore_8hpp_html"><div class="ttname"><a href="RC__Semaphore_8hpp.html">RC_Semaphore.hpp</a></div></div>
@@ -176,11 +174,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="classrc_1_1WebServer_html"><div class="ttname"><a href="classrc_1_1WebServer.html">rc::WebServer</a></div><div class="ttdef"><b>Definition:</b> RC_WebServer.hpp:20</div></div>
 <div class="ttc" id="RC__Camera_8hpp_html"><div class="ttname"><a href="RC__Camera_8hpp.html">RC_Camera.hpp</a></div><div class="ttdoc">Eine Klasse zur Steuerung der Kamera und des Zwischenspeichers (Puffer) </div></div>
 <div class="ttc" id="classrc_1_1Window_html"><div class="ttname"><a href="classrc_1_1Window.html">rc::Window</a></div><div class="ttdef"><b>Definition:</b> RC_Window.hpp:20</div></div>
-<div class="ttc" id="namespacerc_html"><div class="ttname"><a href="namespacerc.html">rc</a></div><div class="ttdef"><b>Definition:</b> RC_BlobDetector.hpp:15</div></div>
+<div class="ttc" id="namespacerc_html"><div class="ttname"><a href="namespacerc.html">rc</a></div><div class="ttdef"><b>Definition:</b> RC_BlobDetector.hpp:16</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 24 2016 02:52:59 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 24 2016 05:25:54 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

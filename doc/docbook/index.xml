@@ -16,6 +16,7 @@
         <xi:include href="classrc_1_1CircularBuffer.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
         <xi:include href="structcmd__opts.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
         <xi:include href="classrc_1_1Daemon.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structrc_1_1processed__image.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
         <xi:include href="classraspicam_1_1RaspiCam__Cv.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
         <xi:include href="classrc_1_1Semaphore.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
         <xi:include href="classrc_1_1WebServer.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>

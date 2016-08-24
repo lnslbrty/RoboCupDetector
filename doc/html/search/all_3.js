@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['exp',['exp',['../structcmd__opts.html#aa6ef1ebf0fbaa8bd7016a8ef1a2c5ef4',1,'cmd_opts']]]
+  ['daemon',['Daemon',['../classrc_1_1Daemon.html',1,'rc']]],
+  ['distance',['distance',['../structrc_1_1processed__image.html#a6f90b2318450001568fcc112e294f8df',1,'rc::processed_image']]]
 ];

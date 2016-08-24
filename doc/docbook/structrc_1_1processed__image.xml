@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="structrc_1_1processed__image">
+<title>rc::processed_image struct Reference</title>
+<para>
+    <programlisting>#include <link linkend="RC__BlobDetector_8hpp">&lt;RC_BlobDetector.hpp&gt;</link></programlisting>
+</para>
+        <simplesect>
+            <title>Public Attributes</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>cv::Point2f coords[4]</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>float angle</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>float distance</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para>wichtige Informationen eines bearbeiteten Bildes in dieser Struktur speichern </para>
+                <para>Definition at line 24 of file RC_BlobDetector.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_BlobDetector.hpp</para></listitem></itemizedlist></para>
+        </simplesect>
+        <simplesect>
+            <title>Member Documentation</title>
+            <simplesect>
+                <title>float rc::processed_image::angle</title>                
+<para>Positionen der vier Ecken </para>
+
+                <para>Definition at line 26 of file RC_BlobDetector.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_BlobDetector.hpp</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>float rc::processed_image::distance</title>                
+<para>Winkel des rotierenden Rechteckes </para>
+
+                <para>Definition at line 27 of file RC_BlobDetector.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_BlobDetector.hpp</para></listitem></itemizedlist></para>
+            </simplesect>
+        </simplesect>
+</section>

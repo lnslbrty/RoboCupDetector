@@ -165,6 +165,68 @@ void )</para>
             </para>
         </simplesect>
         <simplesect>
+            <title>Breite eines Kamerabildes festlegen</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>die</entry>
+                                <entry>
+<para>Breite in Pixel </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1Camera_1a7f45f935fa50f95f78d1d2a3629f2a91">setWidth</link> (
+unsigned int width)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Höhe eines Kamerabildes festlegen</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>die</entry>
+                                <entry>
+<para>Höhe in Pixel </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1Camera_1aeea452211d9fec8761c6aaa7bbb6d5ea">setHeight</link> (
+unsigned int height)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
             <title>Format der Kamerabilder zurückgeben</title>
       <description>
 <para>

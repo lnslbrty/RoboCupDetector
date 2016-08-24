@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['semaphore',['Semaphore',['../classrc_1_1Semaphore.html',1,'rc']]]
+  ['processed_5fimage',['processed_image',['../structrc_1_1processed__image.html',1,'rc']]]
 ];

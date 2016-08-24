@@ -3,8 +3,16 @@
     <title>RC_BlobDetector.hpp File Reference</title>
     <programlisting>#include &lt;raspicam/raspicam_cv.h&gt;</programlisting>
     <programlisting>#include &lt;opencv2/opencv.hpp&gt;</programlisting>
+    <programlisting>#include &lt;opencv2/highgui/highgui.hpp&gt;</programlisting>
         <simplesect>
             <title> Classes </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structrc_1_1processed__image">rc::processed_image</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
             <para>
                 <itemizedlist>
                     <listitem>

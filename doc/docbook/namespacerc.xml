@@ -48,6 +48,13 @@
             <para>
                 <itemizedlist>
                     <listitem>
+                        <para>struct <link linkend="structrc_1_1processed__image">rc::processed_image</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
                         <para>struct <link linkend="classrc_1_1Semaphore">rc::Semaphore</link></para>
                     </listitem>
                 </itemizedlist>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gain',['gain',['../structcmd__opts.html#a55323cae5dfbafe672e6581da99985b9',1,'cmd_opts']]]
+  ['distance',['distance',['../structrc_1_1processed__image.html#a6f90b2318450001568fcc112e294f8df',1,'rc::processed_image']]]
 ];

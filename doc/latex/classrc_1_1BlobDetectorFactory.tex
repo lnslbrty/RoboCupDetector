@@ -55,16 +55,32 @@ Inheritance diagram for rc\+:\+:Blob\+Detector\+Factory\+:\begin{figure}[H]
 
 \end{DoxyCompactItemize}
 \end{Indent}
-\subsection*{Gibt Informationen über diese Klasse als String zurück.}
-\label{_amgrp693de023182337ef13904b9f97f6b392}%
-Dabei werden Informationen über den \hyperlink{classrc_1_1CircularBuffer}{Circular\+Buffer} und der Window-\/ Klasse ausgegeben.
+\begin{Indent}{\bf Gibt Informationen über diese Klasse als String zurück.}\par
+{\em Dabei werden Informationen über den \hyperlink{classrc_1_1CircularBuffer}{Circular\+Buffer} und der Window-\/ Klasse ausgegeben.
 
 \begin{DoxyReturn}{Returns}
 Die Informationen als Zeichenkette. 
 \end{DoxyReturn}
-\begin{DoxyCompactItemize}
+}\begin{DoxyCompactItemize}
 \item 
 \hypertarget{classrc_1_1BlobDetectorFactory_a08e56c167bd2f928d2f808d429d8327e}{std\+::string {\bfseries out\+Info} (void)}\label{classrc_1_1BlobDetectorFactory_a08e56c167bd2f928d2f808d429d8327e}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Setzt die Groese des Vorschau-\/ Videos.}
+\label{_amgrp31fff75453dbcfb0cbda6f83097f2790}%
+Dabei ist zu beachten, dass die moeglichst kleine Werte gewaehlt werden sollten, um den Raspberry nicht zu ueberlasten.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Breite} & in Pixel \\
+\hline
+{\em Hoehe} & in Pixel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1BlobDetectorFactory_a4bf955ad08f9218729777737b9071e35}{void {\bfseries set\+Dimensions} (unsigned int width, unsigned int height)}\label{classrc_1_1BlobDetectorFactory_a4bf955ad08f9218729777737b9071e35}
 
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}

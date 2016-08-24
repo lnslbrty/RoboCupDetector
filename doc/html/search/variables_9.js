@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['width',['width',['../structcmd__opts.html#a0f13b6290e7e33c22a258c11ed23f72f',1,'cmd_opts']]]
+  ['usexwindow',['useXWindow',['../structcmd__opts.html#aee44e8161de659e8fff50e09100f9ada',1,'cmd_opts']]]
 ];

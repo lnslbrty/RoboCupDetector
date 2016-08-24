@@ -113,6 +113,59 @@ void )</para>
             <para>
                 <itemizedlist>
                     <listitem>
+                        <para>std::string <link linkend="classrc_1_1BlobDetectorFactory_1a08e56c167bd2f928d2f808d429d8327e">outInfo</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Setzt die Groese des Vorschau- Videos.</title>
+      <description>
+<para>Dabei ist zu beachten, dass die moeglichst kleine Werte gewaehlt werden sollten, um den Raspberry nicht zu ueberlasten.</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>Breite</entry>
+                                <entry>
+<para>in Pixel </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>Hoehe</entry>
+                                <entry>
+<para>in Pixel </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int width</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int height</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
                         <para>Semaphore * sema</para>
                     </listitem>
                 </itemizedlist>
@@ -141,8 +194,8 @@ void )</para>
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>std::string <link linkend="classrc_1_1BlobDetectorFactory_1a08e56c167bd2f928d2f808d429d8327e">outInfo</link> (
-void )</para>
+                        <para>void <link linkend="classrc_1_1BlobDetectorFactory_1a4bf955ad08f9218729777737b9071e35">setDimensions</link> (
+unsigned int width, unsigned int height)</para>
                     </listitem>
                 </itemizedlist>
             </para>

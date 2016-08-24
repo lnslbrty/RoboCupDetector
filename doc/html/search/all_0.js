@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['blobdetector',['BlobDetector',['../classrc_1_1BlobDetector.html',1,'rc']]],
-  ['blobdetectorfactory',['BlobDetectorFactory',['../classrc_1_1BlobDetectorFactory.html',1,'rc']]]
+  ['angle',['angle',['../structrc_1_1processed__image.html#ac17fea85630583e2cf1de55b89334e4f',1,'rc::processed_image']]]
 ];
