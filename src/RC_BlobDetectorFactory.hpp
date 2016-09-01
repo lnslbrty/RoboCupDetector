@@ -116,6 +116,7 @@ class BlobDetectorFactory : private rc::BlobDetector, public rc::Camera {
 #ifdef ENABLE_HTTPD
     rc::WebServer * httpd = nullptr;
 #endif
+    std::mutex out;
 };
 }
 

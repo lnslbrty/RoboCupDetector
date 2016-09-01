@@ -1,18 +1,34 @@
 #include "RC_BlobDetector.hpp"
 
 
-cv::Mat rc::BlobDetector::process(cv::Mat& image, enum roboColor rc, struct processed_image * pi) {
+#define measureTicks(var) { var = cv::getTickCount(); }
+#define calcDiffTime(start, end, dest) { float tmp = dest; dest = (end - start) / cv::getTickFrequency(); dest = (dest + tmp)/2; }
+
+
+cv::Mat rc::BlobDetector::process(cv::Mat& image, enum rc::roboColor rc, rc::processed_image& pi, rc::time_consumption& tc) {
+  int64_t start, end;
   cv::Mat imgHSV, imgThresh;
 
+  measureTicks(start);
   /* Farbe filtern */
   imgThresh = this->filterColor(image, rc);
+  measureTicks(end);
+  calcDiffTime(start, end, tc.avg_color);
+  measureTicks(start);
   /* Bild unscharf gestalten (Bildfehler/Farbrauschen korrigieren) */
-  cv::medianBlur(imgThresh, imgThresh, 13);
+  /* Hinweis: Median Blur ist sehr langsam */
+  //cv::medianBlur(imgThresh, imgThresh, 13);
+  cv::blur(imgThresh, imgThresh, cv::Size(4,4), cv::Point(-1,-1), cv::BORDER_REFLECT);
+  measureTicks(end);
+  calcDiffTime(start, end, tc.avg_blur);
 
   /* Konturen suchen und im Vector `contours` speichern */
   std::vector<std::vector<cv::Point>> contours;
   cv::Mat imgContour = imgThresh.clone();
-  cv::findContours(imgContour, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_TC89_KCOS);
+  measureTicks(start);
+  cv::findContours(imgContour, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE);
+  measureTicks(end);
+  calcDiffTime(start, end, tc.avg_contours);
 
   /* nach größter Kontur suchen */
   double largest_area = 0.0;
@@ -27,8 +43,11 @@ cv::Mat rc::BlobDetector::process(cv::Mat& image, enum roboColor rc, struct proc
   }
 
   /* Konturen im original Bild nachzeichnen, dabei ein Rechteck als Form der Kontur annehmen */
-  if (largest_contour_index >= 0) {
+  if (largest_contour_index >= 0 && largest_area > 2000) {
     auto idx = largest_contour_index;
+
+    measureTicks(start);
+
     /* Konturen nachzeichnen */
     cv::drawContours(image, contours, idx, cv::Scalar(255,0,0));
     /* minimales Rechteck in die Kontur einpassen */
@@ -48,13 +67,14 @@ cv::Mat rc::BlobDetector::process(cv::Mat& image, enum roboColor rc, struct proc
     cv::circle(image, center, 5, cv::Scalar(0,255,0));
     cv::putText(image, ss.str(), center + cv::Point2f(-25,25), cv::FONT_HERSHEY_COMPLEX_SMALL, 1, cv::Scalar(255,0,255));
 
+    measureTicks(end);
+    calcDiffTime(start, end, tc.avg_draw);
+
     /* Ausgabedatenstruktur beschreiben für später Verwendung (z.B.: Transport über SPI/I²C Schnittstelle) */
-    if (pi) {
-      for (size_t idx = 0; idx < 4; ++idx)
-        pi->coords[idx] = rect_points[idx];
-      pi->angle = angle;
-      pi->distance = largest_area;
-    }
+    for (size_t idx = 0; idx < 4; ++idx)
+      pi.coords[idx] = rect_points[idx];
+    pi.angle = angle;
+    pi.distance = largest_area;
   }
 
   /* zum Schluß das Bild mit Farbfilter zurückgeben */

@@ -1,3 +1,5 @@
+#include <iomanip>
+
 #include "RC_BlobDetectorFactory.hpp"
 
 
@@ -59,6 +61,9 @@ void rc::BlobDetectorFactory::startThreads(void) {
       std::string pname("robocup worker");
       pname += std::to_string(num);
       pthread_setname_np(handle, pname.c_str());
+      rc::processed_image * piY = new processed_image();
+      rc::processed_image * piB = new processed_image();
+      rc::time_consumption * tc = new time_consumption();
       /* Hauptschleife der Arbeiter- Threads */
       while (doLoop) {
         cv::Mat image;
@@ -69,9 +74,11 @@ void rc::BlobDetectorFactory::startThreads(void) {
           /* Bild verkleinern, um CPU zu entlasten */
           cv::resize(image, image, cv::Size(this->width, this->height));
           /* Bild analysieren (für GELBE und BLAUE Blobs) */
-          struct processed_image piY, piB;
-          cv::Mat filteredImageY = process(image, RB_YELLOW, &piY);
-          cv::Mat filteredImageB = process(image, RB_BLUE, &piB);
+          cv::Mat origImageY = image.clone();
+          cv::Mat filteredImageY = process(origImageY, RB_YELLOW, *piY, *tc);
+          cv::Mat origImageB = image.clone();
+          cv::Mat filteredImageB = process(origImageB, RB_BLUE, *piB, *tc);
+          image = origImageY | origImageB;
 #ifdef ENABLE_HTTPD
           /* Bilder dem microhttpd bereitstellen */
           httpd->setImage(0, image);
@@ -95,6 +102,13 @@ void rc::BlobDetectorFactory::startThreads(void) {
         /* warten, bis alle Arbeiter- Threads fertig sind, bevor es weiter geht */
         sema->Synchronize();
       }
+      out.lock();
+      std::cout <<"Thread("<<num<<") time consumption:"<<std::endl
+                <<"\tcolor filter: "<<std::setprecision (15)<<tc->avg_color<<std::endl
+                <<"\tblur........: "<<std::setprecision (15)<<tc->avg_blur<<std::endl
+                <<"\tcontours....: "<<std::setprecision (15)<<tc->avg_contours<<std::endl
+                <<"\tdraw........: "<<std::setprecision (15)<<tc->avg_draw<<std::endl;
+      out.unlock();
     }, i);
   }
 }

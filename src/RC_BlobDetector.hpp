@@ -20,6 +20,15 @@ enum roboColor {
   RB_YELLOW, RB_BLUE
 };
 
+struct time_consumption & getAvgTime(void);
+
+struct time_consumption {
+  float avg_color    = 0;
+  float avg_blur     = 0;
+  float avg_contours = 0;
+  float avg_draw     = 0;
+};
+
 /** wichtige Informationen eines bearbeiteten Bildes in dieser Struktur speichern */
 struct processed_image {
   cv::Point2f coords[4]; /** Positionen der vier Ecken */
@@ -55,7 +64,7 @@ class BlobDetector {
       // filtere HSV- Farbraum entsprechend der angegebenen roboColor
       switch (rcol) {
         case RB_YELLOW: /* GELB */
-          cv::inRange(tmp, cv::Scalar(0, 180, 145), cv::Scalar(50, 255, 255), result);
+          cv::inRange(tmp, cv::Scalar(0, 120, 105), cv::Scalar(50, 255, 255), result);
           break;
         case RB_BLUE:   /* BLAU */
           cv::inRange(tmp, cv::Scalar(80, 50, 60), cv::Scalar(120, 255, 255), result);
@@ -71,7 +80,7 @@ class BlobDetector {
      * @param ausgewertete Informationen in dieser Struktur speichern
      * @retval Matrix nach dem Farbfilter
      */
-    cv::Mat process(cv::Mat& image, enum roboColor rc, struct processed_image * pi);
+    cv::Mat process(cv::Mat& image, enum rc::roboColor rc, rc::processed_image& pi, rc::time_consumption& tc);
 
 };
 }
