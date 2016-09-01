@@ -39,7 +39,8 @@ struct cmd_opts {
   char* videoFile;              /** Pfad zur Videodatei (falls mit ENABLE_VIDEO kompiliert */
   bool useXWindow;              /** Vorschaubild rendern? (benötigt USE_XWINDOW) */
   unsigned int width;           /** Bildbreite */
-  unsigned int height;          /** Bildhöhr */
+  unsigned int height;          /** Bildhöhe */
+  unsigned int maxFps;          /** maximale FPS der Kamera */
   uint8_t sat;                  /** Farbsättigung */
   uint8_t gain;                 /** Bildverstärkung */
   int8_t exp;                   /** Belichtungsdauer */
@@ -51,7 +52,7 @@ struct cmd_opts {
 #define UNIMPLEMENTED(feature) { fprintf(stderr, "%s: feature not implemented (%s)\n", argv[0], feature); exit(1); }
 
 /** Standartwerte für Konfigurationsvariablen der oben beschriebenen Datenstruktur */
-static struct cmd_opts opts = { 0,100,0,0,640,480,50,90,-1,4,2 };
+static struct cmd_opts opts = { 0,100,0,0,640,480,20,50,90,-1,4,2 };
 
 
 /**
@@ -71,6 +72,7 @@ static void usage(char* arg0) {
                   "\t-c [num]       set opencv thread count default: %u\n"
                   "\t-w [width]     base image width in pixels [0..n] default: %u\n"
                   "\t-h [height]    base image height in pixels [0..n] default: %u\n"
+                  "\t-f [num]       maximal camera frames-per-second [1..n] default: %u\n"
 #ifdef ENABLE_VIDEO
                   "VIDEO options:\n"
                   "\t-v [file]      save RIFF-avi stream to [file}\n"
@@ -83,7 +85,7 @@ static void usage(char* arg0) {
 #ifdef DEBUG
                   "\t-d             print OpenCV build/hardware information\n"
 #endif
-                "\n", arg0, opts.count, opts.sat, opts.gain, opts.exp, opts.thrds, opts.cvthrds, opts.width, opts.height);
+                "\n", arg0, opts.count, opts.sat, opts.gain, opts.exp, opts.thrds, opts.cvthrds, opts.width, opts.height, opts.maxFps);
 }
 
 /**
@@ -113,7 +115,7 @@ int main (int argc,char **argv) {
   time_t timer_begin,timer_end;
 
   char c;
-  while ((c = getopt(argc, argv, "SKn:s:g:e:t:c:v:xw:h:pd")) != -1) {
+  while ((c = getopt(argc, argv, "SKn:s:g:e:t:c:v:xw:h:f:pd")) != -1) {
     if (c == 0xFF) break;
     switch (c) {
 
@@ -172,6 +174,10 @@ int main (int argc,char **argv) {
         opts.height = strtoul(optarg, NULL, 10);
         break;
       /*####################*/
+      case 'f':
+        opts.maxFps = strtoul(optarg, NULL, 10);
+        break;
+      /*####################*/
       case 'd':
 #ifdef DEBUG
         print_opencv_info();
@@ -201,6 +207,7 @@ int main (int argc,char **argv) {
   detector.setSaturation(opts.sat);
   detector.setGain(opts.gain);
   detector.setExposure(opts.exp);
+  detector.setMaxFPS(opts.maxFps);
 #ifdef USE_XWINDOW
   /* Vorschaufenster Optionen setzen */
   detector.getXWindow()->setXWindow( opts.useXWindow );
@@ -225,6 +232,7 @@ int main (int argc,char **argv) {
   /* ein paar Konfigurationsvariablen ausgeben */
   std::cout <<"Resolution..: "<<detector.getWidth()<<"x"<<detector.getHeight()<<std::endl
             <<"Format......: "<<detector.getFormat()<<std::endl
+            <<"Max-FPS.....: "<<detector.getMaxFPS()<<std::endl
             <<"Saturation..: "<<detector.getSaturation()<<std::endl
             <<"Gain........: "<<detector.getGain()<<std::endl
             <<"Exposure....: "<<detector.getExposure()<<std::endl

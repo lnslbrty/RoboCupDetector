@@ -109,6 +109,9 @@ void rc::BlobDetectorFactory::startThreads(void) {
                 <<"\tcontours....: "<<std::setprecision (15)<<tc->avg_contours<<std::endl
                 <<"\tdraw........: "<<std::setprecision (15)<<tc->avg_draw<<std::endl;
       out.unlock();
+      delete piY;
+      delete piB;
+      delete tc;
     }, i);
   }
 }
@@ -117,6 +120,7 @@ void rc::BlobDetectorFactory::stopThreads(void) {
   doLoop = false;
   /* auf das Ende aller Arbeiter- Threads warten */
   for (unsigned int i = 0; i < numThreads; ++i) {
+    sema->NotifyAll();
     thrds[i].join();
   }
 #ifdef USE_XWINDOW

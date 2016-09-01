@@ -51,6 +51,10 @@ class Semaphore {
       cond.wait(lck);
     }
 
+    void NotifyAll(void) {
+      cond.notify_all();
+    }
+
 };
 }
 

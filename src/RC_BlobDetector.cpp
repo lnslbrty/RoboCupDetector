@@ -18,7 +18,7 @@ cv::Mat rc::BlobDetector::process(cv::Mat& image, enum rc::roboColor rc, rc::pro
   /* Bild unscharf gestalten (Bildfehler/Farbrauschen korrigieren) */
   /* Hinweis: Median Blur ist sehr langsam */
   //cv::medianBlur(imgThresh, imgThresh, 13);
-  cv::blur(imgThresh, imgThresh, cv::Size(4,4), cv::Point(-1,-1), cv::BORDER_REFLECT);
+  cv::blur(imgThresh, imgThresh, cv::Size(4,4), cv::Point(-1,-1), cv::BORDER_REPLICATE);
   measureTicks(end);
   calcDiffTime(start, end, tc.avg_blur);
 
