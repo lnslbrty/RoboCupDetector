@@ -43,18 +43,18 @@ class BlobDetectorFactory : private rc::BlobDetector, public rc::Camera {
 
     /**
      * @name Initialisierung der Kamera
-     * @brief Hinweis: Diese Methode sollte _vor_ @ref startThreads() ausgeführt werden
+     * @brief Hinweis: Diese Methode sollte _vor_ @see startThreads ausgeführt werden
      */
     bool openCamera(void) { return this->open(); }
     /**
      * @name Deaktiviert die Kamera
-     * @brief Hinweis: Diese Methode sollte _nach_ @ref stopThreads() ausgeführt werden
+     * @brief Hinweis: Diese Methode sollte _nach_ @see stopThreads ausgeführt werden
      */
     void closeCamera(void) { return this->release(); }
     /**
      * @name Startet die "Arbeiter"- Threads
      * @brief Die Threads werden gestartet und befinden sich in einer Endlosschleife,
-     *        solange das Programm nicht beendet wird oder @ref stopThreads() aufgerufen wird.
+     *        solange das Programm nicht beendet wird oder @see stopThreads() aufgerufen wird.
      */
     void startThreads(void);
     /**

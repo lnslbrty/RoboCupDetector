@@ -29,6 +29,14 @@ false )</para>
             <para>
                 <itemizedlist>
                     <listitem>
+                        <para>static std::atomic_bool <link linkend="RC__Daemon_8cpp_1a2e250e3644ca18d2cc9671f28af9b3a2">isStartup</link> (
+false )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
                         <para>static void <link linkend="RC__Daemon_8cpp_1ae710b6e1e3475f05843032f73a4dd7a7">signal_handler</link> (
 int sig)</para>
                     </listitem>

@@ -83,6 +83,7 @@ static void usage(char* arg0) {
 #endif
                   "\t-p             this\n"
 #ifdef DEBUG
+                  "DEBUG options:\n"
                   "\t-d             print OpenCV build/hardware information\n"
 #endif
                 "\n", arg0, opts.count, opts.sat, opts.gain, opts.exp, opts.thrds, opts.cvthrds, opts.width, opts.height, opts.maxFps);
@@ -287,6 +288,6 @@ int main (int argc,char **argv) {
   /* Kamera deinitialisieren */
   detector.closeCamera();
   /* durchschnittliche FPS ausgeben */
-  std::cout <<"FPS: "<<std::setprecision(10)<<(float)(n/secondsElapsed)<<std::endl;
+  std::cout <<"FPS: "<<std::setprecision(2)<<(float)(n/secondsElapsed)<<std::endl;
   return 0;
 }

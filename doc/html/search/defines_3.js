@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['unimplemented',['UNIMPLEMENTED',['../RC__Main_8cpp.html#a1a2717f1b81aff0aeaa7461a104df0e4',1,'RC_Main.cpp']]]
+  ['pidfile',['PIDFILE',['../RC__Main_8cpp.html#af5fe208f8640c8c789a4d5d5b8ad47f5',1,'RC_Main.cpp']]]
 ];

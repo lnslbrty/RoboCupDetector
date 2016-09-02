@@ -131,8 +131,8 @@ cv::Mat src, enum roboColor rcol)</para>
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>cv::Mat <link linkend="classrc_1_1BlobDetector_1a90e6fd34936395a7bd338665cb3c3d2a">process</link> (
-cv::Mat &amp; image, enum roboColor rc, struct <link linkend="structrc_1_1processed__image">processed_image</link> * pi)</para>
+                        <para>cv::Mat <link linkend="classrc_1_1BlobDetector_1a576404b6f72530c55268c832dc83e00e">process</link> (
+cv::Mat &amp; image, enum rc::roboColor rc, <link linkend="structrc_1_1processed__image">rc::processed_image</link> &amp; pi, <link linkend="structrc_1_1time__consumption">rc::time_consumption</link> &amp; tc)</para>
                     </listitem>
                 </itemizedlist>
             </para>

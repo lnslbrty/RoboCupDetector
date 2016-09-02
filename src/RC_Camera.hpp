@@ -95,26 +95,34 @@ class Camera : protected raspicam::RaspiCam_Cv, protected rc::CircularBuffer<cv:
      */
     int getExposure(void) { return this->get(CV_CAP_PROP_EXPOSURE); }
 
+    /**
+     * @name   Maximale Anzahl Bilder/Sekunde der Kamera
+     * @retval ein Wert von 1 bis n
+     */
     unsigned int getMaxFPS(void) { return this->get(CV_CAP_PROP_FPS); }
 
     /**
      * @name   Sättigung festlegen
-     * @param  [in] value siehe @ref rc::Camera::getSaturation()
+     * @param  [in] value siehe @see rc::Camera::getSaturation
      */
     void setSaturation(unsigned int value) { this->set(CV_CAP_PROP_SATURATION, value); }
 
     /**
      * @name   Bildverstärkung festlegen
-     * @param  [in] value siehe @ref rc::Camera::getGain()
+     * @param  [in] value siehe @see rc::Camera::getGain
      */
     void setGain(unsigned int value) { this->set(CV_CAP_PROP_GAIN, value); }
 
     /**
      * @name   Belichtungsdauer festlegen
-     * @param  [in] value siehe @ref rc::Camera::getExposure()
+     * @param  [in] value siehe @see rc::Camera::getExposure
      */
     void setExposure(int value) { this->set(CV_CAP_PROP_EXPOSURE, value); }
 
+    /**
+     * @name   Maximale Bilder/Sekunde setzen
+     * @param  [in] value siehe @see rc::Camera::getMaxFPS
+     */
     void setMaxFPS(unsigned int value) { this->set(CV_CAP_PROP_FPS, value); }
 
 };

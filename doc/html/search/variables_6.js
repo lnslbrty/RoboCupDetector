@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['processed',['processed',['../structrc_1_1cbElement.html#a721d493bd93248172628c48c4526f105',1,'rc::cbElement']]]
+  ['maxfps',['maxFps',['../structcmd__opts.html#a2b42f4e7bd954f5ac87c82e9d19a9b84',1,'cmd_opts']]]
 ];

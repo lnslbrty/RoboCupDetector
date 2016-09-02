@@ -1,12 +1,6 @@
 var searchData=
 [
-  ['rc_5fblobdetector_2ehpp',['RC_BlobDetector.hpp',['../RC__BlobDetector_8hpp.html',1,'']]],
-  ['rc_5fblobdetectorfactory_2ehpp',['RC_BlobDetectorFactory.hpp',['../RC__BlobDetectorFactory_8hpp.html',1,'']]],
-  ['rc_5fcamera_2ehpp',['RC_Camera.hpp',['../RC__Camera_8hpp.html',1,'']]],
-  ['rc_5fcircularbuffer_2ehpp',['RC_CircularBuffer.hpp',['../RC__CircularBuffer_8hpp.html',1,'']]],
-  ['rc_5fdaemon_2ehpp',['RC_Daemon.hpp',['../RC__Daemon_8hpp.html',1,'']]],
-  ['rc_5fmain_2ecpp',['RC_Main.cpp',['../RC__Main_8cpp.html',1,'']]],
-  ['rc_5fsemaphore_2ehpp',['RC_Semaphore.hpp',['../RC__Semaphore_8hpp.html',1,'']]],
-  ['rc_5fwebserver_2ehpp',['RC_WebServer.hpp',['../RC__WebServer_8hpp.html',1,'']]],
-  ['rc_5fwindow_2ehpp',['RC_Window.hpp',['../RC__Window_8hpp.html',1,'']]]
+  ['pidfile',['PIDFILE',['../RC__Main_8cpp.html#af5fe208f8640c8c789a4d5d5b8ad47f5',1,'RC_Main.cpp']]],
+  ['processed',['processed',['../structrc_1_1cbElement.html#a721d493bd93248172628c48c4526f105',1,'rc::cbElement']]],
+  ['processed_5fimage',['processed_image',['../structrc_1_1processed__image.html',1,'rc']]]
 ];

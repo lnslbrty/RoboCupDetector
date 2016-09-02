@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['width',['width',['../structcmd__opts.html#a0f13b6290e7e33c22a258c11ed23f72f',1,'cmd_opts']]]
+  ['videofile',['videoFile',['../structcmd__opts.html#acee5a1c6793898bbda38d6d7fb5de431',1,'cmd_opts']]]
 ];

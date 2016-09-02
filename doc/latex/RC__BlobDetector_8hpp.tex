@@ -1,15 +1,22 @@
 \hypertarget{RC__BlobDetector_8hpp}{\section{src/\+R\+C\+\_\+\+Blob\+Detector.hpp File Reference}
 \label{RC__BlobDetector_8hpp}\index{src/\+R\+C\+\_\+\+Blob\+Detector.\+hpp@{src/\+R\+C\+\_\+\+Blob\+Detector.\+hpp}}
 }
-{\ttfamily \#include $<$raspicam/raspicam\+\_\+cv.\+h$>$}\\*
 {\ttfamily \#include $<$opencv2/opencv.\+hpp$>$}\\*
-{\ttfamily \#include $<$opencv2/highgui/highgui.\+hpp$>$}\\*
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structrc_1_1time__consumption}{rc\+::time\+\_\+consumption}
 \item 
 struct \hyperlink{structrc_1_1processed__image}{rc\+::processed\+\_\+image}
 \item 
 class \hyperlink{classrc_1_1BlobDetector}{rc\+::\+Blob\+Detector}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{RC__BlobDetector_8hpp_a9aacb2f0483d3f24da79f348eb5d8584}{measure\+Ticks}(var)~\{ var = cv\+::get\+Tick\+Count(); \}
+\item 
+\#define \hyperlink{RC__BlobDetector_8hpp_ad3133ccbef76aa43d2361bbda6f8f9f3}{calc\+Diff\+Time}(start, end, dest)~\{ float tmp = dest; dest = (end -\/ start) / cv\+::get\+Tick\+Frequency(); dest = (dest + tmp)/2; \}
 \end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
@@ -17,6 +24,12 @@ class \hyperlink{classrc_1_1BlobDetector}{rc\+::\+Blob\+Detector}
 enum {\bfseries robo\+Color} \{ {\bfseries R\+B\+\_\+\+Y\+E\+L\+L\+O\+W}, 
 {\bfseries R\+B\+\_\+\+B\+L\+U\+E}
  \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespacerc_abd4e153b18d26e2e26abc9c07d44924d}{struct time\+\_\+consumption \& {\bfseries rc\+::get\+Avg\+Time} (void)}\label{namespacerc_abd4e153b18d26e2e26abc9c07d44924d}
+
 \end{DoxyCompactItemize}
 
 
@@ -30,3 +43,23 @@ Toni Uhlig \href{mailto:matzeton@googlemail.com}{\tt matzeton@googlemail.\+com}
 \begin{DoxyVersion}{Version}
 1.\+0 
 \end{DoxyVersion}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{RC__BlobDetector_8hpp_ad3133ccbef76aa43d2361bbda6f8f9f3}{\index{R\+C\+\_\+\+Blob\+Detector.\+hpp@{R\+C\+\_\+\+Blob\+Detector.\+hpp}!calc\+Diff\+Time@{calc\+Diff\+Time}}
+\index{calc\+Diff\+Time@{calc\+Diff\+Time}!R\+C\+\_\+\+Blob\+Detector.\+hpp@{R\+C\+\_\+\+Blob\+Detector.\+hpp}}
+\subsubsection[{calc\+Diff\+Time}]{\setlength{\rightskip}{0pt plus 5cm}\#define calc\+Diff\+Time(
+\begin{DoxyParamCaption}
+\item[{}]{start, }
+\item[{}]{end, }
+\item[{}]{dest}
+\end{DoxyParamCaption}
+)~\{ float tmp = dest; dest = (end -\/ start) / cv\+::get\+Tick\+Frequency(); dest = (dest + tmp)/2; \}}}\label{RC__BlobDetector_8hpp_ad3133ccbef76aa43d2361bbda6f8f9f3}
+\char`\"{}\+Zeit\char`\"{}-\/\+Differenz berechnen (Durchschnitt von {\ttfamily end-\/start} und {\ttfamily dest}) \hypertarget{RC__BlobDetector_8hpp_a9aacb2f0483d3f24da79f348eb5d8584}{\index{R\+C\+\_\+\+Blob\+Detector.\+hpp@{R\+C\+\_\+\+Blob\+Detector.\+hpp}!measure\+Ticks@{measure\+Ticks}}
+\index{measure\+Ticks@{measure\+Ticks}!R\+C\+\_\+\+Blob\+Detector.\+hpp@{R\+C\+\_\+\+Blob\+Detector.\+hpp}}
+\subsubsection[{measure\+Ticks}]{\setlength{\rightskip}{0pt plus 5cm}\#define measure\+Ticks(
+\begin{DoxyParamCaption}
+\item[{}]{var}
+\end{DoxyParamCaption}
+)~\{ var = cv\+::get\+Tick\+Count(); \}}}\label{RC__BlobDetector_8hpp_a9aacb2f0483d3f24da79f348eb5d8584}
+vergangene \char`\"{}\+Zeit\char`\"{} (Ticks) messen 

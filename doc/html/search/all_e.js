@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['webserver',['WebServer',['../classrc_1_1WebServer.html',1,'rc']]],
-  ['width',['width',['../structcmd__opts.html#a0f13b6290e7e33c22a258c11ed23f72f',1,'cmd_opts']]],
-  ['window',['Window',['../classrc_1_1Window.html',1,'rc']]]
+  ['videofile',['videoFile',['../structcmd__opts.html#acee5a1c6793898bbda38d6d7fb5de431',1,'cmd_opts']]]
 ];

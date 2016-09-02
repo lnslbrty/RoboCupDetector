@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['pidfile',['PIDFILE',['../RC__Main_8cpp.html#af5fe208f8640c8c789a4d5d5b8ad47f5',1,'RC_Main.cpp']]],
-  ['processed',['processed',['../structrc_1_1cbElement.html#a721d493bd93248172628c48c4526f105',1,'rc::cbElement']]],
-  ['processed_5fimage',['processed_image',['../structrc_1_1processed__image.html',1,'rc']]]
+  ['maxfps',['maxFps',['../structcmd__opts.html#a2b42f4e7bd954f5ac87c82e9d19a9b84',1,'cmd_opts']]],
+  ['measureticks',['measureTicks',['../RC__BlobDetector_8hpp.html#a9aacb2f0483d3f24da79f348eb5d8584',1,'RC_BlobDetector.hpp']]]
 ];

@@ -9,7 +9,14 @@
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>cv::Point2f coords[4]</para>
+                        <para>float midx</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>float absy</para>
                     </listitem>
                 </itemizedlist>
             </para>
@@ -32,17 +39,25 @@
             <title>Detailed Description</title>
 
 <para>wichtige Informationen eines bearbeiteten Bildes in dieser Struktur speichern </para>
-                <para>Definition at line 24 of file RC_BlobDetector.hpp</para>
+                <para>Definition at line 42 of file RC_BlobDetector.hpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_BlobDetector.hpp</para></listitem></itemizedlist></para>
         </simplesect>
         <simplesect>
             <title>Member Documentation</title>
             <simplesect>
-                <title>float rc::processed_image::angle</title>                
-<para>Positionen der vier Ecken </para>
+                <title>float rc::processed_image::absy</title>                
+<para>X-Koordinate (X=0 entspricht Breite des Bildes geteilt durch 2) </para>
 
-                <para>Definition at line 26 of file RC_BlobDetector.hpp</para>
+                <para>Definition at line 44 of file RC_BlobDetector.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_BlobDetector.hpp</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>float rc::processed_image::angle</title>                
+<para>Y-Koordinate (Y-Koordinate entspricht Y-Koordinate im Urpsrungsbild) </para>
+
+                <para>Definition at line 45 of file RC_BlobDetector.hpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_BlobDetector.hpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -50,7 +65,7 @@
                 <title>float rc::processed_image::distance</title>                
 <para>Winkel des rotierenden Rechteckes </para>
 
-                <para>Definition at line 27 of file RC_BlobDetector.hpp</para>
+                <para>Definition at line 46 of file RC_BlobDetector.hpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_BlobDetector.hpp</para></listitem></itemizedlist></para>
             </simplesect>

@@ -357,6 +357,37 @@ void )</para>
             </para>
         </simplesect>
         <simplesect>
+            <title>Maximale Anzahl Bilder/Sekunde der Kamera</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Return values                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>ein</entry>
+                                <entry>
+<para>Wert von 1 bis n </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="classrc_1_1Camera_1a1bb66807b50fe1e4e2d3941d266073cf">getMaxFPS</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
             <title>Sättigung festlegen</title>
       <description>
 <para>
@@ -369,14 +400,18 @@ void )</para>
                             <row>
                                 <entry>value</entry>
                                 <entry>
-<para>siehe rc::Camera::getSaturation() </para>
+<para>siehe </para>
 </entry>
                             </row>
                         </tbody>
                         </tgroup>
                     </table>
                 </formalpara>
-                </para>
+                <formalpara><title>See also: </title>
+
+<para>rc::Camera::getSaturation </para>
+</formalpara>
+</para>
 </description>
             <para>
                 <itemizedlist>
@@ -400,14 +435,18 @@ unsigned int value)</para>
                             <row>
                                 <entry>value</entry>
                                 <entry>
-<para>siehe rc::Camera::getGain() </para>
+<para>siehe </para>
 </entry>
                             </row>
                         </tbody>
                         </tgroup>
                     </table>
                 </formalpara>
-                </para>
+                <formalpara><title>See also: </title>
+
+<para>rc::Camera::getGain </para>
+</formalpara>
+</para>
 </description>
             <para>
                 <itemizedlist>
@@ -431,20 +470,59 @@ unsigned int value)</para>
                             <row>
                                 <entry>value</entry>
                                 <entry>
-<para>siehe rc::Camera::getExposure() </para>
+<para>siehe </para>
 </entry>
                             </row>
                         </tbody>
                         </tgroup>
                     </table>
                 </formalpara>
-                </para>
+                <formalpara><title>See also: </title>
+
+<para>rc::Camera::getExposure </para>
+</formalpara>
+</para>
 </description>
             <para>
                 <itemizedlist>
                     <listitem>
                         <para>void <link linkend="classrc_1_1Camera_1a35859a25c12b6ffe3b48f963f8b350ae">setExposure</link> (
 int value)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Maximale Bilder/Sekunde setzen</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>value</entry>
+                                <entry>
+<para>siehe </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                <formalpara><title>See also: </title>
+
+<para>rc::Camera::getMaxFPS </para>
+</formalpara>
+</para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1Camera_1ab95f1bb0c2778beba736ad92e75fb8da">setMaxFPS</link> (
+unsigned int value)</para>
                     </listitem>
                 </itemizedlist>
             </para>

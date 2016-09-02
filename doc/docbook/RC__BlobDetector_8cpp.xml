@@ -2,6 +2,24 @@
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="RC__BlobDetector_8cpp">
     <title>RC_BlobDetector.cpp File Reference</title>
     <programlisting>#include &quot;RC_BlobDetector.hpp&quot;</programlisting>
+    <programlisting>#include &lt;iomanip&gt;</programlisting>
+        <simplesect>
+            <title>Defines</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="RC__BlobDetector_8cpp_1a9aacb2f0483d3f24da79f348eb5d8584">measureTicks</link> { var = cv::getTickCount(); }</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="RC__BlobDetector_8cpp_1ad3133ccbef76aa43d2361bbda6f8f9f3">calcDiffTime</link> { float tmp = dest; dest = (end - start) / cv::getTickFrequency(); dest = (dest + tmp)/2; }</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
     <simplesect>
         <title>Detailed Description</title>
     <para>Definition in file /home/pi/bsz7_robocup/src/RC_BlobDetector.cpp</para>

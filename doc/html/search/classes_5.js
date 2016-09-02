@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['webserver',['WebServer',['../classrc_1_1WebServer.html',1,'rc']]],
-  ['window',['Window',['../classrc_1_1Window.html',1,'rc']]]
+  ['time_5fconsumption',['time_consumption',['../structrc_1_1time__consumption.html',1,'rc']]]
 ];

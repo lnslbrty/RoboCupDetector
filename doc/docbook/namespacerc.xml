@@ -62,6 +62,13 @@
             <para>
                 <itemizedlist>
                     <listitem>
+                        <para>struct <link linkend="structrc_1_1time__consumption">rc::time_consumption</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
                         <para>struct <link linkend="classrc_1_1WebServer">rc::WebServer</link></para>
                     </listitem>
                 </itemizedlist>
@@ -106,6 +113,20 @@ void )</para>
             </para>
         </simplesect>
         <simplesect>
+            <title>Anwendungsstart abschließen</title>
+      <description>
+<para>Diese Routine sollte nach der Initialisierung aufgerufen werden. </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="namespacerc_1ad7301d689ad53a4f46b1f4c14c72e97e">startUpDone</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
             <title>Reaktion auf Systemspez. Signale festlegen</title>
             <para>
                 <itemizedlist>
@@ -126,6 +147,17 @@ void )</para>
 <link linkend="namespacerc_1a79a656935f516f1a4339ad99f367934bad3af77d645b72510dcacc6631440cbd2">RB_BLUE</link>
 }</literallayout>
 </para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structrc_1_1time__consumption">time_consumption</link> &amp; <link linkend="namespacerc_1abd4e153b18d26e2e26abc9c07d44924d">getAvgTime</link> (
+void )</para>
                     </listitem>
                 </itemizedlist>
             </para>

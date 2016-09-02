@@ -122,19 +122,22 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~BlobDetectorFactory</b> ()</td></tr>
 <tr class="separator:a5532ab9249a1c53c4b87a968be4d6235"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Initialisierung der Kamera</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>Hinweis: Diese Methode sollte <em>vor</em> startThreads() ausgeführt werden </p>
+<tr><td colspan="2"><div class="groupText"><p>Hinweis: Diese Methode sollte <em>vor</em></p>
+<dl class="section see"><dt>See also</dt><dd>startThreads ausgeführt werden </dd></dl>
 </div></td></tr>
 <tr class="memitem:a8816a3c768cde4d4491f2ab06f875df3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8816a3c768cde4d4491f2ab06f875df3"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>openCamera</b> (void)</td></tr>
 <tr class="separator:a8816a3c768cde4d4491f2ab06f875df3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Deaktiviert die Kamera</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>Hinweis: Diese Methode sollte <em>nach</em> stopThreads() ausgeführt werden </p>
+<tr><td colspan="2"><div class="groupText"><p>Hinweis: Diese Methode sollte <em>nach</em></p>
+<dl class="section see"><dt>See also</dt><dd>stopThreads ausgeführt werden </dd></dl>
 </div></td></tr>
 <tr class="memitem:a847250d92a85518c9701ab8152c542f5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a847250d92a85518c9701ab8152c542f5"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>closeCamera</b> (void)</td></tr>
 <tr class="separator:a847250d92a85518c9701ab8152c542f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Startet die "Arbeiter"- Threads</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>Die Threads werden gestartet und befinden sich in einer Endlosschleife, solange das Programm nicht beendet wird oder stopThreads() aufgerufen wird. </p>
+<tr><td colspan="2"><div class="groupText"><p>Die Threads werden gestartet und befinden sich in einer Endlosschleife, solange das Programm nicht beendet wird oder</p>
+<dl class="section see"><dt>See also</dt><dd>stopThreads() aufgerufen wird. </dd></dl>
 </div></td></tr>
 <tr class="memitem:afecac9963fc4e69e51422ce59cf540f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afecac9963fc4e69e51422ce59cf540f3"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>startThreads</b> (void)</td></tr>
@@ -186,6 +189,9 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getGain</b> (
 <tr class="memitem:a6e906a0b175eb28fa1dd4dbab4aa697a inherit pub_methods_classrc_1_1Camera"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e906a0b175eb28fa1dd4dbab4aa697a"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>getExposure</b> (void)</td></tr>
 <tr class="separator:a6e906a0b175eb28fa1dd4dbab4aa697a inherit pub_methods_classrc_1_1Camera"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bb66807b50fe1e4e2d3941d266073cf inherit pub_methods_classrc_1_1Camera"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bb66807b50fe1e4e2d3941d266073cf"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getMaxFPS</b> (void)</td></tr>
+<tr class="separator:a1bb66807b50fe1e4e2d3941d266073cf inherit pub_methods_classrc_1_1Camera"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace923daca0f3b491c966630b441a916e inherit pub_methods_classrc_1_1Camera"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace923daca0f3b491c966630b441a916e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setSaturation</b> (unsigned int value)</td></tr>
 <tr class="separator:ace923daca0f3b491c966630b441a916e inherit pub_methods_classrc_1_1Camera"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -195,6 +201,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setGain</b> (unsigned
 <tr class="memitem:a35859a25c12b6ffe3b48f963f8b350ae inherit pub_methods_classrc_1_1Camera"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a35859a25c12b6ffe3b48f963f8b350ae"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setExposure</b> (int value)</td></tr>
 <tr class="separator:a35859a25c12b6ffe3b48f963f8b350ae inherit pub_methods_classrc_1_1Camera"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab95f1bb0c2778beba736ad92e75fb8da inherit pub_methods_classrc_1_1Camera"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab95f1bb0c2778beba736ad92e75fb8da"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setMaxFPS</b> (unsigned int value)</td></tr>
+<tr class="separator:ab95f1bb0c2778beba736ad92e75fb8da inherit pub_methods_classrc_1_1Camera"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Setzt die Groese des Vorschau- Videos.</h2></td></tr>
@@ -243,7 +252,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>getElement</b> (cv::M
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 24 2016 05:25:54 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 2 2016 22:18:14 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

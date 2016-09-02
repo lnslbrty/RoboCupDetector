@@ -86,23 +86,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">RC_BlobDetector.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;raspicam/raspicam_cv.h&gt;</code><br />
-<code>#include &lt;opencv2/opencv.hpp&gt;</code><br />
-<code>#include &lt;opencv2/highgui/highgui.hpp&gt;</code><br />
+<div class="textblock"><code>#include &lt;opencv2/opencv.hpp&gt;</code><br />
 </div>
 <p><a href="RC__BlobDetector_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrc_1_1time__consumption.html">rc::time_consumption</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrc_1_1processed__image.html">rc::processed_image</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrc_1_1BlobDetector.html">rc::BlobDetector</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a9aacb2f0483d3f24da79f348eb5d8584"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="RC__BlobDetector_8hpp.html#a9aacb2f0483d3f24da79f348eb5d8584">measureTicks</a>(var)&#160;&#160;&#160;{ var = cv::getTickCount(); }</td></tr>
+<tr class="separator:a9aacb2f0483d3f24da79f348eb5d8584"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3133ccbef76aa43d2361bbda6f8f9f3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="RC__BlobDetector_8hpp.html#ad3133ccbef76aa43d2361bbda6f8f9f3">calcDiffTime</a>(start, end, dest)&#160;&#160;&#160;{ float tmp = dest; dest = (end - start) / cv::getTickFrequency(); dest = (dest + tmp)/2; }</td></tr>
+<tr class="separator:ad3133ccbef76aa43d2361bbda6f8f9f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -110,15 +119,72 @@ Enumerations</h2></td></tr>
 <b>RB_BLUE</b>
  }</td></tr>
 <tr class="separator:a79a656935f516f1a4339ad99f367934b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:abd4e153b18d26e2e26abc9c07d44924d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd4e153b18d26e2e26abc9c07d44924d"></a>
+struct time_consumption &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>rc::getAvgTime</b> (void)</td></tr>
+<tr class="separator:abd4e153b18d26e2e26abc9c07d44924d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Toni Uhlig <a href="#" onclick="location.href='mai'+'lto:'+'mat'+'ze'+'ton'+'@g'+'oog'+'le'+'mai'+'l.'+'com'; return false;">matze<span style="display: none;">.nosp@m.</span>ton@<span style="display: none;">.nosp@m.</span>googl<span style="display: none;">.nosp@m.</span>emai<span style="display: none;">.nosp@m.</span>l.com</a> </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>25.05.2016 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="ad3133ccbef76aa43d2361bbda6f8f9f3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define calcDiffTime</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">start, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">end, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">dest&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;{ float tmp = dest; dest = (end - start) / cv::getTickFrequency(); dest = (dest + tmp)/2; }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>"Zeit"-Differenz berechnen (Durchschnitt von <code>end-start</code> und <code>dest</code>) </p>
+
+</div>
+</div>
+<a class="anchor" id="a9aacb2f0483d3f24da79f348eb5d8584"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define measureTicks</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">var</td><td>)</td>
+          <td>&#160;&#160;&#160;{ var = cv::getTickCount(); }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>vergangene "Zeit" (Ticks) messen </p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 24 2016 05:25:54 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 2 2016 22:18:14 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

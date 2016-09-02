@@ -58,6 +58,14 @@ void )</para>
                     </listitem>
                 </itemizedlist>
             </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1Semaphore_1a792ef44c87aee407c233e622d5e04cc1">NotifyAll</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
         </simplesect>
         <simplesect>
             <title>Private Attributes</title>

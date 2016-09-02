@@ -104,10 +104,12 @@ void rc::BlobDetectorFactory::startThreads(void) {
       }
       out.lock();
       std::cout <<"Thread("<<num<<") time consumption:"<<std::endl
-                <<"\tcolor filter: "<<std::setprecision (15)<<tc->avg_color<<std::endl
-                <<"\tblur........: "<<std::setprecision (15)<<tc->avg_blur<<std::endl
-                <<"\tcontours....: "<<std::setprecision (15)<<tc->avg_contours<<std::endl
-                <<"\tdraw........: "<<std::setprecision (15)<<tc->avg_draw<<std::endl;
+                <<"\tcolor filter: "<<std::setprecision (5)<<tc->avg_color<<std::endl
+#ifdef ENABLE_BLUR
+                <<"\tblur........: "<<std::setprecision (5)<<tc->avg_blur<<std::endl
+#endif
+                <<"\tcontours....: "<<std::setprecision (5)<<tc->avg_contours<<std::endl
+                <<"\tdraw........: "<<std::setprecision (5)<<tc->avg_draw<<std::endl;
       out.unlock();
       delete piY;
       delete piB;

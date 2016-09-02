@@ -48,6 +48,13 @@
             <para>
                 <itemizedlist>
                     <listitem>
+                        <para>unsigned int maxFps</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
                         <para>uint8_t sat</para>
                     </listitem>
                 </itemizedlist>
@@ -132,10 +139,18 @@
                 <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
             </simplesect>
             <simplesect>
-                <title>uint8_t cmd_opts::sat</title>                
-<para>Bildhöhr </para>
+                <title>unsigned int cmd_opts::maxFps</title>                
+<para>Bildhöhe </para>
 
                 <para>Definition at line 43 of file RC_Main.cpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>uint8_t cmd_opts::sat</title>                
+<para>maximale FPS der Kamera </para>
+
+                <para>Definition at line 44 of file RC_Main.cpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -143,7 +158,7 @@
                 <title>uint8_t cmd_opts::gain</title>                
 <para>Farbsättigung </para>
 
-                <para>Definition at line 44 of file RC_Main.cpp</para>
+                <para>Definition at line 45 of file RC_Main.cpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -151,7 +166,7 @@
                 <title>int8_t cmd_opts::exp</title>                
 <para>Bildverstärkung </para>
 
-                <para>Definition at line 45 of file RC_Main.cpp</para>
+                <para>Definition at line 46 of file RC_Main.cpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -159,7 +174,7 @@
                 <title>uint8_t cmd_opts::thrds</title>                
 <para>Belichtungsdauer </para>
 
-                <para>Definition at line 46 of file RC_Main.cpp</para>
+                <para>Definition at line 47 of file RC_Main.cpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -167,7 +182,7 @@
                 <title>uint8_t cmd_opts::cvthrds</title>                
 <para>RoboCup Bilderkennungs- Threads </para>
 
-                <para>Definition at line 47 of file RC_Main.cpp</para>
+                <para>Definition at line 48 of file RC_Main.cpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
             </simplesect>

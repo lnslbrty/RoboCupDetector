@@ -46,7 +46,13 @@ unsigned int numThreads)</para>
         <simplesect>
             <title>Initialisierung der Kamera</title>
       <description>
-<para>Hinweis: Diese Methode sollte <emphasis>vor</emphasis> startThreads() ausgeführt werden </para>
+<para>Hinweis: Diese Methode sollte <emphasis>vor</emphasis></para>
+
+<para><formalpara><title>See also: </title>
+
+<para>startThreads ausgeführt werden </para>
+</formalpara>
+</para>
 </description>
             <para>
                 <itemizedlist>
@@ -60,7 +66,13 @@ void )</para>
         <simplesect>
             <title>Deaktiviert die Kamera</title>
       <description>
-<para>Hinweis: Diese Methode sollte <emphasis>nach</emphasis> stopThreads() ausgeführt werden </para>
+<para>Hinweis: Diese Methode sollte <emphasis>nach</emphasis></para>
+
+<para><formalpara><title>See also: </title>
+
+<para>stopThreads ausgeführt werden </para>
+</formalpara>
+</para>
 </description>
             <para>
                 <itemizedlist>
@@ -74,7 +86,13 @@ void )</para>
         <simplesect>
             <title>Startet die &quot;Arbeiter&quot;- Threads</title>
       <description>
-<para>Die Threads werden gestartet und befinden sich in einer Endlosschleife, solange das Programm nicht beendet wird oder stopThreads() aufgerufen wird. </para>
+<para>Die Threads werden gestartet und befinden sich in einer Endlosschleife, solange das Programm nicht beendet wird oder</para>
+
+<para><formalpara><title>See also: </title>
+
+<para>stopThreads() aufgerufen wird. </para>
+</formalpara>
+</para>
 </description>
             <para>
                 <itemizedlist>
@@ -188,6 +206,13 @@ void )</para>
                 <itemizedlist>
                     <listitem>
                         <para>std::atomic&lt; bool &gt; doLoop</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::mutex out</para>
                     </listitem>
                 </itemizedlist>
             </para>
