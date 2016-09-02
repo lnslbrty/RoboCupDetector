@@ -255,6 +255,8 @@ int main (int argc,char **argv) {
   /* Spaltenberzeichnung ausgeben */
   std::cout <<"------------------------------"<<std::endl
             <<"[Elapsed] [Images] [FPS] [BufferInfo]"<<std::endl;
+  /* Startprozess abgeschlossen */
+  rc::startUpDone();
 
   double secondsElapsed = 0.0f;
   unsigned int i = 0, n = 1;

@@ -20,6 +20,12 @@ namespace rc {
 bool isDaemonTerminate(void);
 
 /**
+ * @name Anwendungsstart abschließen
+ * @brief Diese Routine sollte nach der Initialisierung aufgerufen werden.
+ */
+void startUpDone(void);
+
+/**
  * @name Reaktion auf Systemspez. Signale festlegen
  */
 void setSignals(void);

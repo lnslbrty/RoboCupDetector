@@ -17,15 +17,22 @@
 #include <pwd.h>
 
 
-rc::Daemon* rc::Daemon::_instance = nullptr;
-static std::atomic_bool gotSigTerm(false);
+rc::Daemon* rc::Daemon::_instance = nullptr; /** Singleton Instanz */
+static std::atomic_bool gotSigTerm(false);   /** bei Erhalt eines SIGTERMS/SIGINT (Ctrl+c) true, sonst false */
+static std::atomic_bool isStartup(false);    /** Anwendungsstart bereits abgeschlossen? */
 
 
 bool rc::isDaemonTerminate(void) {
   return gotSigTerm;
 }
 
+void rc::startUpDone(void) {
+  isStartup = true;
+}
+
 static void signal_handler(int sig) {
+  if (!isStartup)
+    return;
   switch(sig) {
     case SIGHUP:
       break;
