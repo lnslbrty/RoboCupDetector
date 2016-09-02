@@ -31,7 +31,7 @@ ENDIF()
 IF (ENABLE_DEBUG)
         add_definitions("-O0 -g2 -pg -DDEBUG=1 -D_DEBUG=1")
 ELSE()
-        add_definitions("-O3 -fomit-frame-pointer -ffast-math")
+        add_definitions("-O3 -fomit-frame-pointer -ffast-math -fno-math-errno")
         set(CMAKE_EXE_LINKER_FLAGS "-fprofile-generate -flto ${CMAKE_EXE_LINKER_FLAGS}")
 ENDIF()
 
