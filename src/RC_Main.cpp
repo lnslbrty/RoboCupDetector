@@ -28,7 +28,7 @@
 
 /** Standartuser, um nicht benötigte Privilegien zu "droppen" (daemon Modus) */
 #ifndef CHUSER
-#define CHUSER "robocup"
+#define CHUSER "robocup" // z.Z. deaktiviert, da `mmal` besondere Rechte benötigt
 #endif
 
 
@@ -63,7 +63,7 @@ static struct cmd_opts opts = { 0,100,0,0,640,480,20,50,90,-1,4,2,0,8080,500 };
  * @brief Eine kurze Übersicht über alle verfügbaren Konfigurationsvariablen
  */
 static void usage(char* arg0) {
-  fprintf(stderr, "\n%s: usage\n"
+  fprintf(stderr, "\n%s usage:\n"
                   "\t-S             start as daemon (fails if already started)\n"
                   "\t-K             kill the daemon\n"
                   "\t-n [count]     number of frame to capture [0..n] default: %llu\n"
@@ -73,10 +73,10 @@ static void usage(char* arg0) {
                   "\t-e [exp]       set exposure [-1..100] default: %d\n"
                   "\t-t [num]       set robocup thread count default: %u\n"
                   "\t-c [num]       set opencv thread count default: %u\n"
-                  "\t-w [width]     base image width in pixels [0..n] default: %u\n"
-                  "\t-h [height]    base image height in pixels [0..n] default: %u\n"
+                  "\t-W [width]     base image width in pixels [0..n] default: %u\n"
+                  "\t-H [height]    base image height in pixels [0..n] default: %u\n"
                   "\t-f [num]       maximal camera frames-per-second [1..n] default: %u\n"
-                  "\t-p             this\n"
+                  "\t-h             this\n"
 #ifdef ENABLE_HTTPD
                   "WEBSERVER options:\n"
                   "\t-P [port]      listen on tcp port [1..65535] default: %u\n"
@@ -85,7 +85,7 @@ static void usage(char* arg0) {
 #endif
 #ifdef ENABLE_VIDEO
                   "VIDEO options:\n"
-                  "\t-v [file]      save RIFF-avi stream to [file}\n"
+                  "\t-v [file]      save RIFF-avi stream to [file]\n"
 #endif
 #ifdef USE_XWINDOW
                   "XWINDOW options (X11 required):\n"
@@ -118,14 +118,15 @@ static void print_opencv_info(void) {
 
 /**
  * @name  `main` Funktion
- * @brief  Diese wird vom Betriebssystem während des Programmstartes als Einsprungspunkt genutzt
+ * @brief  Diese wird vom Betriebssystem nach dem Programmstart als Einsprungspunkt genutzt
  * @retval ganzzahliger Rückgabewert der z.B. auf der Shell ausgewertet werden kann
  */
 int main (int argc,char **argv) {
   time_t timer_begin,timer_end;
 
   char c;
-  while ((c = getopt(argc, argv, "SKn:s:g:e:t:c:P:Lr:v:xw:h:f:pd")) != -1) {
+  /* Kommandozeilen Argumente parsen mit `getopt` */
+  while ((c = getopt(argc, argv, "SKn:s:g:e:t:c:P:Lr:v:xW:H:f:hd")) != -1) {
     if (c == 0xFF) break;
     switch (c) {
 
@@ -176,11 +177,11 @@ int main (int argc,char **argv) {
 #endif
         break;
       /*#####################*/
-      case 'w':
+      case 'W':
         opts.width = strtoul(optarg, NULL, 10);
         break;
       /*####################*/
-      case 'h':
+      case 'H':
         opts.height = strtoul(optarg, NULL, 10);
         break;
       /*####################*/
@@ -221,7 +222,10 @@ int main (int argc,char **argv) {
         exit(1);
         break;
       /*####################*/
-      case 'p':
+      case 'h':
+#if defined(PKG_AUTHOR) && defined(PKG_EMAIL) && defined(PKG_VERSION)
+        fprintf(stderr, "robocup %s\n  (C) 2016, %s\n  report bugs to %s\n", PKG_VERSION, PKG_AUTHOR, PKG_EMAIL);
+#endif
       default:
         usage(argv[0]);
         exit(1);
@@ -294,7 +298,8 @@ int main (int argc,char **argv) {
   std::cout <<"Starting WebServer ("<<(opts.listenLocal == true ? "127.0.0.1" : "0.0.0.0")<<":"<<opts.tcpPort<<") .. jsRefreshRate: "<<opts.jsRefreshRate<<std::endl;
   /* WebServer lauscht auf TCP-Port 8080 und zeigt maximal drei Bilder an */
   rc::WebServer httpd(opts.listenLocal, opts.tcpPort, 3, opts.jsRefreshRate);
-  httpd.start();
+  if (!httpd.start())
+    std::cerr <<"WebServer start failed"<<std::endl;
   detector.setHttpd(&httpd);
 #endif
   /* Startprozess abgeschlossen */

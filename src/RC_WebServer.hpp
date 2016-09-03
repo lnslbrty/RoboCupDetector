@@ -22,53 +22,83 @@ class WebServer {
   public:
     /**
      * @name Standartkonstruktor
+     * @param true, wenn nur auf localhost eingehende Verbindungen akzeptiert werden sollen, andernfalls auf allen Interfaces zulassen
+     * @param 16-Bit TCP Port
+     * @param Anzahl anzuzeigender Bilder auf der Website
+     * @þaram Zeitdauer, welche das automatische nachladen der Bilder auf der Website setzt (in ms)
      */
-    WebServer(bool listen_localhost, uint16_t port, size_t image_count, size_t js_refreshrate) {
-      this->listen_localhost = listen_localhost;
+    WebServer(bool listenLocalhost, uint16_t port, size_t imageCount, size_t jsRefreshRate) {
+      this->listenLocalhost = listenLocalhost;
       this->port = port;
-      this->image_cnt = image_count;
-      this->imencode_flags.push_back(0);
+      this->imageCount = imageCount;
+      this->imEncodeFlags.push_back(0);
       this->frames = 0;
-      this->js_refreshrate = js_refreshrate;
+      this->jsRefreshRate = jsRefreshRate;
     }
-
     /**
      * @name Destruktor
      */
     ~WebServer() {
     }
 
+    /**
+     * @name WebServer starten
+     * @brief Der WebServer soll nun Verbindungen entgegen nehmen und beantworten.
+     * @retval true, wenn der Start erfolgreich, andernfalls false
+     */
     bool start();
+
+    /**
+     * @name WebServer stoppen
+     * @brief Keine neuen Verbindungen entgegen nehmen und bereits bestehende beenden.
+     */
     void stop(void);
 
+    /**
+     * @name ein Bild zum abrufen freigeben
+     * @param Bildindex
+     * @param Bild
+     */
     void setImage(int idx, cv::Mat& src) {
-      images_mtx.lock();
-      images_out[idx % image_cnt] = src.clone();
+      imagesMtx.lock();
+      imagesOut[idx % imageCount] = src.clone();
       frames++;
-      images_mtx.unlock();
+      imagesMtx.unlock();
     }
+
+    /**
+     * @name ein Bild holen
+     * @param Bildindex
+     * @retval Bild
+     */
     cv::Mat getImage(int idx) {
-      images_mtx.lock();
-      cv::Mat ret = images_out[idx % image_cnt];
-      images_mtx.unlock();
+      imagesMtx.lock();
+      cv::Mat ret = imagesOut[idx % imageCount];
+      imagesMtx.unlock();
       return ret;
     }
+
+    /**
+     * @name Anzahl Bilder zurückgeben
+     * @retval numerischer Wert
+     */
     size_t getFrames(void) {
-      images_mtx.lock();
+      imagesMtx.lock();
       auto ret = frames;
-      images_mtx.unlock();
+      imagesMtx.unlock();
       return ret;
     }
-    size_t getCount(void) { return this->image_cnt; }
-    std::vector<int>& getFlags(void) { return this->imencode_flags; }
-    size_t getJSRefreshRate(void) { return this->js_refreshrate; }
+
+    size_t getCount(void) { return this->imageCount; }
+    std::vector<int>& getFlags(void) { return this->imEncodeFlags; }
+    size_t getJSRefreshRate(void) { return this->jsRefreshRate; }
 
   private:
-    std::mutex images_mtx;
-    cv::Mat * images_out;
-    std::vector<int> imencode_flags;
-    size_t image_cnt, frames, js_refreshrate;
-    bool listen_localhost;
+    std::mutex imagesMtx;
+    cv::Mat * imagesOut;
+    std::vector<int> imEncodeFlags;
+    size_t imageCount, frames, jsRefreshRate;
+    bool listenLocalhost;
     uint16_t port;
     struct MHD_Daemon * httpd = NULL;
 

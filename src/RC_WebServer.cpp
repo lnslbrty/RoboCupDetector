@@ -36,7 +36,7 @@ static int httpd_callback(void * cls,
       return MHD_NO;
     }
     if (i >= 0 && i < ws->getCount()) {
-      cv::Mat out = ws->getImage(i);
+      cv::Mat out = ws->getImage(i).clone();
       if (!out.empty()) {
          std::vector<uchar> buf;
          if (cv::imencode(".jpg", out, buf, ws->getFlags()) == true) {
@@ -89,9 +89,9 @@ static int httpd_callback(void * cls,
 }
 
 bool rc::WebServer::start() {
-  images_out = new cv::Mat[image_cnt];
+  imagesOut = new cv::Mat[imageCount];
 
-  if (this->listen_localhost) {
+  if (this->listenLocalhost) {
     struct sockaddr_in laddr;
     laddr.sin_family = AF_INET;
     laddr.sin_port = htons(this->port);
@@ -121,5 +121,5 @@ bool rc::WebServer::start() {
 
 void rc::WebServer::stop(void) {
   MHD_stop_daemon(httpd);
-  delete[] images_out;
+  delete[] imagesOut;
 }

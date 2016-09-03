@@ -10,6 +10,10 @@ set(ENABLE_VIDEO false CACHE BOOL "enable divx video output")
 set(ENABLE_WEBSERVER true CACHE BOOL "enable a minimal webserver (lifestreaming)")
 set(ENABLE_BLUR false CACHE BOOL "enable image blurring before processing")
 
+set(PKG_AUTHOR "Toni Uhlig")
+set(PKG_EMAIL "matzeton@googlemail.com")
+set(PKG_VERSION "0.1a")
+
 set(CMAKE_CXX_FLAGS "-Wall -std=c++11")
 set(CMAKE_EXE_LINKER_FLAGS "-Wl,--no-as-needed")
 set(CMAKE_INSTALL_PREFIX "/usr")
@@ -34,6 +38,10 @@ ELSE()
         add_definitions("-O3 -fomit-frame-pointer -ffast-math -fno-math-errno")
         set(CMAKE_EXE_LINKER_FLAGS "-fprofile-generate -flto ${CMAKE_EXE_LINKER_FLAGS}")
 ENDIF()
+
+add_definitions("-DPKG_AUTHOR=\"${PKG_AUTHOR}\"")
+add_definitions("-DPKG_EMAIL=\"${PKG_EMAIL}\"")
+add_definitions("-DPKG_VERSION=\"${PKG_VERSION}\"")
 
 IF (OpenCV_FOUND AND raspicam_CV_FOUND)
 IF (USE_XWINDOW)
