@@ -50,7 +50,7 @@ cv::Mat rc::BlobDetector::process(cv::Mat& image, enum rc::roboColor rc, rc::pro
   }
 
   /* vertikale Linie in der Mitte zeichnen */
-  cv::line(image, cv::Point2f(image.size().width/2.0f, 0), cv::Point2f(image.size().width/2.0f, image.size().height), cv::Scalar(0,255,255));
+  cv::line(image, cv::Point2f(image.size().width/2.0f, 0), cv::Point2f(image.size().width/2.0f, image.size().height), cv::Scalar(0,0,255));
 
   /* Konturen im original Bild nachzeichnen, dabei ein Rechteck als Form der Kontur annehmen */
   if (largest_contour_index >= 0 && largest_area > 2000) {
@@ -74,9 +74,12 @@ cv::Mat rc::BlobDetector::process(cv::Mat& image, enum rc::roboColor rc, rc::pro
     for (size_t jdx = 0; jdx < 4; ++jdx)
       cv::line(image, rect_points[jdx], rect_points[(jdx+1)%4], cv::Scalar(0,255,0));
     std::stringstream ss; ss << center.x-(image.size().width/2.0f) <<" | "<< angle <<" | "<< largest_area;
+    /* Mittelpunkt des Rechteckes zeichnen */
     cv::circle(image, center, 5, cv::Scalar(0,255,0));
+    /* Informationstext zeichnen */
     cv::putText(image, ss.str(), center + cv::Point2f(-25,25), cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar(255,0,255));
-    cv::line(image, center, cv::Point((image.size().width/2.0f), center.y), cv::Scalar(255,0,255));
+    /* Linie zur vertikalen Linie in der Mitte zeichnen */
+    cv::line(image, center, cv::Point((image.size().width/2.0f), center.y), cv::Scalar(0,0,255));
 
     measureTicks(end);
     calcDiffTime(start, end, tc.avg_draw);

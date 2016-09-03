@@ -23,11 +23,13 @@ class WebServer {
     /**
      * @name Standartkonstruktor
      */
-    WebServer(int port, int image_count) {
+    WebServer(bool listen_localhost, uint16_t port, size_t image_count, size_t js_refreshrate) {
+      this->listen_localhost = listen_localhost;
       this->port = port;
       this->image_cnt = image_count;
       this->imencode_flags.push_back(0);
       this->frames = 0;
+      this->js_refreshrate = js_refreshrate;
     }
 
     /**
@@ -59,12 +61,15 @@ class WebServer {
     }
     size_t getCount(void) { return this->image_cnt; }
     std::vector<int>& getFlags(void) { return this->imencode_flags; }
+    size_t getJSRefreshRate(void) { return this->js_refreshrate; }
 
   private:
     std::mutex images_mtx;
     cv::Mat * images_out;
     std::vector<int> imencode_flags;
-    size_t image_cnt, port, frames;
+    size_t image_cnt, frames, js_refreshrate;
+    bool listen_localhost;
+    uint16_t port;
     struct MHD_Daemon * httpd = NULL;
 
 };

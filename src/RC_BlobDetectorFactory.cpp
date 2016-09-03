@@ -32,13 +32,6 @@ rc::BlobDetectorFactory::~BlobDetectorFactory() {
 }
 
 void rc::BlobDetectorFactory::startThreads(void) {
-#ifdef ENABLE_HTTPD
-  /* WebServer starten */
-  std::cout <<"Starting WebServer (Port: 8080) .."<<std::endl;
-  /* WebServer lauscht auf TCP-Port 8080 und zeigt maximal drei Bilder an */
-  httpd = new rc::WebServer(8080, 3);
-  httpd->start();
-#endif
 #ifdef USE_XWINDOW
   win->run();
 #endif
@@ -81,9 +74,11 @@ void rc::BlobDetectorFactory::startThreads(void) {
           image = origImageY | origImageB;
 #ifdef ENABLE_HTTPD
           /* Bilder dem microhttpd bereitstellen */
-          httpd->setImage(0, image);
-          httpd->setImage(1, filteredImageY);
-          httpd->setImage(2, filteredImageB);
+          if (this->httpd != nullptr) {
+            httpd->setImage(0, image);
+            httpd->setImage(1, filteredImageY);
+            httpd->setImage(2, filteredImageB);
+          }
 #endif
 #ifdef USE_XWINDOW
           /* X11 Vorschaubild anzeigen */
@@ -141,11 +136,6 @@ void rc::BlobDetectorFactory::stopThreads(void) {
     delete videoOut;
     videoMtx.unlock();
   }
-#endif
-#ifdef ENABLE_HTTPD
-  /* WebServer stoppen */
-  httpd->stop();
-  delete httpd;
 #endif
 }
 

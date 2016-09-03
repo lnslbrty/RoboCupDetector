@@ -46,13 +46,16 @@ struct cmd_opts {
   int8_t exp;                   /** Belichtungsdauer */
   uint8_t thrds;                /** RoboCup Bilderkennungs- Threads */
   uint8_t cvthrds;              /** OpenCV Bildbearbeitungs- Thread */
+  bool listenLocal;             /** WebServer soll nur auf localhost lauschen */
+  uint16_t tcpPort;             /** WebServer TCP-Port */
+  size_t jsRefreshRate;         /** WebServer Javascript Bildaktualisierung (in ms) */
 };
 
 /** Dieses Feature ist zur Zeit nicht im "binary" enthalten. Um das Feature zu integrieren muss das Projekt mit `cmake` bzw. `ccmake` neu kofniguriert/kompiliert/gelinkt werden. */
 #define UNIMPLEMENTED(feature) { fprintf(stderr, "%s: feature not implemented (%s)\n", argv[0], feature); exit(1); }
 
 /** Standartwerte für Konfigurationsvariablen der oben beschriebenen Datenstruktur */
-static struct cmd_opts opts = { 0,100,0,0,640,480,20,50,90,-1,4,2 };
+static struct cmd_opts opts = { 0,100,0,0,640,480,20,50,90,-1,4,2,0,8080,500 };
 
 
 /**
@@ -73,6 +76,13 @@ static void usage(char* arg0) {
                   "\t-w [width]     base image width in pixels [0..n] default: %u\n"
                   "\t-h [height]    base image height in pixels [0..n] default: %u\n"
                   "\t-f [num]       maximal camera frames-per-second [1..n] default: %u\n"
+                  "\t-p             this\n"
+#ifdef ENABLE_HTTPD
+                  "WEBSERVER options:\n"
+                  "\t-P [port]      listen on tcp port [1..65535] default: %u\n"
+                  "\t-L             listen on localhost (127.0.0.1) instead of all interfaces (0.0.0.0)\n"
+                  "\t-r [rate]      JavaScript refresh rate for images [1..n] default: %u\n"
+#endif
 #ifdef ENABLE_VIDEO
                   "VIDEO options:\n"
                   "\t-v [file]      save RIFF-avi stream to [file}\n"
@@ -81,12 +91,11 @@ static void usage(char* arg0) {
                   "XWINDOW options (X11 required):\n"
                   "\t-x             render images\n"
 #endif
-                  "\t-p             this\n"
 #ifdef DEBUG
                   "DEBUG options:\n"
                   "\t-d             print OpenCV build/hardware information\n"
 #endif
-                "\n", arg0, opts.count, opts.sat, opts.gain, opts.exp, opts.thrds, opts.cvthrds, opts.width, opts.height, opts.maxFps);
+                "\n", arg0, opts.count, opts.sat, opts.gain, opts.exp, opts.thrds, opts.cvthrds, opts.width, opts.height, opts.maxFps, opts.tcpPort, opts.jsRefreshRate);
 }
 
 /**
@@ -116,7 +125,7 @@ int main (int argc,char **argv) {
   time_t timer_begin,timer_end;
 
   char c;
-  while ((c = getopt(argc, argv, "SKn:s:g:e:t:c:v:xw:h:f:pd")) != -1) {
+  while ((c = getopt(argc, argv, "SKn:s:g:e:t:c:P:Lr:v:xw:h:f:pd")) != -1) {
     if (c == 0xFF) break;
     switch (c) {
 
@@ -177,6 +186,30 @@ int main (int argc,char **argv) {
       /*####################*/
       case 'f':
         opts.maxFps = strtoul(optarg, NULL, 10);
+        break;
+      /*####################*/
+      case 'P':
+#ifdef ENABLE_HTTPD
+        opts.tcpPort = strtoul(optarg, NULL, 10);
+#else
+        UNIMPLEMENTED("ENABLE_HTTPD");
+#endif
+        break;
+      /*####################*/
+      case 'L':
+#ifdef ENABLE_HTTPD
+        opts.listenLocal = true;
+#else
+        UNIMPLEMENTED("ENABLE_HTTPD");
+#endif
+        break;
+      /*####################*/
+      case 'r':
+#ifdef ENABLE_HTTPD
+        opts.jsRefreshRate = strtoul(optarg, NULL, 10);
+#else
+        UNIMPLEMENTED("ENABLE_HTTPD");
+#endif
         break;
       /*####################*/
       case 'd':
@@ -256,6 +289,14 @@ int main (int argc,char **argv) {
   /* Spaltenberzeichnung ausgeben */
   std::cout <<"------------------------------"<<std::endl
             <<"[Elapsed] [Images] [FPS] [BufferInfo]"<<std::endl;
+#ifdef ENABLE_HTTPD
+  /* WebServer starten */
+  std::cout <<"Starting WebServer ("<<(opts.listenLocal == true ? "127.0.0.1" : "0.0.0.0")<<":"<<opts.tcpPort<<") .. jsRefreshRate: "<<opts.jsRefreshRate<<std::endl;
+  /* WebServer lauscht auf TCP-Port 8080 und zeigt maximal drei Bilder an */
+  rc::WebServer httpd(opts.listenLocal, opts.tcpPort, 3, opts.jsRefreshRate);
+  httpd.start();
+  detector.setHttpd(&httpd);
+#endif
   /* Startprozess abgeschlossen */
   rc::startUpDone();
 
@@ -287,6 +328,10 @@ int main (int argc,char **argv) {
   detector.stopThreads();
   /* Kamera deinitialisieren */
   detector.closeCamera();
+#ifdef ENABLE_HTTPD
+  /* WebServer stoppen */
+  httpd.stop();
+#endif
   /* durchschnittliche FPS ausgeben */
   std::cout <<"FPS: "<<std::setprecision(2)<<(float)(n/secondsElapsed)<<std::endl;
   return 0;

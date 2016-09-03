@@ -3,6 +3,10 @@
 #include <iostream>
 #include <sstream>
 
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+
 
 static int httpd_callback(void * cls,
                     struct MHD_Connection * connection,
@@ -66,7 +70,7 @@ static int httpd_callback(void * cls,
       << "<meta http-equiv=\"Content-Type\" content=\"text/html\">\n"
       << "<title>robocup opencv viewer</title>\n"
       << "</head>\n\n"
-      << "<body onload=\"window.setInterval(refreshImage, 1*500);\"><b>RoboCup OpenCV Viewer</b> ... frame #"<<ws->getFrames()<<"<br>\n";
+      << "<body onload=\"window.setInterval(refreshImage, 1*"<<ws->getJSRefreshRate()<<");\">\n<b>RoboCup OpenCV Viewer</b> ... frame #"<<ws->getFrames()<<"<br>\n";
   for (size_t i = 0; i < ws->getCount(); ++i) {
     if (!ws->getImage(i).empty())
       tmp << "<img src=\"/cam" <<i<< ".jpg\" id=\"img"<<i<<"\"><br><br>\n";
@@ -86,13 +90,30 @@ static int httpd_callback(void * cls,
 
 bool rc::WebServer::start() {
   images_out = new cv::Mat[image_cnt];
-  httpd = MHD_start_daemon(MHD_USE_SELECT_INTERNALLY,
-    port,
-    NULL,
-    NULL,
-    &httpd_callback,
-    (this),
-    MHD_OPTION_END);
+
+  if (this->listen_localhost) {
+    struct sockaddr_in laddr;
+    laddr.sin_family = AF_INET;
+    laddr.sin_port = htons(this->port);
+    inet_aton("127.0.0.1", &laddr.sin_addr);
+    httpd = MHD_start_daemon(MHD_USE_SELECT_INTERNALLY,
+      port,
+      NULL,
+      NULL,
+      &httpd_callback,
+      (this),
+      MHD_OPTION_SOCK_ADDR,
+      &laddr,
+      MHD_OPTION_END);
+  } else {
+    httpd = MHD_start_daemon(MHD_USE_SELECT_INTERNALLY,
+      port,
+      NULL,
+      NULL,
+      &httpd_callback,
+      (this),
+      MHD_OPTION_END);
+  }
   if (httpd == NULL)
     return false;
   return true;

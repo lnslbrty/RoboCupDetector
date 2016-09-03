@@ -84,6 +84,16 @@ class BlobDetectorFactory : private rc::BlobDetector, public rc::Camera {
       this->setHeight(height);
     }
 
+#ifdef ENABLE_HTTPD
+    /**
+     * @name Setze WebServer Instanz
+     * @param rc::WebServer Instanz
+     */
+    void setHttpd(rc::WebServer * httpd) {
+      this->httpd = httpd;
+    }
+#endif
+
 #ifdef ENABLE_VIDEO
     /**
      * @name Setzt den Dateiname fuer das Vorschau- Video.
