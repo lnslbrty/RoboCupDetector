@@ -75,7 +75,7 @@ class BlobDetector {
       // filtere HSV- Farbraum entsprechend der angegebenen roboColor
       switch (rcol) {
         case RB_YELLOW: /* GELB */
-          cv::inRange(tmp, cv::Scalar(20, 120, 105), cv::Scalar(40, 255, 255), result);
+          cv::inRange(tmp, cv::Scalar(20, 100, 100), cv::Scalar(40, 255, 255), result);
           break;
         case RB_BLUE:   /* BLAU */
           cv::inRange(tmp, cv::Scalar(100, 100, 100), cv::Scalar(120, 255, 255), result);

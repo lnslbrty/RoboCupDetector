@@ -19,6 +19,7 @@
 #include "RC_Semaphore.hpp"
 #include "RC_CircularBuffer.hpp"
 #include "RC_BlobDetector.hpp"
+#include "RC_Threads.hpp"
 #ifdef USE_XWINDOW
 #include "RC_Window.hpp"
 #endif
@@ -34,6 +35,12 @@ enum roboImage {
   IMAGE_FILTERED_YELLOW,
   IMAGE_FILTERED_BLUE,
   IMAGE_MAX
+};
+
+struct threadData {
+  rc::processed_image * piY = nullptr;
+  rc::processed_image * piB = nullptr;
+  rc::time_consumption * tc = nullptr;
 };
 
 class BlobDetectorFactory : private rc::BlobDetector, public rc::Camera {
@@ -119,10 +126,8 @@ class BlobDetectorFactory : private rc::BlobDetector, public rc::Camera {
 
   private:
     unsigned int width, height;    /** Groese der Basis Bilder */
-    Semaphore * sema = nullptr;    /** Semaphor fuer die Arbeiter- Threads */
-    unsigned int numThreads;       /** Anzahl der Arbeiter- Threads */
-    std::thread * thrds = nullptr; /** Datenstruktur fuer Threads als Feld der Groese numThreads */
-    std::atomic<bool> doLoop;      /** Hauptschleife der Arbeiter- Threads aktiv */
+    struct threadData * data = nullptr;
+    rc::Threads * threads = nullptr;
 #ifdef USE_XWINDOW
     static rc::Window * win;       /** Vorschau- Fenster */
 #endif
