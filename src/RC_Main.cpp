@@ -297,7 +297,7 @@ int main (int argc,char **argv) {
   /* WebServer starten */
   std::cout <<"Starting WebServer ("<<(opts.listenLocal == true ? "127.0.0.1" : "0.0.0.0")<<":"<<opts.tcpPort<<") .. jsRefreshRate: "<<opts.jsRefreshRate<<std::endl;
   /* WebServer lauscht auf TCP-Port 8080 und zeigt maximal drei Bilder an */
-  rc::WebServer httpd(opts.listenLocal, opts.tcpPort, 3, opts.jsRefreshRate);
+  rc::WebServer httpd(opts.listenLocal, opts.tcpPort, rc::IMAGE_MAX, opts.jsRefreshRate);
   if (!httpd.start())
     std::cerr <<"WebServer start failed"<<std::endl;
   detector.setHttpd(&httpd);

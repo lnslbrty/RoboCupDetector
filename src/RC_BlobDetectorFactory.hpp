@@ -28,6 +28,14 @@
 
 
 namespace rc {
+
+enum roboImage {
+  IMAGE_DRAWED = 0,
+  IMAGE_FILTERED_YELLOW,
+  IMAGE_FILTERED_BLUE,
+  IMAGE_MAX
+};
+
 class BlobDetectorFactory : private rc::BlobDetector, public rc::Camera {
 
   public:

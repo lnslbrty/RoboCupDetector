@@ -75,9 +75,9 @@ void rc::BlobDetectorFactory::startThreads(void) {
 #ifdef ENABLE_HTTPD
           /* Bilder dem microhttpd bereitstellen */
           if (this->httpd != nullptr) {
-            httpd->setImage(0, image);
-            httpd->setImage(1, filteredImageY);
-            httpd->setImage(2, filteredImageB);
+            httpd->setImage(IMAGE_DRAWED, image);
+            httpd->setImage(IMAGE_FILTERED_YELLOW, filteredImageY);
+            httpd->setImage(IMAGE_FILTERED_BLUE, filteredImageB);
           }
 #endif
 #ifdef USE_XWINDOW
