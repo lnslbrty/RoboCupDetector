@@ -3,11 +3,6 @@
 #include <iomanip>
 
 
-/* diese zwei Makros dienen der Geschwindigkeitsmessung verschiedener Bearbeitungsschritte */
-#define measureTicks(var) { var = cv::getTickCount(); }
-#define calcDiffTime(start, end, dest) { float tmp = dest; dest = (end - start) / cv::getTickFrequency(); dest = (dest + tmp)/2; }
-
-
 cv::Mat rc::BlobDetector::process(cv::Mat& image, enum rc::roboColor rc, rc::processed_image& pi, rc::time_consumption& tc) {
   int64_t start, end;
   cv::Mat imgHSV, imgThresh;
