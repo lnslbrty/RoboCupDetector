@@ -53,7 +53,7 @@ IF (ENABLE_VIDEO)
 ENDIF()
 
 set(raspicam_CV_LIBS ${raspicam_CV_LIBS} raspicam)
-add_executable (robocup RC_Main.cpp RC_Daemon.cpp RC_Semaphore.cpp RC_CircularBuffer.cpp RC_Camera.cpp RC_BlobDetector.cpp RC_BlobDetectorFactory.cpp ${XWINDOW_SOURCES} ${HTTPD_SOURCES})
+add_executable (robocup RC_Main.cpp RC_Daemon.cpp RC_Semaphore.cpp RC_Threads.cpp RC_CircularBuffer.cpp RC_Camera.cpp RC_BlobDetector.cpp RC_BlobDetectorFactory.cpp ${XWINDOW_SOURCES} ${HTTPD_SOURCES})
 target_link_libraries (robocup ${raspicam_CV_LIBS} raspicam pthread ${PC_LIBMICROHTTPD_LIBRARIES})
 
 MESSAGE(STATUS "ENABLE_DEBUG: ${ENABLE_DEBUG}")
