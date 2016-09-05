@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classrc_1_1Detector">
+<title>rc::Detector class Reference</title>
+<para>
+    <programlisting>#include <link linkend="RC__Detector_8hpp">&lt;RC_Detector.hpp&gt;</link></programlisting>
+</para>
+<para>Inheritance diagram for rc::Detector</para>
+<para>
+    <figure>
+        <title>Inheritance graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="classrc_1_1Detector__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Collaboration diagram for rc::Detector</para>
+<para>
+    <figure>
+        <title>Collaboration graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="classrc_1_1Detector__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+        <simplesect>
+            <title>Konstruktor</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1Detector_1a18dd89b26c2ca51e9e1a1728dbb7f2f7">Detector</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Destruktor</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1Detector_1af21babae9f3a24b41a6606d7c907c34d">~Detector</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Farbfilter</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>Quellbild</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>zu</entry>
+                                <entry>
+<para>filternde Farbe </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Return values                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>die</entry>
+                                <entry>
+<para>gefilterte OpenCV Matrix </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>cv::Mat <link linkend="classrc_1_1Detector_1ace825e4ea09c83c216f40d1f257bbda3">filterColor</link> (
+cv::Mat src, enum roboColor rcol)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Sucht nach Konturen in einem Bild</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>Das</entry>
+                                <entry>
+<para>zu filternde Bild. </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>die</entry>
+                                <entry>
+<para>zu filternde Farbe </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>ausgewertete</entry>
+                                <entry>
+<para>Informationen in dieser Struktur speichern </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Return values                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>Matrix</entry>
+                                <entry>
+<para>nach dem Farbfilter </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>cv::Mat <link linkend="classrc_1_1Detector_1a06801b74678ebebc0395ba70db24cef6">process</link> (
+cv::Mat &amp; image, enum rc::roboColor rc, <link linkend="structrc_1_1processed__image">rc::processed_image</link> &amp; pi, <link linkend="structrc_1_1time__consumption">rc::time_consumption</link> &amp; tc)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para>Detektor- Klasse zum filtern/auswerten von Bildern </para>
+                <para>Definition at line 59 of file RC_Detector.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_Detector.hpp</para></listitem></itemizedlist></para>
+        </simplesect>
+</section>

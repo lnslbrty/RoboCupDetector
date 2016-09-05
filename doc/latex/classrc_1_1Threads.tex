@@ -1,0 +1,119 @@
+\hypertarget{classrc_1_1Threads}{\section{rc\+:\+:Threads Class Reference}
+\label{classrc_1_1Threads}\index{rc\+::\+Threads@{rc\+::\+Threads}}
+}
+
+
+{\ttfamily \#include $<$R\+C\+\_\+\+Threads.\+hpp$>$}
+
+
+
+Collaboration diagram for rc\+:\+:Threads\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{classrc_1_1Threads__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Threadpool Konstruktor}\par
+{\em 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Anzahl} & der zu \char`\"{}\+Arbeiter\char`\"{}-\/ \hyperlink{classrc_1_1Threads}{Threads} \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Threads_affe90c184a6b2df13bdeb7912b6aff5d}{{\bfseries Threads} (unsigned int num\+Threads)}\label{classrc_1_1Threads_affe90c184a6b2df13bdeb7912b6aff5d}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Standart Destruktor}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Threads_ad82b89cce4b9a43dcf35fd0b45fc3da7}{{\bfseries $\sim$\+Threads} (void)}\label{classrc_1_1Threads_ad82b89cce4b9a43dcf35fd0b45fc3da7}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf alle Threads starten}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Threads_a4018457ff9184b13ed0ab7bcc8f2e266}{void {\bfseries start\+Threads} (void)}\label{classrc_1_1Threads_a4018457ff9184b13ed0ab7bcc8f2e266}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf alle Threads stoppen und auf das Ende warten}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Threads_a9c90d6f1859830190ef239d9969c9121}{void {\bfseries stop\+Threads} (void)}\label{classrc_1_1Threads_a9c90d6f1859830190ef239d9969c9121}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf den Threadpräfix setzen}\par
+{\em 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Name} & als Zeichenkette \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Threads_ae080c92f722c8551f5a74664ff4505b5}{void {\bfseries set\+Thread\+Name\+Prefix} (std\+::string prefix\+Name)}\label{classrc_1_1Threads_ae080c92f722c8551f5a74664ff4505b5}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf die Threadspezifische \char`\"{}\+Rückruf\char`\"{}-\/\+Funktion setzen}\par
+{\em 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Threadfunktion} & vom Typ thread\+Func\+\_\+t (siehe Header) \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Threads_a6e792ca8d1363ba904cacf319513d5f3}{void {\bfseries set\+Thread\+Function} (thread\+Func\+\_\+t thrd\+Func)}\label{classrc_1_1Threads_a6e792ca8d1363ba904cacf319513d5f3}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf die Threadspezifische Initialisierungs-\/\+Funktion setzen}\par
+{\em 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Threadfunktion} & vom Typ thread\+Func\+\_\+t (siehe Header) \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Threads_a9e6e94262ea0ba7f784dc6ad47bed6f5}{void {\bfseries set\+Init\+Function} (thread\+Func\+\_\+t init\+Func)}\label{classrc_1_1Threads_a9e6e94262ea0ba7f784dc6ad47bed6f5}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf die Threadspezifische Aufräum-\/\+Funktion setzen}\par
+{\em 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Threadfunktion} & vom Typ thread\+Func\+\_\+t (siehe Header) \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Threads_a7abae9fbecce24a32cb61093fa113c31}{void {\bfseries set\+Cleanup\+Function} (thread\+Func\+\_\+t cleanup\+Func)}\label{classrc_1_1Threads_a7abae9fbecce24a32cb61093fa113c31}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Anzahl der Threads zurückgeben}
+\label{_amgrp1bdb4b6a9934021f3af24b7d4c6d6100}%
+
+\begin{DoxyRetVals}{Return values}
+{\em Threadanzahl} & \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Threads_a753ffe65e138ba7e3eda028a9590f1e7}{unsigned int {\bfseries get\+Num\+Threads} (void)}\label{classrc_1_1Threads_a753ffe65e138ba7e3eda028a9590f1e7}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstraktionsschicht für C++11-\/\+Threads (implementiert als Threadpool) 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{RC__Threads_8hpp}{R\+C\+\_\+\+Threads.\+hpp}\item 
+src/R\+C\+\_\+\+Threads.\+cpp\end{DoxyCompactItemize}

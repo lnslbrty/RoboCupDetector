@@ -17,13 +17,18 @@
 
 namespace rc {
 
+/** Klasse für _ein_ Element innerhalb des Puffers */
 template <class T>
 struct cbElement {
-  T element;      /** aktuelles Element */
-  bool processed; /** bereits zurückgegebenes Element */
-  time_t tstamp;  /** Zeitstempel (Wann wurde Element hinzugefügt?) */
+  /** ein Element (Template) */
+  T element;
+  /** bereits zurückgegebenes Element */
+  bool processed;
+  /** Zeitstempel (Wann wurde Element hinzugefügt?) */
+  time_t tstamp;
 };
 
+/** Klasse für zirkulären Pufferspeicher */
 template <class T>
 class CircularBuffer {
 

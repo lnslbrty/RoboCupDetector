@@ -7,6 +7,28 @@
     <programlisting>#include &lt;thread&gt;</programlisting>
     <programlisting>#include &lt;atomic&gt;</programlisting>
     <programlisting>#include &lt;queue&gt;</programlisting>
+<para>Include dependency diagram for RC_Window.hpp</para>
+<para>
+    <figure>
+        <title>Dependency diagram</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="RC__Window_8hpp__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Included by dependency diagram for RC_Window.hpp</para>
+<para>
+    <figure>
+        <title>Dependency diagram</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="RC__Window_8hpp__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
         <simplesect>
             <title> Classes </title>
             <para>

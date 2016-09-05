@@ -8,7 +8,29 @@
     <programlisting>#include &lt;iomanip&gt;</programlisting>
     <programlisting>#include &lt;raspicam/raspicam_cv.h&gt;</programlisting>
     <programlisting>#include &quot;RC_Daemon.hpp&quot;</programlisting>
-    <programlisting>#include &quot;RC_BlobDetectorFactory.hpp&quot;</programlisting>
+    <programlisting>#include &quot;RC_DetectorFactory.hpp&quot;</programlisting>
+<para>Include dependency diagram for RC_Main.cpp</para>
+<para>
+    <figure>
+        <title>Dependency diagram</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="RC__Main_8cpp__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Included by dependency diagram for RC_Main.cpp</para>
+<para>
+    <figure>
+        <title>Dependency diagram</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="RC__Main_8cpp__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
         <simplesect>
             <title> Classes </title>
             <para>
@@ -36,7 +58,7 @@ char * arg0)</para>
         <simplesect>
             <title>`main` Funktion</title>
       <description>
-<para>Diese wird vom Betriebssystem während des Programmstartes als Einsprungspunkt genutzt</para>
+<para>Diese wird vom Betriebssystem nach dem Programmstart als Einsprungspunkt genutzt</para>
 
 <para>
                 <formalpara>

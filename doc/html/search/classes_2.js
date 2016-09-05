@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['daemon',['Daemon',['../classrc_1_1Daemon.html',1,'rc']]]
+  ['processed_5fimage',['processed_image',['../structrc_1_1processed__image.html',1,'rc']]]
 ];

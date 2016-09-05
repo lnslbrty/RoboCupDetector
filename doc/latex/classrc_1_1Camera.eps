@@ -176,7 +176,7 @@ boxfont setfont
 (rc::Camera) cw
 (RaspiCam_Cv) cw
 (rc::CircularBuffer< cv::Mat >) cw
-(rc::BlobDetectorFactory) cw
+(rc::DetectorFactory) cw
 /boxwidth boxwidth marginwidth 2 mul add def
 /xspacing boxwidth distx add def
 /yspacing boxheight disty add def
@@ -191,7 +191,7 @@ boundx scalefactor div boundy scalefactor div scale
  (rc::Camera) 0.500000 1.000000 box
  (RaspiCam_Cv) 0.000000 2.000000 box
  (rc::CircularBuffer< cv::Mat >) 1.000000 2.000000 box
- (rc::BlobDetectorFactory) 0.500000 0.000000 box
+ (rc::DetectorFactory) 0.500000 0.000000 box
 
 % ----- relations -----
 

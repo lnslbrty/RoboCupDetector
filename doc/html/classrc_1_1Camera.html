@@ -62,7 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -92,16 +92,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">rc::Camera Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="RC__Camera_8hpp_source.html">RC_Camera.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for rc::Camera:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="classrc_1_1Camera.png" usemap="#rc::Camera_map" alt=""/>
-  <map id="rc::Camera_map" name="rc::Camera_map">
-<area href="classrc_1_1CircularBuffer.html" alt="rc::CircularBuffer&lt; cv::Mat &gt;" shape="rect" coords="186,0,362,24"/>
-<area href="classrc_1_1BlobDetectorFactory.html" alt="rc::BlobDetectorFactory" shape="rect" coords="93,112,269,136"/>
-</map>
- </div></div>
+<div class="center"><img src="classrc_1_1Camera__inherit__graph.png" border="0" usemap="#rc_1_1Camera_inherit__map" alt="Inheritance graph"/></div>
+<map name="rc_1_1Camera_inherit__map" id="rc_1_1Camera_inherit__map">
+<area shape="rect" id="node4" href="classrc_1_1DetectorFactory.html" title="{rc::DetectorFactory\n||+ DetectorFactory()\l+ ~DetectorFactory()\l+ openCamera()\l+ closeCamera()\l+ startThreads()\l+ stopThreads()\l+ outInfo()\l* width\l* height\l* data\l* threads\l* out\l* setDimensions()\l* DetectorFactory()\l* ~DetectorFactory()\l* openCamera()\l* closeCamera()\l* startThreads()\l* stopThreads()\l* outInfo()\l}" alt="" coords="116,975,276,1331"/><area shape="rect" id="node3" href="classrc_1_1CircularBuffer.html" title="{rc::CircularBuffer\l\&lt; cv::Mat \&gt;\n||+ CircularBuffer()\l+ ~CircularBuffer()\l+ addElement()\l+ getMaxElementCount()\l+ getNextIndex()\l+ getElementCount()\l+ getSkipped()\l+ getElement()\l+ getInfo()\l* CircularBuffer()\l* ~CircularBuffer()\l* addElement()\l* getMaxElementCount()\l* getNextIndex()\l* getElementCount()\l* getSkipped()\l* getElement()\l* getInfo()\l}" alt="" coords="206,5,391,347"/></map>
+</div>
+<div class="dynheader">
+Collaboration diagram for rc::Camera:</div>
+<div class="dyncontent">
+<div class="center"><img src="classrc_1_1Camera__coll__graph.png" border="0" usemap="#rc_1_1Camera_coll__map" alt="Collaboration graph"/></div>
+<map name="rc_1_1Camera_coll__map" id="rc_1_1Camera_coll__map">
+<area shape="rect" id="node3" href="classrc_1_1CircularBuffer.html" title="{rc::CircularBuffer\l\&lt; cv::Mat \&gt;\n||+ CircularBuffer()\l+ ~CircularBuffer()\l+ addElement()\l+ getMaxElementCount()\l+ getNextIndex()\l+ getElementCount()\l+ getSkipped()\l+ getElement()\l+ getInfo()\l* CircularBuffer()\l* ~CircularBuffer()\l* addElement()\l* getMaxElementCount()\l* getNextIndex()\l* getElementCount()\l* getSkipped()\l* getElement()\l* getInfo()\l}" alt="" coords="206,5,391,347"/></map>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -300,9 +306,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a5d0be18eb4de56cacfcc716c55e55639 inherit pro_methods_classrc_1_1CircularBuffer"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5d0be18eb4de56cacfcc716c55e55639"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~CircularBuffer</b> (void)</td></tr>
 <tr class="separator:a5d0be18eb4de56cacfcc716c55e55639 inherit pro_methods_classrc_1_1CircularBuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa03a62fe9deae36e5b83200f9f7a2c24 inherit pro_methods_classrc_1_1CircularBuffer"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa03a62fe9deae36e5b83200f9f7a2c24"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addElement</b> (cv::Mat &amp;elem)</td></tr>
-<tr class="separator:aa03a62fe9deae36e5b83200f9f7a2c24 inherit pro_methods_classrc_1_1CircularBuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d24da68ea76c76e353bc6eb1061aca4 inherit pro_methods_classrc_1_1CircularBuffer"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d24da68ea76c76e353bc6eb1061aca4"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>addElement</b> (cv::Mat &amp;elem)</td></tr>
+<tr class="separator:a9d24da68ea76c76e353bc6eb1061aca4 inherit pro_methods_classrc_1_1CircularBuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4194d665b35b6a86444f54c759878b7 inherit pro_methods_classrc_1_1CircularBuffer"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae4194d665b35b6a86444f54c759878b7"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getMaxElementCount</b> (void)</td></tr>
 <tr class="separator:ae4194d665b35b6a86444f54c759878b7 inherit pro_methods_classrc_1_1CircularBuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -312,18 +318,26 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getNextIndex<
 <tr class="memitem:a1bb2a9a349df4e9b8e213434725c8b8f inherit pro_methods_classrc_1_1CircularBuffer"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bb2a9a349df4e9b8e213434725c8b8f"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getElementCount</b> (void)</td></tr>
 <tr class="separator:a1bb2a9a349df4e9b8e213434725c8b8f inherit pro_methods_classrc_1_1CircularBuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb2c87f7037e86b5ca175645d3ba9a33 inherit pro_methods_classrc_1_1CircularBuffer"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adb2c87f7037e86b5ca175645d3ba9a33"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getSkipped</b> (void)</td></tr>
+<tr class="separator:adb2c87f7037e86b5ca175645d3ba9a33 inherit pro_methods_classrc_1_1CircularBuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ef798c56ada44df67cc4bb5ae1a08eb inherit pro_methods_classrc_1_1CircularBuffer"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ef798c56ada44df67cc4bb5ae1a08eb"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>getElement</b> (cv::Mat &amp;arg)</td></tr>
 <tr class="separator:a4ef798c56ada44df67cc4bb5ae1a08eb inherit pro_methods_classrc_1_1CircularBuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bd7f616030a6cbf6b397e5c1e33d9f8 inherit pro_methods_classrc_1_1CircularBuffer"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3bd7f616030a6cbf6b397e5c1e33d9f8"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getInfo</b> (void)</td></tr>
+<tr class="separator:a3bd7f616030a6cbf6b397e5c1e33d9f8 inherit pro_methods_classrc_1_1CircularBuffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Kameraklasse: holt Bilder von dir RaspiCam und speichert diese im Puffer </p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="RC__Camera_8hpp_source.html">RC_Camera.hpp</a></li>
 <li>src/RC_Camera.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 2 2016 22:18:14 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 5 2016 02:54:28 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

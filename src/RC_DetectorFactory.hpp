@@ -25,19 +25,29 @@
 
 namespace rc {
 
+/** Enumerator für erzeugte/verarbeitete Bilder */
 enum roboImage {
+  /** modifiziertes Originalbild */
   IMAGE_DRAWED = 0,
+  /** Originalbild mit Gelb- Farbfilter */
   IMAGE_FILTERED_YELLOW,
+  /** Originalbild mit Blau- Farbfilter */
   IMAGE_FILTERED_BLUE,
+  /** Anzahl der Einträge in diesem Enumerator */
   IMAGE_MAX
 };
 
+/** Datenstruktur für Thread- Daten (per Thread jeweils) */
 struct threadData {
+  /** ausgewertete Bildinformationen (Gelb) */
   rc::processed_image * piY = nullptr;
+  /** ausgewertete Bildinformationen (Blau) */
   rc::processed_image * piB = nullptr;
+  /** Zeitaufwand für beide obigen Vorgänge */
   rc::time_consumption * tc = nullptr;
 };
 
+/** "Fabrik"-Klasse, d.h. hier befindet sich die Hauptlogik */
 class DetectorFactory : private rc::Detector, public rc::Camera {
 
   public:
@@ -120,21 +130,21 @@ class DetectorFactory : private rc::Detector, public rc::Camera {
 #endif
 
   private:
-    unsigned int width, height;    /** Groese der Basis Bilder */
-    struct threadData * data = nullptr;
-    rc::Threads * threads = nullptr;
+    unsigned int width, height;           /** Groese der Basis Bilder */
+    struct threadData * data = nullptr;   /** Zeiger auf Thread spezifische Daten */
+    rc::Threads * threads = nullptr;      /** Zeiger auf Threadpool */
 #ifdef USE_XWINDOW
-    static rc::Window * win;       /** Vorschau- Fenster */
+    static rc::Window * win;              /** Zeiger auf Vorschau- Fenster */
 #endif
 #ifdef ENABLE_VIDEO
-    char* filename = nullptr;      /** Dateiname fuer Video- Ausgabe */
+    char* filename = nullptr;             /** Dateiname fuer Video- Ausgabe */
     cv::VideoWriter * videoOut = nullptr; /** OpenCV Video Konverter/Ausgabe */
-    std::mutex videoMtx;           /** Mutex fuer schreiben eines Ausgabebildes in den Videodatemstrom */
+    std::mutex videoMtx;                  /** Mutex fuer schreiben eines Ausgabebildes in den Videodatemstrom */
 #endif
 #ifdef ENABLE_HTTPD
-    rc::WebServer * httpd = nullptr;
+    rc::WebServer * httpd = nullptr;      /** Zeiger auf WebServer Objekt */
 #endif
-    std::mutex out;
+    std::mutex out;                       /** Ausgabemutex für Threads */
 };
 }
 

@@ -27,26 +27,35 @@ enum roboColor {
 
 /** Datenstruktur für Zeitaufwand der Teilschritte */
 struct time_consumption {
+  /** Zeitaufwand für Farbfilter */
   float avg_color    = 0;
 #ifdef ENABLE_BLUR
+  /** Zeitaufwand für Unschärfefilter */
   float avg_blur     = 0;
 #endif
+  /** Zeitaufwand für Konturenfilter */
   float avg_contours = 0;
+  /** Zeitaufwand für das Nachzeichnen im Originalbild */
   float avg_draw     = 0;
 };
 
+/** Durchschnittswerte für Zeitaufwand holen */
 struct time_consumption & getAvgTime(void);
 
 
 /** wichtige Informationen eines bearbeiteten Bildes in dieser Struktur speichern */
 struct processed_image {
-  float midx;            /** X-Koordinate (X=0 entspricht Breite des Bildes geteilt durch 2) */
-  float absy;            /** Y-Koordinate (Y-Koordinate entspricht Y-Koordinate im Urpsrungsbild) */
-  float angle;           /** Winkel des rotierenden Rechteckes */
-  float distance;        /** die (geschätzte!) Entfernung zur Kamera */
+  /** X-Koordinate (X=0 entspricht Breite des Bildes geteilt durch 2) */
+  float midx;
+  /** Y-Koordinate (Y-Koordinate entspricht Y-Koordinate im Urpsrungsbild) */
+  float absy;
+  /** Winkel des rotierenden Rechteckes */
+  float angle;
+  /** die (geschätzte!) Entfernung zur Kamera */
+  float distance;
 };
 
-
+/** Detektor- Klasse zum filtern/auswerten von Bildern */
 class Detector {
 
   public:

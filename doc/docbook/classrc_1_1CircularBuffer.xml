@@ -1,6 +1,31 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classrc_1_1CircularBuffer">
 <title>rc::CircularBuffer class Reference</title>
+<para>
+    <programlisting>#include <link linkend="RC__CircularBuffer_8hpp">&lt;RC_CircularBuffer.hpp&gt;</link></programlisting>
+</para>
+<para>Inheritance diagram for rc::CircularBuffer</para>
+<para>
+    <figure>
+        <title>Inheritance graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="classrc_1_1CircularBuffer__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Collaboration diagram for rc::CircularBuffer</para>
+<para>
+    <figure>
+        <title>Collaboration graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="classrc_1_1CircularBuffer__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -11,7 +36,7 @@
         <simplesect>
             <title>Konstruktor für zirkulären Pufferspeicher</title>
       <description>
-<para>Anzahl &quot;frischer&quot; Einträge</para>
+<para>maximales Alter eines Eintrages (wird verworfen/nicht bearbeitet)</para>
 
 <para>
                 <formalpara>
@@ -77,7 +102,7 @@ void )</para>
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>void <link linkend="classrc_1_1CircularBuffer_1aa03a62fe9deae36e5b83200f9f7a2c24">addElement</link> (
+                        <para>bool <link linkend="classrc_1_1CircularBuffer_1a9d24da68ea76c76e353bc6eb1061aca4">addElement</link> (
 T &amp; elem)</para>
                     </listitem>
                 </itemizedlist>
@@ -114,6 +139,17 @@ void )</para>
                 <itemizedlist>
                     <listitem>
                         <para>unsigned int <link linkend="classrc_1_1CircularBuffer_1a1bb2a9a349df4e9b8e213434725c8b8f">getElementCount</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Anzahl übersprungener (d.h. Zeistempel zu alt) Elemente zurückgeben</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="classrc_1_1CircularBuffer_1adb2c87f7037e86b5ca175645d3ba9a33">getSkipped</link> (
 void )</para>
                     </listitem>
                 </itemizedlist>
@@ -168,6 +204,37 @@ T &amp; arg)</para>
             </para>
         </simplesect>
         <simplesect>
+            <title>Gibt Informationen über den Puffer aus</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Return values                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>Zeichenkette</entry>
+                                <entry>
+<para>mit Pufferinfo </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string <link linkend="classrc_1_1CircularBuffer_1a3bd7f616030a6cbf6b397e5c1e33d9f8">getInfo</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
             <title>Private Attributes</title>
             <para>
                 <itemizedlist>
@@ -204,6 +271,28 @@ T &amp; arg)</para>
                     </listitem>
                 </itemizedlist>
             </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int skippedElements</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>time_t maxAge</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para>Klasse für zirkulären Pufferspeicher </para>
+                <para>Definition at line 33 of file RC_CircularBuffer.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_CircularBuffer.hpp</para></listitem></itemizedlist></para>
         </simplesect>
         <simplesect>
             <title>Member Documentation</title>
@@ -211,7 +300,7 @@ T &amp; arg)</para>
                 <title>struct cbElement&lt; T &gt;* rc::CircularBuffer&lt; T &gt;::cBuffer</title>                
 <para>Mutex für Vector </para>
 
-                <para>Definition at line 30 of file RC_CircularBuffer.hpp</para>
+                <para>Definition at line 37 of file RC_CircularBuffer.hpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_CircularBuffer.hpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -219,7 +308,7 @@ T &amp; arg)</para>
                 <title>unsigned int rc::CircularBuffer&lt; T &gt;::nextIndex</title>                
 <para>Array der Länge <computeroutput>maxElements</computeroutput> </para>
 
-                <para>Definition at line 31 of file RC_CircularBuffer.hpp</para>
+                <para>Definition at line 38 of file RC_CircularBuffer.hpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_CircularBuffer.hpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -227,7 +316,7 @@ T &amp; arg)</para>
                 <title>unsigned int rc::CircularBuffer&lt; T &gt;::maxElements</title>                
 <para>Feldindex, welcher beim nächsten <computeroutput>addElement(...)</computeroutput> überschrieben wird </para>
 
-                <para>Definition at line 32 of file RC_CircularBuffer.hpp</para>
+                <para>Definition at line 39 of file RC_CircularBuffer.hpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_CircularBuffer.hpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -235,7 +324,23 @@ T &amp; arg)</para>
                 <title>unsigned int rc::CircularBuffer&lt; T &gt;::availableElements</title>                
 <para>maximale Größe des Puffers </para>
 
-                <para>Definition at line 33 of file RC_CircularBuffer.hpp</para>
+                <para>Definition at line 40 of file RC_CircularBuffer.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_CircularBuffer.hpp</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>unsigned int rc::CircularBuffer&lt; T &gt;::skippedElements</title>                
+<para>Anzahl &quot;frischer&quot; Einträge </para>
+
+                <para>Definition at line 41 of file RC_CircularBuffer.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_CircularBuffer.hpp</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>time_t rc::CircularBuffer&lt; T &gt;::maxAge</title>                
+<para>Anzahl verworfener Einträge, da Zeitstempel zu alt </para>
+
+                <para>Definition at line 42 of file RC_CircularBuffer.hpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_CircularBuffer.hpp</para></listitem></itemizedlist></para>
             </simplesect>

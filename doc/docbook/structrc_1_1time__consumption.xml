@@ -2,7 +2,29 @@
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="structrc_1_1time__consumption">
 <title>rc::time_consumption struct Reference</title>
 <para>
-    <programlisting>#include <link linkend="RC__BlobDetector_8hpp">&lt;RC_BlobDetector.hpp&gt;</link></programlisting>
+    <programlisting>#include <link linkend="RC__Detector_8hpp">&lt;RC_Detector.hpp&gt;</link></programlisting>
+</para>
+<para>Inheritance diagram for rc::time_consumption</para>
+<para>
+    <figure>
+        <title>Inheritance graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="structrc_1_1time__consumption__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Collaboration diagram for rc::time_consumption</para>
+<para>
+    <figure>
+        <title>Collaboration graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="structrc_1_1time__consumption__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
 </para>
         <simplesect>
             <title>Public Attributes</title>
@@ -32,8 +54,35 @@
             <title>Detailed Description</title>
 
 <para>Datenstruktur für Zeitaufwand der Teilschritte </para>
-                <para>Definition at line 29 of file RC_BlobDetector.hpp</para>
+                <para>Definition at line 29 of file RC_Detector.hpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
-                <para><itemizedlist><listitem><para>RC_BlobDetector.hpp</para></listitem></itemizedlist></para>
+                <para><itemizedlist><listitem><para>RC_Detector.hpp</para></listitem></itemizedlist></para>
+        </simplesect>
+        <simplesect>
+            <title>Member Documentation</title>
+            <simplesect>
+                <title>float rc::time_consumption::avg_color</title>                
+<para>Zeitaufwand für Farbfilter </para>
+
+                <para>Definition at line 31 of file RC_Detector.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_Detector.hpp</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>float rc::time_consumption::avg_contours</title>                
+<para>Zeitaufwand für Konturenfilter </para>
+
+                <para>Definition at line 37 of file RC_Detector.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_Detector.hpp</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>float rc::time_consumption::avg_draw</title>                
+<para>Zeitaufwand für das Nachzeichnen im Originalbild </para>
+
+                <para>Definition at line 39 of file RC_Detector.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_Detector.hpp</para></listitem></itemizedlist></para>
+            </simplesect>
         </simplesect>
 </section>

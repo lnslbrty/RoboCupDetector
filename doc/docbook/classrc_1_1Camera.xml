@@ -1,6 +1,31 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classrc_1_1Camera">
 <title>rc::Camera class Reference</title>
+<para>
+    <programlisting>#include <link linkend="RC__Camera_8hpp">&lt;RC_Camera.hpp&gt;</link></programlisting>
+</para>
+<para>Inheritance diagram for rc::Camera</para>
+<para>
+    <figure>
+        <title>Inheritance graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="classrc_1_1Camera__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Collaboration diagram for rc::Camera</para>
+<para>
+    <figure>
+        <title>Collaboration graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="classrc_1_1Camera__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
         <simplesect>
             <title>Kamera Konstruktor</title>
       <description>
@@ -526,5 +551,13 @@ unsigned int value)</para>
                     </listitem>
                 </itemizedlist>
             </para>
+        </simplesect>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para>Kameraklasse: holt Bilder von dir RaspiCam und speichert diese im Puffer </para>
+                <para>Definition at line 24 of file RC_Camera.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_Camera.hpp</para></listitem></itemizedlist></para>
         </simplesect>
 </section>

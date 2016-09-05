@@ -1,6 +1,31 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="structrc_1_1cbElement">
 <title>rc::cbElement struct Reference</title>
+<para>
+    <programlisting>#include <link linkend="RC__CircularBuffer_8hpp">&lt;RC_CircularBuffer.hpp&gt;</link></programlisting>
+</para>
+<para>Inheritance diagram for rc::cbElement</para>
+<para>
+    <figure>
+        <title>Inheritance graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="structrc_1_1cbElement__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Collaboration diagram for rc::cbElement</para>
+<para>
+    <figure>
+        <title>Collaboration graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="structrc_1_1cbElement__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -24,14 +49,45 @@
                     </listitem>
                 </itemizedlist>
             </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>time_t tstamp</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para>Klasse für <emphasis>ein</emphasis> Element innerhalb des Puffers </para>
+                <para>Definition at line 22 of file RC_CircularBuffer.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_CircularBuffer.hpp</para></listitem></itemizedlist></para>
         </simplesect>
         <simplesect>
             <title>Member Documentation</title>
             <simplesect>
-                <title>bool rc::cbElement&lt; T &gt;::processed</title>                
-<para>aktuelles Element </para>
+                <title>T rc::cbElement&lt; T &gt;::element</title>                
+<para>ein Element (Template) </para>
 
-                <para>Definition at line 22 of file RC_CircularBuffer.hpp</para>
+                <para>Definition at line 24 of file RC_CircularBuffer.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_CircularBuffer.hpp</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>bool rc::cbElement&lt; T &gt;::processed</title>                
+<para>bereits zurückgegebenes Element </para>
+
+                <para>Definition at line 26 of file RC_CircularBuffer.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_CircularBuffer.hpp</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>time_t rc::cbElement&lt; T &gt;::tstamp</title>                
+<para>Zeitstempel (Wann wurde Element hinzugefügt?) </para>
+
+                <para>Definition at line 28 of file RC_CircularBuffer.hpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_CircularBuffer.hpp</para></listitem></itemizedlist></para>
             </simplesect>

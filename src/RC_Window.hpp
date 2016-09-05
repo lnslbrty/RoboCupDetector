@@ -17,6 +17,7 @@
 
 
 namespace rc {
+/** Klasse für X11 basierendes Vorschaufenster (nicht empfohlen da langsam) */
 class Window {
 
   public:

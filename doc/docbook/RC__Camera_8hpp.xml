@@ -5,6 +5,28 @@
     <programlisting>#include &lt;raspicam/raspicam_cv.h&gt;</programlisting>
     <programlisting>#include &lt;raspicam/raspicamtypes.h&gt;</programlisting>
     <programlisting>#include &quot;RC_CircularBuffer.hpp&quot;</programlisting>
+<para>Include dependency diagram for RC_Camera.hpp</para>
+<para>
+    <figure>
+        <title>Dependency diagram</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="RC__Camera_8hpp__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Included by dependency diagram for RC_Camera.hpp</para>
+<para>
+    <figure>
+        <title>Dependency diagram</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="RC__Camera_8hpp__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
         <simplesect>
             <title> Classes </title>
             <para>

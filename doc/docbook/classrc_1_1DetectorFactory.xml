@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classrc_1_1DetectorFactory">
+<title>rc::DetectorFactory class Reference</title>
+<para>
+    <programlisting>#include <link linkend="RC__DetectorFactory_8hpp">&lt;RC_DetectorFactory.hpp&gt;</link></programlisting>
+</para>
+<para>Inheritance diagram for rc::DetectorFactory</para>
+<para>
+    <figure>
+        <title>Inheritance graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="classrc_1_1DetectorFactory__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Collaboration diagram for rc::DetectorFactory</para>
+<para>
+    <figure>
+        <title>Collaboration graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="classrc_1_1DetectorFactory__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+        <simplesect>
+            <title>Konstruktor</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>Anzahl</entry>
+                                <entry>
+<para>der zu &quot;Arbeiter&quot;- <link linkend="classrc_1_1Threads">Threads</link> </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1DetectorFactory_1ad72f65512a7defe3030f827cf2325714">DetectorFactory</link> (
+unsigned int numThreads)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Standart Destruktor</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classrc_1_1DetectorFactory_1a376b02d1b04b7a310a4c14e8bcd84abb">~DetectorFactory</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Initialisierung der Kamera</title>
+      <description>
+<para>Hinweis: Diese Methode sollte <emphasis>vor</emphasis></para>
+
+<para><formalpara><title>See also: </title>
+
+<para>startThreads ausgeführt werden </para>
+</formalpara>
+</para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="classrc_1_1DetectorFactory_1a1d8b3b87e6a62e4f1f4bbbd2efdef8d6">openCamera</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Deaktiviert die Kamera</title>
+      <description>
+<para>Hinweis: Diese Methode sollte <emphasis>nach</emphasis></para>
+
+<para><formalpara><title>See also: </title>
+
+<para>stopThreads ausgeführt werden </para>
+</formalpara>
+</para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1DetectorFactory_1a17f9fa472057829330763e28d6066c4c">closeCamera</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Startet die &quot;Arbeiter&quot;- Threads</title>
+      <description>
+<para>Die <link linkend="classrc_1_1Threads">Threads</link> werden gestartet und befinden sich in einer Endlosschleife, solange das Programm nicht beendet wird oder</para>
+
+<para><formalpara><title>See also: </title>
+
+<para>stopThreads() aufgerufen wird. </para>
+</formalpara>
+</para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1DetectorFactory_1af17a8bc76295ecf266db4fc889e86789">startThreads</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Stoppt alle &quot;Arbeiter&quot;- Threads</title>
+      <description>
+<para>Alle <link linkend="classrc_1_1Threads">Threads</link> werden beendet. Erst nachdem alle <link linkend="classrc_1_1Threads">Threads</link> beendet wurden, kerht diese Methode zum aufrufenden zurück. </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1DetectorFactory_1a153ff92097336849ae78ea4a8216b4a3">stopThreads</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Gibt Informationen über diese Klasse als String zurück.</title>
+      <description>
+<para>Dabei werden Informationen über den <link linkend="classrc_1_1CircularBuffer">CircularBuffer</link> und der Window- Klasse ausgegeben.</para>
+
+<para><formalpara><title>Returns: </title>
+
+<para>Die Informationen als Zeichenkette. </para>
+</formalpara>
+</para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::string <link linkend="classrc_1_1DetectorFactory_1adea364916607f577ca33028fdd5cf330">outInfo</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Setzt die Groese des Vorschau- Videos.</title>
+      <description>
+<para>Dabei ist zu beachten, dass die moeglichst kleine Werte gewaehlt werden sollten, um den Raspberry nicht zu ueberlasten.</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>Breite</entry>
+                                <entry>
+<para>in Pixel </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>Hoehe</entry>
+                                <entry>
+<para>in Pixel </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int width</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int height</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct threadData * data</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>rc::Threads * threads</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::mutex out</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1DetectorFactory_1af409e6e3ee0d2cfea590b93bfa6e88de">setDimensions</link> (
+unsigned int width, unsigned int height)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para>&quot;Fabrik&quot;-Klasse, d.h. hier befindet sich die Hauptlogik </para>
+                <para>Definition at line 51 of file RC_DetectorFactory.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_DetectorFactory.hpp</para></listitem></itemizedlist></para>
+        </simplesect>
+</section>

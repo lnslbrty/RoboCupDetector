@@ -30,6 +30,7 @@ void startUpDone(void);
  */
 void setSignals(void);
 
+/** Klasse zum starten der Anwendung als Systemdienst */
 class Daemon {
 
   public:

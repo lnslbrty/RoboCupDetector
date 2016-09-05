@@ -15,8 +15,10 @@
 
 namespace rc {
 
+/** Standart "Rückruf"-Funktionstyp für Threads */
 typedef std::function<void (unsigned int threadNum)> threadFunc_t;
 
+/** Abstraktionsschicht für C++11-Threads (implementiert als Threadpool) */
 class Threads {
 
   public:
