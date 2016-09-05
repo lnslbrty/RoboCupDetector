@@ -26,6 +26,7 @@
     </chapter>
     <chapter>
         <title>File Documentation</title>
+        <xi:include href="README.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
         <xi:include href="RC__Camera_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
         <xi:include href="RC__Camera_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
         <xi:include href="RC__CircularBuffer_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
