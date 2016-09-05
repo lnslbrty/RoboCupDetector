@@ -64,13 +64,15 @@ struct cmd_opts {
   uint16_t tcpPort;
   /** WebServer Javascript Bildaktualisierung (in ms) */
   size_t jsRefreshRate;
+  /** Bilder mit angewendetem Farbfilter im Webinterface anzeigen */
+  bool showFiltered;
 };
 
 /** Dieses Feature ist zur Zeit nicht im "binary" enthalten. Um das Feature zu integrieren muss das Projekt mit `cmake` bzw. `ccmake` neu kofniguriert/kompiliert/gelinkt werden. */
 #define UNIMPLEMENTED(feature) { fprintf(stderr, "%s: feature not implemented (%s)\n", argv[0], feature); exit(1); }
 
 /** Standartwerte für Konfigurationsvariablen der oben beschriebenen Datenstruktur */
-static struct cmd_opts opts = { 0,100,0,0,640,480,20,50,90,-1,4,2,0,8080,500 };
+static struct cmd_opts opts = { 0,100,0,0,640,480,20,50,90,-1,4,2,0,8080,500,0 };
 
 
 /**
@@ -97,6 +99,7 @@ static void usage(char* arg0) {
                   "\t-P [port]      listen on tcp port [1..65535] default: %u\n"
                   "\t-L             listen on localhost (127.0.0.1) instead of all interfaces (0.0.0.0)\n"
                   "\t-r [rate]      JavaScript refresh rate for images [1..n] default: %u\n"
+                  "\t-F             show filtered images\n"
 #endif
 #ifdef ENABLE_VIDEO
                   "VIDEO options:\n"
@@ -141,7 +144,7 @@ int main (int argc,char **argv) {
 
   char c;
   /* Kommandozeilen Argumente parsen mit `getopt` */
-  while ((c = getopt(argc, argv, "SKn:s:g:e:t:c:P:Lr:v:xW:H:f:hd")) != -1) {
+  while ((c = getopt(argc, argv, "SKn:s:g:e:t:c:P:Lr:v:xW:H:f:Fhd")) != -1) {
     if (c == 0xFF) break;
     switch (c) {
 
@@ -228,6 +231,14 @@ int main (int argc,char **argv) {
 #endif
         break;
       /*####################*/
+      case 'F':
+#ifdef ENABLE_HTTPD
+        opts.showFiltered = true;
+#else
+        UNIMPLEMENTED("ENABLE_HTTPD");
+#endif
+        break;
+      /*####################*/
       case 'd':
 #ifdef DEBUG
         print_opencv_info();
@@ -307,6 +318,7 @@ int main (int argc,char **argv) {
   rc::WebServer httpd(opts.listenLocal, opts.tcpPort, rc::IMAGE_MAX, opts.jsRefreshRate);
   if (!httpd.start())
     std::cerr <<"WebServer start failed"<<std::endl;
+  detector.setShowFiltered(opts.showFiltered);
   detector.setHttpd(&httpd);
 #endif
 

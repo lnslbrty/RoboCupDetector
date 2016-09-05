@@ -44,8 +44,10 @@ void rc::DetectorFactory::startThreads(void) {
         /* Bilder dem microhttpd bereitstellen */
         if (this->httpd != nullptr) {
           httpd->setImage(IMAGE_DRAWED, image);
-          httpd->setImage(IMAGE_FILTERED_YELLOW, filteredImageY);
-          httpd->setImage(IMAGE_FILTERED_BLUE, filteredImageB);
+          if (showFiltered) {
+            httpd->setImage(IMAGE_FILTERED_YELLOW, filteredImageY);
+            httpd->setImage(IMAGE_FILTERED_BLUE, filteredImageB);
+          }
         }
 #endif
 #ifdef USE_XWINDOW
@@ -121,6 +123,9 @@ void rc::DetectorFactory::stopThreads(void) {
     delete videoOut;
     videoMtx.unlock();
   }
+#endif
+#ifdef ENABLE_HTTPD
+  httpd = nullptr;
 #endif
 }
 

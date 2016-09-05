@@ -18,6 +18,12 @@ enum roboColor {
   RB_YELLOW, RB_BLUE
 };
 
+/** Entfernungsfaktor (damit wird der erkannte Flächeninhalt multipliziert) */
+#define DISTANCE_FACTOR 0.0005f
+/** maximale Entfernung (Flächeninhalt) für erkannte Objekte */
+#define DISTANCE_MAX    2000.0f
+/** minimale Entfernung (Flächeninhalt) für erkannte Objekte */
+#define DISTANCE_MIN    400000.0f
 
 /* Makros für die Geschwindigkeitsmessung verschiedener Bearbeitungsschritte */
 /** vergangene "Zeit" (Ticks) messen */

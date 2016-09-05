@@ -48,9 +48,14 @@ cv::Mat rc::Detector::process(cv::Mat& image, enum rc::roboColor rc, rc::process
   cv::line(image, cv::Point2f(image.size().width/2.0f, 0), cv::Point2f(image.size().width/2.0f, image.size().height), cv::Scalar(0,0,255));
 
   /* Konturen im original Bild nachzeichnen, dabei ein Rechteck als Form der Kontur annehmen */
-  if (largest_contour_index >= 0 && largest_area > 2000) {
-    auto idx = largest_contour_index;
+  if (largest_contour_index >= 0 && largest_area > DISTANCE_MAX) {
+    /* Entfernung berechnen (eher ein grobes Schätzen anhand des Flächeninhaltes) */
+    if (largest_area > DISTANCE_MIN)
+      largest_area = DISTANCE_MIN;
+    largest_area = DISTANCE_MIN - largest_area;
+    largest_area *= DISTANCE_FACTOR;
 
+    auto idx = largest_contour_index;
     measureTicks(start);
 
     /* Konturen nachzeichnen */

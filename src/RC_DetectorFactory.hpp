@@ -112,6 +112,12 @@ class DetectorFactory : private rc::Detector, public rc::Camera {
     void setHttpd(rc::WebServer * httpd) {
       this->httpd = httpd;
     }
+
+    /**
+     * @name Zeige Bilder mit Farbfilter im Webinterface an
+     * @param true bedeutet Bilder anzeigen
+     */
+    void setShowFiltered(bool enable) { if (!httpd) showFiltered = enable; }
 #endif
 
 #ifdef ENABLE_VIDEO
@@ -143,6 +149,7 @@ class DetectorFactory : private rc::Detector, public rc::Camera {
 #endif
 #ifdef ENABLE_HTTPD
     rc::WebServer * httpd = nullptr;      /** Zeiger auf WebServer Objekt */
+    bool showFiltered;                    /** Bilder mit angewendetem Farbfilter anzeigen */
 #endif
     std::mutex out;                       /** Ausgabemutex für Threads */
 };
