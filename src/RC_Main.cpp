@@ -14,7 +14,7 @@
 #include <raspicam/raspicam_cv.h>
 
 #include "RC_Daemon.hpp"
-#include "RC_BlobDetectorFactory.hpp"
+#include "RC_DetectorFactory.hpp"
 
 /** Standartpfad für die ProzessID- Datei (daemon Modus) */
 #ifndef PIDFILE
@@ -285,14 +285,6 @@ int main (int argc,char **argv) {
   if (opts.useXWindow)
     std::cout <<"Open X11 preview window (after processing)"<<std::endl;
 #endif
-
-  /* Startzeit feststellen (für FPS Berechnung) */
-  time(&timer_begin);
-  /* Arbeiter- Threads starten */
-  detector.startThreads();
-  /* Spaltenberzeichnung ausgeben */
-  std::cout <<"------------------------------"<<std::endl
-            <<"[Elapsed] [Images] [FPS] [BufferInfo]"<<std::endl;
 #ifdef ENABLE_HTTPD
   /* WebServer starten */
   std::cout <<"Starting WebServer ("<<(opts.listenLocal == true ? "127.0.0.1" : "0.0.0.0")<<":"<<opts.tcpPort<<") .. jsRefreshRate: "<<opts.jsRefreshRate<<std::endl;
@@ -302,10 +294,18 @@ int main (int argc,char **argv) {
     std::cerr <<"WebServer start failed"<<std::endl;
   detector.setHttpd(&httpd);
 #endif
+
+  /* Startzeit feststellen (für FPS Berechnung) */
+  time(&timer_begin);
+  /* Arbeiter- Threads starten */
+  detector.startThreads();
+  /* Spaltenberzeichnung ausgeben */
+  std::cout <<"------------------------------"<<std::endl
+            <<"[Elapsed] [Images] [FPS] [BufferInfo]"<<std::endl;
   /* Startprozess abgeschlossen */
   rc::startUpDone();
 
-  double secondsElapsed = 0.0f;
+  double secondsElapsed = 0.0f, oldSecondsElapsed = 0.0f;
   unsigned int i = 0, n = 1;
   /* Hauptschleife */
   while (i <= opts.count && !rc::isDaemonTerminate()) {
@@ -319,14 +319,18 @@ int main (int argc,char **argv) {
       time(&timer_end);
       secondsElapsed = difftime(timer_end,timer_begin);
       /* Informationen ausgeben (u.a. FPS) */
-      std::cout <<"\r["<<std::fixed<<std::setprecision(0)<<std::setw(7)<<secondsElapsed<<"] "
+      if (secondsElapsed-oldSecondsElapsed >= 1.0f) {
+        std::cout <<"\r["<<std::fixed<<std::setprecision(0)<<std::setw(7)<<secondsElapsed<<"] "
                   <<"["<<std::setw(6)<<n<<"] "
                   <<"["<<std::setw(3)<<std::setprecision(0)<<(float)(secondsElapsed > 0 ? (float)(n/secondsElapsed) : 0.0)<<"] "
                   <<detector.outInfo()<<std::flush;
+        oldSecondsElapsed = secondsElapsed;
+      }
     }
     if (opts.count > 0)
       i++;
     n++;
+    std::this_thread::yield();
   }
   std::cout <<std::endl;
   /* Arbeiter- Threads stoppen */

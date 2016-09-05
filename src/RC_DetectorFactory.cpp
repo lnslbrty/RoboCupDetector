@@ -1,6 +1,6 @@
 #include <iomanip>
 
-#include "RC_BlobDetectorFactory.hpp"
+#include "RC_DetectorFactory.hpp"
 
 
 #ifdef USE_XWINDOW
@@ -34,8 +34,6 @@ void rc::BlobDetectorFactory::startThreads(void) {
       /* Bild aus dem Pufferspeicher holen */
       ret = this->getElement(image);
       if (ret && !image.empty()) {
-        /* Bild verkleinern, um CPU zu entlasten */
-        cv::resize(image, image, cv::Size(this->width, this->height));
         /* Bild analysieren (für GELBE und BLAUE Blobs) */
         cv::Mat origImageY = image.clone();
         cv::Mat filteredImageY = process(origImageY, RB_YELLOW, *data[threadNum].piY, *data[threadNum].tc);
@@ -128,8 +126,7 @@ void rc::BlobDetectorFactory::stopThreads(void) {
 
 std::string rc::BlobDetectorFactory::outInfo(void) {
   std::stringstream out;
-  out << "[CirularBufferPos: "<<this->getNextIndex()
-      << " availableElements: "<<this->getElementCount();
+  out << "[" << this->getInfo();
 #ifdef USE_XWINDOW
   if (win != nullptr)
     out << " ImageQueueSize: "<<win->imagesQueueSize();

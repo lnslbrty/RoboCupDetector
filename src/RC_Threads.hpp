@@ -12,8 +12,6 @@
 #include <atomic>
 #include <functional>
 
-#include "RC_Semaphore.hpp"
-
 
 namespace rc {
 
@@ -76,7 +74,6 @@ class Threads {
   private:
     unsigned int numThreads;            /** Anzahl der Arbeiter- Threads */
     std::string thrdPrefix;             /** Threadname Präfix */
-    Semaphore * sema = nullptr;         /** Semaphor fuer die Arbeiter- Threads */
     std::thread * thrds = nullptr;      /** Datenstruktur fuer Threads als Feld der Groese numThreads */
     std::atomic_bool doLoop;            /** Hauptschleife der Arbeiter- Threads aktiv */
     threadFunc_t thrdFunc = nullptr;    /** Thread-Callback-Funktion */

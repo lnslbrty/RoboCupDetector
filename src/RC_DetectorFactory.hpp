@@ -11,14 +11,9 @@
 #include <iostream>
 #include <ostream>
 #include <raspicam/raspicam_cv.h>
-#include <thread>
-#include <condition_variable>
-#include <atomic>
 
 #include "RC_Camera.hpp"
-#include "RC_Semaphore.hpp"
-#include "RC_CircularBuffer.hpp"
-#include "RC_BlobDetector.hpp"
+#include "RC_Detector.hpp"
 #include "RC_Threads.hpp"
 #ifdef USE_XWINDOW
 #include "RC_Window.hpp"

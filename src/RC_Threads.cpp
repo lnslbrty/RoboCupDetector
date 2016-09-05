@@ -6,14 +6,11 @@ rc::Threads::Threads(unsigned int numThreads) {
   this->numThreads = numThreads;
   /* Thread-Objekte instanziieren */
   thrds = new std::thread[numThreads];
-  /* Semaphor-Objekt für Threads instanziieren */
-  sema = new Semaphore(numThreads);
 }
 
 rc::Threads::~Threads(void) {
   /* Destruktoren aufrufen und Speicher freigeben */
   delete[] thrds;
-  delete sema;
 }
 
 void rc::Threads::startThreads(void) {
@@ -35,8 +32,8 @@ void rc::Threads::startThreads(void) {
       doLoop = true;
       /* Hauptschleife der Arbeiter- Threads */
       while (doLoop) {
+        /* Thread-"Rückruf"-Funktion */
         func(num);
-        sema->Synchronize();
       }
       /* Aufräumfunktion aufrufen, falls angegeben */
       if (cleanupFunc != nullptr)
@@ -47,9 +44,7 @@ void rc::Threads::startThreads(void) {
 
 void rc::Threads::stopThreads(void) {
   doLoop = false;
-  sema->NotifyAll();
   for (unsigned int i = 0; i < numThreads; ++i) {
-    sema->NotifyAll();
     /* auf das Ende aller Arbeiter- Threads warten */
     thrds[i].join();
   }

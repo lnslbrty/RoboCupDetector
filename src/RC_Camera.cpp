@@ -8,13 +8,9 @@ rc::Camera::Camera(unsigned int maxBufferElements) : raspicam::RaspiCam_Cv(), rc
 bool rc::Camera::grabCameraImage(void) {
   bool ret = false;
   cv::Mat image;
-  if (this->getElementCount() < this->getMaxElementCount())
-  {
-    if (this->grab()) {
-      this->retrieve(image);
-      this->addElement(image);
-      ret = true;
-    }
+  if (this->grab()) {
+    this->retrieve(image);
+    ret = this->addElement(image);
   }
   return ret;
 }

@@ -1,4 +1,4 @@
-#include "RC_BlobDetector.hpp"
+#include "RC_Detector.hpp"
 
 #include <iomanip>
 
