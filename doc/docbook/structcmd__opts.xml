@@ -130,6 +130,13 @@
                     </listitem>
                 </itemizedlist>
             </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool showFiltered</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
         </simplesect>
         <simplesect>
             <title>Detailed Description</title>
@@ -258,6 +265,14 @@
 <para>WebServer Javascript Bildaktualisierung (in ms) </para>
 
                 <para>Definition at line 66 of file RC_Main.cpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>bool cmd_opts::showFiltered</title>                
+<para>Bilder mit angewendetem Farbfilter im Webinterface anzeigen </para>
+
+                <para>Definition at line 68 of file RC_Main.cpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Main.cpp</para></listitem></itemizedlist></para>
             </simplesect>

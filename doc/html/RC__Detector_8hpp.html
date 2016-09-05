@@ -120,6 +120,12 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:ad95750213b8311bdd843566ddaf16c9f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="RC__Detector_8hpp.html#ad95750213b8311bdd843566ddaf16c9f">DISTANCE_FACTOR</a>&#160;&#160;&#160;0.0005f</td></tr>
+<tr class="separator:ad95750213b8311bdd843566ddaf16c9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03050ffe4793411263f3e00c3c9f490a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="RC__Detector_8hpp.html#a03050ffe4793411263f3e00c3c9f490a">DISTANCE_MAX</a>&#160;&#160;&#160;2000.0f</td></tr>
+<tr class="separator:a03050ffe4793411263f3e00c3c9f490a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cd56a5292bbea66ea860385cc8764a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="RC__Detector_8hpp.html#a8cd56a5292bbea66ea860385cc8764a1">DISTANCE_MIN</a>&#160;&#160;&#160;400000.0f</td></tr>
+<tr class="separator:a8cd56a5292bbea66ea860385cc8764a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9aacb2f0483d3f24da79f348eb5d8584"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="RC__Detector_8hpp.html#a9aacb2f0483d3f24da79f348eb5d8584">measureTicks</a>(var)&#160;&#160;&#160;{ var = cv::getTickCount(); }</td></tr>
 <tr class="separator:a9aacb2f0483d3f24da79f348eb5d8584"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3133ccbef76aa43d2361bbda6f8f9f3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="RC__Detector_8hpp.html#ad3133ccbef76aa43d2361bbda6f8f9f3">calcDiffTime</a>(start, end, dest)&#160;&#160;&#160;{ float tmp = dest; dest = (end - start) / cv::getTickFrequency(); dest = (dest + tmp)/2; }</td></tr>
@@ -175,6 +181,45 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ad95750213b8311bdd843566ddaf16c9f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DISTANCE_FACTOR&#160;&#160;&#160;0.0005f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Entfernungsfaktor (damit wird der erkannte Flächeninhalt multipliziert) </p>
+
+</div>
+</div>
+<a class="anchor" id="a03050ffe4793411263f3e00c3c9f490a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DISTANCE_MAX&#160;&#160;&#160;2000.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>maximale Entfernung (Flächeninhalt) für erkannte Objekte </p>
+
+</div>
+</div>
+<a class="anchor" id="a8cd56a5292bbea66ea860385cc8764a1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DISTANCE_MIN&#160;&#160;&#160;400000.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>minimale Entfernung (Flächeninhalt) für erkannte Objekte </p>
+
+</div>
+</div>
 <a class="anchor" id="a9aacb2f0483d3f24da79f348eb5d8584"></a>
 <div class="memitem">
 <div class="memproto">
@@ -195,7 +240,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Sep 5 2016 02:59:14 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 5 2016 14:36:46 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

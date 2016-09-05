@@ -166,7 +166,7 @@ cv::Mat &amp; image, enum rc::roboColor rc, <link linkend="structrc_1_1processed
             <title>Detailed Description</title>
 
 <para>Detektor- Klasse zum filtern/auswerten von Bildern </para>
-                <para>Definition at line 59 of file RC_Detector.hpp</para>
+                <para>Definition at line 65 of file RC_Detector.hpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Detector.hpp</para></listitem></itemizedlist></para>
         </simplesect>

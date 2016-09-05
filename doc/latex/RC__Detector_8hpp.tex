@@ -28,6 +28,12 @@ class \hyperlink{classrc_1_1Detector}{rc\+::\+Detector}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
+\#define \hyperlink{RC__Detector_8hpp_ad95750213b8311bdd843566ddaf16c9f}{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+F\+A\+C\+T\+O\+R}~0.\+0005f
+\item 
+\#define \hyperlink{RC__Detector_8hpp_a03050ffe4793411263f3e00c3c9f490a}{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+M\+A\+X}~2000.\+0f
+\item 
+\#define \hyperlink{RC__Detector_8hpp_a8cd56a5292bbea66ea860385cc8764a1}{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+M\+I\+N}~400000.\+0f
+\item 
 \#define \hyperlink{RC__Detector_8hpp_a9aacb2f0483d3f24da79f348eb5d8584}{measure\+Ticks}(var)~\{ var = cv\+::get\+Tick\+Count(); \}
 \item 
 \#define \hyperlink{RC__Detector_8hpp_ad3133ccbef76aa43d2361bbda6f8f9f3}{calc\+Diff\+Time}(start, end, dest)~\{ float tmp = dest; dest = (end -\/ start) / cv\+::get\+Tick\+Frequency(); dest = (dest + tmp)/2; \}
@@ -68,7 +74,16 @@ Toni Uhlig \href{mailto:matzeton@googlemail.com}{\tt matzeton@googlemail.\+com}
 \item[{}]{dest}
 \end{DoxyParamCaption}
 )~\{ float tmp = dest; dest = (end -\/ start) / cv\+::get\+Tick\+Frequency(); dest = (dest + tmp)/2; \}}}\label{RC__Detector_8hpp_ad3133ccbef76aa43d2361bbda6f8f9f3}
-\char`\"{}\+Zeit\char`\"{}-\/\+Differenz berechnen (Durchschnitt von {\ttfamily end-\/start} und {\ttfamily dest}) \hypertarget{RC__Detector_8hpp_a9aacb2f0483d3f24da79f348eb5d8584}{\index{R\+C\+\_\+\+Detector.\+hpp@{R\+C\+\_\+\+Detector.\+hpp}!measure\+Ticks@{measure\+Ticks}}
+\char`\"{}\+Zeit\char`\"{}-\/\+Differenz berechnen (Durchschnitt von {\ttfamily end-\/start} und {\ttfamily dest}) \hypertarget{RC__Detector_8hpp_ad95750213b8311bdd843566ddaf16c9f}{\index{R\+C\+\_\+\+Detector.\+hpp@{R\+C\+\_\+\+Detector.\+hpp}!D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+F\+A\+C\+T\+O\+R@{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+F\+A\+C\+T\+O\+R}}
+\index{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+F\+A\+C\+T\+O\+R@{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+F\+A\+C\+T\+O\+R}!R\+C\+\_\+\+Detector.\+hpp@{R\+C\+\_\+\+Detector.\+hpp}}
+\subsubsection[{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+F\+A\+C\+T\+O\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+F\+A\+C\+T\+O\+R~0.\+0005f}}\label{RC__Detector_8hpp_ad95750213b8311bdd843566ddaf16c9f}
+Entfernungsfaktor (damit wird der erkannte Flächeninhalt multipliziert) \hypertarget{RC__Detector_8hpp_a03050ffe4793411263f3e00c3c9f490a}{\index{R\+C\+\_\+\+Detector.\+hpp@{R\+C\+\_\+\+Detector.\+hpp}!D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+M\+A\+X@{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+M\+A\+X}}
+\index{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+M\+A\+X@{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+M\+A\+X}!R\+C\+\_\+\+Detector.\+hpp@{R\+C\+\_\+\+Detector.\+hpp}}
+\subsubsection[{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+M\+A\+X}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+M\+A\+X~2000.\+0f}}\label{RC__Detector_8hpp_a03050ffe4793411263f3e00c3c9f490a}
+maximale Entfernung (Flächeninhalt) für erkannte Objekte \hypertarget{RC__Detector_8hpp_a8cd56a5292bbea66ea860385cc8764a1}{\index{R\+C\+\_\+\+Detector.\+hpp@{R\+C\+\_\+\+Detector.\+hpp}!D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+M\+I\+N@{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+M\+I\+N}}
+\index{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+M\+I\+N@{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+M\+I\+N}!R\+C\+\_\+\+Detector.\+hpp@{R\+C\+\_\+\+Detector.\+hpp}}
+\subsubsection[{D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+M\+I\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+I\+S\+T\+A\+N\+C\+E\+\_\+\+M\+I\+N~400000.\+0f}}\label{RC__Detector_8hpp_a8cd56a5292bbea66ea860385cc8764a1}
+minimale Entfernung (Flächeninhalt) für erkannte Objekte \hypertarget{RC__Detector_8hpp_a9aacb2f0483d3f24da79f348eb5d8584}{\index{R\+C\+\_\+\+Detector.\+hpp@{R\+C\+\_\+\+Detector.\+hpp}!measure\+Ticks@{measure\+Ticks}}
 \index{measure\+Ticks@{measure\+Ticks}!R\+C\+\_\+\+Detector.\+hpp@{R\+C\+\_\+\+Detector.\+hpp}}
 \subsubsection[{measure\+Ticks}]{\setlength{\rightskip}{0pt plus 5cm}\#define measure\+Ticks(
 \begin{DoxyParamCaption}

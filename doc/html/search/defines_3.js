@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pidfile',['PIDFILE',['../RC__Main_8cpp.html#af5fe208f8640c8c789a4d5d5b8ad47f5',1,'RC_Main.cpp']]]
+  ['measureticks',['measureTicks',['../RC__Detector_8hpp.html#a9aacb2f0483d3f24da79f348eb5d8584',1,'RC_Detector.hpp']]]
 ];

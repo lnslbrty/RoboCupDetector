@@ -63,6 +63,27 @@
             <para>
                 <itemizedlist>
                     <listitem>
+                            <para>#define <link linkend="RC__Detector_8hpp_1ad95750213b8311bdd843566ddaf16c9f">DISTANCE_FACTOR</link> 0.0005f</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="RC__Detector_8hpp_1a03050ffe4793411263f3e00c3c9f490a">DISTANCE_MAX</link> 2000.0f</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="RC__Detector_8hpp_1a8cd56a5292bbea66ea860385cc8764a1">DISTANCE_MIN</link> 400000.0f</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
                             <para>#define <link linkend="RC__Detector_8hpp_1a9aacb2f0483d3f24da79f348eb5d8584">measureTicks</link> { var = cv::getTickCount(); }</para>
                     </listitem>
                 </itemizedlist>

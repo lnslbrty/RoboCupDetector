@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['measureticks',['measureTicks',['../RC__Detector_8hpp.html#a9aacb2f0483d3f24da79f348eb5d8584',1,'RC_Detector.hpp']]]
+  ['lockfile',['LOCKFILE',['../RC__Main_8cpp.html#a551ae9e7796a78ff54bc98eef4e74498',1,'RC_Main.cpp']]]
 ];

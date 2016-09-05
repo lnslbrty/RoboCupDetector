@@ -61,7 +61,7 @@
             <title>Detailed Description</title>
 
 <para>wichtige Informationen eines bearbeiteten Bildes in dieser Struktur speichern </para>
-                <para>Definition at line 47 of file RC_Detector.hpp</para>
+                <para>Definition at line 53 of file RC_Detector.hpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Detector.hpp</para></listitem></itemizedlist></para>
         </simplesect>
@@ -71,7 +71,7 @@
                 <title>float rc::processed_image::midx</title>                
 <para>X-Koordinate (X=0 entspricht Breite des Bildes geteilt durch 2) </para>
 
-                <para>Definition at line 49 of file RC_Detector.hpp</para>
+                <para>Definition at line 55 of file RC_Detector.hpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Detector.hpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -79,7 +79,7 @@
                 <title>float rc::processed_image::absy</title>                
 <para>Y-Koordinate (Y-Koordinate entspricht Y-Koordinate im Urpsrungsbild) </para>
 
-                <para>Definition at line 51 of file RC_Detector.hpp</para>
+                <para>Definition at line 57 of file RC_Detector.hpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Detector.hpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -87,7 +87,7 @@
                 <title>float rc::processed_image::angle</title>                
 <para>Winkel des rotierenden Rechteckes </para>
 
-                <para>Definition at line 53 of file RC_Detector.hpp</para>
+                <para>Definition at line 59 of file RC_Detector.hpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Detector.hpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -95,7 +95,7 @@
                 <title>float rc::processed_image::distance</title>                
 <para>die (geschätzte!) Entfernung zur Kamera </para>
 
-                <para>Definition at line 55 of file RC_Detector.hpp</para>
+                <para>Definition at line 61 of file RC_Detector.hpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Detector.hpp</para></listitem></itemizedlist></para>
             </simplesect>

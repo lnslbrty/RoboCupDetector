@@ -54,7 +54,7 @@
             <title>Detailed Description</title>
 
 <para>Datenstruktur für Zeitaufwand der Teilschritte </para>
-                <para>Definition at line 29 of file RC_Detector.hpp</para>
+                <para>Definition at line 35 of file RC_Detector.hpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Detector.hpp</para></listitem></itemizedlist></para>
         </simplesect>
@@ -64,7 +64,7 @@
                 <title>float rc::time_consumption::avg_color</title>                
 <para>Zeitaufwand für Farbfilter </para>
 
-                <para>Definition at line 31 of file RC_Detector.hpp</para>
+                <para>Definition at line 37 of file RC_Detector.hpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Detector.hpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -72,7 +72,7 @@
                 <title>float rc::time_consumption::avg_contours</title>                
 <para>Zeitaufwand für Konturenfilter </para>
 
-                <para>Definition at line 37 of file RC_Detector.hpp</para>
+                <para>Definition at line 43 of file RC_Detector.hpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Detector.hpp</para></listitem></itemizedlist></para>
             </simplesect>
@@ -80,7 +80,7 @@
                 <title>float rc::time_consumption::avg_draw</title>                
 <para>Zeitaufwand für das Nachzeichnen im Originalbild </para>
 
-                <para>Definition at line 39 of file RC_Detector.hpp</para>
+                <para>Definition at line 45 of file RC_Detector.hpp</para>
                 <para>The Documentation for this struct was generated from the following file: </para>
                 <para><itemizedlist><listitem><para>RC_Detector.hpp</para></listitem></itemizedlist></para>
             </simplesect>
