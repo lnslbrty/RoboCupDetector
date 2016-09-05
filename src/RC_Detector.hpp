@@ -1,5 +1,5 @@
 /**
- * @file    RC_BlobDetector.hpp
+ * @file    RC_Detector.hpp
  * @author  Toni Uhlig <matzeton@googlemail.com>
  * @date    25.05.2016
  * @version 1.0
@@ -47,19 +47,19 @@ struct processed_image {
 };
 
 
-class BlobDetector {
+class Detector {
 
   public:
     /**
      * @name Konstruktor
      */
-    BlobDetector() {
+    Detector() {
     }
 
     /**
      * @name Destruktor
      */
-    ~BlobDetector() {
+    ~Detector() {
     }
 
     /**

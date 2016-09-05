@@ -241,7 +241,7 @@ int main (int argc,char **argv) {
   }
 
   /* Initialisierung (Kamera, OpenCV, etc) */
-  rc::BlobDetectorFactory detector(opts.thrds);
+  rc::DetectorFactory detector(opts.thrds);
   detector.setSaturation(opts.sat);
   detector.setGain(opts.gain);
   detector.setExposure(opts.exp);

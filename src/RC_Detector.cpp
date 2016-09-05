@@ -3,7 +3,7 @@
 #include <iomanip>
 
 
-cv::Mat rc::BlobDetector::process(cv::Mat& image, enum rc::roboColor rc, rc::processed_image& pi, rc::time_consumption& tc) {
+cv::Mat rc::Detector::process(cv::Mat& image, enum rc::roboColor rc, rc::processed_image& pi, rc::time_consumption& tc) {
   int64_t start, end;
   cv::Mat imgHSV, imgThresh;
 

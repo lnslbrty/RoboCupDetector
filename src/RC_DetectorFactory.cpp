@@ -4,11 +4,11 @@
 
 
 #ifdef USE_XWINDOW
-rc::Window * rc::BlobDetectorFactory::win = nullptr;
+rc::Window * rc::DetectorFactory::win = nullptr;
 #endif
 
 
-rc::BlobDetectorFactory::BlobDetectorFactory(unsigned int numThreads) : rc::BlobDetector(), rc::Camera(numThreads*2) {
+rc::DetectorFactory::DetectorFactory(unsigned int numThreads) : rc::Detector(), rc::Camera(numThreads*2) {
   /* Threadpool initialisieren */
   this->threads = new rc::Threads(numThreads);
 #ifdef USE_XWINDOW
@@ -18,14 +18,14 @@ rc::BlobDetectorFactory::BlobDetectorFactory(unsigned int numThreads) : rc::Blob
 #endif
 }
 
-rc::BlobDetectorFactory::~BlobDetectorFactory(void) {
+rc::DetectorFactory::~DetectorFactory(void) {
 #ifdef USE_XWINDOW
   if (win != nullptr)
     delete win;
 #endif
 }
 
-void rc::BlobDetectorFactory::startThreads(void) {
+void rc::DetectorFactory::startThreads(void) {
   data = new threadData[threads->getNumThreads()];
 
   threads->setThreadFunction([this](unsigned int threadNum) {
@@ -101,7 +101,7 @@ void rc::BlobDetectorFactory::startThreads(void) {
   threads->startThreads();
 }
 
-void rc::BlobDetectorFactory::stopThreads(void) {
+void rc::DetectorFactory::stopThreads(void) {
   threads->stopThreads();
   delete data;
   data = nullptr;
@@ -124,7 +124,7 @@ void rc::BlobDetectorFactory::stopThreads(void) {
 #endif
 }
 
-std::string rc::BlobDetectorFactory::outInfo(void) {
+std::string rc::DetectorFactory::outInfo(void) {
   std::stringstream out;
   out << "[" << this->getInfo();
 #ifdef USE_XWINDOW

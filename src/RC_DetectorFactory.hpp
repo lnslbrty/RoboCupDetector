@@ -1,5 +1,5 @@
 /**
- * @file    RC_BlobDetectorFactory.hpp
+ * @file    RC_DetectorFactory.hpp
  * @date    25.05.2016
  * @author  Toni Uhlig <matzeton@googlemail.com>
  * @version 1.0
@@ -38,18 +38,18 @@ struct threadData {
   rc::time_consumption * tc = nullptr;
 };
 
-class BlobDetectorFactory : private rc::BlobDetector, public rc::Camera {
+class DetectorFactory : private rc::Detector, public rc::Camera {
 
   public:
     /**
      * @name Konstruktor
      * @param [in] Anzahl der zu "Arbeiter"- Threads
      */
-    BlobDetectorFactory(unsigned int numThreads);
+    DetectorFactory(unsigned int numThreads);
     /**
      * @name Standart Destruktor
      */
-    ~BlobDetectorFactory();
+    ~DetectorFactory();
 
     /**
      * @name Initialisierung der Kamera
