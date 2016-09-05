@@ -17,6 +17,7 @@
 
 
 namespace rc {
+/** Webserver Klasse, um dem Nutzer eine möglichst einfache Rückmeldung zu geben */
 class WebServer {
 
   public:

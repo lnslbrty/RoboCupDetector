@@ -13,7 +13,14 @@ Initialisierung, Parameter auswerten, Einstellungen setzen.
 {\ttfamily \#include $<$iomanip$>$}\\*
 {\ttfamily \#include $<$raspicam/raspicam\+\_\+cv.\+h$>$}\\*
 {\ttfamily \#include \char`\"{}R\+C\+\_\+\+Daemon.\+hpp\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}R\+C\+\_\+\+Blob\+Detector\+Factory.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}R\+C\+\_\+\+Detector\+Factory.\+hpp\char`\"{}}\\*
+Include dependency graph for R\+C\+\_\+\+Main.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{RC__Main_8cpp__incl}
+\end{center}
+\end{figure}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -34,7 +41,7 @@ struct \hyperlink{structcmd__opts}{cmd\+\_\+opts}
 \begin{Indent}{\bf Kommandozeilenhilfe}\par
 {\em Eine kurze Übersicht über alle verfügbaren Konfigurationsvariablen }\end{Indent}
 \begin{Indent}{\bf `main` Funktion}\par
-{\em Diese wird vom Betriebssystem während des Programmstartes als Einsprungspunkt genutzt
+{\em Diese wird vom Betriebssystem nach dem Programmstart als Einsprungspunkt genutzt
 
 
 \begin{DoxyRetVals}{Return values}

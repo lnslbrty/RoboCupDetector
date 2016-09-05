@@ -4,6 +4,31 @@
     <programlisting>#include &quot;RC_WebServer.hpp&quot;</programlisting>
     <programlisting>#include &lt;iostream&gt;</programlisting>
     <programlisting>#include &lt;sstream&gt;</programlisting>
+    <programlisting>#include &lt;sys/socket.h&gt;</programlisting>
+    <programlisting>#include &lt;netinet/in.h&gt;</programlisting>
+    <programlisting>#include &lt;arpa/inet.h&gt;</programlisting>
+<para>Include dependency diagram for RC_WebServer.cpp</para>
+<para>
+    <figure>
+        <title>Dependency diagram</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="RC__WebServer_8cpp__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Included by dependency diagram for RC_WebServer.cpp</para>
+<para>
+    <figure>
+        <title>Dependency diagram</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="RC__WebServer_8cpp__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
         <simplesect>
             <title>Functions</title>
             <para>

@@ -62,7 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -89,11 +89,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">cmd_opts Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="dynheader">
+Collaboration diagram for cmd_opts:</div>
+<div class="dyncontent">
+<div class="center"><img src="structcmd__opts__coll__graph.png" border="0" usemap="#cmd__opts_coll__map" alt="Collaboration graph"/></div>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a0e94dcdbf5c755d97477c346ece96a2e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0e94dcdbf5c755d97477c346ece96a2e"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>daemonize</b></td></tr>
+<tr class="memitem:a0e94dcdbf5c755d97477c346ece96a2e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcmd__opts.html#a0e94dcdbf5c755d97477c346ece96a2e">daemonize</a></td></tr>
 <tr class="separator:a0e94dcdbf5c755d97477c346ece96a2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a582f29b5e8c3328779e88bcb22ff3c2e"><td class="memItemLeft" align="right" valign="top">unsigned long long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcmd__opts.html#a582f29b5e8c3328779e88bcb22ff3c2e">count</a></td></tr>
 <tr class="separator:a582f29b5e8c3328779e88bcb22ff3c2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,6 +121,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>daemonize</b></td></t
 <tr class="separator:a7518cdbdbc6ed1b8cc404aa675f383a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d2fcb749257ff950fabdb000999d7f9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcmd__opts.html#a6d2fcb749257ff950fabdb000999d7f9">cvthrds</a></td></tr>
 <tr class="separator:a6d2fcb749257ff950fabdb000999d7f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d2405b56bef96f631ac27a4d3ff3cb4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcmd__opts.html#a9d2405b56bef96f631ac27a4d3ff3cb4">listenLocal</a></td></tr>
+<tr class="separator:a9d2405b56bef96f631ac27a4d3ff3cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f37e990a3592777d92c156548422150"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcmd__opts.html#a2f37e990a3592777d92c156548422150">tcpPort</a></td></tr>
+<tr class="separator:a2f37e990a3592777d92c156548422150"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3bc7afbf82fe94305a11352c584fb6e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcmd__opts.html#af3bc7afbf82fe94305a11352c584fb6e">jsRefreshRate</a></td></tr>
+<tr class="separator:af3bc7afbf82fe94305a11352c584fb6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Datenstruktur für Kommandozeilen Parameter </p>
@@ -130,7 +140,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>daemonize</b></td></t
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Daemonmodus </p>
+<p>Anzahl der auszuwertenden Bilder </p>
 
 </div>
 </div>
@@ -143,7 +153,20 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>daemonize</b></td></t
         </tr>
       </table>
 </div><div class="memdoc">
-<p>RoboCup Bilderkennungs- Threads </p>
+<p>OpenCV Bildbearbeitungs- Threads </p>
+
+</div>
+</div>
+<a class="anchor" id="a0e94dcdbf5c755d97477c346ece96a2e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool cmd_opts::daemonize</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Daemonmodus </p>
 
 </div>
 </div>
@@ -156,7 +179,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>daemonize</b></td></t
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Bildverstärkung </p>
+<p>Belichtungsdauer </p>
 
 </div>
 </div>
@@ -169,7 +192,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>daemonize</b></td></t
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Farbsättigung </p>
+<p>Bildverstärkung </p>
 
 </div>
 </div>
@@ -182,7 +205,33 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>daemonize</b></td></t
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Bildbreite </p>
+<p>Bildhöhe </p>
+
+</div>
+</div>
+<a class="anchor" id="af3bc7afbf82fe94305a11352c584fb6e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t cmd_opts::jsRefreshRate</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>WebServer Javascript Bildaktualisierung (in ms) </p>
+
+</div>
+</div>
+<a class="anchor" id="a9d2405b56bef96f631ac27a4d3ff3cb4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool cmd_opts::listenLocal</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>WebServer soll nur auf localhost lauschen </p>
 
 </div>
 </div>
@@ -195,7 +244,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>daemonize</b></td></t
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Bildhöhe </p>
+<p>maximale FPS der Kamera </p>
 
 </div>
 </div>
@@ -208,7 +257,20 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>daemonize</b></td></t
         </tr>
       </table>
 </div><div class="memdoc">
-<p>maximale FPS der Kamera </p>
+<p>Farbsättigung </p>
+
+</div>
+</div>
+<a class="anchor" id="a2f37e990a3592777d92c156548422150"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t cmd_opts::tcpPort</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>WebServer TCP-Port </p>
 
 </div>
 </div>
@@ -221,7 +283,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>daemonize</b></td></t
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Belichtungsdauer </p>
+<p>RoboCup Bilderkennungs- Threads </p>
 
 </div>
 </div>
@@ -234,7 +296,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>daemonize</b></td></t
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Pfad zur Videodatei (falls mit ENABLE_VIDEO kompiliert </p>
+<p>Vorschaubild rendern? (benötigt USE_XWINDOW) </p>
 
 </div>
 </div>
@@ -247,7 +309,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>daemonize</b></td></t
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Anzahl der auszuwertenden Bilder </p>
+<p>Pfad zur Videodatei (falls mit ENABLE_VIDEO kompiliert </p>
 
 </div>
 </div>
@@ -260,7 +322,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>daemonize</b></td></t
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Vorschaubild rendern? (benötigt USE_XWINDOW) </p>
+<p>Bildbreite </p>
 
 </div>
 </div>
@@ -270,7 +332,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>daemonize</b></td></t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 2 2016 22:18:14 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 5 2016 02:54:28 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

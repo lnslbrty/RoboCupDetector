@@ -20,6 +20,7 @@
 
 
 namespace rc {
+/** Kameraklasse: holt Bilder von dir RaspiCam und speichert diese im Puffer */
 class Camera : protected raspicam::RaspiCam_Cv, protected rc::CircularBuffer<cv::Mat> {
 
   public:

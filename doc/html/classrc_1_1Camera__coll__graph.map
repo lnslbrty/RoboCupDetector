@@ -1,0 +1,3 @@
+<map id="rc::Camera" name="rc::Camera">
+<area shape="rect" id="node3" href="$classrc_1_1CircularBuffer.html" title="{rc::CircularBuffer\l\&lt; cv::Mat \&gt;\n||+ CircularBuffer()\l+ ~CircularBuffer()\l+ addElement()\l+ getMaxElementCount()\l+ getNextIndex()\l+ getElementCount()\l+ getSkipped()\l+ getElement()\l+ getInfo()\l* CircularBuffer()\l* ~CircularBuffer()\l* addElement()\l* getMaxElementCount()\l* getNextIndex()\l* getElementCount()\l* getSkipped()\l* getElement()\l* getInfo()\l}" alt="" coords="206,5,391,347"/>
+</map>

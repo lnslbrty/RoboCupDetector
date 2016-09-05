@@ -62,7 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -94,12 +94,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="RC__BlobDetector_8hpp_source.html">RC_BlobDetector.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="RC__Detector_8hpp_source.html">RC_Detector.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for rc::processed_image:</div>
+<div class="dyncontent">
+<div class="center"><img src="structrc_1_1processed__image__coll__graph.png" border="0" usemap="#rc_1_1processed__image_coll__map" alt="Collaboration graph"/></div>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a0213f6e61795e2dbcaa500885554dbde"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0213f6e61795e2dbcaa500885554dbde"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>midx</b></td></tr>
+<tr class="memitem:a0213f6e61795e2dbcaa500885554dbde"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrc_1_1processed__image.html#a0213f6e61795e2dbcaa500885554dbde">midx</a></td></tr>
 <tr class="separator:a0213f6e61795e2dbcaa500885554dbde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3885be6e15744069afb4b429777497fa"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrc_1_1processed__image.html#a3885be6e15744069afb4b429777497fa">absy</a></td></tr>
 <tr class="separator:a3885be6e15744069afb4b429777497fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,7 +124,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>midx</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>X-Koordinate (X=0 entspricht Breite des Bildes geteilt durch 2) </p>
+<p>Y-Koordinate (Y-Koordinate entspricht Y-Koordinate im Urpsrungsbild) </p>
 
 </div>
 </div>
@@ -133,7 +137,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>midx</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Y-Koordinate (Y-Koordinate entspricht Y-Koordinate im Urpsrungsbild) </p>
+<p>Winkel des rotierenden Rechteckes </p>
 
 </div>
 </div>
@@ -146,17 +150,30 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>midx</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Winkel des rotierenden Rechteckes </p>
+<p>die (geschätzte!) Entfernung zur Kamera </p>
+
+</div>
+</div>
+<a class="anchor" id="a0213f6e61795e2dbcaa500885554dbde"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float rc::processed_image::midx</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>X-Koordinate (X=0 entspricht Breite des Bildes geteilt durch 2) </p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/<a class="el" href="RC__BlobDetector_8hpp_source.html">RC_BlobDetector.hpp</a></li>
+<li>src/<a class="el" href="RC__Detector_8hpp_source.html">RC_Detector.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 2 2016 22:18:14 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 5 2016 02:54:28 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

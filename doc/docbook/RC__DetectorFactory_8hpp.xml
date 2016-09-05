@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="RC__DetectorFactory_8hpp">
+    <title>RC_DetectorFactory.hpp File Reference</title>
+    <programlisting>#include &lt;iostream&gt;</programlisting>
+    <programlisting>#include &lt;ostream&gt;</programlisting>
+    <programlisting>#include &lt;raspicam/raspicam_cv.h&gt;</programlisting>
+    <programlisting>#include &quot;RC_Camera.hpp&quot;</programlisting>
+    <programlisting>#include &quot;RC_Detector.hpp&quot;</programlisting>
+    <programlisting>#include &quot;RC_Threads.hpp&quot;</programlisting>
+<para>Include dependency diagram for RC_DetectorFactory.hpp</para>
+<para>
+    <figure>
+        <title>Dependency diagram</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="RC__DetectorFactory_8hpp__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Included by dependency diagram for RC_DetectorFactory.hpp</para>
+<para>
+    <figure>
+        <title>Dependency diagram</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="RC__DetectorFactory_8hpp__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+        <simplesect>
+            <title> Classes </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structrc_1_1threadData">rc::threadData</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classrc_1_1DetectorFactory">rc::DetectorFactory</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title> Namespaces </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="namespacerc">rc</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+
+<para><formalpara><title>Date: </title>
+
+<para>25.05.2016 </para>
+</formalpara>
+<formalpara><title>Author: </title>
+
+<para>Toni Uhlig <link xlink:href="mailto:matzeton@googlemail.com">matzeton@googlemail.com</link> </para>
+</formalpara>
+<formalpara><title>Version: </title>
+
+<para>1.0 </para>
+</formalpara>
+</para>
+    <para>Definition in file /home/pi/bsz7_robocup/src/RC_DetectorFactory.hpp</para>
+    </simplesect>
+</section>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['semaphore',['Semaphore',['../classrc_1_1Semaphore.html',1,'rc']]]
+  ['webserver',['WebServer',['../classrc_1_1WebServer.html',1,'rc']]],
+  ['window',['Window',['../classrc_1_1Window.html',1,'rc']]]
 ];

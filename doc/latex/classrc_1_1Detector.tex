@@ -1,0 +1,89 @@
+\hypertarget{classrc_1_1Detector}{\section{rc\+:\+:Detector Class Reference}
+\label{classrc_1_1Detector}\index{rc\+::\+Detector@{rc\+::\+Detector}}
+}
+
+
+{\ttfamily \#include $<$R\+C\+\_\+\+Detector.\+hpp$>$}
+
+
+
+Inheritance diagram for rc\+:\+:Detector\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{classrc_1_1Detector__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for rc\+:\+:Detector\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{classrc_1_1Detector__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Konstruktor}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Detector_a18dd89b26c2ca51e9e1a1728dbb7f2f7}{{\bfseries Detector} ()}\label{classrc_1_1Detector_a18dd89b26c2ca51e9e1a1728dbb7f2f7}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Destruktor}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Detector_af21babae9f3a24b41a6606d7c907c34d}{{\bfseries $\sim$\+Detector} ()}\label{classrc_1_1Detector_af21babae9f3a24b41a6606d7c907c34d}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Farbfilter}\par
+{\em 
+\begin{DoxyParams}{Parameters}
+{\em Quellbild} & \\
+\hline
+{\em zu} & filternde Farbe \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em die} & gefilterte Open\+C\+V Matrix \\
+\hline
+\end{DoxyRetVals}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Detector_ace825e4ea09c83c216f40d1f257bbda3}{cv\+::\+Mat {\bfseries filter\+Color} (cv\+::\+Mat src, enum robo\+Color rcol)}\label{classrc_1_1Detector_ace825e4ea09c83c216f40d1f257bbda3}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Sucht nach Konturen in einem Bild}\par
+{\em 
+\begin{DoxyParams}{Parameters}
+{\em Das} & zu filternde Bild. \\
+\hline
+{\em die} & zu filternde Farbe \\
+\hline
+{\em ausgewertete} & Informationen in dieser Struktur speichern \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Matrix} & nach dem Farbfilter \\
+\hline
+\end{DoxyRetVals}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1Detector_a06801b74678ebebc0395ba70db24cef6}{cv\+::\+Mat {\bfseries process} (cv\+::\+Mat \&image, enum rc\+::robo\+Color rc, \hyperlink{structrc_1_1processed__image}{rc\+::processed\+\_\+image} \&pi, \hyperlink{structrc_1_1time__consumption}{rc\+::time\+\_\+consumption} \&tc)}\label{classrc_1_1Detector_a06801b74678ebebc0395ba70db24cef6}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+Detektor-\/ Klasse zum filtern/auswerten von Bildern 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{RC__Detector_8hpp}{R\+C\+\_\+\+Detector.\+hpp}\item 
+src/R\+C\+\_\+\+Detector.\+cpp\end{DoxyCompactItemize}

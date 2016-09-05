@@ -1,6 +1,31 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classrc_1_1Window">
 <title>rc::Window class Reference</title>
+<para>
+    <programlisting>#include <link linkend="RC__Window_8hpp">&lt;RC_Window.hpp&gt;</link></programlisting>
+</para>
+<para>Inheritance diagram for rc::Window</para>
+<para>
+    <figure>
+        <title>Inheritance graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="classrc_1_1Window__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Collaboration diagram for rc::Window</para>
+<para>
+    <figure>
+        <title>Collaboration graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="classrc_1_1Window__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
         <simplesect>
             <title>Private Attributes</title>
             <para>
@@ -132,6 +157,14 @@ void )</para>
                     </listitem>
                 </itemizedlist>
             </para>
+        </simplesect>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para>Klasse für X11 basierendes Vorschaufenster (nicht empfohlen da langsam) </para>
+                <para>Definition at line 21 of file RC_Window.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_Window.hpp</para></listitem></itemizedlist></para>
         </simplesect>
             <section xml:id="classrc_1_1Window_1aa38aa6f619a07a3fc95760ddae436295">
                 <title>rc::Window::Window (void)</title> <emphasis></emphasis>

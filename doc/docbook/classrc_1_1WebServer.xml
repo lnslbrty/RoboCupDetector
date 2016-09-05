@@ -1,13 +1,70 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classrc_1_1WebServer">
 <title>rc::WebServer class Reference</title>
+<para>
+    <programlisting>#include <link linkend="RC__WebServer_8hpp">&lt;RC_WebServer.hpp&gt;</link></programlisting>
+</para>
+<para>Inheritance diagram for rc::WebServer</para>
+<para>
+    <figure>
+        <title>Inheritance graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="classrc_1_1WebServer__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Collaboration diagram for rc::WebServer</para>
+<para>
+    <figure>
+        <title>Collaboration graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="classrc_1_1WebServer__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
         <simplesect>
             <title>Standartkonstruktor</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>true, wenn</entry>
+                                <entry>
+<para>nur auf localhost eingehende Verbindungen akzeptiert werden sollen, andernfalls auf allen Interfaces zulassen </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>16-Bit</entry>
+                                <entry>
+<para>TCP Port </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>Anzahl</entry>
+                                <entry>
+<para>anzuzeigender Bilder auf der Website @þaram Zeitdauer, welche das automatische nachladen der Bilder auf der Website setzt (in ms) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para> <link linkend="classrc_1_1WebServer_1afe32b4a720bb672a01b7e290507ae33e">WebServer</link> (
-int port, int image_count)</para>
+                        <para> <link linkend="classrc_1_1WebServer_1a09ae11f2e69a39788a954c99ba93dc43">WebServer</link> (
+bool listenLocalhost, uint16_t port, size_t imageCount, size_t jsRefreshRate)</para>
                     </listitem>
                 </itemizedlist>
             </para>
@@ -17,35 +74,191 @@ int port, int image_count)</para>
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>std::mutex images_mtx</para>
+                        <para> <link linkend="classrc_1_1WebServer_1a6b3b77c3c9bcc9668d558cbe71b57c15">~WebServer</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>WebServer starten</title>
+      <description>
+<para>Der <link linkend="classrc_1_1WebServer">WebServer</link> soll nun Verbindungen entgegen nehmen und beantworten.</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Return values                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>true, wenn</entry>
+                                <entry>
+<para>der Start erfolgreich, andernfalls false </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="classrc_1_1WebServer_1a44df359fc4f9e5e3209bf5cfcbb22980">start</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>WebServer stoppen</title>
+      <description>
+<para>Keine neuen Verbindungen entgegen nehmen und bereits bestehende beenden. </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1WebServer_1a06ae92d6dadbbfdc4289c31fbfab6624">stop</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>ein Bild zum abrufen freigeben</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>Bildindex</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>Bild</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classrc_1_1WebServer_1af66eaf683e6e29c3f5c0530025aef5f7">setImage</link> (
+int idx, cv::Mat &amp; src)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>ein Bild holen</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>Bildindex</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Return values                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>Bild</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>cv::Mat <link linkend="classrc_1_1WebServer_1afa3effc52a15f4bef40da8209502ac72">getImage</link> (
+int idx)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Anzahl Bilder zurückgeben</title>
+      <description>
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Return values                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>numerischer</entry>
+                                <entry>
+<para>Wert </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>std::mutex imagesMtx</para>
                     </listitem>
                 </itemizedlist>
             </para>
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>cv::Mat * images_out</para>
+                        <para>cv::Mat * imagesOut</para>
                     </listitem>
                 </itemizedlist>
             </para>
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>std::vector&lt; int &gt; imencode_flags</para>
+                        <para>std::vector&lt; int &gt; imEncodeFlags</para>
                     </listitem>
                 </itemizedlist>
             </para>
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>size_t image_cnt</para>
-                    </listitem>
-                </itemizedlist>
-            </para>
-            <para>
-                <itemizedlist>
-                    <listitem>
-                        <para>size_t port</para>
+                        <para>size_t imageCount</para>
                     </listitem>
                 </itemizedlist>
             </para>
@@ -59,47 +272,28 @@ int port, int image_count)</para>
             <para>
                 <itemizedlist>
                     <listitem>
+                        <para>size_t jsRefreshRate</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool listenLocalhost</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint16_t port</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
                         <para>struct MHD_Daemon * httpd</para>
-                    </listitem>
-                </itemizedlist>
-            </para>
-            <para>
-                <itemizedlist>
-                    <listitem>
-                        <para> <link linkend="classrc_1_1WebServer_1a6b3b77c3c9bcc9668d558cbe71b57c15">~WebServer</link> (
-)</para>
-                    </listitem>
-                </itemizedlist>
-            </para>
-            <para>
-                <itemizedlist>
-                    <listitem>
-                        <para>bool <link linkend="classrc_1_1WebServer_1a44df359fc4f9e5e3209bf5cfcbb22980">start</link> (
-)</para>
-                    </listitem>
-                </itemizedlist>
-            </para>
-            <para>
-                <itemizedlist>
-                    <listitem>
-                        <para>void <link linkend="classrc_1_1WebServer_1a06ae92d6dadbbfdc4289c31fbfab6624">stop</link> (
-void )</para>
-                    </listitem>
-                </itemizedlist>
-            </para>
-            <para>
-                <itemizedlist>
-                    <listitem>
-                        <para>void <link linkend="classrc_1_1WebServer_1af66eaf683e6e29c3f5c0530025aef5f7">setImage</link> (
-int idx, cv::Mat &amp; src)</para>
-                    </listitem>
-                </itemizedlist>
-            </para>
-            <para>
-                <itemizedlist>
-                    <listitem>
-                        <para>cv::Mat <link linkend="classrc_1_1WebServer_1afa3effc52a15f4bef40da8209502ac72">getImage</link> (
-int idx)</para>
                     </listitem>
                 </itemizedlist>
             </para>
@@ -127,5 +321,21 @@ void )</para>
                     </listitem>
                 </itemizedlist>
             </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>size_t <link linkend="classrc_1_1WebServer_1a828c817ba9585fc0639f7a025e2a547e">getJSRefreshRate</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para>Webserver Klasse, um dem Nutzer eine möglichst einfache Rückmeldung zu geben </para>
+                <para>Definition at line 21 of file RC_WebServer.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_WebServer.hpp</para></listitem></itemizedlist></para>
         </simplesect>
 </section>

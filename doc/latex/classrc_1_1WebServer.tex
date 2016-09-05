@@ -1,31 +1,103 @@
 \hypertarget{classrc_1_1WebServer}{\section{rc\+:\+:Web\+Server Class Reference}
 \label{classrc_1_1WebServer}\index{rc\+::\+Web\+Server@{rc\+::\+Web\+Server}}
 }
+
+
+{\ttfamily \#include $<$R\+C\+\_\+\+Web\+Server.\+hpp$>$}
+
+
+
+Collaboration diagram for rc\+:\+:Web\+Server\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{classrc_1_1WebServer__coll__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{Indent}{\bf Standartkonstruktor}\par
-\begin{DoxyCompactItemize}
+{\em 
+\begin{DoxyParams}{Parameters}
+{\em true,wenn} & nur auf localhost eingehende Verbindungen akzeptiert werden sollen, andernfalls auf allen Interfaces zulassen \\
+\hline
+{\em 16-\/\+Bit} & T\+C\+P Port \\
+\hline
+{\em Anzahl} & anzuzeigender Bilder auf der Website @þaram Zeitdauer, welche das automatische nachladen der Bilder auf der Website setzt (in ms) \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classrc_1_1WebServer_afe32b4a720bb672a01b7e290507ae33e}{{\bfseries Web\+Server} (int port, int image\+\_\+count)}\label{classrc_1_1WebServer_afe32b4a720bb672a01b7e290507ae33e}
+\hypertarget{classrc_1_1WebServer_a09ae11f2e69a39788a954c99ba93dc43}{{\bfseries Web\+Server} (bool listen\+Localhost, uint16\+\_\+t port, size\+\_\+t image\+Count, size\+\_\+t js\+Refresh\+Rate)}\label{classrc_1_1WebServer_a09ae11f2e69a39788a954c99ba93dc43}
 
 \end{DoxyCompactItemize}
 \end{Indent}
-\subsection*{Destruktor}
+\begin{Indent}{\bf Destruktor}\par
 \begin{DoxyCompactItemize}
 \item 
 \hypertarget{classrc_1_1WebServer_a6b3b77c3c9bcc9668d558cbe71b57c15}{{\bfseries $\sim$\+Web\+Server} ()}\label{classrc_1_1WebServer_a6b3b77c3c9bcc9668d558cbe71b57c15}
 
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Web\+Server starten}\par
+{\em Der \hyperlink{classrc_1_1WebServer}{Web\+Server} soll nun Verbindungen entgegen nehmen und beantworten.
+
+
+\begin{DoxyRetVals}{Return values}
+{\em true,wenn} & der Start erfolgreich, andernfalls false \\
+\hline
+\end{DoxyRetVals}
+}\begin{DoxyCompactItemize}
 \item 
 \hypertarget{classrc_1_1WebServer_a44df359fc4f9e5e3209bf5cfcbb22980}{bool {\bfseries start} ()}\label{classrc_1_1WebServer_a44df359fc4f9e5e3209bf5cfcbb22980}
 
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Web\+Server stoppen}\par
+{\em Keine neuen Verbindungen entgegen nehmen und bereits bestehende beenden. }\begin{DoxyCompactItemize}
 \item 
 \hypertarget{classrc_1_1WebServer_a06ae92d6dadbbfdc4289c31fbfab6624}{void {\bfseries stop} (void)}\label{classrc_1_1WebServer_a06ae92d6dadbbfdc4289c31fbfab6624}
 
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf ein Bild zum abrufen freigeben}\par
+{\em 
+\begin{DoxyParams}{Parameters}
+{\em Bildindex} & \\
+\hline
+{\em Bild} & \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
 \item 
 \hypertarget{classrc_1_1WebServer_af66eaf683e6e29c3f5c0530025aef5f7}{void {\bfseries set\+Image} (int idx, cv\+::\+Mat \&src)}\label{classrc_1_1WebServer_af66eaf683e6e29c3f5c0530025aef5f7}
 
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf ein Bild holen}\par
+{\em 
+\begin{DoxyParams}{Parameters}
+{\em Bildindex} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Bild} & \\
+\hline
+\end{DoxyRetVals}
+}\begin{DoxyCompactItemize}
 \item 
 \hypertarget{classrc_1_1WebServer_afa3effc52a15f4bef40da8209502ac72}{cv\+::\+Mat {\bfseries get\+Image} (int idx)}\label{classrc_1_1WebServer_afa3effc52a15f4bef40da8209502ac72}
 
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Anzahl Bilder zurückgeben}
+\label{_amgrpc3bffcdac63a754d2a2b6231dd296bb2}%
+
+\begin{DoxyRetVals}{Return values}
+{\em numerischer} & Wert \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyCompactItemize}
 \item 
 \hypertarget{classrc_1_1WebServer_a1f8551f408b09eb67a49d050f253ed1f}{size\+\_\+t {\bfseries get\+Frames} (void)}\label{classrc_1_1WebServer_a1f8551f408b09eb67a49d050f253ed1f}
 
@@ -35,8 +107,14 @@
 \item 
 \hypertarget{classrc_1_1WebServer_a877ed11cc160de9b56851dafe396d25a}{std\+::vector$<$ int $>$ \& {\bfseries get\+Flags} (void)}\label{classrc_1_1WebServer_a877ed11cc160de9b56851dafe396d25a}
 
+\item 
+\hypertarget{classrc_1_1WebServer_a828c817ba9585fc0639f7a025e2a547e}{size\+\_\+t {\bfseries get\+J\+S\+Refresh\+Rate} (void)}\label{classrc_1_1WebServer_a828c817ba9585fc0639f7a025e2a547e}
+
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Webserver Klasse, um dem Nutzer eine möglichst einfache Rückmeldung zu geben 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

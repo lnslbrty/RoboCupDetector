@@ -6,20 +6,6 @@
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>struct <link linkend="classrc_1_1BlobDetector">rc::BlobDetector</link></para>
-                    </listitem>
-                </itemizedlist>
-            </para>
-            <para>
-                <itemizedlist>
-                    <listitem>
-                        <para>struct <link linkend="classrc_1_1BlobDetectorFactory">rc::BlobDetectorFactory</link></para>
-                    </listitem>
-                </itemizedlist>
-            </para>
-            <para>
-                <itemizedlist>
-                    <listitem>
                         <para>struct <link linkend="classrc_1_1Camera">rc::Camera</link></para>
                     </listitem>
                 </itemizedlist>
@@ -48,6 +34,20 @@
             <para>
                 <itemizedlist>
                     <listitem>
+                        <para>struct <link linkend="classrc_1_1Detector">rc::Detector</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classrc_1_1DetectorFactory">rc::DetectorFactory</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
                         <para>struct <link linkend="structrc_1_1processed__image">rc::processed_image</link></para>
                     </listitem>
                 </itemizedlist>
@@ -55,7 +55,14 @@
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>struct <link linkend="classrc_1_1Semaphore">rc::Semaphore</link></para>
+                        <para>struct <link linkend="structrc_1_1threadData">rc::threadData</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classrc_1_1Threads">rc::Threads</link></para>
                     </listitem>
                 </itemizedlist>
             </para>
@@ -147,6 +154,29 @@ void )</para>
 <link linkend="namespacerc_1a79a656935f516f1a4339ad99f367934bad3af77d645b72510dcacc6631440cbd2">RB_BLUE</link>
 }</literallayout>
 </para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para><literallayout>enum <link linkend="namespacerc_1a8aaafe8249ecec6c2695280357ec141d">roboImage</link> {
+<link linkend="namespacerc_1a8aaafe8249ecec6c2695280357ec141dab309c34b28f3b6f604e41561ea642f39">IMAGE_DRAWED</link>= 0,
+<link linkend="namespacerc_1a8aaafe8249ecec6c2695280357ec141da9ce497918b999adc1fb20ce50e21d9da">IMAGE_FILTERED_YELLOW</link>,
+<link linkend="namespacerc_1a8aaafe8249ecec6c2695280357ec141dac112f1489cd09835a8b4f9aabd204354">IMAGE_FILTERED_BLUE</link>,
+<link linkend="namespacerc_1a8aaafe8249ecec6c2695280357ec141daba8e6d15d89eb812e6e3350c9dca2fd9">IMAGE_MAX</link>
+}</literallayout>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Typedefs</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef std::function&lt; void(unsigned int threadNum)&gt;  <link linkend="namespacerc_1a19b4c77afaec14cdc46eca7f2d22b345">threadFunc_t</link></para>
                     </listitem>
                 </itemizedlist>
             </para>

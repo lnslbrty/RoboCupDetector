@@ -62,7 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -92,31 +92,90 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">rc::WebServer Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="RC__WebServer_8hpp_source.html">RC_WebServer.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for rc::WebServer:</div>
+<div class="dyncontent">
+<div class="center"><img src="classrc_1_1WebServer__coll__graph.png" border="0" usemap="#rc_1_1WebServer_coll__map" alt="Collaboration graph"/></div>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Standartkonstruktor</div></td></tr>
-<tr class="memitem:afe32b4a720bb672a01b7e290507ae33e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afe32b4a720bb672a01b7e290507ae33e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>WebServer</b> (int port, int image_count)</td></tr>
-<tr class="separator:afe32b4a720bb672a01b7e290507ae33e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
-Destruktor</h2></td></tr>
+<tr><td colspan="2"><div class="groupText"><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">true,wenn</td><td>nur auf localhost eingehende Verbindungen akzeptiert werden sollen, andernfalls auf allen Interfaces zulassen </td></tr>
+    <tr><td class="paramname">16-Bit</td><td>TCP Port </td></tr>
+    <tr><td class="paramname">Anzahl</td><td>anzuzeigender Bilder auf der Website @þaram Zeitdauer, welche das automatische nachladen der Bilder auf der Website setzt (in ms) </td></tr>
+  </table>
+  </dd>
+</dl>
+</div></td></tr>
+<tr class="memitem:a09ae11f2e69a39788a954c99ba93dc43"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a09ae11f2e69a39788a954c99ba93dc43"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>WebServer</b> (bool listenLocalhost, uint16_t port, size_t imageCount, size_t jsRefreshRate)</td></tr>
+<tr class="separator:a09ae11f2e69a39788a954c99ba93dc43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Destruktor</div></td></tr>
 <tr class="memitem:a6b3b77c3c9bcc9668d558cbe71b57c15"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b3b77c3c9bcc9668d558cbe71b57c15"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~WebServer</b> ()</td></tr>
 <tr class="separator:a6b3b77c3c9bcc9668d558cbe71b57c15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">WebServer starten</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Der <a class="el" href="classrc_1_1WebServer.html">WebServer</a> soll nun Verbindungen entgegen nehmen und beantworten.</p>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true,wenn</td><td>der Start erfolgreich, andernfalls false </td></tr>
+  </table>
+  </dd>
+</dl>
+</div></td></tr>
 <tr class="memitem:a44df359fc4f9e5e3209bf5cfcbb22980"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a44df359fc4f9e5e3209bf5cfcbb22980"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> ()</td></tr>
 <tr class="separator:a44df359fc4f9e5e3209bf5cfcbb22980"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">WebServer stoppen</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Keine neuen Verbindungen entgegen nehmen und bereits bestehende beenden. </p>
+</div></td></tr>
 <tr class="memitem:a06ae92d6dadbbfdc4289c31fbfab6624"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a06ae92d6dadbbfdc4289c31fbfab6624"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>stop</b> (void)</td></tr>
 <tr class="separator:a06ae92d6dadbbfdc4289c31fbfab6624"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">ein Bild zum abrufen freigeben</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Bildindex</td><td></td></tr>
+    <tr><td class="paramname">Bild</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+</div></td></tr>
 <tr class="memitem:af66eaf683e6e29c3f5c0530025aef5f7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af66eaf683e6e29c3f5c0530025aef5f7"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setImage</b> (int idx, cv::Mat &amp;src)</td></tr>
 <tr class="separator:af66eaf683e6e29c3f5c0530025aef5f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">ein Bild holen</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Bildindex</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Bild</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+</div></td></tr>
 <tr class="memitem:afa3effc52a15f4bef40da8209502ac72"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afa3effc52a15f4bef40da8209502ac72"></a>
 cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>getImage</b> (int idx)</td></tr>
 <tr class="separator:afa3effc52a15f4bef40da8209502ac72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
+Anzahl Bilder zurückgeben</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrpc3bffcdac63a754d2a2b6231dd296bb2"></a></p><dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">numerischer</td><td>Wert </td></tr>
+  </table>
+  </dd>
+</dl>
+</td></tr>
 <tr class="memitem:a1f8551f408b09eb67a49d050f253ed1f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1f8551f408b09eb67a49d050f253ed1f"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getFrames</b> (void)</td></tr>
 <tr class="separator:a1f8551f408b09eb67a49d050f253ed1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -126,15 +185,20 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getCount</b> (void)
 <tr class="memitem:a877ed11cc160de9b56851dafe396d25a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a877ed11cc160de9b56851dafe396d25a"></a>
 std::vector&lt; int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getFlags</b> (void)</td></tr>
 <tr class="separator:a877ed11cc160de9b56851dafe396d25a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a828c817ba9585fc0639f7a025e2a547e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a828c817ba9585fc0639f7a025e2a547e"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getJSRefreshRate</b> (void)</td></tr>
+<tr class="separator:a828c817ba9585fc0639f7a025e2a547e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Webserver Klasse, um dem Nutzer eine möglichst einfache Rückmeldung zu geben </p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="RC__WebServer_8hpp_source.html">RC_WebServer.hpp</a></li>
 <li>src/RC_WebServer.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 2 2016 22:18:14 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 5 2016 02:54:28 for bsz7_robocup by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

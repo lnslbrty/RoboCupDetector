@@ -1,9 +1,22 @@
 \hypertarget{classrc_1_1CircularBuffer}{\section{rc\+:\+:Circular\+Buffer$<$ T $>$ Class Template Reference}
 \label{classrc_1_1CircularBuffer}\index{rc\+::\+Circular\+Buffer$<$ T $>$@{rc\+::\+Circular\+Buffer$<$ T $>$}}
 }
+
+
+{\ttfamily \#include $<$R\+C\+\_\+\+Circular\+Buffer.\+hpp$>$}
+
+
+
+Collaboration diagram for rc\+:\+:Circular\+Buffer$<$ T $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{classrc_1_1CircularBuffer__coll__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{Indent}{\bf Konstruktor für zirkulären Pufferspeicher}\par
-{\em Anzahl \char`\"{}frischer\char`\"{} Einträge
+{\em maximales Alter eines Eintrages (wird verworfen/nicht bearbeitet)
 
 
 \begin{DoxyParams}{Parameters}
@@ -31,7 +44,7 @@
 \end{DoxyParams}
 }\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classrc_1_1CircularBuffer_aa03a62fe9deae36e5b83200f9f7a2c24}{void {\bfseries add\+Element} (T \&elem)}\label{classrc_1_1CircularBuffer_aa03a62fe9deae36e5b83200f9f7a2c24}
+\hypertarget{classrc_1_1CircularBuffer_a9d24da68ea76c76e353bc6eb1061aca4}{bool {\bfseries add\+Element} (T \&elem)}\label{classrc_1_1CircularBuffer_a9d24da68ea76c76e353bc6eb1061aca4}
 
 \end{DoxyCompactItemize}
 \end{Indent}
@@ -56,6 +69,13 @@
 
 \end{DoxyCompactItemize}
 \end{Indent}
+\begin{Indent}{\bf Anzahl übersprungener (d.\+h. Zeistempel zu alt) Elemente zurückgeben}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1CircularBuffer_adb2c87f7037e86b5ca175645d3ba9a33}{unsigned int {\bfseries get\+Skipped} (void)}\label{classrc_1_1CircularBuffer_adb2c87f7037e86b5ca175645d3ba9a33}
+
+\end{DoxyCompactItemize}
+\end{Indent}
 \begin{Indent}{\bf Sucht nach dem nächsten \char`\"{}freien\char`\"{} Element}\par
 {\em 
 \begin{DoxyParams}{Parameters}
@@ -73,7 +93,24 @@
 
 \end{DoxyCompactItemize}
 \end{Indent}
+\begin{Indent}{\bf Gibt Informationen über den Puffer aus}\par
+{\em 
+\begin{DoxyRetVals}{Return values}
+{\em Zeichenkette} & mit Pufferinfo \\
+\hline
+\end{DoxyRetVals}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1CircularBuffer_a3bd7f616030a6cbf6b397e5c1e33d9f8}{std\+::string {\bfseries get\+Info} (void)}\label{classrc_1_1CircularBuffer_a3bd7f616030a6cbf6b397e5c1e33d9f8}
 
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$class rc\+::\+Circular\+Buffer$<$ T $>$}
+
+Klasse für zirkulären Pufferspeicher 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="RC__Detector_8hpp">
+    <title>RC_Detector.hpp File Reference</title>
+    <programlisting>#include &lt;opencv2/opencv.hpp&gt;</programlisting>
+<para>Include dependency diagram for RC_Detector.hpp</para>
+<para>
+    <figure>
+        <title>Dependency diagram</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="RC__Detector_8hpp__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Included by dependency diagram for RC_Detector.hpp</para>
+<para>
+    <figure>
+        <title>Dependency diagram</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="RC__Detector_8hpp__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+        <simplesect>
+            <title> Classes </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structrc_1_1time__consumption">rc::time_consumption</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structrc_1_1processed__image">rc::processed_image</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classrc_1_1Detector">rc::Detector</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title> Namespaces </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="namespacerc">rc</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Defines</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="RC__Detector_8hpp_1a9aacb2f0483d3f24da79f348eb5d8584">measureTicks</link> { var = cv::getTickCount(); }</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="RC__Detector_8hpp_1ad3133ccbef76aa43d2361bbda6f8f9f3">calcDiffTime</link> { float tmp = dest; dest = (end - start) / cv::getTickFrequency(); dest = (dest + tmp)/2; }</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+
+<para><formalpara><title>Author: </title>
+
+<para>Toni Uhlig <link xlink:href="mailto:matzeton@googlemail.com">matzeton@googlemail.com</link> </para>
+</formalpara>
+<formalpara><title>Date: </title>
+
+<para>25.05.2016 </para>
+</formalpara>
+<formalpara><title>Version: </title>
+
+<para>1.0 </para>
+</formalpara>
+</para>
+    <para>Definition in file /home/pi/bsz7_robocup/src/RC_Detector.hpp</para>
+    </simplesect>
+</section>

@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="structrc_1_1threadData">
+<title>rc::threadData struct Reference</title>
+<para>
+    <programlisting>#include <link linkend="RC__DetectorFactory_8hpp">&lt;RC_DetectorFactory.hpp&gt;</link></programlisting>
+</para>
+<para>Inheritance diagram for rc::threadData</para>
+<para>
+    <figure>
+        <title>Inheritance graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="structrc_1_1threadData__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+<para>Collaboration diagram for rc::threadData</para>
+<para>
+    <figure>
+        <title>Collaboration graph</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="1" fileref="structrc_1_1threadData__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </figure>
+</para>
+        <simplesect>
+            <title>Public Attributes</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>rc::processed_image * piY</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>rc::processed_image * piB</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>rc::time_consumption * tc</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para>Datenstruktur für Thread- Daten (per Thread jeweils) </para>
+                <para>Definition at line 41 of file RC_DetectorFactory.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_DetectorFactory.hpp</para></listitem></itemizedlist></para>
+        </simplesect>
+        <simplesect>
+            <title>Member Documentation</title>
+            <simplesect>
+                <title>rc::processed_image* rc::threadData::piY</title>                
+<para>ausgewertete Bildinformationen (Gelb) </para>
+
+                <para>Definition at line 43 of file RC_DetectorFactory.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_DetectorFactory.hpp</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>rc::processed_image* rc::threadData::piB</title>                
+<para>ausgewertete Bildinformationen (Blau) </para>
+
+                <para>Definition at line 45 of file RC_DetectorFactory.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_DetectorFactory.hpp</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>rc::time_consumption* rc::threadData::tc</title>                
+<para>Zeitaufwand für beide obigen Vorgänge </para>
+
+                <para>Definition at line 47 of file RC_DetectorFactory.hpp</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RC_DetectorFactory.hpp</para></listitem></itemizedlist></para>
+            </simplesect>
+        </simplesect>
+</section>

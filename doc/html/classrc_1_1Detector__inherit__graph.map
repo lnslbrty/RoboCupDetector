@@ -1,0 +1,3 @@
+<map id="rc::Detector" name="rc::Detector">
+<area shape="rect" id="node2" href="$classrc_1_1DetectorFactory.html" title="{rc::DetectorFactory\n||+ DetectorFactory()\l+ ~DetectorFactory()\l+ openCamera()\l+ closeCamera()\l+ startThreads()\l+ stopThreads()\l+ outInfo()\l* width\l* height\l* data\l* threads\l* out\l* setDimensions()\l* DetectorFactory()\l* ~DetectorFactory()\l* openCamera()\l* closeCamera()\l* startThreads()\l* stopThreads()\l* outInfo()\l}" alt="" coords="5,233,165,589"/>
+</map>

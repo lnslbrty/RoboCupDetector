@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['height',['height',['../structcmd__opts.html#a0ab9c9cf886559f8cf19dd2f7be072fb',1,'cmd_opts']]]
+  ['jsrefreshrate',['jsRefreshRate',['../structcmd__opts.html#af3bc7afbf82fe94305a11352c584fb6e',1,'cmd_opts']]]
 ];

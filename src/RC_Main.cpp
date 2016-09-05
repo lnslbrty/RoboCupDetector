@@ -34,21 +34,36 @@
 
 /** Datenstruktur für Kommandozeilen Parameter */
 struct cmd_opts {
-  bool daemonize;               /** Daemonmodus */
-  unsigned long long int count; /** Anzahl der auszuwertenden Bilder */
-  char* videoFile;              /** Pfad zur Videodatei (falls mit ENABLE_VIDEO kompiliert */
-  bool useXWindow;              /** Vorschaubild rendern? (benötigt USE_XWINDOW) */
-  unsigned int width;           /** Bildbreite */
-  unsigned int height;          /** Bildhöhe */
-  unsigned int maxFps;          /** maximale FPS der Kamera */
-  uint8_t sat;                  /** Farbsättigung */
-  uint8_t gain;                 /** Bildverstärkung */
-  int8_t exp;                   /** Belichtungsdauer */
-  uint8_t thrds;                /** RoboCup Bilderkennungs- Threads */
-  uint8_t cvthrds;              /** OpenCV Bildbearbeitungs- Thread */
-  bool listenLocal;             /** WebServer soll nur auf localhost lauschen */
-  uint16_t tcpPort;             /** WebServer TCP-Port */
-  size_t jsRefreshRate;         /** WebServer Javascript Bildaktualisierung (in ms) */
+  /** Daemonmodus */
+  bool daemonize;
+  /** Anzahl der auszuwertenden Bilder */
+  unsigned long long int count;
+  /** Pfad zur Videodatei (falls mit ENABLE_VIDEO kompiliert */
+  char* videoFile;
+  /** Vorschaubild rendern? (benötigt USE_XWINDOW) */
+  bool useXWindow;
+  /** Bildbreite */
+  unsigned int width;
+  /** Bildhöhe */
+  unsigned int height;
+  /** maximale FPS der Kamera */
+  unsigned int maxFps;
+  /** Farbsättigung */
+  uint8_t sat;
+  /** Bildverstärkung */
+  uint8_t gain;
+  /** Belichtungsdauer */
+  int8_t exp;
+  /** RoboCup Bilderkennungs- Threads */
+  uint8_t thrds;
+  /** OpenCV Bildbearbeitungs- Threads */
+  uint8_t cvthrds;
+  /** WebServer soll nur auf localhost lauschen */
+  bool listenLocal;
+  /** WebServer TCP-Port */
+  uint16_t tcpPort;
+  /** WebServer Javascript Bildaktualisierung (in ms) */
+  size_t jsRefreshRate;
 };
 
 /** Dieses Feature ist zur Zeit nicht im "binary" enthalten. Um das Feature zu integrieren muss das Projekt mit `cmake` bzw. `ccmake` neu kofniguriert/kompiliert/gelinkt werden. */

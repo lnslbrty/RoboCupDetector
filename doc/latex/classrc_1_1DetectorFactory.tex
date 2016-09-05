@@ -1,0 +1,126 @@
+\hypertarget{classrc_1_1DetectorFactory}{\section{rc\+:\+:Detector\+Factory Class Reference}
+\label{classrc_1_1DetectorFactory}\index{rc\+::\+Detector\+Factory@{rc\+::\+Detector\+Factory}}
+}
+
+
+{\ttfamily \#include $<$R\+C\+\_\+\+Detector\+Factory.\+hpp$>$}
+
+
+
+Inheritance diagram for rc\+:\+:Detector\+Factory\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classrc_1_1DetectorFactory__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for rc\+:\+:Detector\+Factory\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classrc_1_1DetectorFactory__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Konstruktor}\par
+{\em 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Anzahl} & der zu \char`\"{}\+Arbeiter\char`\"{}-\/ \hyperlink{classrc_1_1Threads}{Threads} \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1DetectorFactory_ad72f65512a7defe3030f827cf2325714}{{\bfseries Detector\+Factory} (unsigned int num\+Threads)}\label{classrc_1_1DetectorFactory_ad72f65512a7defe3030f827cf2325714}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Standart Destruktor}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1DetectorFactory_a376b02d1b04b7a310a4c14e8bcd84abb}{{\bfseries $\sim$\+Detector\+Factory} ()}\label{classrc_1_1DetectorFactory_a376b02d1b04b7a310a4c14e8bcd84abb}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Initialisierung der Kamera}\par
+{\em Hinweis\+: Diese Methode sollte {\itshape vor}
+
+\begin{DoxySeeAlso}{See also}
+start\+Threads ausgeführt werden 
+\end{DoxySeeAlso}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1DetectorFactory_a1d8b3b87e6a62e4f1f4bbbd2efdef8d6}{bool {\bfseries open\+Camera} (void)}\label{classrc_1_1DetectorFactory_a1d8b3b87e6a62e4f1f4bbbd2efdef8d6}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Deaktiviert die Kamera}\par
+{\em Hinweis\+: Diese Methode sollte {\itshape nach}
+
+\begin{DoxySeeAlso}{See also}
+stop\+Threads ausgeführt werden 
+\end{DoxySeeAlso}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1DetectorFactory_a17f9fa472057829330763e28d6066c4c}{void {\bfseries close\+Camera} (void)}\label{classrc_1_1DetectorFactory_a17f9fa472057829330763e28d6066c4c}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Startet die \char`\"{}\+Arbeiter\char`\"{}-\/ Threads}\par
+{\em Die \hyperlink{classrc_1_1Threads}{Threads} werden gestartet und befinden sich in einer Endlosschleife, solange das Programm nicht beendet wird oder
+
+\begin{DoxySeeAlso}{See also}
+stop\+Threads() aufgerufen wird. 
+\end{DoxySeeAlso}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1DetectorFactory_af17a8bc76295ecf266db4fc889e86789}{void {\bfseries start\+Threads} (void)}\label{classrc_1_1DetectorFactory_af17a8bc76295ecf266db4fc889e86789}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Stoppt alle \char`\"{}\+Arbeiter\char`\"{}-\/ Threads}\par
+{\em Alle \hyperlink{classrc_1_1Threads}{Threads} werden beendet. Erst nachdem alle \hyperlink{classrc_1_1Threads}{Threads} beendet wurden, kerht diese Methode zum aufrufenden zurück. }\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1DetectorFactory_a153ff92097336849ae78ea4a8216b4a3}{void {\bfseries stop\+Threads} (void)}\label{classrc_1_1DetectorFactory_a153ff92097336849ae78ea4a8216b4a3}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Gibt Informationen über diese Klasse als String zurück.}\par
+{\em Dabei werden Informationen über den \hyperlink{classrc_1_1CircularBuffer}{Circular\+Buffer} und der Window-\/ Klasse ausgegeben.
+
+\begin{DoxyReturn}{Returns}
+Die Informationen als Zeichenkette. 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1DetectorFactory_adea364916607f577ca33028fdd5cf330}{std\+::string {\bfseries out\+Info} (void)}\label{classrc_1_1DetectorFactory_adea364916607f577ca33028fdd5cf330}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Setzt die Groese des Vorschau-\/ Videos.}
+\label{_amgrp31fff75453dbcfb0cbda6f83097f2790}%
+Dabei ist zu beachten, dass die moeglichst kleine Werte gewaehlt werden sollten, um den Raspberry nicht zu ueberlasten.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Breite} & in Pixel \\
+\hline
+{\em Hoehe} & in Pixel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrc_1_1DetectorFactory_af409e6e3ee0d2cfea590b93bfa6e88de}{void {\bfseries set\+Dimensions} (unsigned int width, unsigned int height)}\label{classrc_1_1DetectorFactory_af409e6e3ee0d2cfea590b93bfa6e88de}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\char`\"{}\+Fabrik\char`\"{}-\/\+Klasse, d.\+h. hier befindet sich die Hauptlogik 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{RC__DetectorFactory_8hpp}{R\+C\+\_\+\+Detector\+Factory.\+hpp}\item 
+src/R\+C\+\_\+\+Detector\+Factory.\+cpp\end{DoxyCompactItemize}
