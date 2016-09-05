@@ -23,4 +23,4 @@ sudo dpkg -i ${DIR}/../bsz7robocup_0.1_armhf.deb ${DIR}/../bsz7robocup*.deb
 cd ${OLDPWD}
 
 echo "* robocup kann nun ausgeführt werden (Tipp: \`robocup -p\`)"
-robocup -p
+robocup -h
