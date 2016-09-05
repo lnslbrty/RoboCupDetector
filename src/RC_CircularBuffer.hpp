@@ -16,10 +16,12 @@
 
 
 namespace rc {
+
 template <class T>
 struct cbElement {
   T element;      /** aktuelles Element */
   bool processed; /** bereits zurückgegebenes Element */
+  time_t tstamp;  /** Zeitstempel (Wann wurde Element hinzugefügt?) */
 };
 
 template <class T>
@@ -31,6 +33,8 @@ class CircularBuffer {
     unsigned int nextIndex;         /** Feldindex, welcher beim nächsten `addElement(...)` überschrieben wird */
     unsigned int maxElements;       /** maximale Größe des Puffers */
     unsigned int availableElements; /** Anzahl "frischer" Einträge */
+    unsigned int skippedElements;   /** Anzahl verworfener Einträge, da Zeitstempel zu alt */
+    time_t maxAge;                  /** maximales Alter eines Eintrages (wird verworfen/nicht bearbeitet) */
 
   public:
     /**
@@ -47,7 +51,7 @@ class CircularBuffer {
      * @name neues Element dem Pufferspeicher hinzufügen
      * @param Element vom Typ des Templates
      */
-    void addElement(T& elem);
+    bool addElement(T& elem);
 
     /**
      * @name maximale Anzahl der Elemente im Pufferspeicher zurückgeben
@@ -72,11 +76,25 @@ class CircularBuffer {
     }
 
     /**
+     * @name Anzahl übersprungener (d.h. Zeistempel zu alt) Elemente zurückgeben
+     */
+    unsigned int getSkipped(void) {
+      std::unique_lock<std::mutex> lck(mtx);
+      return skippedElements;
+    }
+
+    /**
      * @name Sucht nach dem nächsten "freien" Element
      * @param eine Referenz vom Typ des Templates
      * @retval true, wenn ein freies Element vorhanden, andernfalls false
      */
     bool getElement(T& arg);
+
+    /**
+     * @name Gibt Informationen über den Puffer aus
+     * @retval Zeichenkette mit Pufferinfo
+     */
+    std::string getInfo(void);
 
 };
 }
