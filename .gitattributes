@@ -1,0 +1,4 @@
+dependencies/* linguist-vendored
+debian/* linguist-vendored
+raspicam/* linguist-vendored
+CMakeLists.txt linguist-vendored
